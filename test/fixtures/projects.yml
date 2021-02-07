@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  category: MyString
+  subcategory: MyString
+  description: MyText
+  experience: MyString
+  min_budget: 1
+  max_budget: 1
+
+two:
+  title: MyString
+  category: MyString
+  subcategory: MyString
+  description: MyText
+  experience: MyString
+  min_budget: 1
+  max_budget: 1
