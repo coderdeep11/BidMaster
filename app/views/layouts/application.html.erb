@@ -4,12 +4,28 @@
     <title>BidMaster</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <nav>
+      <%if current_user%>
+        <ul>
+          <li>
+            <%=link_to  'Logout',destroy_user_session_path,method: :delete%>
+          </li>
+        <%else%>
+          <li>
+            <%=link_to 'Login',new_user_session_path%>
+          </li>
+          <li>
+            <%=link_to  'Signup',new_user_registration_path%>
+          </li>
+        </ul>
+      <%end%>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
