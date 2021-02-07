@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_121828) do
+ActiveRecord::Schema.define(version: 2021_02_07_125814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(version: 2021_02_07_121828) do
     t.index ["freelancer_id"], name: "index_freelancer_infos_on_freelancer_id"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.string "subcategory"
+    t.text "description"
+    t.string "experience"
+    t.integer "min_budget"
+    t.integer "max_budget"
+    t.bigint "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_projects_on_client_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -66,4 +80,5 @@ ActiveRecord::Schema.define(version: 2021_02_07_121828) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "freelancer_infos", "users", column: "freelancer_id"
+  add_foreign_key "projects", "users", column: "client_id"
 end
