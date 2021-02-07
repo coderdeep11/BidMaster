@@ -1,0 +1,2 @@
+module FreelancerInfosHelper
+end
