@@ -30,6 +30,9 @@
       <div class="password__confirmation-field">
         <i class="fal fa-lock"></i>
         <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: 'Confirm password' %>
+        <%unless resource.errors[:password_confirmation].empty?%>
+          <%=  "#{resource.errors[:password_confirmation][0]} "%>
+        <%end%>
       </div>
       <!-- Role field -->
       <div class="role__field">
@@ -42,6 +45,9 @@
           <%=f.radio_button  :role, "client" %>
           Client
         </div>
+        <%unless resource.errors[:role].empty?%>
+          <%= "role #{resource.errors[:role][0]} "%>
+        <%end%>
       </div>
       <!-- Image field -->
       <div class="image__field">
