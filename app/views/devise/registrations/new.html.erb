@@ -1,50 +1,60 @@
-<h2>Sign up</h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div >
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-  <div >
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    <%unless resource.errors[:email].empty?%>
-      <%=  "email #{resource.errors[:email][0]} "%>
-    <%end%>
-  </div>
-  <div >
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-  <div>
-    <%= f.label :role,'Choose Your Role?' %> <br/>
-    <div >
-      <div>
-        <%= f.radio_button :role ,"freelancer"%>
-        Freelancer
+<%= javascript_pack_tag 'form', 'data-turbolinks-track': 'reload' %>
+<section class= "sign__up-page" >
+  <h1>Complete your account setup</h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <section class= "sign__up-form">
+      <!-- Name field -->
+      <div class="name__field">
+        <i class="fal fa-user"></i>
+        <%= f.text_field :name,placeholder: 'Name' %>
+        <%unless resource.errors[:name].empty?%>
+          <%=  "name #{resource.errors[:name][0]} "%>
+        <%end%>
       </div>
-      <div>
-        <%=f.radio_button  :role, "client" %>
-        Client
+      <!-- Email field -->
+      <div class="email__field">
+        <i class="fal fa-envelope"></i>
+        <%= f.email_field :email, autocomplete: "email",placeholder: 'Email'  %>
+        <%unless resource.errors[:email].empty?%>
+          <%=  "email #{resource.errors[:email][0]} "%>
+        <%end%>
       </div>
-    </div>
-    <%unless resource.errors[:role].empty?%>
-      <%= "role #{resource.errors[:role][0]} "%>
-    <%end%>
-  </div>
-  <div class="field mb-3">
-    <%= f.label :profile_image %>
-    <br/>
-    <%= f.file_field :profile_image %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-<%= render "devise/shared/links" %>
+      <!-- Password field -->
+      <div class="password__field">
+        <i class="fal fa-lock"></i>
+        <%= f.password_field :password, autocomplete: "new-password",placeholder: 'Create a password'  %>
+        <%unless resource.errors[:password].empty?%>
+          <%=  "password #{resource.errors[:password][0]} "%>
+        <%end%>
+      </div>
+      <div class="password__confirmation-field">
+        <i class="fal fa-lock"></i>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: 'Confirm password' %>
+      </div>
+      <!-- Role field -->
+      <div class="role__field">
+        <p> <%= f.label :role,'Choose Your role:' %></p>
+        <div class="f__btn">
+          <%= f.radio_button :role ,"freelancer"%>
+          Freelancer
+        </div>
+        <div  class="c__btn">
+          <%=f.radio_button  :role, "client" %>
+          Client
+        </div>
+      </div>
+      <!-- Image field -->
+      <div class="image__field">
+        <%= f.label :profile_image,'Add a Photo' %>
+        <br/>
+        <div class="file__field">
+          <i class="fal fa-user-circle"></i>
+          <%= f.file_field :profile_image %>
+        </div>
+      </div>
+      <!-- submit-->
+      <%= f.submit "Sign up",class:'btn' %>
+    </section>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</section>
