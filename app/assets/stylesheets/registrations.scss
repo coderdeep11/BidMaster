@@ -1,0 +1,132 @@
+/*********/
+$border: 1px solid rgb(209, 197, 197);
+/*Icons Mixin*/
+@mixin inputIcons {
+  & i {
+    position: absolute;
+    top: 50%;
+    left: 0.6rem;
+    transform: translateY(-50%);
+  }
+}
+/************/
+@mixin buttons {
+  .btn {
+    display: block;
+    background: #1986d6;
+    text-align: center;
+    padding: 0.5rem;
+    color: white;
+    margin: 0 auto;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+    transition: 1s background-color;
+  }
+}
+
+.sign__up-page {
+  & h1 {
+    padding: 1rem 2rem 0;
+    text-align: center;
+    font-family: "Montserrat";
+  }
+  .sign__up-form {
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    @include inputIcons;
+    gap: 2rem;
+    padding: 1rem 0;
+
+    & > div {
+      margin: 0 2rem;
+
+      position: relative;
+    }
+    & input {
+      width: 100%;
+      padding: 10px 2rem;
+    }
+
+    .role__field {
+      align-self: center;
+      text-align: center;
+      & > div {
+        display: inline-block;
+        border: $border;
+        width: 100px;
+        text-align: center;
+      }
+      .f__btn {
+        background: white;
+        text-align: center;
+        padding: 0.5rem;
+        color: white;
+        margin: 10px auto;
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 14px;
+        width: 100px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.5s;
+        color: black;
+        border: $border;
+      }
+
+      .btn__add-background {
+        background: #1986d6;
+        color: white;
+        border: none;
+      }
+      .c__btn {
+        @extend .f__btn;
+      }
+      & input {
+        display: none;
+      }
+      .field_with_errors {
+        text-align: center;
+        display: inline;
+        border: none;
+      }
+      & .errors {
+        position: initial;
+      }
+    }
+    .image__field i {
+      position: inherit;
+      transform: translateY(0);
+
+      font-size: 3.5rem;
+    }
+    & .file__field {
+      padding: 10px 0px;
+
+      input {
+        padding: 15px 0;
+      }
+    }
+
+    @include buttons();
+  }
+}
+.field_with_errors {
+  display: block;
+
+  input {
+    border: 1px solid rgb(255, 0, 0);
+  }
+}
+
+.errors {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding-left: 1rem;
+  position: absolute;
+}
