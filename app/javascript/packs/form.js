@@ -3,7 +3,6 @@ window.addEventListener("turbolinks:load", () => {
     let btn = e.target;
     let fBtn = document.querySelector(".f__btn"),
       cBtn = document.querySelector(".c__btn");
-
     if (
       e.target.classList[0] !== "f__btn" &&
       e.target.classList[0] !== "c__btn" &&
@@ -12,7 +11,7 @@ window.addEventListener("turbolinks:load", () => {
       return;
 
     btn.children[0].click();
-    console.log(btn.children);
+    console.log(btn.children[0].checked);
     if (btn.classList[0] == "f__btn") {
       if (cBtn.classList[1] == "btn__add-background")
         cBtn.classList.remove("btn__add-background");
@@ -41,7 +40,7 @@ window.addEventListener("turbolinks:load", () => {
 
         if (
           i < length - 3 ||
-          (length < 4 &&
+          (length < 5 &&
             validator !== "f__btn" &&
             validator !== "c__btn" &&
             validator !== "role__field")
@@ -54,6 +53,11 @@ window.addEventListener("turbolinks:load", () => {
           element.nextSibling.textContent = "";
           let p = document.createElement("p");
           p.textContent = errorMessage;
+
+          p.insertAdjacentHTML(
+            "afterbegin",
+            `<i class="fad fa-exclamation-circle"></i>`
+          );
           p.classList.add("errors");
           element.parentElement.appendChild(p);
         }
