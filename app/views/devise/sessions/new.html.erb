@@ -1,12 +1,13 @@
-<%= javascript_pack_tag 'login', 'data-turbolinks-track': 'reload' %>
 <main>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <section class="login__page">
       <h1>Log in</h1>
       <div class="login__email-field">
+        <i class="fad fa-user"></i>
         <%= f.email_field :email, autocomplete: "email",placeholder: 'email address' %>
       </div>
       <div class="login__password-field">
+        <i class="fad fa-lock"></i>
         <%= f.password_field :password, autocomplete: "current-password",placeholder: 'password' %>
       </div>
       <% if devise_mapping.rememberable? %>

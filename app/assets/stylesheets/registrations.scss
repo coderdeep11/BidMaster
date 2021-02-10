@@ -77,6 +77,10 @@ $border: 1px solid #b9b9b9;
         transition: background-color 0.5s;
         color: black;
         border: $border;
+        &:hover {
+          background: #4795cc;
+          color: white;
+        }
       }
 
       .btn__add-background {
