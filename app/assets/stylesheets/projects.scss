@@ -1,3 +1,204 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+$box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+  0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+$border: 1px solid rgb(206, 202, 202);
+/*******/
+
+/**/
+@mixin borderValues {
+  background: white;
+  border: $border;
+  border-top: none;
+  border-radius: 0.5rem;
+}
+/**/
+.project__page {
+  background-color: #f3f3f3;
+
+  display: grid;
+
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 3fr 1fr 1fr;
+  padding: 1rem 6rem 1rem 3rem;
+
+  .project__steps {
+    display: block;
+
+    grid-row: 1/4;
+    list-style-type: none;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 7rem;
+    padding-top: 0.5rem;
+    gap: 1.2rem;
+
+    & li {
+      font-weight: 500;
+      text-transform: capitalize;
+      display: block;
+      width: 100%;
+      position: relative;
+      i:first-child {
+        margin-right: 0.8rem;
+      }
+      i:last-child {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .project__title {
+    grid-column: 2/3;
+    @include borderValues;
+    grid-row: 1/2;
+    border: $border;
+    vertical-align: middle;
+    padding: 1rem;
+    text-transform: capitalize;
+    font-family: "Montserrat";
+  }
+  .project__title-form {
+    @include borderValues;
+    grid-row: 2/4;
+    padding: 4rem 2rem;
+    label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    input {
+      padding: 0.7rem;
+      width: 80%;
+    }
+  }
+  .project__description-form {
+    grid-row: 2/4;
+    @include borderValues;
+    padding: 1.5rem;
+    font-family: "montserrat";
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    textarea {
+      width: 100%;
+      height: 180px;
+      padding: 1rem;
+      position: relative;
+    }
+
+    ul {
+      padding: 0.5rem;
+      margin-left: 1rem;
+      font-size: small;
+      margin-bottom: 1rem;
+      li {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  .project__experience-form {
+    grid-row: 2/4;
+    padding: 3rem;
+    label {
+      margin-bottom: 2rem;
+      display: block;
+      font-weight: 600;
+      font-family: "Montserrat";
+      text-align: center;
+    }
+    @include borderValues;
+    .experience-level {
+      display: flex;
+      justify-content: space-around;
+      perspective: 1000px;
+      perspective-origin: center;
+
+      & div {
+        flex-basis: 30%;
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        border: $border;
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        font-family: "monoserrat";
+        position: relative;
+        transition: transform 0.5s;
+        cursor: pointer;
+        input {
+          position: absolute;
+          right: 5px;
+          top: 5px;
+        }
+        b {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  .project__buttons {
+    @include borderValues;
+    grid-row: 4/5;
+    grid-column: 2/3;
+    position: relative;
+    & .next__btn {
+      display: block;
+      background: #1986d6;
+      text-align: center;
+      padding: 0.5rem;
+      color: white;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 12rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 1rem;
+      width: 140px;
+      border: none;
+      cursor: pointer;
+      transition: 1s background-color;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    }
+    & .back__btn {
+      @extend .next__btn;
+      left: 2rem;
+    }
+  }
+}
+.add__border {
+  box-shadow: $box-shadow;
+  transform: translateZ(100px);
+  transition: transform 0.6s;
+}
+/***********
+@media (max-width: 768px) {
+    .project__page {
+        grid-template-rows: 1fr 2fr 1fr;
+        grid-auto-rows: 100px;
+        .project__steps {
+            display: none;
+        }
+        .project__title {
+            grid-column: 1/3;
+            grid-row: 1/2;
+        }
+        .project__buttons {
+            grid-row: 4/5;
+            grid-column: 1/3;
+        }
+        .project__title-form {
+            grid-column: 1/3;
+        }
+    }
+}
+*/

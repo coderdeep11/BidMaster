@@ -1,11 +1,10 @@
-<%= javascript_pack_tag 'form', 'data-turbolinks-track': 'reload' %>
 <section class= "sign__up-page" >
-  <h1>Complete your account setup</h1>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <section class= "sign__up-form">
+      <h1>Complete your account setup</h1>
       <!-- Name field -->
       <div class="name__field">
-        <i class="fal fa-user"></i>
+        <i class="fad fa-user"></i>
         <%= f.text_field :name,placeholder: 'Name' %>
         <%unless resource.errors[:name].empty?%>
           <%=  "name #{resource.errors[:name][0]} "%>
@@ -13,7 +12,7 @@
       </div>
       <!-- Email field -->
       <div class="email__field">
-        <i class="fal fa-envelope"></i>
+        <i class="fad fa-at"></i>
         <%= f.email_field :email, autocomplete: "email",placeholder: 'Email'  %>
         <%unless resource.errors[:email].empty?%>
           <%=  "email #{resource.errors[:email][0]} "%>
@@ -21,14 +20,14 @@
       </div>
       <!-- Password field -->
       <div class="password__field">
-        <i class="fal fa-lock"></i>
+        <i class="fad fa-lock"></i>
         <%= f.password_field :password, autocomplete: "new-password",placeholder: 'Create a password'  %>
         <%unless resource.errors[:password].empty?%>
           <%=  "password #{resource.errors[:password][0]} "%>
         <%end%>
       </div>
       <div class="password__confirmation-field">
-        <i class="fal fa-lock"></i>
+        <i class="fad fa-lock"></i>
         <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: 'Confirm password' %>
         <%unless resource.errors[:password_confirmation].empty?%>
           <%=  "#{resource.errors[:password_confirmation][0]} "%>
@@ -62,5 +61,4 @@
       <%= f.submit "Sign up",class:'btn' %>
     </section>
   <% end %>
-  <%= render "devise/shared/links" %>
 </section>
