@@ -2,7 +2,7 @@
   <div class="project__page">
     <%=render  "sidebar"%>
     <%=render partial: "projectTitle",locals: {title: project.current_step,step_no: project.steps.index(project.current_step) } %>
-    <%=render partial: "experience",locals: {f: f} %>
+    <%=render partial: "#{project.current_step}",locals: {f: f} %>
     <%=render partial: "buttons",locals: {project: @project,f: f} %>
   </div>
 <%end%>
