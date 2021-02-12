@@ -143,6 +143,10 @@ $border: 1px solid #b9b9b9;
     }
     & .errors {
       font-size: 0.5rem;
+
+      i {
+        left: 0;
+      }
     }
   }
 }
@@ -193,6 +197,7 @@ $border: 1px solid #b9b9b9;
       }
       & .errors {
         font-size: 0.6rem;
+        padding-left: 1rem;
       }
     }
   }

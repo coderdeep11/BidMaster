@@ -1,0 +1,5 @@
+if(document.querySelector(".user__profile-dropdown"))
+    document.querySelector(".user__profile-dropdown").remove();
+else
+document.querySelector(".user__avatar").insertAdjacentHTML('beforeend',`<%= j render  "dropdown" %>`)
+

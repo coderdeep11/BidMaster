@@ -137,11 +137,38 @@ $border: 1px solid rgb(206, 202, 202);
         input {
           position: absolute;
           right: 5px;
+          z-index: 0;
           top: 5px;
         }
+
         b {
           margin-bottom: 10px;
         }
+      }
+    }
+  }
+  .project__budget-form {
+    @include borderValues();
+    padding-top: 3rem;
+    background: white;
+    padding-left: 1rem;
+    grid-row: 2/4;
+    label {
+      font-weight: 500;
+      font-size: 1rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .project__budget-field {
+      display: flex;
+
+      & div {
+      }
+      gap: 1.5rem;
+      & input {
+        width: 200px;
+        padding: 0.7rem;
       }
     }
   }
@@ -152,7 +179,7 @@ $border: 1px solid rgb(206, 202, 202);
     position: relative;
     & .next__btn {
       display: block;
-      background: #1986d6;
+      background-color: #3395db;
       text-align: center;
       padding: 0.5rem;
       color: white;
@@ -162,12 +189,17 @@ $border: 1px solid rgb(206, 202, 202);
       left: 12rem;
       border-radius: 5px;
       font-weight: 600;
+
       font-size: 1rem;
       width: 140px;
       border: none;
       cursor: pointer;
       transition: 1s background-color;
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background: #137eca;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      }
     }
     & .back__btn {
       @extend .next__btn;

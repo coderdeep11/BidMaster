@@ -37,13 +37,21 @@ nav {
   border: 1px solid rgb(206, 202, 202);
   height: 65px;
   padding: 0 2rem;
-  background: #f3f3f3;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  ul {
+  background: white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  & > ul {
     height: inherit;
     display: flex;
+    justify-content: center;
 
-    gap: 1.5rem;
+    gap: 5rem;
+    &::before {
+      content: "D";
+      margin: 1px auto 1px 1px;
+      visibility: hidden;
+      padding: 5px;
+      background: #ddd;
+    }
   }
   li {
     display: block;
@@ -64,15 +72,26 @@ nav {
     }
     a {
       text-decoration: none;
-      font-size: 1rem;
       color: black;
-      font-size: 1.1rem;
+      font-size: 1.8rem;
     }
   }
-  li:nth-child(1) {
-    margin-right: auto;
-  }
-  li:nth-child(3) {
+
+  li:nth-last-child(1) {
+    position: relative;
+    & img {
+      height: 35px;
+      display: block;
+      opacity: 0.8;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+        border: 2px solid rgb(136, 132, 132);
+        border-radius: 50%;
+      }
+    }
+
     margin-left: auto;
   }
 }
