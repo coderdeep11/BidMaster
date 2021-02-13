@@ -1,0 +1,36 @@
+<div  >
+  <% @messages.each do |message| %>
+    <% if message.content %>
+      <%if (message.user.id!=current_user.id) %>
+        <span >
+          <%=image_tag user_image(current_user.id),style:'width:30px;height:30px;'%>
+        </span>
+      <%end%>
+      <div  >
+        <p><%= message.content %></p>
+      </div>
+      <div >
+        <small><%= message.created_at.strftime("%d/%m/%y at %l:%M %p")%></small>
+        <%if message.user_id==current_user.id%>
+          <%if message.read %>
+            <i class="fal fa-check-double "></i>
+          <%else%>
+            <i class="fal fa-check "></i>
+          <%end%>
+        <%end%>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<%= form_for [@conversation, @message] ,remote: true do |f| %>
+  <div >
+    <div  >
+      <%= f.text_area :content, placeholder: "Your message" %>
+    </div>
+    <div >
+      <%= button_tag type ="submit"  do%>
+        <i class="fal fa-paper-plane" style="font-size:2rem"></i>
+      <%end%>
+    </div>
+  </div>
+<% end %>

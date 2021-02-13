@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'messages/index'
+  get 'conversations/index'
   devise_for :users
 
   resources :freelancer_infos, only: %i[index create update edit]
@@ -11,6 +13,9 @@ Rails.application.routes.draw do
       root to: 'freelancer_infos#index', as: :freelancer_infos_path
     end
   end
-
+  resources :conversations, only: %i[index create] do
+    resources :messages, only: %i[index create]
+  end
+  get 'dropdown/user-profile', to: 'dropdowns#user_profile', as: 'dropdown_profile'
   root 'pages#main', as: :visitors_url
 end

@@ -1,0 +1,68 @@
+// Place all the styles related to the dropdowns controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.user__profile-dropdown {
+  display: block;
+  width: 300px;
+  padding: 0.5rem 0 0 0;
+  gap: 1rem;
+  position: absolute;
+  transform: translate(0, 15px);
+  background: white;
+  border-radius: 10px;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+    0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  right: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin: 0.8rem 0;
+    padding: 5px 0.5rem;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    font-size: 14px;
+    gap: 1rem;
+    font-size: 0.9rem;
+
+    .user__image {
+      flex-basis: 35px;
+      svg {
+        height: 30px;
+        width: 30px;
+        flex-basis: 35px;
+      }
+    }
+    .user__name {
+      flex: 1;
+      font-weight: 600;
+      font-family: "Quicksand", sans-serif;
+
+      span {
+        display: block;
+        font-weight: 400;
+      }
+    }
+    .user__setting {
+      width: 15px;
+      height: 15px;
+      flex-basis: 35px;
+    }
+    .setting__field,
+    .logout__field {
+      flex: 1;
+      font-weight: 500;
+      font-size: 0.9rem;
+      font-family: "Quicksand", sans-serif;
+    }
+    &:hover {
+      background: rgb(236, 233, 233);
+      cursor: pointer;
+    }
+    & i {
+      flex-basis: 35px;
+      transform: translateX(25%);
+    }
+  }
+}

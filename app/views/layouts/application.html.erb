@@ -17,24 +17,29 @@
     <nav>
       <ul>
         <%if current_user%>
-          <li></li>
           <li>
-            <%=link_to  destroy_user_session_path do%>
-              <i class="fal fa-comment-alt"></i>
+            <%=link_to  conversations_path do%>
+              <i class="fad fa-envelope"></i>
             <%end%>
           </li>
           <li>
             <%=link_to  destroy_user_session_path do%>
-              <i class="fal fa-bell"></i>
+              <i class="fad fa-bell"></i>
             <%end%>
           </li>
           <li>
-            <%=link_to 'Bid Histroy' ,destroy_user_session_path %>
+            <%=link_to  destroy_user_session_path do%>
+              <i class="fad fa-history"></i>
+            <%end%>
           </li>
-          <li> <%=link_to  'Logout',destroy_user_session_path,class:'btn-primary',method: :delete%></li>
+          <li>
+            <div class="user__avatar">
+              <%=image_tag user_image(current_user.id)%>
+              <%=link_to'', dropdown_profile_path,remote: true%>
+            </div>
+          </li>
         <%else%>
           <li> <%=link_to 'Login',new_user_session_path,class:'btn-primary'%></li>
-          <li><%=link_to  'Signup',new_user_registration_path,class:'btn-primary'%></li>
         <%end%>
       </ul>
     </nav>
@@ -43,6 +48,5 @@
     <%= yield %>
     <%= javascript_pack_tag 'login' %>
     <%= javascript_pack_tag 'form' %>
-    <%=javascript_pack_tag 'project'%>
   </body>
 </html>

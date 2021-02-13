@@ -9,6 +9,7 @@ require("@rails/activestorage").start();
 require("channels");
 require("typeface-montserrat");
 require("typeface-poppins");
+require("typeface-quicksand");
 require("packs/project");
 
 // Uncomment to copy all static images under ../images to the output folder and reference
