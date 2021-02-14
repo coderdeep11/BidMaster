@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_071557) do
+ActiveRecord::Schema.define(version: 2021_02_14_130202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_02_14_071557) do
     t.bigint "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "approved"
     t.index ["freelancer_id"], name: "index_bids_on_freelancer_id"
     t.index ["project_id"], name: "index_bids_on_project_id"
   end
@@ -78,6 +79,15 @@ ActiveRecord::Schema.define(version: 2021_02_14_071557) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "bid_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bid_id"], name: "index_notifications_on_bid_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -117,5 +127,7 @@ ActiveRecord::Schema.define(version: 2021_02_14_071557) do
   add_foreign_key "freelancer_infos", "users", column: "freelancer_id"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "notifications", "bids"
+  add_foreign_key "notifications", "users"
   add_foreign_key "projects", "users", column: "client_id"
 end

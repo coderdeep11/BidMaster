@@ -1,9 +1,13 @@
 <div>
-  <% unless bid.errors[:value] %>
+  <% if bid.errors[:value].empty? && bid.errors[:freelancer_id].empty? %>
     <%=bid.value%>
     <%=bid.proposal%>
     <%=bid.freelancer.name %>
-  <%else%>
-    <p><%= bid.errors[:value] %></p>
+  <%end%>
+  <% unless bid.errors[:value].empty? %>
+    <%= bid.errors[:value][0] %>
+  <%end%>
+  <%unless bid.errors[:freelancer_id].empty?%>
+    <%=  "#{bid.errors[:freelancer_id][0]} "%>
   <%end%>
 </div>

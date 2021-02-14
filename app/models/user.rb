@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :role, presence: true
   validates :name, presence: true
   validates :role, presence: true
+  has_many :projects, foreign_key: 'client_id'
+  has_many :notifications
 end

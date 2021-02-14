@@ -16,9 +16,17 @@ class BidsController < ApplicationController
     end
   end
 
+  def update
+    @project = Project.find(params[:project_id])
+    @bid = @project.bids.find(params[:id])
+
+    @bid.update_attributes(bids_params)
+    redirect_to notifications_path
+  end
+
   private
 
   def bids_params
-    params.require(:bid).permit(:value, :proposal, :freelancer_id, :project_id)
+    params.require(:bid).permit(:value, :proposal, :freelancer_id, :project_id, :approved)
   end
 end

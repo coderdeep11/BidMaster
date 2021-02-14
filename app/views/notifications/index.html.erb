@@ -1,0 +1,16 @@
+<ul>
+  <% @notifications.try(:each) do |notification| %>
+    <%if notification.user.role=="client" %>
+      <li><%=notification.bid.freelancer.name %> placed a bid on your project</li>
+      <%=link_to 'accept',project_bid_path(notification.bid.project,notification.bid,bid: {approved: true } ) ,method: :put %>
+      <%=link_to 'reject',project_bid_path(notification.bid.project,notification.bid,bid: {approved: false } ) ,method: :put %>
+      <br />
+    <%else%>
+      <% if notification.bid.approved%>
+        <li><%=notification.bid.project.client.name %> accepted your bid</li>
+      <%else%>
+        <li><%=notification.bid.project.client.name %> rejected your bid</li>
+      <%end%>
+    <%end%>
+  <%end%>
+</ul>
