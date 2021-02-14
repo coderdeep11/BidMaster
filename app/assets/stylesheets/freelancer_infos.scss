@@ -1,3 +1,44 @@
 // Place all the styles related to the freelancer_infos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.projects {
+  padding: 3rem 15rem;
+  overflow: scroll;
+  height: 90vh;
+  scrollbar-width: none;
+  transition: transform 0.7s;
+
+  .project {
+    text-align: center;
+    border: 1px solid #bdb3b3;
+    border-top: none;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    &:first-child {
+      border: 1px solid #bdb3b3;
+    }
+    &:hover {
+      background-color: rgb(245, 245, 245);
+    }
+  }
+}
+.project__modal {
+  height: 90vh;
+  background: white;
+  position: absolute;
+  top: 65px;
+  border: 1px solid black;
+  width: 90%;
+  transform: translateX(130%);
+  transition: transform 1s;
+  z-index: 10;
+}
+.show__project-slideIn {
+  transform: translateX(10%);
+}
+
+.disable-click {
+  pointer-events: none;
+  overflow: hidden;
+}

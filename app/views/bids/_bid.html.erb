@@ -1,0 +1,9 @@
+<div>
+  <% unless bid.errors[:value] %>
+    <%=bid.value%>
+    <%=bid.proposal%>
+    <%=bid.freelancer.name %>
+  <%else%>
+    <p><%= bid.errors[:value] %></p>
+  <%end%>
+</div>

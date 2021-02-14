@@ -38,6 +38,12 @@ class ProjectsController < ApplicationController
 
   def edit; end
 
+  def show
+    @project = Project.find(params[:id])
+    @bid = Bid.new
+    @bids = @project.bids
+  end
+
   def update; end
 
   private

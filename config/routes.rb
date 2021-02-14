@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :freelancer_infos, only: %i[index create update edit]
-  resources :projects, only: %i[index create update edit]
+  resources :projects, only: %i[index create update edit show] do
+    resources :bids,only: [:create,:index]
+  end
   devise_scope :user do
     authenticated :user, ->(u) { u.try(:role) == 'client' } do
       root to: 'projects#index'

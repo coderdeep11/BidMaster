@@ -1,7 +1,22 @@
 window.addEventListener("turbolinks:load", (e) => {
-  document
-    .querySelector(".user__avatar")
-    .addEventListener("click", function () {
-      document.querySelector(".user__avatar").children[1].click();
-    });
+  let allProjects = document.querySelector(".projects");
+  let userAvatar = document.querySelector(".user__avatar");
+
+  userAvatar?.addEventListener("click", function () {
+    userAvatar.children[1].click();
+  });
+
+  allProjects?.addEventListener("click", function (e) {
+    let project = e.target.closest(".project");
+
+    if (!project) return;
+
+    project.children[3].click();
+
+    t = setTimeout(function () {
+      allProjects.setAttribute("style", "transform:translateX(-10%);");
+      allProjects.classList.add("disable-click");
+      clearTimeout(t);
+    }, 300);
+  });
 });

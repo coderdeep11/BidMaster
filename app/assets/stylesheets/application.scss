@@ -20,78 +20,80 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+body {
+  overflow-x: hidden;
+  header {
+    position: absolute;
+    top: 0;
+    padding-top: 0.1rem;
 
-header {
-  position: absolute;
-  top: 0;
-  padding-top: 0.1rem;
-
-  .logo {
-    display: block;
-    width: 100px;
-    height: 60px;
-  }
-}
-nav {
-  width: 100%;
-  border: 1px solid rgb(206, 202, 202);
-  height: 65px;
-  padding: 0 2rem;
-  background: white;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  & > ul {
-    height: inherit;
-    display: flex;
-    justify-content: center;
-
-    gap: 5rem;
-    &::before {
-      content: "D";
-      margin: 1px auto 1px 1px;
-      visibility: hidden;
-      padding: 5px;
-      background: #ddd;
-    }
-  }
-  li {
-    display: block;
-    list-style-type: none;
-    align-self: center;
-
-    .btn-primary {
+    .logo {
       display: block;
-      background: #1986d6;
-      text-align: center;
-      padding: 6px 10px;
-      color: white;
-      line-height: 20px;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 14px;
       width: 100px;
-    }
-    a {
-      text-decoration: none;
-      color: black;
-      font-size: 1.8rem;
+      height: 60px;
     }
   }
+  nav {
+    width: 100%;
+    border: 1px solid rgb(206, 202, 202);
+    height: 65px;
+    padding: 0 2rem;
+    background: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    & > ul {
+      height: inherit;
+      display: flex;
+      justify-content: center;
 
-  li:nth-last-child(1) {
-    position: relative;
-    & img {
-      height: 35px;
+      gap: 5rem;
+      &::before {
+        content: "D";
+        margin: 1px auto 1px 1px;
+        visibility: hidden;
+        padding: 5px;
+        background: #ddd;
+      }
+    }
+    li {
       display: block;
-      opacity: 0.8;
-      cursor: pointer;
+      list-style-type: none;
+      align-self: center;
 
-      &:hover {
-        opacity: 1;
-        border: 2px solid rgb(136, 132, 132);
-        border-radius: 50%;
+      .btn-primary {
+        display: block;
+        background: #1986d6;
+        text-align: center;
+        padding: 6px 10px;
+        color: white;
+        line-height: 20px;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 14px;
+        width: 100px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 1.8rem;
       }
     }
 
-    margin-left: auto;
+    li:nth-last-child(1) {
+      position: relative;
+      & img {
+        height: 35px;
+        display: block;
+        opacity: 0.8;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+          border: 2px solid rgb(136, 132, 132);
+          border-radius: 50%;
+        }
+      }
+
+      margin-left: auto;
+    }
   }
 }

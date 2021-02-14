@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_12_121405) do
+ActiveRecord::Schema.define(version: 2021_02_14_071557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2021_02_12_121405) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.integer "value"
+    t.text "proposal"
+    t.bigint "freelancer_id", null: false
+    t.bigint "project_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["freelancer_id"], name: "index_bids_on_freelancer_id"
+    t.index ["project_id"], name: "index_bids_on_project_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -99,6 +110,8 @@ ActiveRecord::Schema.define(version: 2021_02_12_121405) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bids", "projects"
+  add_foreign_key "bids", "users", column: "freelancer_id"
   add_foreign_key "conversations", "users", column: "recipient_id"
   add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "freelancer_infos", "users", column: "freelancer_id"

@@ -1,0 +1,11 @@
+<main class="projects">
+  <%projects.each do|project|%>
+    <section class="project">
+      <%=project.title%><br />
+      <%=project.category%><br />
+      <%=project.subcategory%><br />
+      <%=project.description%>
+      <%=link_to '', project_path(project),remote: true%>
+    </section>
+  <%end%>
+</main>
