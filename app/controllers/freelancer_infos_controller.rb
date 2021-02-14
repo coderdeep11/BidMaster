@@ -1,5 +1,7 @@
 class FreelancerInfosController < ApplicationController
-  def index; end
+  def index
+    @projects = Project.all
+  end
 
   def create; end
 

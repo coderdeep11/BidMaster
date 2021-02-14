@@ -18,10 +18,12 @@ window.addEventListener("turbolinks:load", () => {
         .querySelector(".login__page")
         .setAttribute("style", " filter: blur(8px);");
     } else {
-      document.querySelector("h1").setAttribute("style", " filter: blur(8px);");
+      document
+        .querySelector("h1")
+        ?.setAttribute("style", " filter: blur(8px);");
     }
 
-    document.querySelector("main").appendChild(message);
+    document.querySelector("main")?.appendChild(message);
     t = setTimeout(function () {
       message.setAttribute("style", "transform:scale(1) translate(50%,-50%)");
       clearInterval(t);

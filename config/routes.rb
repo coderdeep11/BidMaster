@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   get 'messages/index'
   get 'conversations/index'
   devise_for :users
 
   resources :freelancer_infos, only: %i[index create update edit]
-  resources :projects, only: %i[index create update edit]
+  resources :projects, only: %i[index create update edit show] do
+    resources :bids
+  end
   devise_scope :user do
     authenticated :user, ->(u) { u.try(:role) == 'client' } do
       root to: 'projects#index'
@@ -17,5 +20,6 @@ Rails.application.routes.draw do
     resources :messages, only: %i[index create]
   end
   get 'dropdown/user-profile', to: 'dropdowns#user_profile', as: 'dropdown_profile'
+  get '/notifications', to: 'notifications#index', as: 'notifications'
   root 'pages#main', as: :visitors_url
 end

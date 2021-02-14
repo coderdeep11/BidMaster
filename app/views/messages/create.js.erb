@@ -1,5 +1,6 @@
-document.querySelector("body").insertAdjacentHTML('beforeend',
-`
+document.querySelector("body").insertAdjacentHTML(
+  "beforeend",
+  `
 <div >
   <p><%=@message.content%></p>
 </div>
@@ -7,5 +8,6 @@ document.querySelector("body").insertAdjacentHTML('beforeend',
   <small><%= @message.created_at.strftime("%d/%m/%y at %l:%M %p")%></small>
   <i class="fal fa-check "></i>
 </div>
-`);
-document.querySelector("body").scrollTo(0,document.body.scrollHeight);
+`
+);
+document.querySelector("body").scrollTo(0, document.body.scrollHeight);
