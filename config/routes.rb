@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'conversations/index'
   devise_for :users
 
-  resources :freelancer_infos, only: %i[index create update edit]
+  resources :freelancer_infos, only: %i[index create]
   resources :projects, only: %i[index create update edit show] do
-    resources :bids
+    resources :bids, only: %i[create update]
+    get 'bid_history', to: 'bids#bid_history', on: :collection
   end
   devise_scope :user do
     authenticated :user, ->(u) { u.try(:role) == 'client' } do

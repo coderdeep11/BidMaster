@@ -3,9 +3,7 @@
 one:
   content: MyText
   read: false
-  references: 
 
 two:
   content: MyText
   read: false
-  references: 

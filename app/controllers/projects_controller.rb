@@ -44,11 +44,19 @@ class ProjectsController < ApplicationController
     @bids = @project.bids
   end
 
-  def update; end
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.update_attributes(project_params)
+    redirect_to projects_path
+  end
 
   private
 
   def project_params
-    params.permit(:title, :category, :subcategory, :description, :experience, :min_budget, :max_budget)
+    params.permit(:title, :category, :subcategory, :description, :experience, :min_budget, :max_budget, :client_id)
   end
 end

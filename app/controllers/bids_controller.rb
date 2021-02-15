@@ -1,7 +1,6 @@
 class BidsController < ApplicationController
-  def index
-    @project = Project.find(params[:project_id])
-    @bids = @project.bids
+  def bid_history
+    @bids = Bid.where(freelancer_id: current_user.id)
   end
 
   def create
