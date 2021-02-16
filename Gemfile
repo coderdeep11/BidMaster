@@ -26,8 +26,9 @@ gem 'devise'
 # gem 'image_processing', '~> 1.2'
 gem 'inline_svg'
 # Reduces boot times through caching; required in config/boot.rb
+gem 'aasm'
+gem 'after_commit_everywhere', '~> 0.1', '>= 0.1.5'
 gem 'bootsnap', '>= 1.4.2', require: false
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

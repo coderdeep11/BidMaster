@@ -3,7 +3,9 @@
 one:
   value: 1
   proposal: MyText
+  freelancer_id: 47
 
 two:
   value: 1
   proposal: MyText
+  freelancer_id: 47

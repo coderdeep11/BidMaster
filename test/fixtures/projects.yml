@@ -8,6 +8,7 @@ one:
   experience: MyString
   min_budget: 1
   max_budget: 1
+  client_id: 45
 
 two:
   title: MyString
@@ -17,3 +18,4 @@ two:
   experience: MyString
   min_budget: 1
   max_budget: 1
+  client_id: 40

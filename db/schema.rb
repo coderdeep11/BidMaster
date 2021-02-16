@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_130202) do
+ActiveRecord::Schema.define(version: 2021_02_15_175659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_02_14_130202) do
     t.bigint "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "approved"
+    t.string "aasm_state"
     t.index ["freelancer_id"], name: "index_bids_on_freelancer_id"
     t.index ["project_id"], name: "index_bids_on_project_id"
   end
