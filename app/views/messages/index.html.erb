@@ -11,11 +11,20 @@
       </div>
       <%@documents=message.try(:documents)%>
       <%@documents.each do |document|%>
-        <% if document.representable? %>
-          <%= image_tag document.variant(resize_to_limit: [100, 100]) %>
+        <% if document.try(:previewable?) %>
+          <%= link_to rails_blob_path(document, disposition: 'preview') do %>
+            <%=image_tag document.preview(resize_to_limit: [300, 300])%>
+          <%end%>
+        <%end%>
+        <% if document.try(:representable?) %>
+          <%= link_to rails_blob_path(document, disposition: 'preview') do %>
+            <%=image_tag document.representation(resize_to_limit: [300, 300])%>
+          <%end%>
         <%end%>
         <div>
-          <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
+          <% if !document.previewable? && !document.representable? %>
+            <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
+          <% end %>
         </div>
       <% end %>
       <div >
