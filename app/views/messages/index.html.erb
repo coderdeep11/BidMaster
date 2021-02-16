@@ -9,6 +9,24 @@
       <div  >
         <p><%= message.content %></p>
       </div>
+      <%@documents=message.try(:documents)%>
+      <%@documents.each do |document|%>
+        <% if document.try(:previewable?) %>
+          <%= link_to rails_blob_path(document, disposition: 'preview') do %>
+            <%=image_tag document.preview(resize_to_limit: [300, 300])%>
+          <%end%>
+        <%end%>
+        <% if document.try(:representable?) %>
+          <%= link_to rails_blob_path(document, disposition: 'preview') do %>
+            <%=image_tag document.representation(resize_to_limit: [300, 300])%>
+          <%end%>
+        <%end%>
+        <div>
+          <% if !document.previewable? && !document.representable? %>
+            <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
+          <% end %>
+        </div>
+      <% end %>
       <div >
         <small><%= message.created_at.strftime("%d/%m/%y at %l:%M %p")%></small>
         <%if message.user_id==current_user.id%>
@@ -26,6 +44,9 @@
   <div >
     <div  >
       <%= f.text_area :content, placeholder: "Your message" %>
+    </div>
+    <div >
+      <%= f.file_field :documents,multiple: true %>
     </div>
     <div >
       <%= button_tag type ="submit"  do%>

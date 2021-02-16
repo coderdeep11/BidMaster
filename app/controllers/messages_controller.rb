@@ -20,7 +20,6 @@ class MessagesController < ApplicationController
         format.html { redirect_to conversation_messages_path(@conversation) }
 
         format.js {}
-       
       end
 
     end
@@ -29,6 +28,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :user_id)
+    params.require(:message).permit(:content, :user_id, documents: [])
   end
 end
