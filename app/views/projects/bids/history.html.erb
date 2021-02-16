@@ -1,0 +1,9 @@
+<section class="bids">
+  <%@bids.try(:each) do|bid|%>
+    <%= link_to  project_path(bid.project) ,remote: true do%>
+      <%=bid.value%>
+      <%=bid.proposal%>
+    <%end%>
+    <br />
+  <%end%>
+</section>

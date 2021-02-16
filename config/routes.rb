@@ -5,9 +5,19 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :freelancer_infos, only: %i[index create]
+
   resources :projects, only: %i[index create update edit show] do
-    resources :bids, only: %i[create update]
-    get 'bid_history', to: 'bids#bid_history', on: :collection
+    scope module: 'projects' do
+      resources :bids, only: %i[create update] do
+        member do
+          put :accept, to: 'bids#accept'
+          put :reject, to: 'bids#reject'
+          put :award, to: 'bids#award'
+        end
+      end
+      get 'bid_history', to: 'bids#history', on: :collection
+      resources :details, only: [:index]
+    end
   end
   devise_scope :user do
     authenticated :user, ->(u) { u.try(:role) == 'client' } do

@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.1.1)
+      concurrent-ruby (~> 1.0)
     actioncable (6.0.3.4)
       actionpack (= 6.0.3.4)
       nio4r (~> 2.0)
@@ -58,6 +60,8 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    after_commit_everywhere (0.1.5)
+      activerecord (>= 4.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.1)
@@ -105,9 +109,13 @@ GEM
     method_source (1.0.0)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     msgpack (1.4.2)
     nio4r (2.5.5)
+    nokogiri (1.11.1)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.1-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -215,6 +223,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  aasm
+  after_commit_everywhere (~> 0.1, >= 0.1.5)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)

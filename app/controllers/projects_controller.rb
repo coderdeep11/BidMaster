@@ -36,8 +36,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit; end
-
   def show
     @project = Project.find(params[:id])
     @bid = Bid.new

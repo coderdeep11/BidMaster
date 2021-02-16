@@ -1,0 +1,55 @@
+<main class="project__overview">
+  <h1 ><%=@project.title%></h1>
+  <ul >
+    <li class="view__project-post">
+      <b> view job post</b>
+      <section>
+        <h2><%=@project.title%></h2>
+        <%=@project.description%></>
+    </section>
+  </li>
+  <li class="review__proposals">
+    <ul >
+      <li class="all__proposals">
+        <b>all proposals</b>
+        <%@bids.each do|bid|%>
+          <div >
+            <%=bid.proposal%>
+            <%=bid.value%>
+            <small>  <%=bid.freelancer.name%></small>
+            <div>
+              <%if bid.unapproved?%>
+                <%=link_to 'accept', accept_project_bid_path(bid.project,bid) ,method: :put%>
+                <%=link_to 'reject',reject_project_bid_path(bid.project,bid) ,method: :put %>
+              <%else%>
+                <small><%= bid.accepted? ? 'Accepted' : 'Rejected' %></small>
+              <%end%>
+            </div>
+          </div>
+        <%end%>
+      </li>
+      <li class="shortlisted">
+        <b> shortlisted</b>
+        <%@shortlisted.each do|bid|%>
+          <div >
+            <%=bid.freelancer.name%>
+            <%unless bid.awarded?%>
+              <%= link_to "award project", award_project_bid_path(bid.project,bid),method: :put %>
+            <%else%>
+              <small>was awarded with project</small>
+            <%end%>
+          </div>
+        <%end%>
+      </li>
+      <li class="rejected">
+        <b>rejected</b>
+        <%@rejected.each do|bid|%>
+          <div >
+            <%=bid.freelancer.name%>
+          </div>
+        <%end%>
+      </li>
+    </ul>
+  </li>
+</ul>
+</main>
