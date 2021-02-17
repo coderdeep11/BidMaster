@@ -35,6 +35,12 @@
             <%=bid.freelancer.name%>
             <%unless bid.awarded?%>
               <%= link_to "award project", award_project_bid_path(bid.project,bid),method: :put %>
+              <% if Conversation.between(bid.project.client.id,bid.freelancer.id ).present?%>
+                <%=link_to ' Message',conversation_messages_path(Conversation.between(bid.project.client.id,bid.freelancer.id).first)%>
+              <% else %>
+                <%=link_to 'Message',conversations_path(sender_id:bid.project.client.id,
+          recipient_id:bid.freelancer.id ),method: :post%>
+              <% end %>
             <%else%>
               <small>was awarded with project</small>
             <%end%>

@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :role, presence: true
   has_many :notifications
+  has_one :freelancer_info, foreign_key: :freelancer_id
 end
