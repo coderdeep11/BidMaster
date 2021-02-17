@@ -16,7 +16,7 @@
         <%if notification.bid.awarded?%>
           <li><%=notification.bid.project.client.name %> awarded you the project</li>
           <% if Conversation.between(notification.user.id,notification.bid.project.client.id ).present?%>
-            <%=link_to ' Message',conversation_messages_path(@conversation)%>
+            <%=link_to ' Message',conversation_messages_path(Conversation.between(notification.user.id,notification.bid.project.client.id).first)%>
           <% else %>
             <%=link_to 'Message',conversations_path(sender_id: notification.user.id,
           recipient_id: notification.bid.project.client.id),method: :post%>

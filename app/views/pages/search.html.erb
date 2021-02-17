@@ -1,0 +1,39 @@
+<div class="search__bar">
+  <%= search_form_for @q, url: search_results_path ,id:'search' do |f|%>
+    <%= f.label :name_cont,style:'display:none' %>
+    <%= f.search_field :name_cont, placeholder: "Search", class: "form-control" %>
+    <div class="input-group-btn">
+      <%= button_tag class: ' search__btn'   do%>
+        <i class="fad fa-search"></i>
+      <%end%>
+    </div>
+    <div class="field mb-2">
+      <%= f.label :freelancer_info_category_eq,'Category' %>
+      <br/>
+      <%= f.select(:freelancer_info_category_eq, all_categories, include_blank: 'Choose any') %>
+    </div>
+    <div class="field mb-2">
+      <%= f.label :freelancer_info_subcategory_eq,'Subcategory' %>
+      <br/>
+      <%= f.select(:freelancer_info_subcategory_eq, [], include_blank: 'Choose any') %>
+    </div>
+    <div>
+      <%= f.label :freelancer_info_experience_eq, 'Experience'%>
+      <div class="experience__level"><%= f.radio_button :freelancer_info_experience_eq, 'Entry Level'%>Entry Level</div>
+      <div class="experience__level"> <%= f.radio_button :freelancer_info_experience_eq, 'Intermediate'%> Intermediate</div>
+      <div class="experience__level"> <%= f.radio_button :freelancer_info_experience_eq, 'Expert'%> Expert</div>
+    </div>
+  </div>
+<% end %>
+</div>
+<%= link_to "Clear Search", request.path, class:"cancel-button" %>
+<%=request.path%>
+<h1>Search Page</h1>
+<div  >
+  <%@peoples.try(:each) do|people|%>
+    <%=people.name%>
+    <b><%=people.email%></b>
+    <%=people.freelancer_info.try(:category)%>
+    <br/>
+  <%end%>
+</div>
