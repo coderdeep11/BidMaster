@@ -1,9 +1,17 @@
 class PagesController < ApplicationController
-  def main; end
+  include ApplicationHelper
+  def main
+    session[:search_type] || search_type("freelancer")
+
+  end
 
   def search
     if params[:q] && params[:q].reject { |_k, v| v.blank? }.present?
-      @peoples = @q.result(distinct: true).includes(:freelancer_info)
+      if search_type? == 'freelancer'
+        @peoples = @q.result(distinct: true).includes(:freelancer_info)
+      else
+        @projects = @j.result(distinct: true)
+      end
     end
   end
 end
