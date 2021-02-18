@@ -20,4 +20,12 @@ module ApplicationHelper
      ['Web, Mobile & Software Dev', 8],
      ['Writing', 9]]
   end
+
+  def search_type(type)
+    session[:search_type] = type
+  end
+
+  def search_type?
+    session[:search_type]
+  end
 end

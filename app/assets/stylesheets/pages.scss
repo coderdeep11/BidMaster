@@ -3,10 +3,26 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .hero {
+  &::before {
+    position: absolute;
+    content: "";
+    background: linear-gradient(90deg, rgba(9, 33, 121, 1) 0%, rgba(0, 212, 255, 1) 98%);
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 50% 50%/0 0 100% 100%;
+    transform: scaleX(2);
+    z-index: -10;
+  }
+
   height: calc(90vh - 60px);
   width: 100%;
   display: flex;
   position: relative;
+  z-index: 11;
+  z-index: 1;
   overflow: hidden;
   flex-wrap: wrap;
 
@@ -40,6 +56,7 @@
     }
     .btn-primary {
       display: block;
+
       text-decoration: none;
       background-color: #3395db;
       text-align: center;
@@ -69,18 +86,4 @@
     width: 80%;
     margin: 0 auto;
   }
-}
-
-.hero::before {
-  position: absolute;
-  content: "";
-  background: linear-gradient(90deg, rgba(9, 33, 121, 1) 0%, rgba(0, 212, 255, 1) 98%);
-  top: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 0 0 50% 50%/0 0 100% 100%;
-  transform: scaleX(2);
-  z-index: -1;
 }

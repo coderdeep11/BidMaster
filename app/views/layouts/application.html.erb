@@ -15,12 +15,16 @@
       <%end%>
     </header>
     <div class="search__bar">
-      <%= search_form_for @q, url: search_results_path do |f|%>
-        <%= f.label :name_cont,style:'display:none' %>
-        <%= f.search_field :name_cont, placeholder: "Search", class: "form-control" %>
-        <div class="input-group-btn">
+      <%= search_form_for search_type? == 'freelancer' ? @q : @j, url: search_results_path do |f|%>
+        <%= link_to '',search_choice_path , remote: true,class:'arrow'  %>
+        <%if search_type? == 'freelancer'%>
+          <%=render partial: 'pages/searchFieldFreelancer', locals: {f: f } %>
+        <% else %>
+          <%=render partial: 'pages/searchFieldProject', locals: {f: f  } %>
+        <% end %>
+        <div class="search-btn">
           <%= button_tag class: ' btn-primary'   do%>
-            <i class="fad fa-search"></i>
+            <i class="far fa-search"></i>
           <%end%>
         </div>
       <% end %>

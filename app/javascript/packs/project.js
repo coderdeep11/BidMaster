@@ -1,6 +1,7 @@
 window.addEventListener("turbolinks:load", (e) => {
   let allProjects = document.querySelector(".projects");
   let userAvatar = document.querySelector(".user__avatar");
+  let arrow = document.querySelector(".arrow");
 
   userAvatar?.addEventListener("click", function () {
     userAvatar.children[1].click();

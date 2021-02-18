@@ -1,0 +1,12 @@
+if (document.querySelector(".search__dropdown"))
+document.querySelector(".search__dropdown").remove();
+else {
+document
+.querySelector(".arrow")
+.insertAdjacentHTML("beforeend", `<%= j render  "searchoptions"%>`);
+setTimeout(function () {
+document
+.querySelector(".search__dropdown")
+.setAttribute("style", `transform:translateY(0)`);
+}, 100);
+}
