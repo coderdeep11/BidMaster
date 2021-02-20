@@ -11,7 +11,6 @@ class DropdownsController < ApplicationController
   end
 
   def project
-  
     search_type('project')
   end
 end

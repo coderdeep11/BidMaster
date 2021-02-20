@@ -1,13 +1,12 @@
-document.querySelector("body").insertAdjacentHTML(
+document.querySelector(".messages__modal").insertAdjacentHTML(
   "beforeend",
-  `
-<div >
-  <p><%=@message.content%></p>
+  `<div class="message>
+<div class="messages__content">
+  <%=@message.content%>
 </div>
-<div >
-  <small><%= @message.created_at.strftime("%d/%m/%y at %l:%M %p")%></small>
-  <i class="fal fa-check "></i>
 </div>
 `
 );
-document.querySelector("body").scrollTo(0, document.body.scrollHeight);
+document
+  .querySelector(".messages__modal")
+  .scrollTo(0, document.body.scrollHeight);
