@@ -1,12 +1,13 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
-
+  include MessagesHelper
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end
 
   def index
-    @messages = @conversation.messages
+    redirect_to conversations_path unless authorize_messages(@conversation)
+    @messages = @conversation.messages.order('created_at asc')
     @messages.where('user_id != ? AND read = ?', current_user.id, false).update_all(read: true)
     @message = @conversation.messages.new
   end

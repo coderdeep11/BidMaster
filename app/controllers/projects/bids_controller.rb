@@ -33,7 +33,7 @@ module Projects
     end
 
     def award
-      @bid.award!
+      @bid.award! unless @bid.awarded?
       redirect_to(request.referrer || root_path)
     end
 

@@ -1,3 +1,67 @@
 // Place all the styles related to the Conversations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.conversations__modal {
+  display: block;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  right: 50%;
+  transform: translate(50%, 15px);
+  z-index: 10;
+  background: white;
+  border-radius: 10px;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+    0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  right: 0;
+
+  .conversation {
+    display: flex;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    border-bottom: 1px solid #c8c6c6;
+    font-size: 14px;
+    transition: all 0.5s;
+    gap: 1rem;
+    width: 100%;
+
+    &:hover {
+      background: rgb(226, 226, 226);
+      cursor: pointer;
+      border-bottom: 1px solid #a8a6a6;
+    }
+    .user__image {
+      flex-basis: 35px;
+      padding: 5px;
+      svg {
+        display: block;
+        height: 65px;
+        width: 65px;
+      }
+    }
+    .message_and_name {
+      padding: 5px 0;
+      display: flex;
+      flex-direction: column;
+      .user__name {
+        font-size: 1rem;
+        font-weight: 600;
+        flex: 1;
+      }
+      .message {
+        word-break: break-word;
+        line-height: 1rem;
+        font-size: 0.9rem;
+        color: #242424;
+        flex: 2;
+      }
+      .time {
+        font-weight: 400;
+        color: #242424;
+        flex: 1;
+      }
+    }
+  }
+}

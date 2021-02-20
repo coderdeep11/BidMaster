@@ -1,3 +1,159 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.messages__modal {
+  position: absolute;
+
+  height: 80%;
+  top: 0;
+  background-color: white;
+  width: 0%;
+  opacity: 0;
+  transition: all 0.3s;
+  overflow: scroll;
+  scrollbar-width: none;
+  .message {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+
+    .message__content {
+      color: #201f1f;
+      background-color: rgb(195, 195, 195);
+      align-self: flex-start;
+      padding: 0.5rem;
+      position: relative;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      max-width: 250px;
+      font-size: 0.9rem;
+      small {
+        display: block;
+        font-size: 0.7rem;
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        height: 0px;
+        width: 0px;
+
+        top: 0;
+        left: 0;
+        border-top: 10px solid rgb(195, 195, 195);
+        border-left: 10px solid transparent;
+        transform: translateX(-100%);
+      }
+    }
+    .document {
+      color: #201f1f;
+      align-self: flex-start;
+      position: relative;
+      border-radius: 10px;
+      border-top-left-radius: 0px;
+      max-width: 250px;
+      a img {
+        border: 1px solid #d4c9c9;
+      }
+      .other-files {
+        font-size: 0.9rem;
+        padding: 5px;
+        color: blue;
+        line-height: 16px;
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .message__content-current_user {
+      color: white;
+      background-color: #457abf;
+      align-self: flex-end;
+      padding: 0.5rem;
+      position: relative;
+      border-radius: 10px;
+      border-top-right-radius: 0px;
+      max-width: 250px;
+      font-size: 0.9rem;
+      &:after {
+        content: "";
+        position: absolute;
+        height: 0px;
+        width: 0px;
+
+        top: 0;
+        right: 0;
+        border-top: 10px solid #457abf;
+        border-right: 10px solid transparent;
+        transform: translateX(100%);
+      }
+    }
+
+    .document-current_user {
+      color: #201f1f;
+      align-self: flex-end;
+      position: relative;
+      max-width: 250px;
+      a img {
+        border: 1px solid #d4c9c9;
+      }
+
+      .other-files {
+        font-size: 0.9rem;
+        padding: 5px;
+        color: blue;
+        line-height: 16px;
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .send__message > form {
+    background-color: white;
+    padding: 0.5rem 0.5rem 0;
+    border-top: 1px solid #b4aeae;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    textarea {
+      flex: 1;
+      border: none;
+      padding: 5px 5px 0;
+      border-bottom: 1px solid #b4aeae;
+      height: 40px;
+    }
+    label {
+      flex: 1;
+    }
+    input {
+      display: none;
+      height: 20px;
+    }
+    button {
+      flex: 1;
+      border: none;
+      font-size: 1.3rem;
+      background-color: transparent;
+    }
+  }
+  .close__messages {
+    position: fixed;
+    top: 0px;
+    height: 30px;
+    width: 100%;
+    background: white;
+    z-index: 12;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+  }
+}
+.slideIn {
+  opacity: 1;
+  width: 100%;
+}

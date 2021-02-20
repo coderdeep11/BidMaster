@@ -1,0 +1,16 @@
+<ul class="conversations__modal">
+  <% conversations.each do |conversation| %>
+    <% recipient = conversation.sender_id == current_user.id ? conversation.recipient : conversation.sender %>
+    <li class="conversation">
+      <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+      <ul class="message_and_name">
+        <li class="user__name">
+          <%=recipient.try(:name)%>
+        </li>
+        <li class="message"><%=recipient.messages.last.content%></li>
+        <li class="time"><small>12:50pm</small></li>
+      </ul>
+      <%=link_to '',conversation_messages_path(conversation),remote: true%>
+    </li>
+  <%end%>
+</ul>
