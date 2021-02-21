@@ -1,17 +1,22 @@
 conversations = document.querySelector(".conversations__modal");
 conversations.insertAdjacentHTML(
-"beforeend",
-`<%= j render partial: "messages",locals:{ messages: @messages,conversation: @conversation,messages: @message} %>`
+  "beforeend",
+  `<%= j render partial: "messages",locals:{ messages: @messages,conversation: @conversation,messages: @message} %>`
 );
 t = setTimeout(function () {
-document.querySelector(".messages__modal").classList.add("slideIn");
-clearTimeout(t);
+  document.querySelector(".messages__modal").classList.add("slideIn");
+  clearTimeout(t);
 }, 100);
 document.querySelector(".close__messages").addEventListener("click", () => {
-document.querySelector(".messages__modal").classList.remove("slideIn");
-t = setTimeout(function () {
-document.querySelector(".messages__modal").remove();
-clearTimeout(t);
-}, 200);
+  document.querySelector(".messages__modal").classList.remove("slideIn");
+  t = setTimeout(function () {
+    document.querySelector(".messages__modal").remove();
+    clearTimeout(t);
+  }, 200);
 });
-document.querySelector(".messages__modal").scrollTop =   document.querySelector(".messages__modal").scrollHeight;
+document.querySelector("#message_documents").addEventListener("change", (e) => {
+  e.target.previousElementSibling.classList.add("attached");
+});
+document
+  .querySelector(".messages__modal")
+  .scrollTo(0, document.querySelector(".messages__modal").scrollHeight);

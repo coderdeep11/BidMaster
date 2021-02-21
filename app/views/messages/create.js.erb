@@ -1,12 +1,23 @@
 document.querySelector(".messages__modal").insertAdjacentHTML(
-  "beforeend",
-  `<div class="message>
-<div class="messages__content">
-  <%=@message.content%>
-</div>
+"beforeend",
+`
+<div class="message">
+  <%if @message.content? && @message.documents.attached?%>
+    <%=render partial: 'documents',locals: {documents: @documents,message: @message} %>
+    <%=render partial: 'content',locals: {message: @message} %>
+    <%=render partial: 'messageTime',locals: {message: @message} %>
+  <%elsif @message.content?%>
+    <%=render partial: 'content',locals: {message: @message} %>
+    <%=render partial: 'messageTime',locals: {message: @message} %>
+  <% elsif @message.documents.attached?%>
+    <%=render partial: 'documents',locals: {documents: @documents,message: @message} %>
+    <%=render partial: 'messageTime',locals: {message: @message} %>
+  <% end %>
 </div>
 `
 );
 document
-  .querySelector(".messages__modal")
-  .scrollTo(0, document.body.scrollHeight);
+.querySelector(".attached")?.classList.remove("attached");
+document
+.querySelector(".messages__modal")
+.scrollTo(0, document.querySelector(".messages__modal").scrollHeight);

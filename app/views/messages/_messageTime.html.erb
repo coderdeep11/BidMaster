@@ -1,0 +1,12 @@
+<div class="<%=message.user == current_user ? "created__at-current-user" : "created__at"%>">
+  <%= message.created_at.strftime("%d/%m/%y at %l:%M %p")%>
+  <%if message.user==current_user%>
+    <span>
+      <%if message.read %>
+        <i class="fal fa-check-double "></i>
+      <%else%>
+        <i class="fal fa-check "></i>
+      <%end%>
+    </span>
+  <%end%>
+</div>

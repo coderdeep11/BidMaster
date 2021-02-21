@@ -3,15 +3,16 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .messages__modal {
   position: absolute;
-
-  height: 80%;
+  height: 85%;
   top: 0;
   background-color: white;
   width: 0%;
   opacity: 0;
+  padding-top: 3rem;
   transition: all 0.3s;
   overflow: scroll;
   scrollbar-width: none;
+
   .message {
     display: flex;
     flex-direction: column;
@@ -108,6 +109,14 @@
         }
       }
     }
+    .created__at {
+      align-self: flex-start;
+      font-size: 0.7rem;
+    }
+    .created__at-current-user {
+      align-self: flex-end;
+      font-size: 0.7rem;
+    }
   }
 
   .send__message > form {
@@ -125,12 +134,48 @@
       flex: 1;
       border: none;
       padding: 5px 5px 0;
-      border-bottom: 1px solid #b4aeae;
-      height: 40px;
+
+      height: 50px;
     }
     label {
       flex: 1;
+      cursor: pointer;
     }
+    .attached {
+      color: blue;
+      transition: all 0.5s;
+      position: relative;
+      animation: tada 1s infinite;
+    }
+    @keyframes tada {
+      0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
+      10%,
+      20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+      }
+      30%,
+      50%,
+      70%,
+      90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      }
+      40%,
+      60%,
+      80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      }
+      100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
+    }
+
     input {
       display: none;
       height: 20px;
@@ -140,17 +185,22 @@
       border: none;
       font-size: 1.3rem;
       background-color: transparent;
+      i:hover {
+        color: blue;
+        cursor: pointer;
+      }
     }
   }
   .close__messages {
     position: fixed;
     top: 0px;
-    height: 30px;
+    height: 45px;
     width: 100%;
     background: white;
     z-index: 12;
     padding: 5px 10px;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #d5cbcb;
   }
 }
 .slideIn {
