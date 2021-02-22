@@ -7,7 +7,7 @@
           <%=link_to 'accept', accept_project_bid_path(notification.bid.project,notification.bid) ,method: :put %>
           <%=link_to 'reject',reject_project_bid_path(notification.bid.project,notification.bid) ,method: :put %>
         <%else%>
-          <p><%="you #{notification.bid.rejected? ? 'rejected' : 'approved'} the bid"%></p>
+          <p></p>
         <%end%>
       <%end%>
       <br />

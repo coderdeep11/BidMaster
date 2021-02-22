@@ -24,12 +24,10 @@ module Projects
 
     def accept
       @bid.accept! unless @bid.rejected? || @bid.accepted?
-      redirect_to(request.referrer || root_path)
     end
 
     def reject
       @bid.reject! unless @bid.rejected?
-      redirect_to(request.referrer || root_path)
     end
 
     def award

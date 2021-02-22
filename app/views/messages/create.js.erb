@@ -18,6 +18,4 @@ document.querySelector(".messages__modal").insertAdjacentHTML(
 );
 document
 .querySelector(".attached")?.classList.remove("attached");
-document
-.querySelector(".messages__modal")
-.scrollTo(0, document.querySelector(".messages__modal").scrollHeight);
+document.querySelector(".messages__modal").lastElementChild.scrollIntoView(false);

@@ -1,0 +1,20 @@
+<li class="notification">
+  <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+  <ul class="notification__content" id="notification-<%=notification.id%>">
+    <%if notification.bid.unapproved?%>
+      <li class="notification__from">
+        <%=notification.bid.freelancer.name%> placed a bid on your project "<%= notification.bid.proposal  %> "
+      </li>
+      <li class="bid__status">
+        <%=link_to 'Accept', accept_project_bid_path(notification.bid.project,notification.bid),class:'btn-primary'  ,method: :put,remote: true %>
+        <%=link_to 'Reject',reject_project_bid_path(notification.bid.project,notification.bid) ,class:'btn-primary' ,method: :put ,remote: true%>
+      </li>
+    <% else %>
+      <li class="bid__result">
+        <%="You #{notification.bid.rejected? ? "rejected the bid,check other bids on your project ": "approved the bid,now you can get in touch with #{notification.bid.freelancer.name}" }."%>
+      </li>
+      <div class="time"><%=distance_of_time_in_words_to_now(notification.bid.updated_at)%> ago</div>
+    <% end %>
+  </ul>
+  <%= link_to '', project_details_path(notification.bid.project) %>
+</li>

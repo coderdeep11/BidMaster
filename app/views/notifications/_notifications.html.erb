@@ -1,0 +1,9 @@
+<ul class="notifications__modal">
+  <%notifications.each do|notification|%>
+    <%if  notification.user.role=="client"%>
+      <%=render partial: 'clientNotification',locals:{notification: notification} %>
+    <% else %>
+      <%=render partial: 'freelancerNotification',locals:{notification: notification} %>
+    <%end%>
+  <%end%>
+</ul>

@@ -37,8 +37,8 @@
               <i class="fad fa-history"></i>
             <%end%>
           </li>
-          <li>
-            <%=link_to  notifications_path do%>
+          <li class="notifications__dropdown">
+            <%=link_to  notifications_path,remote: true do%>
               <i class="fad fa-bell"></i>
             <%end%>
           </li>
