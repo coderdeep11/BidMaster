@@ -142,6 +142,9 @@ body {
           list-style-type: none;
         }
       }
+      .notifications__dropdown {
+        @extend .conversations__dropdown;
+      }
 
       & > li:nth-last-child(1) {
         position: relative;

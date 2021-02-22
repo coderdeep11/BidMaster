@@ -1,0 +1,12 @@
+notification = document.querySelector(
+  "#notification-<%=j @bid.notifications.first.id %>"
+);
+parent = notification.closest(".notification__content");
+[...parent.children].forEach((element) => {
+  element.remove();
+});
+
+notification.insertAdjacentHTML(
+  "afterbegin",
+  `<%=j render partial: 'bid-result',locals:{bid: @bid} %>`
+);

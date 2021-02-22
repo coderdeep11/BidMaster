@@ -12,7 +12,7 @@
       <%end%>
     <%end%>
     <% if !document.previewable? && !document.representable? %>
-      <div class="other-files"><%=document.filename%>
+      <div class="other-files"><%=shorten_filename(document.filename)%>
         <%= link_to rails_blob_path(document, disposition: 'preview') do%>
           <i class="fal fa-download"></i>
         <% end %>
