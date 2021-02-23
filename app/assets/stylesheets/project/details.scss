@@ -1,0 +1,48 @@
+main {
+  max-width: 1500px;
+  margin: 0 auto;
+  & > ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    position: relative;
+    & > li {
+      border: 1px solid;
+      flex: 1;
+      text-align: center;
+      line-height: 60px;
+      height: 60px;
+      font-size: 1rem;
+      shape-outside: circle();
+      text-transform: uppercase;
+
+      border: 1px solid;
+      a {
+        display: block;
+        text-decoration: none;
+      }
+      .project__post {
+        border: 1px solid;
+        position: absolute;
+        width: 100%;
+        top: 100px;
+        left: 0;
+        line-height: normal;
+      }
+      .proposals {
+        @extend .project__post;
+        display: flex;
+        list-style-type: none;
+        li {
+          border: 1px solid;
+        }
+      }
+      .proposal,
+      .shortlisted__user,
+      .rejected__user {
+        @extend .project__post;
+        top: 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<%bids.each do|bid|%>
+  <div class="proposal">
+    <%=bid.proposal%>
+    <%=bid.value%>
+    <small>  <%=bid.freelancer.name%></small>
+    <div>
+      <%if bid.unapproved?%>
+        <%=link_to 'accept', accept_project_bid_path(bid.project,bid) ,method: :put%>
+        <%=link_to 'reject',reject_project_bid_path(bid.project,bid) ,method: :put %>
+      <%else%>
+        <small><%= bid.accepted? ? 'Accepted' : 'Rejected' %></small>
+      <%end%>
+    </div>
+  </div >
+<%end%>

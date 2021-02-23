@@ -1,0 +1,12 @@
+if(document.querySelector(".proposals"))
+document.querySelector(".proposals").remove();
+if(document.querySelector(".project__post"))
+<%request.referrer%>;
+else{
+document
+.querySelector(".view__project-post")
+.insertAdjacentHTML(
+"afterbegin",
+`<%=j render 'job-posts', project: @project%>`
+);
+}

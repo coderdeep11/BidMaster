@@ -1,6 +1,6 @@
 window.addEventListener("turbolinks:load", (e) => {
   let allProjects = document.querySelector(".projects");
-
+  let project_post = document.querySelector(".view__project-post");
   allProjects?.addEventListener("click", function (e) {
     let project = e.target.closest(".project");
 
@@ -14,4 +14,6 @@ window.addEventListener("turbolinks:load", (e) => {
       clearTimeout(t);
     }, 300);
   });
+
+  project_post?.children[0].click();
 });

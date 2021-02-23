@@ -1,0 +1,15 @@
+if(document.querySelector(".shortlisted__user"))
+document.querySelector(".shortlisted__user").remove();
+if(document.querySelector(".proposal"))
+document.querySelector(".proposal").remove();
+if(document.querySelector(".rejected__user"))
+{
+document.querySelector(".rejected__user").remove();
+<%request.referrer%>;
+}
+document
+.querySelector(".rejected__users")
+.insertAdjacentHTML(
+"afterbegin",
+`<%=j render 'rejected', rejected: @rejected  %>`
+);

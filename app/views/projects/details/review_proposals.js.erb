@@ -1,0 +1,12 @@
+if(document.querySelector(".project__post"))
+document.querySelector(".project__post").remove();
+if(document.querySelector(".proposals"))
+<%request.referrer%>;
+else{
+document
+.querySelector(".review__proposals")
+.insertAdjacentHTML(
+"afterbegin",
+`<%=j render 'review_proposals', {bids: @bids,shortlisted: @shortlisted,rejected: @rejected}%>`
+);
+}

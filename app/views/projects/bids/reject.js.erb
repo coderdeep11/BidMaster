@@ -5,10 +5,7 @@ parent = notification.closest(".notification__content");
 [...parent.children].forEach((element) => {
 element.remove();
 });
-t= setTimeout(() => {
 notification.insertAdjacentHTML(
 "afterbegin",
 `<%=j render partial: 'bid-result',locals:{bid: @bid} %>`
 );
-clearTimeout(t);
-}, 200);
