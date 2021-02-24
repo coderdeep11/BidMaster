@@ -1,61 +1,11 @@
-<main class="project__overview">
+<main>
   <h1 ><%=@project.title%></h1>
-  <ul >
-    <li class="view__project-post">
-      <b> view job post</b>
-      <section>
-        <h2><%=@project.title%></h2>
-        <%=@project.description%></>
-    </section>
-  </li>
-  <li class="review__proposals">
-    <ul >
-      <li class="all__proposals">
-        <b>all proposals</b>
-        <%@bids.each do|bid|%>
-          <div >
-            <%=bid.proposal%>
-            <%=bid.value%>
-            <small>  <%=bid.freelancer.name%></small>
-            <div>
-              <%if bid.unapproved?%>
-                <%=link_to 'accept', accept_project_bid_path(bid.project,bid) ,method: :put%>
-                <%=link_to 'reject',reject_project_bid_path(bid.project,bid) ,method: :put %>
-              <%else%>
-                <small><%= bid.accepted? ? 'Accepted' : 'Rejected' %></small>
-              <%end%>
-            </div>
-          </div>
-        <%end%>
-      </li>
-      <li class="shortlisted">
-        <b> shortlisted</b>
-        <%@shortlisted.each do|bid|%>
-          <div >
-            <%=bid.freelancer.name%>
-            <%unless bid.awarded?%>
-              <%= link_to "award project", award_project_bid_path(bid.project,bid),method: :put %>
-              <% if Conversation.between(bid.project.client.id,bid.freelancer.id ).present?%>
-                <%=link_to ' Message',conversation_messages_path(Conversation.between(bid.project.client.id,bid.freelancer.id).first)%>
-              <% else %>
-                <%=link_to 'Message',conversations_path(sender_id:bid.project.client.id,
-          recipient_id:bid.freelancer.id ),method: :post%>
-              <% end %>
-            <%else%>
-              <small>was awarded with project</small>
-            <%end%>
-          </div>
-        <%end%>
-      </li>
-      <li class="rejected">
-        <b>rejected</b>
-        <%@rejected.each do|bid|%>
-          <div >
-            <%=bid.freelancer.name%>
-          </div>
-        <%end%>
-      </li>
-    </ul>
-  </li>
-</ul>
+  <ul  class="project__overview">
+    <li class="view__project-tab ">
+      <%=link_to ' view job post',job_post_project_details_path ,remote: true%>
+    </li>
+    <li class="review__proposals-tab">
+      <%=link_to 'Review proposals',review_proposals_project_details_path,remote: true%>
+    </li>
+  </ul>
 </main>

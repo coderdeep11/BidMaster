@@ -1,0 +1,248 @@
+/*Mixin**/
+
+$font: "Comfortaa", cursive;
+@mixin navigationArrow {
+  content: "";
+  position: absolute;
+  right: 0;
+  height: 50%;
+  background-color: gray;
+  border-left: 1px solid gray;
+  border-bottom: 1px solid transparent;
+  border-right: 1px solid gray;
+  border-top: 1px solid transparent;
+}
+/*****************/
+main {
+  max-width: 1500px;
+  position: relative;
+  margin: 0 auto;
+
+  & > ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    position: relative;
+    & > li {
+      border: 1px solid rgb(206, 200, 200);
+      flex: 1;
+      text-align: center;
+      line-height: 60px;
+      height: 60px;
+      font-size: 1.1rem;
+      text-transform: capitalize;
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: black;
+        font-family: $font;
+        font-weight: 700;
+      }
+    }
+    .view__project-tab {
+      position: relative;
+      border-right: none;
+
+      &:before {
+        @include navigationArrow;
+        transform: skew(20deg) translateX(300%);
+      }
+      &:after {
+        @include navigationArrow();
+        transform: skew(160deg) translateX(300%);
+        bottom: 0;
+      }
+      &:hover {
+        border: 2px solid #47c205;
+        border-right: none;
+        color: green;
+        &:after,
+        &:before {
+          border: 1px solid #47c205;
+        }
+      }
+    }
+    .add__background-color {
+      background: green;
+    }
+
+    .review__proposals-tab {
+      border-left: none;
+      &:hover {
+        border: 2px solid #47c205;
+        border-left: none;
+      }
+    }
+  }
+  .project__post {
+    width: 100%;
+    line-height: normal;
+  }
+  .review__proposals {
+    .proposals-tab {
+      width: 100%;
+      height: 60px;
+      padding: 0.5rem 1rem 0;
+      line-height: normal;
+      display: flex;
+      list-style-type: none;
+      border: 1px solid #cec8c8;
+      border-top: none;
+      align-items: flex-end;
+      gap: 3rem;
+
+      & > li {
+        padding: 0.5rem 1rem;
+        font-family: $font;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        letter-spacing: 1px;
+        font-family: $font;
+        font-weight: 700;
+      }
+      .add__border-bottom {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          background: green;
+          width: 100%;
+          height: 3px;
+          bottom: 0;
+          left: 0;
+          animation: line 0.5s;
+        }
+        @keyframes line {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .proposals,
+    .shortlisted__users,
+    .rejected__users {
+      width: 100%;
+      line-height: normal;
+      border: 0px;
+      background: #f9f9f9;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+        0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+    }
+    .proposal {
+      display: flex;
+      list-style-type: none;
+      position: relative;
+      transition: all 0.5s;
+      &:hover {
+        background-color: rgba(233, 231, 231, 0.972);
+        cursor: pointer;
+      }
+      border-bottom: 1px solid #cac4c4;
+      gap: 1rem;
+      .user__image {
+        flex-basis: 35px;
+        padding: 1rem;
+        align-self: flex-start;
+        svg {
+          display: block;
+          height: 60px;
+          width: 60px;
+        }
+      }
+      & > ul {
+        display: flex;
+        padding: 1rem 1rem 0.5rem 0;
+        gap: 10px;
+        list-style-type: none;
+        flex-direction: column;
+        flex: 1;
+
+        li {
+          font-size: 0.85rem;
+          font-family: $font;
+          color: #242424;
+          span {
+            letter-spacing: 1px;
+            font-family: $font;
+            font-weight: 700;
+            color: black;
+          }
+        }
+        li:first-child {
+          font-size: 0.95rem;
+          color: green;
+          text-transform: capitalize;
+          font-weight: 700;
+        }
+        li:nth-child(2) {
+          letter-spacing: 1px;
+          font-size: 0.75rem;
+        }
+        li:nth-child(3) {
+          word-spacing: 1px;
+        }
+        .time {
+          font-weight: 400;
+          font-size: 0.7rem;
+          color: #242424;
+        }
+      }
+      & > div {
+        flex-basis: 100px;
+      }
+      .bid__status {
+        position: absolute;
+        display: flex;
+        gap: 1.5rem;
+        right: 2rem;
+        top: 1.5rem;
+        a {
+          display: block;
+          background: #37a000;
+          text-align: center;
+          padding: 0.3rem;
+          color: white;
+          font-family: $font;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.9rem;
+          width: 120px;
+          border-radius: 5px;
+          transition: all 0.6s;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .stamp {
+          font-size: 1rem;
+          font-weight: 700;
+          display: inline-block;
+          padding: 0.25rem 1rem;
+          text-transform: uppercase;
+          border-radius: 1rem;
+          font-family: "Courier";
+        }
+        .is-rejected {
+          color: #d23;
+          border: 0.2rem solid #d23;
+        }
+        .is-accepted {
+          color: #0a9928;
+          border: 0.2rem solid #0a9928;
+        }
+        .is-awarded {
+          color: #2381c0;
+          border: 0.2rem solid #2381c0;
+        }
+      }
+    }
+  }
+}

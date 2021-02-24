@@ -1,0 +1,13 @@
+if (document.querySelector(".project__post"))
+document.querySelector(".project__post").remove();
+if (document.querySelector(".review__proposals")) {
+document.querySelector(".review__proposals").remove();
+}
+document
+.querySelector(".project__overview")
+.insertAdjacentHTML(
+"afterend",
+`<%=j render 'review_proposals', {bids: @bids,shortlisted: @shortlisted,rejected: @rejected}%>`
+);
+document.querySelector(".proposals-tab").firstElementChild.firstElementChild.
+click();

@@ -16,7 +16,13 @@ Rails.application.routes.draw do
         end
       end
       get 'bid_history', to: 'bids#history', on: :collection
-      resources :details, only: [:index]
+      resources :details, only: [:index] do
+        get :job_post, on: :collection
+        get :review_proposals, on: :collection
+        get :all_proposals, on: :collection
+        get :shortlisted, on: :collection
+        get :rejected, on: :collection
+      end
     end
   end
   devise_scope :user do

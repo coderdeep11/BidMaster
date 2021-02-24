@@ -7,6 +7,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
     "turbolinks": "^5.2.0",
+    "typeface-comfortaa": "^1.1.13",
     "typeface-montserrat": "^1.1.13",
     "typeface-poppins": "^1.1.13",
     "typeface-quicksand": "^1.1.13"
