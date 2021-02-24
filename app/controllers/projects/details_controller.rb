@@ -3,6 +3,8 @@ module Projects
   class DetailsController < ApplicationController
     def index
       @project = Project.find(params[:project_id])
+      @bids = @project.bids
+      @shortlisted = @bids.where('(aasm_state =?  OR aasm_state =? )', 'awarded', 'accepted')
       redirect_to notifications_path unless authorize_project(@project)
     end
 
@@ -26,6 +28,7 @@ module Projects
       @project = Project.find(params[:project_id])
       @bids = @project.bids
       @shortlisted = @bids.where('(aasm_state =?  OR aasm_state =? )', 'awarded', 'accepted')
+      
     end
 
     def rejected

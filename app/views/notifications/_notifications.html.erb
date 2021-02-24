@@ -6,4 +6,10 @@
       <%=render partial: 'freelancerNotification',locals:{notification: notification} %>
     <%end%>
   <%end%>
+  <% if notifications.count.zero? %>
+    <div class="no__notifications">
+      <%=inline_svg_tag 'notifications.svg'%>
+      You have no notifications
+    </div>
+  <% end %>
 </ul>

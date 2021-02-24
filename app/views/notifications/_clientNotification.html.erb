@@ -3,7 +3,7 @@
   <ul class="notification__content" id="notification-<%=notification.id%>">
     <%if notification.bid.unapproved?%>
       <li class="notification__from">
-        <%=notification.bid.freelancer.name%> placed a bid on your project "<%= notification.bid.proposal  %> "
+        <%=notification.bid.freelancer.name%> placed a bid on your project "<%= notification.bid.proposal.from(0).to(35)  %> "
       </li>
       <li class="bid__status">
         <%=link_to 'Accept', accept_project_bid_path(notification.bid.project,notification.bid),class:'btn-primary'  ,method: :put,remote: true %>

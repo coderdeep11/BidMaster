@@ -1,15 +1,18 @@
-if(document.querySelector(".shortlisted__user"))
-document.querySelector(".shortlisted__user").remove();
-if(document.querySelector(".rejected__user"))
-document.querySelector(".rejected__user").remove();
-if(document.querySelector(".proposal"))
-{
-document.querySelector(".proposal").remove();
-<%request.referrer%>;
-}
+if (document.querySelector(".shortlisted__users"))
+  document.querySelector(".shortlisted__users").remove();
+if (document.querySelector(".rejected__users"))
+  document.querySelector(".rejected__users").remove();
+if (document.querySelector(".proposals"))
+  document.querySelector(".proposals").remove();
+currentTab = document.querySelector(".all__proposals-tab");
+[...document.querySelector(".proposals-tab").children].forEach((element) => {
+  if (element.classList[1] == "add__border-bottom" && element !== currentTab)
+    element.classList.remove("add__border-bottom");
+});
+currentTab.classList.add("add__border-bottom");
 document
-.querySelector(".all__proposals")
-.insertAdjacentHTML(
-"afterbegin",
-`<%=j render 'all_proposals', bids: @bids%>`
-);
+  .querySelector(".review__proposals")
+  .insertAdjacentHTML(
+    "beforeend",
+    `<%=j render 'all_proposals', bids: @bids%>`
+  );

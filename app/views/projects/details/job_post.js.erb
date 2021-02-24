@@ -1,12 +1,10 @@
-if(document.querySelector(".proposals"))
-document.querySelector(".proposals").remove();
+if(document.querySelector(".review__proposals"))
+document.querySelector(".review__proposals").remove();
 if(document.querySelector(".project__post"))
-<%request.referrer%>;
-else{
+document.querySelector(".project__post").remove();
 document
-.querySelector(".view__project-post")
+.querySelector(".project__overview")
 .insertAdjacentHTML(
-"afterbegin",
+"afterend",
 `<%=j render 'job-posts', project: @project%>`
 );
-}

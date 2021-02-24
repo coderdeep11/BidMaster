@@ -7139,6 +7139,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-comfortaa@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/typeface-comfortaa/-/typeface-comfortaa-1.1.13.tgz#e347a169d481b0b6f1050c69ef0f4fd6c4c1f174"
+  integrity sha512-Eah/oSTZ5leNsoc7U8JUrMD+z5flmgs4hI0cYL1d1xgfZDKMuyRnw8nD2Lri43X0io7f0XeZM7ssQU6HqhpPtw==
+
 typeface-montserrat@^1.1.13:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-1.1.13.tgz#2a16729c174dd1a8c3fec05a851b7725412606cc"

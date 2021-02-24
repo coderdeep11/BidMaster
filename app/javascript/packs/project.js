@@ -1,6 +1,6 @@
 window.addEventListener("turbolinks:load", (e) => {
   let allProjects = document.querySelector(".projects");
-  let project_post = document.querySelector(".view__project-post");
+  let project_post = document.querySelector(".view__project-tab");
   allProjects?.addEventListener("click", function (e) {
     let project = e.target.closest(".project");
 

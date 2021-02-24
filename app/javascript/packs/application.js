@@ -10,6 +10,7 @@ require("channels");
 require("typeface-montserrat");
 require("typeface-poppins");
 require("typeface-quicksand");
+require("typeface-comfortaa");
 require("packs/project");
 require("packs/search");
 require("packs/navbar");

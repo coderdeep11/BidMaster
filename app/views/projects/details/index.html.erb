@@ -1,10 +1,10 @@
 <main>
   <h1 ><%=@project.title%></h1>
   <ul  class="project__overview">
-    <li class="view__project-post">
+    <li class="view__project-tab ">
       <%=link_to ' view job post',job_post_project_details_path ,remote: true%>
     </li>
-    <li class="review__proposals">
+    <li class="review__proposals-tab">
       <%=link_to 'Review proposals',review_proposals_project_details_path,remote: true%>
     </li>
   </ul>

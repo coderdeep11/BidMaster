@@ -28,4 +28,8 @@ module ApplicationHelper
   def search_type?
     session[:search_type]
   end
+
+  def current_path(url)
+    request.path == url
+  end
 end
