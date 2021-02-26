@@ -7,11 +7,6 @@ if (document.querySelector(".user__details"))
 currentTab = document.querySelector(".user__details-tab");
 if (document.querySelector(".welcome"))
   document.querySelector(".welcome").remove();
-[...document.querySelector(".details__tab").children].forEach((element) => {
-  if (element.classList[1] == "add__border-bottom" && element !== currentTab)
-    element.classList.remove("add__border-bottom");
-});
-currentTab.classList.add("add__border-bottom");
 
 document
   .querySelector(".user__analytics")

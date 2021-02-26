@@ -32,4 +32,12 @@ module ApplicationHelper
   def current_path(url)
     request.path == url
   end
+
+  def total_projects_done(user)
+    Bid.where('(aasm_state =? and freelancer_id =?)', 'awarded', user.id).count
+  end
+
+  def average_bid_value(user)
+    Bid.where(freelancer_id: user.id).average(:value).to_i
+  end
 end

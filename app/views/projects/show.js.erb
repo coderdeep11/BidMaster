@@ -1,23 +1,23 @@
 document
-  .querySelector("nav")
-  .insertAdjacentHTML(
-    "afterend",
-    `<%= j render partial: "project__modal",locals: {project: @project,bid: @bid ,bids: @bids} %>`
-  );
+.querySelector("nav")
+.insertAdjacentHTML(
+"afterend",
+`<%= j render partial: "project__modal",locals: {project: @project,bid: @bid ,bids: @bids} %>`
+);
 setTimeout(function () {
-  document
-    .querySelector(".project__modal")
-    .classList.add("show__project-slideIn");
+document
+.querySelector(".project__modal")
+.classList.add("show__project-slideIn");
 }, 100);
 document.querySelector(".close__modal")?.addEventListener("click", function () {
-  document
-    .querySelector(".project__modal")
-    .classList.remove("show__project-slideIn");
-  document
-    .querySelector(".projects")
-    ?.setAttribute("style", "transform:translateX(0%)");
-  document.querySelector(".projects")?.classList.remove("disable-click");
-  setTimeout(function () {
-    document.querySelector(".project__modal").remove();
-  }, 300);
+document
+.querySelector(".project__modal")
+.classList.remove("show__project-slideIn");
+document
+.querySelector(".freelancer__feed")
+?.setAttribute("style", "transform:translateX(0%)");
+document.querySelector(".freelancer__feed")?.classList.remove("disable-click");
+setTimeout(function () {
+document.querySelector(".project__modal").remove();
+}, 300);
 });

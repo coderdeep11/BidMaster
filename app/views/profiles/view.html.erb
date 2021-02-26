@@ -6,7 +6,7 @@
     <li class="user__name">
       <%=@user.name%>
       <div class="category">
-        web-developer
+        <%=@user.freelancer_info.try(:cateogory)%>
       </div>
     </li>
     <li>
@@ -21,14 +21,15 @@
     </li>
     <li class="user__analytics">
       <div class="total__projects">
-        12 
+        <div> <%=total_projects_done(@user)%></div>
         <span>Projects </span>
       </div>
       <div class="rating">
-        3.6 <span>  Rating</span>
+        <div>   3.6</div>
+         <span>  Rating</span>
       </div>
       <div class="total__bids">
-        22
+        <div><%=average_bid_value(@user)%></div>
         <span> Avg. Bid </span>
       </div>
     </li>

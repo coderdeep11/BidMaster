@@ -1,7 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :client, class_name: 'User'
-  has_many :bids
-  has_one :awarded_project_notification
+  has_many :bids, dependent: :destroy
   attr_writer :current_step
 
   def current_step
