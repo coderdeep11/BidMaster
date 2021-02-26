@@ -1,6 +1,7 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+$border-color: rgb(214, 210, 210);
 
 .hero {
   &::before {
@@ -98,6 +99,91 @@
       display: block;
       width: 80%;
       margin: 0 auto;
+    }
+  }
+}
+
+/******search-bar**/
+.search__projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 2rem;
+  .search__wrapper {
+    padding: 1rem 2rem;
+    border: 1px solid #c1c1c1;
+    background: white;
+
+    width: 650px;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+  }
+  #search {
+    position: relative;
+    width: 100%;
+    .search_bar {
+      input {
+        height: 45px;
+        border-radius: 0.5rem;
+        border: 1px solid #c1c1c1;
+        padding-left: 30px;
+        width: 100%;
+      }
+    }
+    .search__btn,
+    .reset__btn {
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translateY((-50%));
+      border: none;
+      background: #37a000;
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+      color: white;
+      font-size: 1rem;
+      width: 45px;
+      height: 100%;
+    }
+    .reset__btn {
+      background: transparent;
+      right: 45px;
+      i {
+        color: black;
+        position: absolute;
+        transform: translate((-50%, -50%));
+        left: 50%;
+        top: 50%;
+      }
+    }
+    .search__filters {
+      display: none;
+    }
+  }
+  .search__results-projects {
+    max-width: 650px;
+
+    transition: transform 0.7s;
+
+    @import "allprojects";
+  }
+  .no__results {
+    height: 200px;
+    width: 650px;
+    border: 1px solid $border-color;
+    border-top: none;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    i {
+      font-size: 5rem;
     }
   }
 }

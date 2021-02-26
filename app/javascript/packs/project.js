@@ -7,10 +7,10 @@ window.addEventListener("turbolinks:load", (e) => {
     if (!project) return;
 
     project.children[1].click();
-
+    allProjects.classList.add("disable-click");
     t = setTimeout(function () {
       allProjects.setAttribute("style", "transform:translateX(-10%);");
-      allProjects.classList.add("disable-click");
+
       clearTimeout(t);
     }, 300);
   });
