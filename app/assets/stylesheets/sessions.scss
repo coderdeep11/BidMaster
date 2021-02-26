@@ -1,4 +1,4 @@
-main {
+.user__login {
   & h1 {
     padding: 1rem 3rem 0;
     text-align: center;
@@ -109,7 +109,7 @@ main {
 }
 
 @media (min-width: 768px) {
-  main {
+  .user__login {
     padding: 0rem 12rem;
     padding-top: 3rem;
 
@@ -152,7 +152,7 @@ main {
   }
 }
 @media (min-width: 992px) {
-  main {
+  .user__login {
     padding-top: 3rem;
     .login__page {
       width: 450px;

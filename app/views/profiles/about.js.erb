@@ -1,0 +1,17 @@
+if (document.querySelector(".user__experience"))
+  document.querySelector(".user__experience").remove();
+if (document.querySelector(".user__details"))
+  document.querySelector(".user__details").remove();
+if (document.querySelector(".user__bio"))
+  document.querySelector(".user__bio").remove();
+if (document.querySelector(".welcome"))
+  document.querySelector(".welcome").remove();
+currentTab = document.querySelector(".about__me-tab");
+
+document
+  .querySelector(".user__analytics")
+  .insertAdjacentHTML("beforebegin", `<%=j render 'about-me' %>`);
+t = setTimeout(() => {
+  document.querySelector(".user__bio").classList.add("slide__in");
+  clearTimeout(t);
+}, 100);

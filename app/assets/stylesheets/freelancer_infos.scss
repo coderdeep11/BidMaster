@@ -1,37 +1,146 @@
 // Place all the styles related to the freelancer_infos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.projects {
-  padding: 3rem 15rem;
-  overflow: scroll;
-  height: 90vh;
-  scrollbar-width: none;
+$font: "Comfortaa", cursive;
+$border-color: rgb(214, 210, 210);
+.freelancer__feed {
+  max-width: 650px;
+  padding: 3rem 0 1rem;
   transition: transform 0.7s;
-
-  .project {
+  h2 {
+    text-align: left;
+    border: 1px solid $border-color;
+    height: 4rem;
+    line-height: 4rem;
     text-align: center;
-    border: 1px solid #bdb3b3;
-    border-top: none;
-    padding: 1rem;
-    cursor: pointer;
-    transition: background-color 0.5s;
-    &:first-child {
-      border: 1px solid #bdb3b3;
-    }
-    &:hover {
-      background-color: rgb(245, 245, 245);
+    font-family: $font;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    background-color: white;
+  }
+  .projects {
+    background-color: white;
+
+    display: block;
+    overflow: scroll;
+    height: 90vh;
+    scrollbar-width: none;
+    list-style-type: none;
+    transition: transform 0.7s;
+
+    .project {
+      border: 1px solid $border-color;
+      border-top: none;
+      & > ul {
+        cursor: pointer;
+        transition: background-color 0.5s;
+        list-style-type: none;
+        display: flex;
+        padding: 1rem 1.5rem 0.5rem;
+        gap: 0.8rem;
+        list-style-type: none;
+        flex-direction: column;
+        &:hover {
+          background-color: rgb(245, 245, 245);
+        }
+        li {
+          font-size: 0.85rem;
+          font-family: $font;
+          color: #242424;
+        }
+        .project__title {
+          a {
+            font-family: $font;
+            text-decoration: none;
+            font-size: 0.95rem;
+            color: green;
+            text-transform: capitalize;
+            font-weight: 700;
+            word-spacing: 2px;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          .category {
+            display: flex;
+            color: #3f3e3e;
+            font-size: 0.65rem;
+            gap: 1rem;
+            span {
+              font-family: $font;
+              background-color: rgb(238, 237, 237);
+              padding: 0.7rem;
+              text-align: center;
+              border-radius: 1rem;
+              margin-top: 0.6rem;
+              &:hover {
+                background-color: rgb(209, 209, 209);
+
+                cursor: default;
+              }
+            }
+          }
+        }
+        .project__experience {
+          font-weight: 600;
+          font-size: 0.75rem;
+        }
+        .project__description {
+          font-size: 0.8rem;
+          word-spacing: 2px;
+          font-weight: 600;
+          line-height: 16px;
+          quotes: "“" "”" "‘" "’";
+          &::before {
+            content: open-quote;
+            display: inline;
+            height: 0;
+            line-height: 0;
+            left: 0px;
+            position: relative;
+            top: 0px;
+            color: #000;
+            font-size: 1rem;
+          }
+          &::after {
+            content: close-quote;
+            display: inline;
+            height: 0;
+            line-height: 0;
+            left: 0px;
+            position: relative;
+            top: 0px;
+            color: #000;
+            font-size: 1rem;
+          }
+        }
+        .total__bids-on-project {
+          font-weight: 600;
+          font-size: 0.75rem;
+          word-spacing: 2px;
+          color: green;
+        }
+        .project__posted-at {
+          font-weight: 400;
+          font-size: 0.7rem;
+          color: #242424;
+        }
+      }
     }
   }
 }
+
+/**/ ///
 .project__modal {
-  height: 90vh;
+  height: 100vh;
   background: white;
   position: absolute;
-  top: 65px;
+  top: 0;
+  right: 0;
   border: 1px solid black;
-  width: 90%;
+  width: 100%;
   transform: translateX(130%);
-  transition: transform 1s;
+  transition: transform 0.7s;
   z-index: 10;
 }
 .show__project-slideIn {

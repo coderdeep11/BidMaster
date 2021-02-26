@@ -1,0 +1,254 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$font: "Comfortaa", cursive;
+$box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+  0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+@mixin svg {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  & > svg {
+    width: 150px;
+    height: 150px;
+  }
+}
+@mixin borderBottom {
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #d7cece;
+    left: 0;
+    bottom: -10px;
+    transform: translateX(0%);
+  }
+}
+@mixin tabSlider {
+  &::after {
+    content: "";
+    position: absolute;
+    background: green;
+    width: 30%;
+    height: 3px;
+    bottom: 0;
+    left: 100%;
+    transform: translateX(-100%);
+    transition: all 0.5s;
+  }
+}
+
+.profile__card {
+  padding: 0;
+  height: auto;
+  width: 450px;
+  margin: 4rem auto;
+  position: relative;
+  box-shadow: $box-shadow;
+  border-radius: 1rem;
+  .user__image {
+    position: absolute;
+    right: 50%;
+    transform: translate(50%, -50%);
+
+    background: white;
+    svg {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border: 2px solid #37a000;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -5%);
+      border-radius: 50%;
+      transition: width 0.5s;
+    }
+  }
+  .user__profile {
+    list-style-type: none;
+    font-size: 1rem;
+    padding: 4rem 0rem 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 1rem;
+    position: relative;
+    & > li {
+      font-family: $font;
+      width: 100%;
+    }
+    .user__name {
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 1.5rem;
+      position: relative;
+      width: 100%;
+
+      div {
+        font-family: $font;
+        font-weight: 400;
+        font-size: 0.8rem;
+        color: #696969;
+      }
+      @include borderBottom;
+    }
+    .details__tab {
+      line-height: normal;
+      display: flex;
+      list-style-type: none;
+      border: 1px solid #cec8c8;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      align-items: flex-end;
+      gap: 3rem;
+      height: 40px;
+      position: relative;
+      justify-content: center;
+      & > li {
+        padding: 0.5rem 1rem;
+        font-family: $font;
+        cursor: pointer;
+        text-transform: capitalize;
+        a {
+          text-decoration: none;
+          font-family: $font;
+          font-weight: 700;
+          color: black;
+        }
+      }
+    }
+    .tab__slider-0 {
+      @include tabSlider();
+      &::after {
+        transform: translateX(0%);
+        left: 0%;
+      }
+    }
+    .tab__slider-1 {
+      @include tabSlider();
+      &::after {
+        transform: translateX(-50%);
+        left: 50%;
+      }
+    }
+    .tab__slider-2 {
+      @include tabSlider();
+      &::after {
+        transform: translateX(-100%);
+        left: 100%;
+      }
+    }
+
+    .add__border-bottom {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        background: green;
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        animation: line 0.4s;
+      }
+      @keyframes line {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+    }
+    .welcome {
+      flex-basis: 210px;
+      transition: width 0.5s;
+      @include svg();
+    }
+    .user__bio,
+    .user__experience,
+    .user__details {
+      flex-basis: 210px;
+      overflow: scroll;
+      scrollbar-width: none;
+      font-size: 0.8rem;
+      line-height: 18px;
+      word-spacing: 2px;
+      padding: 0 1rem;
+      transition: all 0.2s;
+      opacity: 0;
+      position: relative;
+      width: 0%;
+      transform: translateX(100%);
+    }
+    .user__experience > .no__experience {
+      @include svg();
+    }
+    .slide__in {
+      width: 100%;
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    .slide__out {
+      width: 0%;
+    }
+  }
+
+  .user__analytics {
+    display: flex;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    flex-basis: 110px;
+    align-items: center;
+    & > div {
+      font-family: $font;
+      font-size: 2rem;
+      flex: 1;
+
+      div {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 55px;
+          height: 55px;
+          border: 2px solid #37a000;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+        }
+      }
+
+      span {
+        display: block;
+        padding: 15px 0 0;
+        font-size: 0.8rem;
+        font-family: $font;
+        font-weight: 700;
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: #d7cece;
+      left: 0;
+      top: 0rem;
+      transform: translateX(0%);
+    }
+  }
+}

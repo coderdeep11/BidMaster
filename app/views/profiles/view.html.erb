@@ -1,0 +1,37 @@
+<main class="profile__card">
+  <div class="user__image">
+    <%=inline_svg_tag 'default_avatar.svg'%>
+  </div>
+  <ul class="user__profile">
+    <li class="user__name">
+      <%=@user.name%>
+      <div class="category">
+        <%=@user.freelancer_info.try(:cateogory)%>
+      </div>
+    </li>
+    <li>
+      <ul class="details__tab">
+        <li class="about__me-tab"><%=link_to 'about' , freelancer_about_me_path,remote: true%></li>
+        <li class="user__experience-tab"><%=link_to 'experience' , freelancer_experience_path,remote: true%></li>
+        <li class="user__details-tab"><%=link_to 'details' , freelancer_details_path,remote: true%></li>
+      </ul>
+    </li>
+    <li class="welcome">
+      <%=inline_svg_tag 'welcome.svg'%>
+    </li>
+    <li class="user__analytics">
+      <div class="total__projects">
+        <div> <%=total_projects_done(@user)%></div>
+        <span>Projects </span>
+      </div>
+      <div class="rating">
+        <div>   3.6</div>
+         <span>  Rating</span>
+      </div>
+      <div class="total__bids">
+        <div><%=average_bid_value(@user)%></div>
+        <span> Avg. Bid </span>
+      </div>
+    </li>
+  </ul>
+</main>

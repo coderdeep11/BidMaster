@@ -1,9 +1,9 @@
 <ul class="user__profile-dropdown">
   <li>
     <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
-    <p class="user__name"><%=@user.name%>
-      <span><%=@user.role%></span>
-    </p>
+    <%=link_to current_user.role =="client" ? client_path(current_user) : freelancer_path(current_user),class: 'user__name' do%>
+      <%=@user.name%>   <span><%=@user.role%></span>
+    <%end%>
   </li>
   <li>
     <%=inline_svg_tag 'settings.svg',class:'user__setting' %>

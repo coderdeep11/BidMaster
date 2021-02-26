@@ -6,10 +6,10 @@ $font: "Comfortaa", cursive;
   position: absolute;
   right: 0;
   height: 50%;
-  background-color: gray;
-  border-left: 1px solid gray;
+  background-color: rgb(160, 154, 154);
+  border-left: 1px solid rgb(160, 154, 154);
   border-bottom: 1px solid transparent;
-  border-right: 1px solid gray;
+  border-right: 1px solid rgb(160, 154, 154);
   border-top: 1px solid transparent;
 }
 /*****************/
@@ -18,20 +18,20 @@ main {
   position: relative;
   margin: 0 auto;
 
-  & > ul {
+  & > .project__overview {
     display: flex;
     list-style-type: none;
     align-items: center;
     position: relative;
     & > li {
-      border: 1px solid rgb(206, 200, 200);
+      border: 2px solid rgb(224, 220, 220);
       flex: 1;
       text-align: center;
       line-height: 60px;
       height: 60px;
       font-size: 1.1rem;
       text-transform: capitalize;
-
+      border-radius: 5px;
       a {
         display: block;
         text-decoration: none;

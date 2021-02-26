@@ -28,9 +28,16 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user, ->(u) { u.try(:role) == 'client' } do
       root to: 'projects#index'
+      get '/client/:id', to: 'profiles#view', as: 'client'
+      get '/client/experience', to: 'profiles#experience', as: 'client_experience'
     end
     authenticated :user, ->(u) { u.try(:role) == 'freelancer' } do
       root to: 'freelancer_infos#index', as: :freelancer_infos_path
+      get '/freelancer/experience', to: 'profiles#experience', as: 'freelancer_experience'
+      get '/freelancer/about-me', to: 'profiles#about', as: 'freelancer_about-me'
+      get '/freelancer/details', to: 'profiles#details', as: 'freelancer_details'
+
+      get '/freelancer/:id', to: 'profiles#view', as: 'freelancer'
     end
   end
   resources :conversations, only: %i[index create] do
