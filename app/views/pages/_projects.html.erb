@@ -1,39 +1,8 @@
-<div class="f-search__bar">
-  <%= search_form_for q, url: search_results_path ,id:'search' do |f|%>
-    <%= f.label :description_cont,style:'display:none' %>
-    <%= f.search_field :description_cont, placeholder: "Search", class: "form-control" %>
-    <div class="input-group-btn">
-      <%= button_tag class: ' search__btn'   do%>
-        <i class="fad fa-search"></i>
-      <%end%>
-    </div>
-    <div class="field mb-2">
-      <%= f.label :category_eq,'Category' %>
-      <br/>
-      <%= f.select:category_eq, all_categories, include_blank: 'Choose any' %>
-    </div>
-    <div class="field mb-2">
-      <%= f.label :subcategory_eq,'Subcategory' %>
-      <br/>
-      <%= f.select(:subcategory_eq, [], include_blank: 'Choose any') %>
-    </div>
-    <div>
-      <%= f.label :experience_eq, 'Experience'%>
-      <div class="experience__level"><%= f.radio_button :experience_eq, 'Entry Level'%>Entry Level</div>
-      <div class="experience__level"> <%= f.radio_button :experience_eq, 'Intermediate'%> Intermediate</div>
-      <div class="experience__level"> <%= f.radio_button :experience_eq, 'Expert'%> Expert</div>
-    </div>
+<div class="search__projects">
+  <%= render 'search_projects', q: @j%>
+  <% if @projects.empty? %>
+    <%=render 'no-results'%>
+  <% else %>
+    <%= render 'search-results-projects',projects: @projects %>
   <% end %>
-  <%= link_to "Clear Search", request.path, class:"cancel-button" %>
-  <div class="projects">
-    <%projects.try(:each) do|project|%>
-      <div class="project">
-        <h1> <%=project.try(:title)%></h1>
-        <b><%=project.try(:category)%></b>
-        <small><%=project.try(:description)%></small>
-        <%= link_to '',project_path(project),remote: true%>
-      </div>
-      <br/>
-    <%end%>
-  </div>
 </div>

@@ -1,0 +1,15 @@
+<div class="search__wrapper">
+  <%= search_form_for q, url: search_results_path ,id:'search' do |f|%>
+    <%= render 'search_filters' ,f: f %>
+    <div class=search_bar>
+      <%= f.label :description_cont,style:'display:none' %>
+      <%= f.search_field :description_cont, placeholder: "Search" %>
+    </div>
+    <%= button_tag class: ' search__btn'   do%>
+      <i class="far fa-search"></i>
+    <%end%>
+    <%= link_to  request.path, class: "reset__btn" do%>
+      <i class="fal fa-trash-alt"></i>
+    <% end %>
+  <% end %>
+</div>

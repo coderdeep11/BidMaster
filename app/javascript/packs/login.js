@@ -48,6 +48,4 @@ window.addEventListener("turbolinks:load", () => {
   if (document.querySelector(".alert").textContent !== "") {
     modal(".alert");
   }
-
-  if (document.querySelector(".notice").textContent !== "") modal(".notice");
 });
