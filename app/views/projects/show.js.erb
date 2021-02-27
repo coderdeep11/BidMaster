@@ -1,26 +1,28 @@
 document
-  .querySelector("nav")
-  .insertAdjacentHTML(
-    "afterend",
-    `<%= j render partial: "project__modal",locals: {project: @project,bid: @bid ,bids: @bids} %>`
-  );
+.querySelector("nav")
+.insertAdjacentHTML(
+"afterend",
+`<%= j render partial: "project__modal",locals: {project: @project,bid: @bid ,bids: @bids} %>`
+);
+elementPresent = () => {
+return (
+document.querySelector(".freelancer__feed") ||
+document.querySelector(".search__projects")
+);
+};
 project__modal = document.querySelector(".project__modal");
-
 project__modal.setAttribute("style", `top:${window.scrollY}px`);
 setTimeout(function () {
-  project__modal.classList.add("show__project-slideIn");
-  document.querySelector("body").setAttribute("style", "overflow:hidden");
+project__modal.classList.add("show__project-slideIn");
+document.querySelector("body").setAttribute("style", "overflow:hidden");
 }, 100);
 document.querySelector(".close__modal")?.addEventListener("click", function () {
-  project__modal.classList.remove("show__project-slideIn");
-  document
-    .querySelector(".freelancer__feed")
-    ?.setAttribute("style", "transform:translateX(0%)");
-  document
-    .querySelector(".freelancer__feed")
-    ?.classList.remove("disable-click");
-  document.querySelector("body").setAttribute("style", "overflow-x:hidden");
-  setTimeout(function () {
-    project__modal.remove();
-  }, 300);
+project__modal.classList.remove("show__project-slideIn");
+elementPresent().setAttribute("style", "transform:translateX(0%)");
+document
+.querySelector(".projects")?.classList.remove("disable-click");
+document.querySelector("body").setAttribute("style", "overflow-x:hidden");
+setTimeout(function () {
+project__modal.remove();
+}, 300);
 });

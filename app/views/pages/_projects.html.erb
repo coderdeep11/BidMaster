@@ -1,8 +1,12 @@
 <div class="search__projects">
-  <%= render 'search_projects', q: @j%>
-  <% if @projects.empty? %>
-    <%=render 'no-results'%>
+  <%= render 'search_projects', q: q%>
+  <%if projects.nil?%>
+    <%= render 'empty-search-projects' %>
   <% else %>
-    <%= render 'search-results-projects',projects: @projects %>
+    <% if projects.empty? %>
+      <%=render 'no-results'%>
+    <% else %>
+      <%= render 'search-results-projects',projects: projects %>
+    <% end %>
   <% end %>
 </div>

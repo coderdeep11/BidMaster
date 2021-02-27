@@ -1,9 +1,9 @@
 <div class="search__wrapper">
   <%= search_form_for q, url: search_results_path ,id:'search' do |f|%>
-    <%= render 'search_filters-projects' ,f: f %>
+    <%= render 'search-filters-freelancers',f: f %>
     <div class="search_bar">
-      <%= f.label :description_or_title_or_experience_cont,style:'display:none' %>
-      <%= f.search_field :description_or_title_or_experience_cont, placeholder: "Search" %>
+      <%= f.label :name_or_email_or_freelancer_info_category_cont,style:'display:none' %>
+      <%= f.search_field :name_or_email_or_freelancer_info_category_cont, placeholder: "Search" %>
     </div>
     <%= button_tag class: ' search__btn'   do%>
       <i class="far fa-search"></i>

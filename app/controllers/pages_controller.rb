@@ -5,10 +5,16 @@ class PagesController < ApplicationController
   end
 
   def search
-    if search_type? == 'freelancer'
-      @peoples = @q.result(distinct: true).includes(:freelancer_info)
-    else
-      @projects = @j.result(distinct: true)
+    if params[:q] && params[:q].reject { |_k, v| v.blank? }.present?
+      if search_type? == 'freelancer'
+        @freelancers = @q.result(distinct: true).includes(:freelancer_info)
+      else
+        @projects = @j.result(distinct: true)
+      end
     end
+  end
+
+  def freelancer_profile
+    @freelancer = User.find(params[:id])
   end
 end
