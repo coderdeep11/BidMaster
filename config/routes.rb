@@ -52,5 +52,6 @@ Rails.application.routes.draw do
   get '/choice', to: 'dropdowns#search_choice', as: 'search_choice'
   get '/search/freelancers', to: 'dropdowns#freelancer', as: 'search_freelancers'
   get '/search/projects', to: 'dropdowns#project', as: 'search_projects'
+  get '/search/freelancer/:id/profile', to: 'pages#freelancer_profile', as: 'search_freelancer_profile'
   root 'pages#main', as: :visitors_url
 end

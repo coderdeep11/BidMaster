@@ -3,6 +3,7 @@ window.addEventListener("turbolinks:load", () => {
     "#q_freelancer_info_category_eq"
   );
   let select__project = document.querySelector?.("#q_category_eq");
+  let freelancers = document.querySelector(".freelancers");
 
   /**api to fetch sub categories related to job */
   let fetchCategories = (contactSelect, e) => {
@@ -29,5 +30,12 @@ window.addEventListener("turbolinks:load", () => {
   /*dynamic dropdown for job categories(project)*/
   select__project?.addEventListener("change", function (e) {
     fetchCategories(document.querySelector("#q_subcategory_eq"), e);
+  });
+
+  freelancers?.addEventListener("click", (e) => {
+    let freelancer = e.target.closest(".freelancer");
+
+    if (!freelancer) return;
+    freelancer.children[2].click();
   });
 });

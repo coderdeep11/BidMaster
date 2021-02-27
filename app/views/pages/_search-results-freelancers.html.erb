@@ -1,0 +1,23 @@
+<div class="search__results-freelancers">
+  <ul class="freelancers">
+    <%freelancers.try(:each) do|freelancer|%>
+      <li class="freelancer">
+        <div class="user_image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+        <ul>
+          <li class="freelancer__name">
+            <%=freelancer.name%>
+            <div class="category">
+              <%=freelancer.freelancer_info.try(:category)%>
+            </div>
+          </li >
+          <li  class="freelancer__bio">
+            <%=freelancer.freelancer_info.try(:bio)%>
+          </li>
+          <li class="freelancer__joined-on">joined <%=distance_of_time_in_words_to_now(freelancer.created_at)%> ago</li>
+          <li></li>
+        </ul>
+        <%=link_to '', search_freelancer_profile_path(freelancer),remote: true%>
+      </li>
+    <% end %>
+  </ul>
+</div>

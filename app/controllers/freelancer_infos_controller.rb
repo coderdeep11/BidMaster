@@ -15,6 +15,10 @@ class FreelancerInfosController < ApplicationController
 
   def update; end
 
+  def show
+    @user=User.find(params[:id])
+  end
+
   def freelancer_params
     params.permit(:category, :subcategory, :experience, :education, :hourly_rate, :bio, :freelancer_id)
   end

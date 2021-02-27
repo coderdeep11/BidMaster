@@ -1,15 +1,23 @@
 window.addEventListener("turbolinks:load", (e) => {
-  let allProjects = document.querySelector(".freelancer__feed");
+  let allProjects = document.querySelector(".projects");
   let project_post = document.querySelector(".view__project-tab");
+
+  let elementPresent = () => {
+    return (
+      document.querySelector(".freelancer__feed") ||
+      document.querySelector(".search__projects")
+    );
+  };
+
   allProjects?.addEventListener("click", function (e) {
     let project = e.target.closest(".project");
-
+    console.log(project);
     if (!project) return;
 
     project.children[1].click();
     allProjects.classList.add("disable-click");
     t = setTimeout(function () {
-      allProjects.setAttribute("style", "transform:translateX(-10%);");
+      elementPresent().setAttribute("style", "transform:translateX(-10%);");
 
       clearTimeout(t);
     }, 300);

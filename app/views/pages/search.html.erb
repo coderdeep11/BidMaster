@@ -1,5 +1,5 @@
 <%if search_type? == 'freelancer'%>
-  <%=render partial: 'freelancers',locals: {q: @q ,peoples: @peoples} %>
+  <%=render partial: 'freelancers',locals: {q: @q ,freelancers: @freelancers} %>
 <% else %>
   <%=render partial: 'projects',locals: {q: @j ,projects: @projects} %>
 <%end%>
