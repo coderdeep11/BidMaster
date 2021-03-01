@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   def index
     @project = Project.new
+    @projects=Project.all;
     session[:project_param] ||= {}
   end
 

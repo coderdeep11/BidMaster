@@ -1,7 +1,12 @@
 class Project < ApplicationRecord
   belongs_to :client, class_name: 'User'
   has_many :bids, dependent: :destroy
+  validate :is_user_client?
   attr_writer :current_step
+
+  def is_user_client?
+    errors.add('not possible') unless client.role == 'client'
+  end
 
   def current_step
     @current_step || steps.first

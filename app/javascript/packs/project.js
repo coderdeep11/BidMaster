@@ -11,7 +11,7 @@ window.addEventListener("turbolinks:load", (e) => {
 
   allProjects?.addEventListener("click", function (e) {
     let project = e.target.closest(".project");
-    console.log(project);
+
     if (!project) return;
 
     project.children[1].click();

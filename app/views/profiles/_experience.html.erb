@@ -1,6 +1,18 @@
 <li class="user__experience">
-  <div class="no__experience">
-    <%=inline_svg_tag 'project.svg'%>
-    Start bidding on projects
-  </div>
+  <% if authenticate_profile(user) %>
+    <%if total_projects_done(user) > 0 %>
+      projects
+    <% else %>
+      <div class="no__experience">
+        <%=inline_svg_tag 'project.svg'%>
+        <span> Start bidding on projects </span>
+      </div>
+    <% end %>
+  <% else %>
+    <%if total_projects_done(user) > 0 %>
+      projects
+    <% else %>
+      <%=render 'nodata'%>
+    <% end %>
+  <% end %>
 </li>
