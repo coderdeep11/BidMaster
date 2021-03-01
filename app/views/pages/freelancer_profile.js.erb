@@ -1,6 +1,26 @@
 document
-.querySelector("nav")
-.insertAdjacentHTML(
-"afterend",
-`<%= j render 'freelancer_profile',freelancer: @freelancer %>`
-);
+  .querySelector("nav")
+  .insertAdjacentHTML(
+    "afterend",
+    `<%= j render 'freelancer_profile',freelancer: @freelancer %>`
+  );
+document
+  .querySelector(".freelancer__profile-modal")
+  ?.addEventListener("click", function (e) {
+    if (e.target.closest(".freelancer__profile")) return;
+    document.querySelector?.(".freelancer__profile-modal").remove();
+  });
+navElement = document.querySelector(".details__tab");
+navElement?.addEventListener("click", (e) => {
+  let target = e.target.closest("li");
+  if (target.parentElement !== navElement) return;
+  if (e.target.nodeName == "LI") e.target.children[0].click();
+  let index = [...navElement.children].indexOf(target);
+  if ([...navElement.classList].length > 1) {
+    [...navElement.classList].forEach((element, i) => {
+      if (i > 0) navElement.classList.remove(element);
+    });
+  }
+  navElement.classList.remove(navElement.classList[1]);
+  navElement.classList.add(`tab__slider-${index}`);
+});

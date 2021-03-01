@@ -11,7 +11,13 @@
             </div>
           </li >
           <li  class="freelancer__bio">
-            <%=freelancer.freelancer_info.try(:bio)%>
+            <%if freelancer.freelancer_info.try(:bio)%>
+              <% if freelancer.freelancer_info.bio.length > 0 %>
+                <%=freelancer.freelancer_info.bio.from(0).to(215)%>......
+              <% else %>
+                <%=freelancer.freelancer_info.bio%>
+              <% end %>
+            <% end %>
           </li>
           <li class="freelancer__joined-on">joined <%=distance_of_time_in_words_to_now(freelancer.created_at)%> ago</li>
           <li></li>

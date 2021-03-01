@@ -1,1 +1,16 @@
-<%=render partial: "form",locals: {project: @project}  %>
+<%render partial: "form",locals: {project: @project}  %>
+<main class="client__feed">
+  <div class="projects__heading">
+    <h3>my postings</h3>
+  </div>
+  <ul class="projects-posted-by-client">
+    <% if @projects.empty? %>
+      <div class="start__posting-projects">
+        <%=inline_svg_tag 'project.svg'%>
+        start posting projects
+      </div>
+    <% else %>
+      <%= render 'my-postings' ,projects: @projects%>
+    <% end %>
+  </ul>
+</main>

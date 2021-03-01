@@ -213,6 +213,123 @@ $border: 1px solid rgb(206, 202, 202);
   transition: transform 0.6s;
 }
 
+.client__feed {
+  max-width: 600px;
+  padding: 1rem 0 1rem;
+  transition: transform 0.6s;
+  overflow: scroll;
+  max-height: 90vh;
+  scrollbar-width: none;
+  .projects__heading {
+    border: 1px solid #d6d2d2;
+    height: 5rem;
+    font-family: "Comfortaa", cursive;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    background-color: white;
+    line-height: 5rem;
+    h3 {
+      text-transform: capitalize;
+      padding: 0 2rem;
+    }
+  }
+  .projects-posted-by-client {
+    li {
+      list-style-type: none;
+    }
+    .start__posting-projects {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 0.5rem;
+      width: 100%;
+      background: white;
+      border: $border;
+      border-top: none;
+      & > svg {
+        width: 150px;
+        height: 150px;
+      }
+      span {
+        font-size: 1rem;
+      }
+    }
+    .every__project {
+      background: white;
+      border: 1px solid #d6d2d2;
+      border-top: none;
+      transition: all 0.5s;
+      &:hover {
+        cursor: pointer;
+        background: rgb(248, 248, 248);
+      }
+      & > ul {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        .project__title {
+          display: flex;
+          a {
+            display: block;
+            text-decoration: none;
+            font-size: 1.1rem;
+            word-spacing: 3px;
+            flex: 2;
+            color: black;
+            font-weight: 500;
+            line-height: 1.4rem;
+
+            &:hover {
+              color: green;
+              text-decoration: underline;
+            }
+          }
+          i {
+            flex: 1;
+            text-align: right;
+            align-self: flex-start;
+            font-size: 1.7rem;
+            color: rgb(216, 216, 216);
+            transition: color 0.5s;
+            &:hover {
+              color: #37a000;
+            }
+          }
+        }
+        .project__created-at-with-status {
+          display: flex;
+          & > div,
+          & > ul {
+            flex: 1;
+            align-self: flex-end;
+            display: flex;
+            font-size: 0.8rem;
+            color: #313131;
+            & > li {
+              flex: 1;
+              text-align: center;
+              position: relative;
+              & > div {
+                font-size: 1.2rem;
+              }
+              .add__color {
+                color: green;
+                position: relative;
+              }
+              & > span {
+                display: block;
+                font-size: 0.7rem;
+                font-family: "Comfortaa", cursive;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
 /***********
 @media (max-width: 768px) {
     .project__page {
