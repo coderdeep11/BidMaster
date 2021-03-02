@@ -62,8 +62,16 @@
         <%end%>
       </ul>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div >
+      <div class="notice">
+        <p><%= notice %></p>
+      </div>
+    </div>
+    <div >
+      <div class="alert">
+        <p><%= alert %></p>
+      </div>
+    </div >
     <%= yield %>
     <%= javascript_pack_tag 'login' %>
     <%= javascript_pack_tag 'form' %>

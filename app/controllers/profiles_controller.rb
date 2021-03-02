@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   include ProfilesHelper
+  include ApplicationHelper
   before_action :set_client, only: [:view_client]
   before_action :set_user, only: %i[about experience details]
   before_action :set_freelancer, only: [:view_freelancer]
@@ -9,7 +10,8 @@ class ProfilesController < ApplicationController
     if @freelancer.nil?
       @freelancer = current_user
       flash[:alert] = 'no-freelancer-exists'
-      redirect_to freelancer_path(current_user)
+      redirect_to user_freelancer?(current_user) ? freelancer_path(current_user) : client_path(current_user)
+
     end
   end
 

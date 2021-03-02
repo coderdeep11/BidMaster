@@ -1,9 +1,12 @@
-<section class="bids">
-  <%@bids.try(:each) do|bid|%>
-    <%= link_to  project_path(bid.project) ,remote: true do%>
-      <%=bid.value%>
-      <%=bid.proposal%>
-    <%end%>
-    <br />
-  <%end%>
+<main class="bid__history">
+  <div class="bid-history__heading">
+    <h3>bid history</h3>
+  </div>
+  <ul class="freelancer-placed-bids-on">
+    <% if @bids.empty? %>
+      <%= render 'no-projects' %>
+    <% else %>
+      <%= render 'my-bids' ,bids: @bids%>
+    <% end %>
+  </ul>
 </section>

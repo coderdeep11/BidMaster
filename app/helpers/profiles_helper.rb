@@ -6,8 +6,4 @@ module ProfilesHelper
   def authorize_client(user)
     user == current_user
   end
-
-  def user_freelancer?(user)
-    user.role == 'freelancer'
-  end
 end

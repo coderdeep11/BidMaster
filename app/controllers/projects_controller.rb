@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   def index
     @project = Project.new
-    @projects=Project.all;
+    @projects = Project.where(client: current_user)
     session[:project_param] ||= {}
   end
 
@@ -39,9 +39,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-
-    @bid = Bid.new
+    @bid_by_current_user = Bid.find_by(freelancer: current_user, project: @project)
+    @bid = @bid_by_current_user.nil? ? Bid.new : @bid_by_current_user
     @bids = @project.bids
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit

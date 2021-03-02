@@ -1,0 +1,20 @@
+<%bids.each do|bid|%>
+  <li class="each__bid">
+    <ul>
+      <li class="bid__proposal">
+        <%=link_to bid.proposal.from(0).to(100),project_details_path(bid.project)%>
+        <i class="fal fa-eye"></i>
+      </li>
+      <li class="bid__created-at">
+        <ul class="client__details">
+          <li class="client__picture"><%=image_tag 'default_avatar.png' %></li>
+          <li class="client__profile"><%=link_to 'View client',root_path%></li>
+        </ul>
+        <div >
+          <%=distance_of_time_in_words_to_now(bid.updated_at)%>
+          <i class="far fa-stopwatch"></i>
+        </div>
+      </li>
+    </ul>
+  </li>
+<% end %>

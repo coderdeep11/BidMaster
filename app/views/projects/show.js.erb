@@ -14,7 +14,7 @@ project__modal = document.querySelector(".project__modal");
 project__modal.setAttribute("style", `top:${window.scrollY}px`);
 setTimeout(function () {
 project__modal.classList.add("show__project-slideIn");
-document.querySelector("body").setAttribute("style", "overflow:hidden");
+document.querySelector("body").setAttribute("style", "overflow:hidden;");
 }, 100);
 document.querySelector(".close__modal")?.addEventListener("click", function () {
 project__modal.classList.remove("show__project-slideIn");

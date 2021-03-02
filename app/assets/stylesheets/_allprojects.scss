@@ -1,4 +1,5 @@
-$font: "Comfortaa", cursive;
+$font-comforta: "Comfortaa", cursive;
+$font-quicksand: "Quicksand", sans-serif;
 $border-color: rgb(214, 210, 210);
 h2 {
   text-align: left;
@@ -6,7 +7,7 @@ h2 {
   height: 4rem;
   line-height: 4rem;
   text-align: center;
-  font-family: $font;
+  font-family: $font-comforta;
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
   background-color: white;
@@ -24,6 +25,13 @@ h2 {
   .project {
     border: 1px solid $border-color;
     border-top: none;
+    &:hover {
+      background-color: rgb(245, 245, 245);
+      & .project__title > a {
+        text-decoration: underline;
+        color: green;
+      }
+    }
     & > ul {
       cursor: pointer;
       transition: background-color 0.5s;
@@ -33,50 +41,28 @@ h2 {
       gap: 0.8rem;
       list-style-type: none;
       flex-direction: column;
-      &:hover {
-        background-color: rgb(245, 245, 245);
-      }
+
       li {
         font-size: 0.85rem;
-        font-family: $font;
+        font-family: $font-comforta;
         color: #242424;
       }
       .project__title {
         a {
-          font-family: $font;
+          font-family: $font-quicksand;
           text-decoration: none;
-          font-size: 0.95rem;
-          color: green;
+          font-size: 1.3rem;
+          color: black;
           text-transform: capitalize;
-          font-weight: 700;
-          word-spacing: 2px;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-        .category {
-          display: flex;
-          color: #3f3e3e;
-          font-size: 0.65rem;
-          gap: 1rem;
-          span {
-            font-family: $font;
-            background-color: rgb(238, 237, 237);
-            padding: 0.7rem;
-            text-align: center;
-            border-radius: 1rem;
-            margin-top: 0.6rem;
-            &:hover {
-              background-color: rgb(209, 209, 209);
-
-              cursor: default;
-            }
-          }
+          font-weight: 600;
+          word-spacing: 3px;
         }
       }
       .project__experience {
         font-weight: 600;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
+        align-self: flex-start;
+        border-bottom: 1px solid $border-color;
       }
       .project__description {
         font-size: 0.8rem;
@@ -112,11 +98,18 @@ h2 {
         font-size: 0.75rem;
         word-spacing: 2px;
         color: green;
+        align-self: flex-start;
+        border-bottom: 1px solid $border-color;
       }
       .project__posted-at {
         font-weight: 400;
         font-size: 0.7rem;
         color: #242424;
+        align-self: flex-end;
+        i {
+          margin-right: 0.5rem;
+          font-size: 0.9rem;
+        }
       }
     }
   }

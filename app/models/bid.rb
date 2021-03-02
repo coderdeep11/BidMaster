@@ -2,8 +2,11 @@ class Bid < ApplicationRecord
   belongs_to :project
   belongs_to :freelancer, class_name: 'User'
   has_many :notifications, dependent: :destroy
-  validates :value, presence: { message: 'must have a value' }
+  validates :value, presence: { message: "can't be nil! " }, numericality: { less_than_or_equal_to: 1000, greater_than_or_equal_to: 30, only_integer: true, message: '  must be between $30 and $1000' }
+  validates :proposal, length: { in: 50..400, message: 'proposal should be within 50-400 words' }
+
   validates :freelancer_id, uniqueness: { scope: :project_id, message: 'you already placed a bid' }
+
   after_create :send_notifications_to_client
 
   include AASM

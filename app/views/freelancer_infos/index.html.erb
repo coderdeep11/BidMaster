@@ -6,9 +6,6 @@
         <ul>
           <li class="project__title">
             <%= link_to project.title, project_path(project),remote: true%>
-            <div class="category">
-              <span><%=project.category%></span><span><%=project.subcategory%></span>
-            </div>
           </li>
           <li class="project__experience">
             Experience: <%=project.experience%>
@@ -24,6 +21,7 @@
             Total bids: <%=project.bids.count%>
           </li>
           <li class="project__posted-at">
+            <i class="far fa-stopwatch"></i>
             Posted-<%=distance_of_time_in_words_to_now(project.created_at)%>
           </li>
         </ul>

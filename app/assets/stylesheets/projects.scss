@@ -6,7 +6,8 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
   0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 $border: 1px solid rgb(206, 202, 202);
 /*******/
-
+$font-comfortaa: "Comfortaa", cursive;
+$font-quicksand: "Quicksand", serif;
 /**/
 @mixin borderValues {
   background: white;
@@ -213,14 +214,17 @@ $border: 1px solid rgb(206, 202, 202);
   transition: transform 0.6s;
 }
 
-.client__feed {
+/////////////////////////////////
+.client__feed,
+.bid__history {
   max-width: 600px;
   padding: 1rem 0 1rem;
   transition: transform 0.6s;
   overflow: scroll;
   max-height: 90vh;
   scrollbar-width: none;
-  .projects__heading {
+  .projects__heading,
+  .bid-history__heading {
     border: 1px solid #d6d2d2;
     height: 5rem;
     font-family: "Comfortaa", cursive;
@@ -233,7 +237,8 @@ $border: 1px solid rgb(206, 202, 202);
       padding: 0 2rem;
     }
   }
-  .projects-posted-by-client {
+  .projects-posted-by-client,
+  .freelancer-placed-bids-on {
     li {
       list-style-type: none;
     }
@@ -254,7 +259,8 @@ $border: 1px solid rgb(206, 202, 202);
         font-size: 1rem;
       }
     }
-    .every__project {
+    .every__project,
+    .each__bid {
       background: white;
       border: 1px solid #d6d2d2;
       border-top: none;
@@ -262,28 +268,30 @@ $border: 1px solid rgb(206, 202, 202);
       &:hover {
         cursor: pointer;
         background: rgb(248, 248, 248);
+        & .project__title,
+        .bid__proposal > a {
+          color: green;
+          text-decoration: underline;
+        }
       }
       & > ul {
         display: flex;
         flex-direction: column;
         padding: 1.5rem;
         gap: 1rem;
-        .project__title {
+        .project__title,
+        .bid__proposal {
           display: flex;
           a {
             display: block;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             word-spacing: 3px;
             flex: 2;
             color: black;
-            font-weight: 500;
+            font-family: "Quicksand", sans-serif;
+            font-weight: 600;
             line-height: 1.4rem;
-
-            &:hover {
-              color: green;
-              text-decoration: underline;
-            }
           }
           i {
             flex: 1;
@@ -304,6 +312,7 @@ $border: 1px solid rgb(206, 202, 202);
             flex: 1;
             align-self: flex-end;
             display: flex;
+            align-items: center;
             font-size: 0.8rem;
             color: #313131;
             & > li {
@@ -325,30 +334,241 @@ $border: 1px solid rgb(206, 202, 202);
               }
             }
           }
+          & > div {
+            gap: 0.5rem;
+          }
         }
       }
     }
   }
 }
-/***********
-@media (max-width: 768px) {
-    .project__page {
-        grid-template-rows: 1fr 2fr 1fr;
-        grid-auto-rows: 100px;
-        .project__steps {
-            display: none;
-        }
-        .project__title {
-            grid-column: 1/3;
-            grid-row: 1/2;
-        }
-        .project__buttons {
-            grid-row: 4/5;
-            grid-column: 1/3;
-        }
-        .project__title-form {
-            grid-column: 1/3;
-        }
+
+///Job-post Styles
+
+.project__modal {
+  transition: transform 0.6s;
+  overflow: scroll;
+  scrollbar-width: none;
+  height: 100vh;
+  background: #f1f2f4;
+  position: absolute;
+  right: 0;
+  box-shadow: $box-shadow;
+  width: 100%;
+  transform: translateX(130%);
+  transition: transform 0.7s;
+  z-index: 10;
+
+  .close__modal {
+    width: 100%;
+    height: 70px;
+    border-bottom: $border;
+    margin-bottom: 2rem;
+    background: white;
+    i {
+      line-height: 70px;
+      color: green;
+      font-size: 1.5rem;
+      padding-left: 2rem;
     }
+  }
+  .job__post-slider {
+    position: relative;
+    margin: 0 auto;
+    max-width: 700px;
+    border: 1px solid #d6d2d2;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    background: white;
+
+    .job__post-title-category-time {
+      min-height: 4rem;
+      position: relative;
+
+      h3 {
+        text-transform: capitalize;
+        padding: 1.5rem;
+        font-size: 1.4rem;
+        word-spacing: 2px;
+        font-weight: 600;
+      }
+      .job__category {
+        position: absolute;
+        bottom: 5px;
+        left: 1.5rem;
+        p {
+          font-family: $font-comfortaa;
+          font-weight: 500;
+          font-size: 0.7rem;
+          word-spacing: 3px;
+          color: #242424;
+        }
+      }
+      .posted__at-time {
+        position: absolute;
+        bottom: 5px;
+        right: 1rem;
+        p {
+          font-family: $font-comfortaa;
+          font-weight: 400;
+          font-size: 0.7rem;
+          word-spacing: 3px;
+          color: green;
+        }
+      }
+    }
+    .job__post-description {
+      border-top: 1px solid #d6d2d2;
+      padding: 1rem;
+      p {
+        font-family: $font-quicksand;
+        font-weight: 500;
+        font-size: 0.9rem;
+        word-spacing: 3px;
+        line-height: 1.3rem;
+      }
+    }
+
+    .all_proposals {
+      border-top: $border;
+      padding: 0.8rem;
+      position: relative;
+      h4 {
+        font-weight: 400;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      & > ul {
+        padding-top: 0.5rem;
+        padding-right: 2rem;
+        list-style-type: none;
+        display: flex;
+        gap: 2rem;
+        justify-content: flex-start;
+
+        li {
+          text-align: center;
+          position: relative;
+          div {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: green;
+          }
+          span {
+            padding: 0 0 0.5rem;
+            display: block;
+            font-size: 0.7rem;
+            color: #242424;
+            font-family: $font-comfortaa;
+          }
+        }
+        .login__btn-to-continue {
+          flex-basis: 130px;
+          margin-left: auto;
+          a {
+            display: block;
+            background: #37a000;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.6rem;
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            transition: all 0.6s;
+            width: 100%;
+            &:hover {
+              background: #2a7900;
+              cursor: pointer;
+            }
+          }
+          span {
+            padding: 0.5rem 0 1rem;
+            font-size: 0.8rem;
+          }
+        }
+      }
+      .about__client {
+        position: absolute;
+        bottom: 5px;
+        right: 1rem;
+        p {
+          font-family: $font-comfortaa;
+          font-weight: 400;
+          font-size: 0.7rem;
+          word-spacing: 3px;
+          color: green;
+        }
+      }
+    }
+    .place__bid {
+      border-top: 1px solid #d6d2d2;
+      & > form {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+        padding: 2rem;
+        .bid__proposal-field {
+          flex-basis: 100%;
+          text-align: center;
+
+          textarea {
+            width: 100%;
+            height: 200px;
+            padding: 1rem;
+          }
+          .errors {
+            padding: 0.5rem 0.1rem;
+            word-spacing: 2px;
+            font-size: 0.8rem;
+          }
+        }
+        .bid__value-field {
+          margin-left: auto;
+
+          .errors {
+            padding: 0.1rem 0rem;
+            word-spacing: 2px;
+            font-size: 0.8rem;
+          }
+        }
+        .bid__value-field,
+        .submit__proposal {
+          text-align: center;
+          input {
+            width: 150px;
+          }
+        }
+        .submit__proposal {
+          input {
+            display: block;
+            background: #37a000;
+            text-align: center;
+            padding: 0.5rem;
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            transition: all 0.6s;
+            &:hover {
+              background: #2a7900;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
 }
-*/
+//////////////////
+.show__project-slideIn {
+  transform: translateX(10%);
+}
+
+.disable-click {
+  pointer-events: none;
+  overflow: hidden;
+}

@@ -1,0 +1,64 @@
+<div class="job__post-slider">
+  <div class="job__post-title-category-time">
+    <h3> <%=project.title%></h3>
+    <div class="job__category">
+      <p><%=project.category%></p>
+      <p><%=project.subcategory%></p>
+    </div>
+    <div class="posted__at-time">
+      <p>Posted-<%=distance_of_time_in_words_to_now(project.created_at)%></p>
+    </div>
+  </div>
+  <div class=job__post-description>
+    <p><%=project.description%></p>
+  </div>
+  <div class="job__post-attachments">
+  </div>
+  <div class="all_proposals">
+    <h4>Activity on this job</h4>
+    <ul>
+      <li>
+        <div><%=project.bids.count %></div>
+        <span> Proposals</span>
+      </li>
+      <li>
+        <div><%=max_bid(project).nil? ? "0" : max_bid(project).to_f %></div>
+        <span>Max Bid</span>
+      </li>
+      <li>
+        <div>
+          <%if bid.awarded?%>
+            <i class="far fa-check"></i>
+          <% else %>
+            <i class="fal fa-times"></i>
+          <% end %>
+        </div>
+        <span>  Awarded</span>
+      </li>
+      <% unless current_user %>
+        <li class="login__btn-to-continue">
+          <%=link_to 'Login' ,new_user_registration_path%>
+          <span>Login to Bid</span>
+        </li>
+      <% end %>
+    </ul>
+    <div class="about__client">
+      <p>Client-<%=project.client.name%> joined <%=distance_of_time_in_words_to_now(project.client.created_at)%></p>
+    </div>
+  </div>
+  <%if user_freelancer?(current_user)%>
+    <section class="place__bid">
+      <%=form_for [project,bid],remote: true do|f|%>
+        <div class="bid__proposal-field">
+          <%=f.text_area :proposal,placeholder:'your proposal'%>
+        </div>
+        <div class="bid__value-field">
+          <%=f.number_field :value,placeholder: 'Bidding price'%>
+        </div>
+        <div class="submit__proposal">
+          <%=f.submit data: {disable_with: 'Bidding....'  } %>
+        </div>
+      <%end%>
+    </section>
+  <%end%>
+</div>

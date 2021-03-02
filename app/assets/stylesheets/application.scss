@@ -166,4 +166,47 @@ body {
       }
     }
   }
+  .alerts {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    align-items: center;
+
+    background: linear-gradient(to right bottom, rgba(42, 42, 42, 0.4), rgba(59, 59, 59, 0.4));
+    z-index: 100;
+    & > .notice,
+    & > .alert {
+      border-top: 1px solid rgb(180, 172, 172);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      height: 120px;
+      width: 270px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+        0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+      & > p {
+        flex: 2;
+        text-align: center;
+        padding: 1rem;
+      }
+      & > div {
+        flex: 1;
+        text-align: center;
+        padding: 0.5rem;
+        border-top: 1px solid rgb(180, 172, 172);
+        transition: all 0.5s;
+
+        &:hover {
+          background: #1e7bbe;
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+  }
 }
