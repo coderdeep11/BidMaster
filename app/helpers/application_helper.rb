@@ -40,4 +40,8 @@ module ApplicationHelper
   def average_bid_value(user)
     Bid.where(freelancer_id: user.id).average(:value).to_i
   end
+
+  def user_freelancer?(user)
+    user.try(:role) == 'freelancer'
+  end
 end

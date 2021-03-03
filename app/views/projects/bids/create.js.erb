@@ -1,3 +1,16 @@
+<% if current_user.nil?%>
+  <%flash[:alert]="You need to sign in or sign up before continuing."%>
+  window.location.replace("/users/sign_in")
+<%end%>
+if(document.querySelectorAll(".errors"))
+{
+document.querySelectorAll(".errors").forEach((error)=>{
+error.remove();
+})
+}
 document
-.querySelector(".bids")
-.insertAdjacentHTML("afterbegin", `<%= j render  "bid",bid: @bid  %>`);
+.querySelector(".bid__value-field")
+.insertAdjacentHTML("beforeend", `<%= j render  "bidValueError",bid: @bid  %>`);
+document
+.querySelector(".bid__proposal-field")
+.insertAdjacentHTML("beforeend", `<%= j render  "bidProposalError",bid: @bid  %>`);

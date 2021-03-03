@@ -1,21 +1,6 @@
 <aside class="project__modal">
-  <%=project.title%>
-  <p class="close__modal">close</p>
-  <section class="place__bid">
-    <%=form_for [project,bid],remote: true do|f|%>
-      <%=f.label :value%>
-      <%=f.number_field :value%>
-      <%=f.label :proposal%>
-      <%=f.text_area :proposal%>
-      <%=f.submit data: {disable_with: 'Bidding....'  } %>
-    <%end%>
-  </section>
-  <section class="bids">
-    <%@bids.try(:each) do|bid|%>
-      <%=bid.value%>
-      <%=bid.proposal%>
-      <%=bid.freelancer.name%>
-      <br />
-    <%end%>
-  </section>
+  <div class="close__modal">
+    <i class="far fa-chevron-left"></i>
+  </div>
+  <%= render 'job__post-modal',project: project,bid: bid %>
 </aside>

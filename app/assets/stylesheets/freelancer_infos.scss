@@ -1,7 +1,9 @@
 // Place all the styles related to the freelancer_infos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-$font: "Comfortaa", cursive;
+$font-comforta: "Comfortaa", cursive;
+$font-quicksand: "Quicksand", sans-serif;
+
 $border-color: rgb(214, 210, 210);
 .freelancer__feed {
   max-width: 650px;
@@ -14,23 +16,3 @@ $border-color: rgb(214, 210, 210);
 }
 
 /**/ ///
-.project__modal {
-  height: 100vh;
-  background: white;
-  position: absolute;
-
-  right: 0;
-  border: 1px solid black;
-  width: 100%;
-  transform: translateX(130%);
-  transition: transform 0.7s;
-  z-index: 10;
-}
-.show__project-slideIn {
-  transform: translateX(10%);
-}
-
-.disable-click {
-  pointer-events: none;
-  overflow: hidden;
-}
