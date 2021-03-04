@@ -12,6 +12,7 @@ require("typeface-poppins");
 require("typeface-quicksand");
 require("typeface-comfortaa");
 require("packs/project");
+require("packs/project_post");
 require("packs/search");
 require("packs/navbar");
 require("packs/bid");

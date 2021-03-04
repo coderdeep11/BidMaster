@@ -9,16 +9,16 @@ module ApplicationHelper
   end
 
   def all_categories
-    [['Accounting & Consulting', 0], ['Admin Support', 1], ['Customer Service', 2],
-     ['Data Science & Analytics', 3],
-     ['Design & Creative', 4],
+    [['Accounting & Consulting', 'Accounting & Consulting'], ['Admin Support', 'Admin Support'], ['Customer Service', 'Customer Service'],
+     ['Data Science & Analytics', 'Data Science & Analytics'],
+     ['Design & Creative', 'Design & Creative'],
 
-     ['IT & Networking', 5],
-     ['Legal', 6],
-     ['Sales & Marketing', 7],
+     ['IT & Networking', 'IT & Networking'],
+     %w[Legal Legal],
+     ['Sales & Marketing', 'Sales & Marketing'],
 
-     ['Web, Mobile & Software Dev', 8],
-     ['Writing', 9]]
+     ['Web, Mobile & Software Dev', 'Web, Mobile & Software Dev'],
+     %w[Writing Writing]]
   end
 
   def search_type(type)
@@ -43,5 +43,9 @@ module ApplicationHelper
 
   def user_freelancer?(user)
     user.try(:role) == 'freelancer'
+  end
+
+  def total_bids_by_freelancer?(_bid)
+    Bid.where(freelancer: current_user).count
   end
 end

@@ -1,12 +1,13 @@
 <ul class="notifications__modal">
-  <%notifications.each do|notification|%>
-    <%if  notification.user.role=="client"%>
-      <%=render partial: 'clientNotification',locals:{notification: notification} %>
-    <% else %>
-      <%=render partial: 'freelancerNotification',locals:{notification: notification} %>
+  <% unless notifications.nil? || notifications.empty? %>
+    <%notifications.each do|notification|%>
+      <%if  notification.user.role=="client"%>
+        <%=render partial: 'clientNotification',locals:{notification: notification} %>
+      <% else %>
+        <%=render partial: 'freelancerNotification',locals:{notification: notification} %>
+      <%end%>
     <%end%>
-  <%end%>
-  <% if notifications.count.zero? %>
+  <%else%>
     <div class="no__notifications">
       <%=inline_svg_tag 'notifications.svg'%>
       You have no notifications

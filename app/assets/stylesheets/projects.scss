@@ -15,196 +15,199 @@ $font-quicksand: "Quicksand", serif;
   border-top: none;
   border-radius: 0.5rem;
 }
-/**/
+@mixin heading {
+  border: 1px solid #d6d2d2;
+  height: 5rem;
+  font-family: "Comfortaa", cursive;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  background-color: white;
+
+  h3 {
+    padding: 0 2rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 5rem;
+  }
+}
+/********************************/
+
 .project__page {
-  background-color: #f3f3f3;
+  max-width: 750px;
+  padding: 0;
+  box-shadow: $box-shadow;
+  margin: 3rem auto;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border: $border;
 
-  display: grid;
-
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 3fr 1fr 1fr;
-  padding: 1rem 6rem 1rem 3rem;
-
-  .project__steps {
-    display: block;
-
-    grid-row: 1/4;
+  .post__project {
+    @include heading();
+    border: none;
+  }
+  & > form {
+    border-top: $border;
+    background: #ffffff;
     list-style-type: none;
+    width: 100%;
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
-    padding-left: 7rem;
-    padding-top: 0.5rem;
-    gap: 1.2rem;
+    align-items: center;
+    padding: 2rem 4rem;
+    gap: 1rem;
 
-    & li {
-      font-weight: 500;
-      text-transform: capitalize;
-      display: block;
-      width: 100%;
-      position: relative;
-      i:first-child {
-        margin-right: 0.8rem;
-      }
-      i:last-child {
-        position: absolute;
-        top: 50%;
-        right: 1rem;
-        transform: translateY(-50%);
-      }
-    }
-  }
-  .project__title {
-    grid-column: 2/3;
-    @include borderValues;
-    grid-row: 1/2;
-    border: $border;
-    vertical-align: middle;
-    padding: 1rem;
-    text-transform: capitalize;
-    font-family: "Montserrat";
-  }
-  .project__title-form {
-    @include borderValues;
-    grid-row: 2/4;
-    padding: 4rem 2rem;
-    label {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    input {
-      padding: 0.7rem;
-      width: 80%;
-    }
-  }
-  .project__description-form {
-    grid-row: 2/4;
-    @include borderValues;
-    padding: 1.5rem;
-    font-family: "montserrat";
-    label {
-      display: block;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    textarea {
-      width: 100%;
-      height: 180px;
-      padding: 1rem;
-      position: relative;
-    }
-
-    ul {
-      padding: 0.5rem;
-      margin-left: 1rem;
-      font-size: small;
-      margin-bottom: 1rem;
-      li {
-        margin-bottom: 5px;
-      }
-    }
-  }
-  .project__experience-form {
-    grid-row: 2/4;
-    padding: 3rem;
-    label {
-      margin-bottom: 2rem;
-      display: block;
-      font-weight: 600;
-      font-family: "Montserrat";
-      text-align: center;
-    }
-    @include borderValues;
-    .experience-level {
+    .error {
       display: flex;
-      justify-content: space-around;
-      perspective: 1000px;
-      perspective-origin: center;
-
-      & div {
-        flex-basis: 30%;
-        display: flex;
-        flex-direction: column;
-        height: 150px;
-        border: $border;
-        border-radius: 10px;
-        padding: 1.5rem;
-        text-align: center;
-        font-family: "monoserrat";
-        position: relative;
-        transition: transform 0.5s;
-        cursor: pointer;
-        input {
-          position: absolute;
-          right: 5px;
-          z-index: 0;
-          top: 5px;
-        }
-
-        b {
-          margin-bottom: 10px;
-        }
-      }
-    }
-  }
-  .project__budget-form {
-    @include borderValues();
-    padding-top: 3rem;
-    background: white;
-    padding-left: 1rem;
-    grid-row: 2/4;
-    label {
-      font-weight: 500;
-      font-size: 1rem;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-
-    .project__budget-field {
-      display: flex;
-
-      & div {
-      }
-      gap: 1.5rem;
-      & input {
-        width: 200px;
-        padding: 0.7rem;
-      }
-    }
-  }
-  .project__buttons {
-    @include borderValues;
-    grid-row: 4/5;
-    grid-column: 2/3;
-    position: relative;
-    & .next__btn {
-      display: block;
-      background-color: #3395db;
-      text-align: center;
-      padding: 0.5rem;
-      color: white;
+      align-items: center;
+      gap: 0.5rem;
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 12rem;
-      border-radius: 5px;
+      bottom: -0.4rem;
+      color: red;
+      font-size: 0.8rem;
       font-weight: 600;
-
-      font-size: 1rem;
-      width: 140px;
-      border: none;
-      cursor: pointer;
-      transition: 1s background-color;
-
-      &:hover {
-        background: #137eca;
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      i {
+        color: red;
       }
     }
-    & .back__btn {
-      @extend .next__btn;
-      left: 2rem;
+    & > div {
+      align-self: stretch;
+      padding: 1rem 0;
+    }
+
+    & label {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      position: relative;
+      font-family: "Quicksand", serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      &::after {
+        content: "*";
+        position: absolute;
+        color: rgb(218, 0, 0);
+        top: 0;
+        right: -10px;
+      }
+    }
+    .project__title-form {
+      position: relative;
+
+      text-transform: capitalize;
+      font-family: "Montserrat";
+      .field_with_errors {
+        input {
+          border: 1px solid red;
+        }
+      }
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: $border;
+        outline: none;
+        &:focus {
+          border: 1px solid green;
+        }
+      }
+    }
+    .project__category {
+      display: flex;
+      gap: 1rem;
+      div {
+        flex: 1 1 50%;
+        position: relative;
+        .field_with_errors {
+          select {
+            border: 1px solid red;
+          }
+        }
+        select {
+          width: 100%;
+          padding: 0.5rem;
+          outline: none;
+        }
+      }
+    }
+    .project__description-form {
+      font-family: "montserrat";
+      position: relative;
+      .field_with_errors {
+        textarea {
+          border: 1px solid red;
+        }
+      }
+      textarea {
+        width: 100%;
+        height: 180px;
+        padding: 1rem;
+        position: relative;
+        outline: none;
+        border: $border;
+        &:focus {
+          border: 1px solid green;
+        }
+      }
+    }
+    .project__experience-form {
+      label {
+        font-size: 1rem;
+        word-spacing: 3px;
+        margin-left: 10px;
+        margin-bottom: 1rem;
+      }
+      .experience-level {
+        display: flex;
+        justify-content: space-around;
+        perspective: 1000px;
+        perspective-origin: center;
+
+        & div {
+          flex-basis: 30%;
+          display: flex;
+          flex-direction: column;
+          height: 150px;
+          border: $border;
+          border-radius: 10px;
+          padding: 1.5rem 0.5rem;
+          text-align: center;
+          font-family: "monoserrat";
+          position: relative;
+          transition: transform 0.5s;
+          gap: 0.5rem;
+
+          p {
+            font-size: 0.8rem;
+          }
+          cursor: pointer;
+          input {
+            position: absolute;
+            right: 5px;
+            z-index: 0;
+            top: 5px;
+          }
+        }
+      }
+    }
+    .submit__btn {
+      align-self: center;
+      width: 150px;
+      input {
+        width: 100%;
+        display: block;
+        background: #37a000;
+        text-align: center;
+        padding: 0.6rem 0.7rem;
+        color: white;
+        font-weight: 500;
+        font-size: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        transition: all 0.6s;
+        &:hover {
+          background: #2a7900;
+          cursor: pointer;
+        }
+      }
     }
   }
 }
@@ -223,18 +226,33 @@ $font-quicksand: "Quicksand", serif;
   overflow: scroll;
   max-height: 90vh;
   scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
   .projects__heading,
   .bid-history__heading {
-    border: 1px solid #d6d2d2;
-    height: 5rem;
-    font-family: "Comfortaa", cursive;
-    border-top-right-radius: 0.5rem;
-    border-top-left-radius: 0.5rem;
-    background-color: white;
-    line-height: 5rem;
-    h3 {
-      text-transform: capitalize;
-      padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 1rem;
+    @include heading();
+    position: relative;
+    a {
+      font-family: $font-comfortaa;
+      font-weight: 700;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      background: #37a000;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.5s;
+      &:hover {
+        background: #2c7a02;
+      }
+    }
+    span {
+      color: green;
     }
   }
   .projects-posted-by-client,
@@ -242,7 +260,8 @@ $font-quicksand: "Quicksand", serif;
     li {
       list-style-type: none;
     }
-    .start__posting-projects {
+    .start__posting-projects,
+    .no__bids {
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -255,7 +274,7 @@ $font-quicksand: "Quicksand", serif;
         width: 150px;
         height: 150px;
       }
-      span {
+      p {
         font-size: 1rem;
       }
     }
@@ -268,8 +287,8 @@ $font-quicksand: "Quicksand", serif;
       &:hover {
         cursor: pointer;
         background: rgb(248, 248, 248);
-        & .project__title,
-        .bid__proposal > a {
+        & .project__title > a,
+        & .bid__proposal > a {
           color: green;
           text-decoration: underline;
         }
@@ -279,22 +298,21 @@ $font-quicksand: "Quicksand", serif;
         flex-direction: column;
         padding: 1.5rem;
         gap: 1rem;
-        .project__title,
-        .bid__proposal {
+        .project__title {
           display: flex;
           a {
             display: block;
             text-decoration: none;
             font-size: 1.25rem;
             word-spacing: 3px;
-            flex: 2;
+            flex: 1 1 80%;
             color: black;
             font-family: "Quicksand", sans-serif;
             font-weight: 600;
             line-height: 1.4rem;
           }
           i {
-            flex: 1;
+            flex: 1 1 20%;
             text-align: right;
             align-self: flex-start;
             font-size: 1.7rem;
@@ -349,6 +367,9 @@ $font-quicksand: "Quicksand", serif;
   transition: transform 0.6s;
   overflow: scroll;
   scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
   height: 100vh;
   background: #f1f2f4;
   position: absolute;
@@ -363,7 +384,7 @@ $font-quicksand: "Quicksand", serif;
     width: 100%;
     height: 70px;
     border-bottom: $border;
-    margin-bottom: 2rem;
+
     background: white;
     i {
       line-height: 70px;
@@ -374,7 +395,7 @@ $font-quicksand: "Quicksand", serif;
   }
   .job__post-slider {
     position: relative;
-    margin: 0 auto;
+    margin: 2rem auto;
     max-width: 700px;
     border: 1px solid #d6d2d2;
     border-top-right-radius: 0.5rem;

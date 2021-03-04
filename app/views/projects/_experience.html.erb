@@ -1,8 +1,17 @@
 <div class="project__experience-form">
-  <%= f.label :experience,'What level of Experience should your freelancer have?' %>
+  <%= f.label :experience,'What level of experience should your freelancer have?' %>
   <div class="experience-level">
-    <div class="experience__level"><%= f.radio_button :experience, 'Entry Level'%><b>Entry Level</b><small> Looking for someone relatively new to field</small> </div>
-    <div class="experience__level"> <%= f.radio_button :experience, 'Intermediate'%> <b> Intermediate</b><small> Looking for someone relatively new to field</small></div>
-    <div class="experience__level"> <%= f.radio_button :experience, 'Expert'%> <b>Expert</b><small> Looking for someone relatively new to field</small></div>
+    <div class="experience__level"><%= f.radio_button :experience, 'Entry Level'%>
+      <span>Entry Level</span>
+      <p> Looking for someone relatively new to field</p>
+    </div>
+    <div class="experience__level"> <%= f.radio_button :experience, 'Intermediate'%>
+      <span> Intermediate</span>
+      <p> Looking for someone relatively new to field</p>
+    </div>
+    <div class="experience__level"> <%= f.radio_button :experience, 'Expert'%>
+      <span>Expert</span>
+      <p> Looking for someone relatively new to field</p>
+    </div>
   </div>
 </div>

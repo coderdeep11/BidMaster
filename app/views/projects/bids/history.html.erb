@@ -1,10 +1,14 @@
 <main class="bid__history">
   <div class="bid-history__heading">
     <h3>bid history</h3>
+    <p>Total bids<span>(<%=total_bids_by_freelancer?(@bid)%>)</span></p>
   </div>
   <ul class="freelancer-placed-bids-on">
     <% if @bids.empty? %>
-      <%= render 'no-projects' %>
+      <div class="no__bids">
+        <%=inline_svg_tag 'bid.svg'%>
+        <p>no record,start bidding on projects</p>
+      </div>
     <% else %>
       <%= render 'my-bids' ,bids: @bids%>
     <% end %>

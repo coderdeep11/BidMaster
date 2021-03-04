@@ -1,12 +1,47 @@
 // Place all the styles related to the Bids controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
 .freelancer-placed-bids-on {
   .each__bid {
     gap: 0rem;
     padding: 0;
     .bid__proposal {
       word-break: break-word;
+      display: flex;
+      a {
+        display: block;
+        text-decoration: none;
+        font-size: 1.25rem;
+        word-spacing: 3px;
+        flex: 1 1 80%;
+        color: black;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 600;
+        line-height: 1.4rem;
+      }
+      & > div {
+        flex: 1 1 20%;
+        text-align: center;
+        i {
+          text-align: right;
+
+          font-size: 2rem;
+          color: rgb(216, 216, 216);
+
+          color: #37a000;
+        }
+        span {
+          display: block;
+          text-decoration: none;
+          display: block;
+          font-size: 0.75rem;
+          font-family: "Comfortaa", cursive;
+          font-weight: 700;
+          color: rgb(65, 65, 65);
+          padding: 0.5rem 0.1rem;
+        }
+      }
     }
     .bid__created-at {
       display: flex;

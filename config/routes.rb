@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
   # routes for freelancers info
-  resources :freelancer_infos, only: %i[index create]
+  resources :freelancer_infos, except: %i[show]
 
   # routes for projects
-  resources :projects, only: %i[index create update edit show] do
+  resources :projects, only: %i[new index create update edit show] do
     scope module: 'projects' do
       resources :bids, only: %i[create update] do
         member do
@@ -27,6 +28,9 @@ Rails.application.routes.draw do
 
   # authenticated routes for projects and freelancers info
   devise_scope :user do
+    authenticated :user, ->(u) { u.try(:admin?) } do
+      root to: 'rails_admin/main#dashboard', as: :admin_root
+    end
     authenticated :user, ->(u) { u.try(:role) == 'client' } do
       root to: 'projects#index'
     end
