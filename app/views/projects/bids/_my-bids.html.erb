@@ -2,13 +2,24 @@
   <li class="each__bid">
     <ul>
       <li class="bid__proposal">
-        <%=link_to bid.proposal.from(0).to(100),project_details_path(bid.project)%>
-        <i class="fal fa-eye"></i>
+        <%=link_to bid.proposal.from(0).to(100),project_path(bid.project)%>
+        <div>
+          <% if bid.unapproved? %>
+            <i class="fal fa-question"></i>
+          <% elsif bid.rejected? %>
+            <i class="fal fa-times"></i>
+          <% elsif bid.accepted? %>
+            <i class="far fa-check"></i>
+          <% else %>
+            <i class="fal fa-crown"></i>
+          <% end %>
+          <span>Bid <%=bid.aasm_state%></span>
+        </div>
       </li>
       <li class="bid__created-at">
         <ul class="client__details">
           <li class="client__picture"><%=image_tag 'default_avatar.png' %></li>
-          <li class="client__profile"><%=link_to 'View client',root_path%></li>
+          <li class="client__profile"><%=link_to 'View client',client_path(bid.project.client)%></li>
         </ul>
         <div >
           <%=distance_of_time_in_words_to_now(bid.updated_at)%>
@@ -16,5 +27,6 @@
         </div>
       </li>
     </ul>
+    <%=link_to '',project_path(bid.project)%>
   </li>
 <% end %>

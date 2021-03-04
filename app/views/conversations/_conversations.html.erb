@@ -1,5 +1,4 @@
-<ul class="conversations__modal">
-  <% conversations.each do |conversation| %>
+ <% conversations.each do |conversation| %>
     <% recipient = conversation.sender_id == current_user.id ? conversation.recipient : conversation.sender %>
     <li class="conversation">
       <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
@@ -53,4 +52,3 @@
       <%=link_to '',conversation_messages_path(conversation),remote: true%>
     </li>
   <%end%>
-</ul>

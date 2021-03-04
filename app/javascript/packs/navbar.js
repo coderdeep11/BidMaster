@@ -32,6 +32,7 @@ window.addEventListener("turbolinks:load", (e) => {
     if (!nav__element) return;
 
     if (nav !== "NAV") return;
+
     let nav__elements = Array.from(nav__element?.closest("ul").children);
     removeTabs(nav__elements, nav__element);
   });

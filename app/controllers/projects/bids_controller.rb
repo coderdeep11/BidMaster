@@ -2,8 +2,14 @@ module Projects
   class BidsController < ApplicationController
     include ApplicationHelper
     before_action :set_bid, only: %i[update accept reject award]
+    before_action :authenticate_user!, only: [:history]
     def history
-      @bids = Bid.where(freelancer_id: current_user.id)
+      if user_freelancer?(current_user)
+        @bids = Bid.where(freelancer_id: current_user.id)
+      else
+        flash[:alert] = 'Not authorized!'
+        redirect_to root_path
+      end
     end
 
     def create
@@ -19,13 +25,18 @@ module Projects
         redirect_to root_path(@project)
       elsif !user_freelancer?(current_user)
         flash[:alert] = 'Become a freelancer to bid on projects'
-        redirect_to root_path(@project)
+        redirect_to root_path
       end
     end
 
     def update
-      @bid.update_attributes(bids_params)
-      redirect_to notifications_path
+      respond_to do |format|
+        format.js
+      end
+      if @bid.update(bids_params)
+        flash[:notice] = 'Successfully updated the bid'
+        redirect_to root_path
+      end
     end
 
     def accept

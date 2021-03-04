@@ -1,8 +1,14 @@
-<%=form_for project , remote: true do|f|%>
-  <div class="project__page">
-    <%=render  "sidebar"%>
-    <%=render partial: "projectTitle",locals: {title: project.current_step,step_no: project.steps.index(project.current_step) } %>
-    <%=render partial: "#{project.current_step}",locals: {f: f} %>
-    <%=render partial: "buttons",locals: {project: @project,f: f} %>
+<main class="project__page">
+  <div class="post__project">
+    <h3>Post a project</h3>
   </div>
-<%end%>
+  <%=form_for project do|f|%>
+    <%=render partial: "title",locals: {f: f,project: project } %>
+    <%=render partial: "category",locals: {f: f,project: project} %>
+    <%=render partial: "description",locals: {f: f,project: project} %>
+    <%=render partial: "experience",locals: {f: f} %>
+    <div class="submit__btn">
+      <%=f.submit 'Post Job', data: { disable_with: "Saving..." }%>
+    </div>
+  <%end%>
+</div>

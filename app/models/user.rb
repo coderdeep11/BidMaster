@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :profile_image
-  validates :role, presence: true
+  validates :role, presence: true, unless: :user_not_admin?
   validates :name, presence: true
   has_many :notifications, dependent: :destroy
   has_one :freelancer_info, foreign_key: :freelancer_id, dependent: :destroy
@@ -13,4 +13,14 @@ class User < ApplicationRecord
   has_many :bids, foreign_key: :freelancer_id, dependent: :destroy
   has_many :conversations_as_sender, class_name: 'Conversation', foreign_key: :sender_id, dependent: :destroy
   has_many :conversations_as_recipient, class_name: 'Conversation', foreign_key: :recipient_id, dependent: :destroy
+
+  before_update :role_changed
+
+  def user_admin?
+    admin?
+  end
+
+  def role_changed
+    UserRoleSwitchedJob.perform_later(self, changed_attributes[:role]) unless changed_attributes[:role].nil?
+  end
 end

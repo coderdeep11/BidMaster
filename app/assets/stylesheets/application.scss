@@ -19,6 +19,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  outline: none;
 }
 body {
   overflow-x: hidden;
@@ -102,6 +103,7 @@ body {
     padding: 0 2rem;
     background: white;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
     & > ul {
       height: inherit;
       display: flex;
@@ -165,6 +167,17 @@ body {
         }
       }
     }
+    .slider {
+      content: "";
+      position: absolute;
+      background: green;
+      width: 70px;
+      height: 3px;
+      bottom: 0;
+      left: 0px;
+      transform: translateX(-35%);
+      transition: all 0.5s;
+    }
   }
   .alerts {
     position: absolute;
@@ -182,7 +195,7 @@ body {
       border-top: 1px solid rgb(180, 172, 172);
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      height: 120px;
+      height: auto;
       width: 270px;
       background: white;
       display: flex;

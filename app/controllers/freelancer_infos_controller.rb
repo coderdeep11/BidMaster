@@ -2,7 +2,12 @@ class FreelancerInfosController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = Project.all
+    if user_freelancer?(current_user)
+      @projects = Project.all
+    else
+      flash[:alert] = 'not authorized'
+      redirect_to root_path
+    end
   end
 
   def create
@@ -15,9 +20,7 @@ class FreelancerInfosController < ApplicationController
 
   def update; end
 
-  def show
-    @user=User.find(params[:id])
-  end
+  private
 
   def freelancer_params
     params.permit(:category, :subcategory, :experience, :education, :hourly_rate, :bio, :freelancer_id)

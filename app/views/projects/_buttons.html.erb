@@ -1,9 +1,3 @@
 <div class="project__buttons">
-  <%if project.last_step%>
-    <%=button_tag 'Back',name:"back_btn",class:'back__btn'  unless project.first_step%>
-    <%=f.submit data: { disable_with: "Saving..." },class:'next__btn'%>
-  <% else %>
-    <%=button_tag 'Back',name:"back_btn",class: 'back__btn'  unless project.first_step%>
-    <%=button_tag 'Next', class:'next__btn'%>
-  <%end%>
+  <%=f.submit data: { disable_with: "Saving..." },class:'next__btn'%>
 </div>

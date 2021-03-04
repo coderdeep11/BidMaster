@@ -1,9 +1,9 @@
 <div class="project__description-form" >
-  <%=f.label :description,'A good description includes:'%>
-  <ul>
-    <li>What the deliverable is</li>
-    <li>Type of freelancer or agency you're looking for</li>
-    <li>Anything unique about the project, team, or your company</li>
-  </ul>
+  <%=f.label :description,'Description'%>
   <%= f.text_area :description  %>
+  <%unless project.errors[:description].empty?%>
+    <div class="error">
+      <i class="fas fa-exclamation-circle"></i>
+      <%=project.errors[:description][0]%></div>
+  <% end %>
 </div>

@@ -1,39 +1,26 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
   def index
+    if user_freelancer?(current_user)
+      flash[:alert] = 'not authorized!'
+      redirect_to root_path
+    else
+      @projects = Project.where(client: current_user)
+    end
+  end
+
+  def new
     @project = Project.new
-    @projects = Project.where(client: current_user)
-    session[:project_param] ||= {}
   end
 
   def create
     @project = Project.new(project_params)
-
-    session[:project_param].deep_merge!(params[:project].to_unsafe_hash) if params[:project]
-    @project.assign_attributes(session[:project_param])
-    @project.current_step = session[:step_id]
     @project.client_id = current_user.id
-    if @project.valid?
-      if params[:back_btn]
-        @project.prev_step
-      elsif @project.last_step
-        @project.save
-      else
-        @project.next_step
-      end
-      session[:step_id] = @project.current_step
-    end
-
-    if @project.new_record?
-      respond_to do |format|
-        format.html { render 'index' }
-        format.js
-      end
-
+    if @project.save
+      flash[:notice] = 'Successfully,posted a project'
+      redirect_to root_path
     else
-
-      session[:project_param] = session[:step_id] = nil
-      sleep 2
-      redirect_to projects_path
+      render 'new'
     end
   end
 
@@ -61,6 +48,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.permit(:title, :category, :subcategory, :description, :experience, :min_budget, :max_budget, :client_id)
+    params.require(:project).permit(:title, :category, :subcategory, :description, :experience, :min_budget, :max_budget, :client_id)
   end
 end

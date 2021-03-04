@@ -64,4 +64,20 @@
       }
     }
   }
+  .no__conversations {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    opacity: 0.5;
+    font-size: 1.2rem;
+    font-weight: 700;
+    gap: 1rem;
+    svg {
+      display: block;
+      height: 100px;
+      opacity: 0.5;
+    }
+  }
 }

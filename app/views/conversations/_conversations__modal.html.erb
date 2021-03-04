@@ -1,0 +1,10 @@
+<ul class="conversations__modal">
+  <% unless conversations.empty? %>
+    <%= render 'conversations' ,conversations: conversations%>
+  <%else%>
+    <div class="no__conversations">
+      <%=inline_svg_tag 'message.svg'%>
+      <p>You have no messages</p>
+    </div>
+  <% end %>
+</ul>

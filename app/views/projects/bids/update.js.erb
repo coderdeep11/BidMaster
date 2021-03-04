@@ -1,0 +1,12 @@
+if(document.querySelectorAll(".errors"))
+{
+document.querySelectorAll(".errors").forEach((error)=>{
+error.remove();
+})
+}
+document
+.querySelector(".bid__value-field")
+.insertAdjacentHTML("beforeend", `<%= j render  "bidValueError",bid: @bid  %>`);
+document
+.querySelector(".bid__proposal-field")
+.insertAdjacentHTML("beforeend", `<%= j render  "bidProposalError",bid: @bid  %>`);
