@@ -1,50 +1,54 @@
 <div class="job__post-slider">
-  <div class="job__post-title-category-time">
+  <div class="job__post-title">
     <h3> <%=project.title%></h3>
-    <div class="job__category">
-      <p><%=project.category%></p>
-      <p><%=project.subcategory%></p>
-    </div>
     <div class="posted__at-time">
       <p>Posted-<%=distance_of_time_in_words_to_now(project.created_at)%></p>
     </div>
   </div>
-  <div class=job__post-description>
-    <p><%=project.description%></p>
+  <div class="job__category">
+    <h3>Category</h3>
+    <p><%=project.category%></p>
+    <p><%=project.subcategory%></p>
   </div>
+  <%unless project.description.nil?%>
+    <div class=job__post-description>
+      <h3>Description</h3>
+      <%=project.description %>
+    </div>
+  <% end %>
   <div class="job__post-attachments">
+    <h3> Attachments</h3>
+    <% if project.description.body.attachments.empty?  %>
+      <p>No attachments</p>
+    <% else %>
+      <% project.description.body.attachments.each do |document,i|%>
+        <%= link_to rails_blob_path(document, disposition: 'attachment') do%>
+          <%=document.filename%>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
   <div class="all_proposals">
-    <h4>Activity on this job</h4>
+    <h3>Activity on this job</h3>
     <ul>
       <li>
-        <div><%=project.bids.count %></div>
-        <span> Proposals</span>
+        <span> Proposals:</span>
+        <span><%=project.bids.count %> </span>
       </li>
       <li>
-        <div><%=max_bid(project).nil? ? "0" : max_bid(project).to_f %></div>
-        <span>Max Bid</span>
+        <span>Max Bid:</span>
+        <span>  $<%=max_bid(project).nil? ? "0" : max_bid(project) %>       </span>
       </li>
       <li>
-        <div>
-          <%if bid.awarded?%>
-            <i class="far fa-check"></i>
-          <% else %>
-            <i class="fal fa-times"></i>
-          <% end %>
-        </div>
-        <span>  Awarded</span>
+        <span >Client:</span>
+        <span><%=project.client.name%></span>
       </li>
       <% unless current_user %>
         <li class="login__btn-to-continue">
-          <%=link_to 'Login' ,new_user_registration_path%>
-          <span>Login to Bid</span>
+          <%=link_to 'Login to Bid' ,new_user_session_path%>
         </li>
       <% end %>
     </ul>
-    <div class="about__client">
-      <p>Client-<%=project.client.name%> joined <%=distance_of_time_in_words_to_now(project.client.created_at)%></p>
-    </div>
   </div>
   <%if user_freelancer?(current_user)%>
     <section class="place__bid">
@@ -53,7 +57,7 @@
           <%=f.text_area :proposal,placeholder:'your proposal'%>
         </div>
         <div class="bid__value-field">
-          <%=f.number_field :value,placeholder: 'Bidding price'%>
+          $ <%=f.number_field :value,placeholder: 'Bidding price'%>
         </div>
         <div class="submit__proposal">
           <%=f.submit data: {disable_with: 'Bidding....'  } %>

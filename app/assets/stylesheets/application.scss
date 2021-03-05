@@ -20,6 +20,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   outline: none;
+  word-break: break-word;
 }
 body {
   overflow-x: hidden;
@@ -150,19 +151,19 @@ body {
         @extend .conversations__dropdown;
       }
 
-      & > li:nth-last-child(1) {
+      .user__avatar {
         position: relative;
         margin-left: auto;
         & img {
-          height: 35px;
+          height: 50px;
+          width: 50px;
           display: block;
           opacity: 0.8;
+          border-radius: 50%;
           cursor: pointer;
-
           &:hover {
             opacity: 1;
             border: 2px solid rgb(136, 132, 132);
-            border-radius: 50%;
           }
         }
       }

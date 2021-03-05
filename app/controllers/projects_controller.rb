@@ -1,16 +1,20 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
+  before_action :set_project, only: %i[show edit update destroy]
   def index
-    if user_freelancer?(current_user)
-      flash[:alert] = 'not authorized!'
-      redirect_to root_path
-    else
+    if user_client?(current_user)
       @projects = Project.where(client: current_user)
+    else
+      authorized_only_to_clients
     end
   end
 
   def new
-    @project = Project.new
+    if user_client?(current_user)
+      @project = Project.new
+    else
+      authorized_only_to_clients
+    end
   end
 
   def create
@@ -25,27 +29,27 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
     @bid_by_current_user = Bid.find_by(freelancer: current_user, project: @project)
     @bid = @bid_by_current_user.nil? ? Bid.new : @bid_by_current_user
-    @bids = @project.bids
+
     respond_to do |format|
       format.html
       format.js
     end
   end
 
-  def edit
-    @project = Project.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @project = Project.find(params[:id])
     @project.update_attributes(project_params)
     redirect_to projects_path
   end
 
   private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
 
   def project_params
     params.require(:project).permit(:title, :category, :subcategory, :description, :experience, :min_budget, :max_budget, :client_id)

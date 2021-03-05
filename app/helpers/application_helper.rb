@@ -9,16 +9,16 @@ module ApplicationHelper
   end
 
   def all_categories
-    [['Accounting & Consulting', 'Accounting & Consulting'], ['Admin Support', 'Admin Support'], ['Customer Service', 'Customer Service'],
-     ['Data Science & Analytics', 'Data Science & Analytics'],
-     ['Design & Creative', 'Design & Creative'],
+    [['Accounting & Consulting', 0], ['Admin Support', 1], ['Customer Service', 2],
+     ['Data Science & Analytics', 3],
+     ['Design & Creative', 4],
 
-     ['IT & Networking', 'IT & Networking'],
-     %w[Legal Legal],
-     ['Sales & Marketing', 'Sales & Marketing'],
+     ['IT & Networking', 5],
+     ['Legal', 6],
+     ['Sales & Marketing', 7],
 
-     ['Web, Mobile & Software Dev', 'Web, Mobile & Software Dev'],
-     %w[Writing Writing]]
+     ['Web, Mobile & Software Dev', 8],
+     ['Writing', 9]]
   end
 
   def search_type(type)
@@ -37,8 +37,24 @@ module ApplicationHelper
     Bid.where('(aasm_state =? and freelancer_id =?)', 'awarded', user.id).count
   end
 
+  def any_bids?(user)
+    Bid.where(freelancer: user).try(:count) > 0
+  end
+
+  def total_bids_by_user?(user)
+    user.bids.count
+  end
+
   def average_bid_value(user)
     Bid.where(freelancer_id: user.id).average(:value).to_i
+  end
+
+  def maximum_bid_by_user(user)
+    Bid.where(freelancer_id: user.id).maximum('value') || 0
+  end
+
+  def minimum_bid_by_user(user)
+    Bid.where(freelancer_id: user.id).minimum('value') || 0
   end
 
   def user_freelancer?(user)
@@ -47,5 +63,31 @@ module ApplicationHelper
 
   def total_bids_by_freelancer?(_bid)
     Bid.where(freelancer: current_user).count
+  end
+
+  def user_client?(user)
+    user.try(:role) == 'client'
+  end
+
+  def authorized_only_to_clients
+    flash[:alert] = 'only clients are authorized to use this page'
+    redirect_to root_path
+  end
+
+  def authorized_only_to_freelancers
+    flash[:alert] = 'only freelancers are authorized to use this page'
+    redirect_to root_path
+  end
+
+  def limit_characters(string)
+    string.length > 70 ? "#{string.from(0).to(70)}...." : string
+  end
+
+  def max_bid(project)
+    project.bids.maximum('value')
+  end
+
+  def avg_bid(project)
+    project.bids.average('value')
   end
 end

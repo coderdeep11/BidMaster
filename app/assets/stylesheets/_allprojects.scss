@@ -15,17 +15,9 @@ h2 {
 }
 .projects {
   background-color: white;
-
   display: block;
-  overflow: scroll;
-  height: 100%;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    width: 0;
-  }
   list-style-type: none;
   transition: transform 0.7s;
-
   .project {
     border: 1px solid $border-color;
     border-top: none;
@@ -73,29 +65,6 @@ h2 {
         word-spacing: 2px;
         font-weight: 600;
         line-height: 16px;
-        quotes: "“" "”" "‘" "’";
-        &::before {
-          content: open-quote;
-          display: inline;
-          height: 0;
-          line-height: 0;
-          left: 0px;
-          position: relative;
-          top: 0px;
-          color: #000;
-          font-size: 1rem;
-        }
-        &::after {
-          content: close-quote;
-          display: inline;
-          height: 0;
-          line-height: 0;
-          left: 0px;
-          position: relative;
-          top: 0px;
-          color: #000;
-          font-size: 1rem;
-        }
       }
       .total__bids-on-project {
         font-weight: 600;

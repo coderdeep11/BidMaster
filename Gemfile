@@ -23,13 +23,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+ gem 'image_processing', '~> 1.2'
 gem 'inline_svg'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'aasm'
 gem 'after_commit_everywhere', '~> 0.1', '>= 0.1.5'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'image_processing'
+
 gem 'rails_admin', '~> 2.0'
 gem 'ransack'
 gem 'tabs_on_rails'

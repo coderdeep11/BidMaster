@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :profile_image
-  validates :role, presence: true, unless: :user_not_admin?
+  validates :role, presence: true, unless: :user_admin?
   validates :name, presence: true
   has_many :notifications, dependent: :destroy
   has_one :freelancer_info, foreign_key: :freelancer_id, dependent: :destroy
@@ -22,5 +22,13 @@ class User < ApplicationRecord
 
   def role_changed
     UserRoleSwitchedJob.perform_later(self, changed_attributes[:role]) unless changed_attributes[:role].nil?
+  end
+
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    approved? ? super : :not_approved
   end
 end

@@ -1,18 +1,27 @@
-<div class="user__picture">
+<div class="user__picture-<%=user.role%>">
   <%=inline_svg_tag 'default_avatar.svg'%>
 </div>
 <ul class="user__profile">
   <li class="user__name">
     <%=user.name%>
     <div class="category">
-      <%=user.freelancer_info.try(:cateogory)%>
+      <%=user.freelancer_info.try(:category)%>
+      <%=user.role unless user_freelancer?(user)%>
     </div>
   </li>
   <li>
-    <ul class="details__tab">
-      <li class="about__me-tab"><%=link_to 'about' ,  freelancer_about_me_path(user),remote: true%></li>
-      <li class="user__experience-tab"><%=link_to 'experience' , current_user.try(:role) =="client" ? client_experience_path(user) : freelancer_experience_path(user),remote: true%></li>
-      <li class="user__details-tab"><%=link_to 'details' , freelancer_details_path(user),remote: true%></li>
+    <ul class="details__tab-<%=user.role%>">
+      <li class="user__experience-tab" data-tab="0">
+        <% if user_client?(user) %>
+          <%=link_to 'projects' , client_experience_path(user),remote: true %>
+        <% else %>
+          <%=link_to 'bids' ,freelancer_experience_path(user) ,remote: true %>
+        <% end %>
+      </li>
+      <li class="user__details-tab" data-tab="1"><%=link_to 'details' , freelancer_details_path(user),remote: true%></li>
+      <% if user_freelancer?(user) %>
+        <li class="about__me-tab" data-tab="2"><%=link_to 'about' ,  freelancer_about_me_path(user),remote: true%></li>
+      <% end %>
     </ul>
   </li>
   <li class="welcome">
@@ -21,15 +30,15 @@
   <li class="user__analytics">
     <div class="total__projects">
       <div> <%=total_projects_done(user)%></div>
-      <span>Projects </span>
+      <span>Projects Awarded </span>
     </div>
     <div class="rating">
       <div>   3.6</div>
       <span>  Rating</span>
     </div>
     <div class="total__bids">
-      <div><%=average_bid_value(user)%></div>
-      <span> Avg. Bid </span>
+      <div>$<%=average_bid_value(user)%></div>
+      <span> Avg.Bid </span>
     </div>
   </li>
 </ul>
