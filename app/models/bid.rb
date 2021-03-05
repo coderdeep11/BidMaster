@@ -2,8 +2,8 @@ class Bid < ApplicationRecord
   belongs_to :project
   belongs_to :freelancer, class_name: 'User', inverse_of: :bids
   has_many :notifications, dependent: :destroy
-  validates :value, presence: { message: "can't be nil! " }, numericality: { less_than_or_equal_to: 1000, greater_than_or_equal_to: 30, only_integer: true, message: '  must be between $30 and $1000' }
-  validates :proposal, length: { in: 50..400, message: 'proposal should be within 50-400 words' }
+  validates :value, presence: { message: "*can't be nil! " }, numericality: { less_than_or_equal_to: 1000, greater_than_or_equal_to: 30, only_integer: true, message: '  must be between $30 and $1000' }
+  validates :proposal, length: { in: 50..400, message: '*should be within 50-400 words' }
 
   validates :freelancer_id, uniqueness: { scope: :project_id, message: 'you already placed a bid' }
 

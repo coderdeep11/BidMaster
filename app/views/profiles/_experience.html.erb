@@ -1,18 +1,38 @@
 <li class="user__experience">
-  <% if authenticate_profile(user) %>
-    <%if total_projects_done(user) > 0 %>
-      projects
+  <% if user_client?(user) %>
+    <% if user.projects.count > 0 %>
+      <ol class="projects__record">
+        <%user.projects.each do |project|%>
+          <li>
+            <%=link_to project.title,project_path(project)%>
+          </li>
+        <%end%>
+      </ol>
     <% else %>
       <div class="no__experience">
         <%=inline_svg_tag 'project.svg'%>
-        <span> Start bidding on projects </span>
+        <span> Start Posting projects </span>
       </div>
     <% end %>
   <% else %>
-    <%if total_projects_done(user) > 0 %>
-      projects
+    <%if any_bids?(user) %>
+      <ol class="bids__record">
+        <%user.bids.each do |bid|%>
+          <li>
+            <%=link_to limit_characters(bid.proposal) ,project_path(bid.project)%>
+            <span>$<%=bid.value%>/hr</span>
+          </li>
+        <%end%>
+      </ol>
     <% else %>
-      <%=render 'nodata'%>
+      <% if authenticate_profile(user) %>
+        <div class="no__experience">
+          <%=inline_svg_tag 'project.svg'%>
+          <span> Start bidding on projects </span>
+        </div>
+      <% else %>
+        <%=render 'nodata'%>
+      <% end %>
     <% end %>
   <% end %>
 </li>

@@ -16,9 +16,18 @@ RailsAdmin.config do |config|
       field :name
       field :email
       field :role
+      field :approved
       field :admin
     end
   end
+
+  config.model 'Conversation' do
+    visible false
+  end
+  config.model 'Bid' do
+    parent 'Project'
+  end
+
   ## == CancanCan ==
   # config.authorize_with :cancancan
 

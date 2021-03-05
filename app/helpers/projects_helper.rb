@@ -12,11 +12,5 @@ module ProjectsHelper
     end
   end
 
-  def max_bid(project)
-    project.bids.maximum('value')
-  end
-
-  def avg_bid(project)
-    project.bids.average('value')
-  end
+ 
 end

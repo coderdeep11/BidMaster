@@ -7,8 +7,7 @@ module Projects
       if user_freelancer?(current_user)
         @bids = Bid.where(freelancer_id: current_user.id)
       else
-        flash[:alert] = 'Not authorized!'
-        redirect_to root_path
+        authorized_only_to_freelancer
       end
     end
 
@@ -22,8 +21,8 @@ module Projects
 
       if @bid.save
         flash[:notice] = 'Successfully placed a bid'
-        redirect_to root_path(@project)
-      elsif !user_freelancer?(current_user)
+        redirect_to root_path
+      elsif user_client?(current_user)
         flash[:alert] = 'Become a freelancer to bid on projects'
         redirect_to root_path
       end

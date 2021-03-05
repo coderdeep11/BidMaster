@@ -5,9 +5,7 @@ window.addEventListener("turbolinks:load", (e) => {
   let navbar = document.querySelector("nav");
   /*******/
   /**event listeners */
-  userAvatar?.addEventListener("click", function () {
-    userAvatar?.children[1].click();
-  });
+
   conversations?.addEventListener("click", (e) => {
     conversation = e.target.closest(".conversation");
 

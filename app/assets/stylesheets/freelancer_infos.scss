@@ -9,12 +9,6 @@ $border-color: rgb(214, 210, 210);
   max-width: 650px;
   padding: 1rem 0 1rem;
   transition: transform 0.6s;
-  overflow: scroll;
-  max-height: 90vh;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    width: 0;
-  }
   @import "allprojects";
 }
 

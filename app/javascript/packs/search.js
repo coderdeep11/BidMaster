@@ -15,6 +15,7 @@ window.addEventListener("turbolinks:load", () => {
 
         data.id.map((model, i) => {
           contactSelect.options[i] = new Option(model);
+          contactSelect.options[i].value = model;
         });
       });
   };

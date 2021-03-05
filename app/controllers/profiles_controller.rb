@@ -8,10 +8,14 @@ class ProfilesController < ApplicationController
 
   def view_freelancer
     if @freelancer.nil?
-      @freelancer = current_user
       flash[:alert] = 'no-freelancer-exists'
-      redirect_to user_freelancer?(current_user) ? freelancer_path(current_user) : client_path(current_user)
+      if current_user
+        @freelancer = current_user
+        redirect_to user_freelancer?(current_user) ? freelancer_path(current_user) : client_path(current_user)
 
+      else
+        redirect_to root_path
+      end
     end
   end
 

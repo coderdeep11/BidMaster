@@ -1,4 +1,8 @@
 <li class="user__bio">
+  <div class="joined_on">
+    <i class="fas fa-calendar-check"></i>
+    joined <%=distance_of_time_in_words_to_now(user.created_at)%> ago
+  </div>
   <% if authenticate_profile(user) %>
     <%if user.freelancer_info.try(:bio) %>
       <%=user.freelancer_info.try(:bio)%>

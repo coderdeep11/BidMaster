@@ -39,22 +39,23 @@
               <%end%>
             </li>
           <% end %>
-          <li class="conversations__dropdown">
-            <%=link_to  conversations_path ,remote: true do%>
-              <i class="fad fa-envelope"></i>
-            <%end%>
-          </li>
-          <li class="notifications__dropdown">
-            <%=link_to  notifications_path,remote: true do%>
-              <i class="fad fa-bell"></i>
-            <%end%>
-          </li>
-          <li>
-            <div class="user__avatar">
-              <%=image_tag user_image(current_user.id)%>
-              <%=link_to'', dropdown_profile_path,remote: true%>
-            </div>
-          </li>
+          <%if user_freelancer?(current_user) || user_client?(current_user)%>
+            <li class="conversations__dropdown">
+              <%=link_to  conversations_path ,remote: true do%>
+                <i class="fad fa-envelope"></i>
+              <%end%>
+            </li>
+            <li class="notifications__dropdown">
+              <%=link_to  notifications_path,remote: true do%>
+                <i class="fad fa-bell"></i>
+              <%end%>
+            </li>
+            <li class="user__avatar">
+              <%=link_to dropdown_profile_path,remote: true do%>
+                <%=image_tag user_image(current_user.id)%>
+              <% end %>
+            </li>
+          <%end%>
         <%else%>
           <li>
             <%=link_to 'Login',new_user_session_path,class:'btn-primary'%>
