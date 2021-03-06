@@ -36,7 +36,15 @@ class ProfilesController < ApplicationController
 
   def about; end
 
-  def experience; end
+  def experience
+    @projects = Project.where(client: @user).order('created_at DESC').page(params[:page]).per(10)
+
+    @bids = Bid.where(freelancer: @user).order('updated_at DESC').page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.js
+    end
+  end
 
   def details; end
 

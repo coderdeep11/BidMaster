@@ -8,9 +8,5 @@ currentTab = document.querySelector(".user__experience-tab");
 if (document.querySelector(".welcome"))
 document.querySelector(".welcome").remove();
 document
-.querySelector(".user__analytics")
-.insertAdjacentHTML("beforebegin", `<%=j render 'experience',user: @user %>`);
-t=setTimeout(() => {
-document.querySelector(".user__experience").classList.add("slide__in");
-clearTimeout(t);
-}, 100);
+.querySelector(".user__analytics-<%=@user.role%>")
+.insertAdjacentHTML("beforebegin", `<%=j render 'experience',{user: @user,projects: @projects,bids: @bids} %>`);

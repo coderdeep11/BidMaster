@@ -3,7 +3,7 @@ class FreelancerInfosController < ApplicationController
 
   def index
     if user_freelancer?(current_user)
-      @projects = Project.all
+      @projects = Project.all.order('created_at desc').page(params[:page]).per(5)
     else
       flash[:alert] = 'not authorized'
       redirect_to root_path

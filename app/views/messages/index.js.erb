@@ -3,11 +3,13 @@ conversations.insertAdjacentHTML(
   "beforeend",
   `<%= j render partial: "messages",locals:{ messages: @messages,conversation: @conversation,messages: @message} %>`
 );
+conversations.setAttribute("style", "overflow:hidden");
 t = setTimeout(function () {
   document.querySelector(".messages__modal").classList.add("slideIn");
   clearTimeout(t);
 }, 100);
 document.querySelector(".close__messages").addEventListener("click", () => {
+  conversations.setAttribute("style", "overflow:scroll");
   document.querySelector(".messages__modal").classList.remove("slideIn");
   t = setTimeout(function () {
     document.querySelector(".messages__modal").remove();

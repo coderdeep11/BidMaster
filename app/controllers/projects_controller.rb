@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy]
   def index
     if user_client?(current_user)
-      @projects = Project.where(client: current_user)
+      @projects = Project.where(client: current_user).order('created_at desc').page(params[:page]).per(10)
     else
       authorized_only_to_clients
     end

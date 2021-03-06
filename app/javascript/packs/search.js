@@ -8,7 +8,7 @@ window.addEventListener("turbolinks:load", () => {
 
   /**api to fetch sub categories related to job */
   let fetchCategories = (contactSelect, e) => {
-    fetch(`/job_categories/${e.target.value}.json`)
+    fetch(`/job_categories/${e.target.selectedIndex - 1}.json`)
       .then((response) => response.json())
       .then((data) => {
         contactSelect.innerHTML = "";

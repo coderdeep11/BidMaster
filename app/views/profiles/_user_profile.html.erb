@@ -27,18 +27,33 @@
   <li class="welcome">
     <%=inline_svg_tag 'welcome.svg'%>
   </li>
-  <li class="user__analytics">
+  <li class="user__analytics-<%=user.role%>">
     <div class="total__projects">
-      <div> <%=total_projects_done(user)%></div>
-      <span>Projects Awarded </span>
+      <%if user_freelancer?(user)%>
+        <div> <%=total_projects_done(user)%></div>
+        <span>Projects Awarded </span>
+      <%else%>
+        <div> <%=total_projects_posted(user)%></div>
+        <span>Projects Posted </span>
+      <% end %>
     </div>
-    <div class="rating">
-      <div>   3.6</div>
-      <span>  Rating</span>
+    <div class="hired">
+      <%if user_freelancer?(user)%>
+        <div> <%=total_projects_done(user)%></div>
+        <span>  Hired by clients</span>
+      <% else %>
+        <div> <%=total_projects_awarded(user)%></div>
+        <span>  Hired freelancers</span>
+      <% end %>
     </div>
-    <div class="total__bids">
-      <div>$<%=average_bid_value(user)%></div>
-      <span> Avg.Bid </span>
+    <div class="avg-bid">
+      <%if user_freelancer?(user)%>
+        <div>$<%=average_bid_value(user)%></div>
+        <span> Avg.Bid </span>
+      <% else %>
+        <div><%=count_total_proposals(user)%></div>
+        <span> Total proposals </span>
+      <% end %>
     </div>
   </li>
 </ul>

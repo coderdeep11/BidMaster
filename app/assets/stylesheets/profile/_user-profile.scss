@@ -195,10 +195,9 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
     word-spacing: 2px;
     padding: 0 1rem;
     transition: all 0.2s;
-    opacity: 0;
+
     position: relative;
-    width: 0%;
-    transform: translateX(100%);
+    width: 100%;
     &::-webkit-scrollbar {
       width: 0;
     }
@@ -234,10 +233,15 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
         display: flex;
         transition: all 0.5s;
         a {
-          font-size: 0.85rem;
           color: black;
           text-decoration: none;
           flex: 1 1 70%;
+          font-weight: 500;
+          font-size: 1.1rem;
+          line-height: 1.2rem;
+          font-family: "quicksand", serif;
+          word-spacing: 3px;
+          min-height: 40px;
           &:hover {
             color: green;
             text-decoration: underline;
@@ -245,11 +249,26 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
           }
         }
         span {
-          font-size: 0.9rem;
+          position: relative;
+          font-size: 1.3rem;
           text-align: center;
           position: relative;
           flex: 1 1 10%;
-          color: #666;
+          font-weight: 300;
+          word-break: normal;
+          align-self: center;
+          &::after {
+            word-break: normal;
+            content: "Bid-value";
+            position: absolute;
+            width: 4rem;
+            height: 0;
+            bottom: 0rem;
+            font-size: 0.7rem;
+            right: -1.5rem;
+            transform: translateX(-50%);
+            text-align: center;
+          }
         }
         &:hover {
           background: rgb(245, 245, 245);
@@ -262,9 +281,18 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
         a {
           font-family: "Quicksand", serif;
           font-weight: 600;
-          font-size: 1.2rem;
+          font-size: 1rem;
           line-height: 1.3rem;
           word-spacing: 2px;
+        }
+        span {
+          font-size: 1.5rem;
+          &::after {
+            content: "proposals";
+            right: 50%;
+            width: 1rem;
+            transform: translateX(-50%);
+          }
         }
       }
     }
@@ -276,6 +304,13 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
     text-align: center;
     justify-content: center;
     align-items: center;
+    .joined_on-client {
+      position: absolute;
+      top: 0;
+      right: 0.5rem;
+      color: #353535;
+      margin-bottom: 0.4rem;
+    }
     .user__statistics {
       width: 100%;
       padding-top: 1rem;
@@ -300,7 +335,8 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
   }
 }
 
-.user__analytics {
+.user__analytics-freelancer,
+.user__analytics-client {
   display: flex;
   text-align: center;
   width: 100%;
@@ -345,5 +381,14 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
     left: 0;
     top: 0rem;
     transform: translateX(0%);
+  }
+}
+.user__analytics-client {
+  & > div {
+    div {
+      &::after {
+        border: 2px solid #3971da;
+      }
+    }
   }
 }

@@ -1,9 +1,16 @@
 <li class="user__details">
-  <div class="user__statistics">
-    <span> Total Bids: <%= total_bids_by_user?(user)%></span>
-    <span>  Project Awarded: <%=total_projects_done(user)%></span>
-    <span>  Avg. Bid  $<%=average_bid_value(user)%></span>
-    <span>  Max. Bid  $<%=maximum_bid_by_user(user)%></span>
-    <span>  Min. Bid  $<%=minimum_bid_by_user(user)%></span>
-  </div>
+  <%if user_client?(user)%>
+    <div class="joined_on-client">
+      <i class="fas fa-calendar-check"></i>
+      joined <%=distance_of_time_in_words_to_now(user.created_at)%> ago
+    </div>
+  <% else %>
+    <div class="user__statistics">
+      <span> Total Bids: <%= total_bids_by_user?(user)%></span>
+      <span>  Project Awarded: <%=total_projects_done(user)%></span>
+      <span>  Avg. Bid  $<%=average_bid_value(user)%></span>
+      <span>  Max. Bid  $<%=maximum_bid_by_user(user)%></span>
+      <span>  Min. Bid  $<%=minimum_bid_by_user(user)%></span>
+    </div>
+  <% end %>
 </li>

@@ -211,10 +211,35 @@ $font-quicksand: "Quicksand", serif;
 }
 
 /////////////////////////////////
+.pagination__buttons {
+  display: flex;
+  a {
+    font-family: $font-comfortaa;
+    font-weight: 700;
+    padding: 0.7rem 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    background: #37a000;
+    color: white;
+    font-size: 0.8rem;
+    transition: all 0.5s;
+    width: 95px;
+    text-align: center;
+    &:hover {
+      background: #2c7a02;
+    }
+  }
+  .prv__btn {
+    margin: 1rem;
+  }
+  .nxt__btn {
+    margin: 1rem 1rem 1rem auto;
+  }
+}
 .client__feed,
 .bid__history {
   max-width: 600px;
-  padding: 1rem 0 1rem;
+  padding: 1rem 0 4rem;
   transition: transform 0.6s;
 
   .projects__heading,

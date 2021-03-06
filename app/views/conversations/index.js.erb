@@ -1,9 +1,7 @@
 conversations = document.querySelector(".conversations__dropdown");
 conversations__modal = document.querySelector(".conversations__modal");
 if (conversations__modal) conversations__modal.remove();
-else {
 conversations.insertAdjacentHTML(
 "beforeend",
-`<%= j render partial: "conversations__modal",locals:{ conversations: @conversations} %>`
+`<%= j render partial: "conversations__modal",locals:{ conversations: @paginatable_array} %>`
 );
-}

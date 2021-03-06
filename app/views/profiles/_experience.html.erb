@@ -2,12 +2,19 @@
   <% if user_client?(user) %>
     <% if user.projects.count > 0 %>
       <ol class="projects__record">
-        <%user.projects.each do |project|%>
+        <%projects.each do |project|%>
           <li>
             <%=link_to project.title,project_path(project)%>
+            <span>
+              <%=project.bids.count%>
+            </span>
           </li>
         <%end%>
       </ol>
+      <div class="pagination__buttons">
+        <%= link_to_previous_page projects, 'Previous',class: 'prv__btn',remote: true %>
+        <%= link_to_next_page projects, 'Next ' ,class: 'nxt__btn',remote: true%>
+      </div>
     <% else %>
       <div class="no__experience">
         <%=inline_svg_tag 'project.svg'%>
@@ -17,13 +24,19 @@
   <% else %>
     <%if any_bids?(user) %>
       <ol class="bids__record">
-        <%user.bids.each do |bid|%>
+        <%bids.each do |bid|%>
           <li>
             <%=link_to limit_characters(bid.proposal) ,project_path(bid.project)%>
-            <span>$<%=bid.value%>/hr</span>
+            <span>
+              $<%=bid.value%>
+            </span>
           </li>
         <%end%>
       </ol>
+      <div class="pagination__buttons">
+        <%= link_to_previous_page bids, 'Previous',class: 'prv__btn',remote: true %>
+        <%= link_to_next_page bids, 'Next ' ,class: 'nxt__btn',remote: true%>
+      </div>
     <% else %>
       <% if authenticate_profile(user) %>
         <div class="no__experience">

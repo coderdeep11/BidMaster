@@ -13,4 +13,8 @@
       You have no notifications
     </div>
   <% end %>
+  <div class="pagination__buttons">
+    <%= link_to_previous_page notifications, 'Previous ',class:'prv__btn',remote: true %>
+    <%= link_to_next_page notifications, 'Next ',class:'nxt__btn',remote: true %>
+  </div>
 </ul>
