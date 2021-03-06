@@ -10,11 +10,7 @@
             Experience: <%=project.experience%>
           </li>
           <li class="project__description">
-            <% if project.description.length >240 %>
-              <%=project.description.from(0).to(220)%><b>....</b>
-            <% else %>
-              <%=project.description%>
-            <% end %>
+            <%=project.description%>
           </li>
           <li class="total__bids-on-project">
             Total bids: <%=project.bids.count%>

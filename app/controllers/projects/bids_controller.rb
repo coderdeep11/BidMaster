@@ -5,7 +5,7 @@ module Projects
     before_action :authenticate_user!, only: [:history]
     def history
       if user_freelancer?(current_user)
-        @bids = Bid.where(freelancer_id: current_user.id)
+        @bids = Bid.where(freelancer_id: current_user.id).page(params[:page]).per(10)
       else
         authorized_only_to_freelancer
       end

@@ -8,9 +8,5 @@ if (document.querySelector(".welcome"))
 document.querySelector(".welcome").remove();
 currentTab = document.querySelector(".about__me-tab");
 document
-.querySelector(".user__analytics")
+.querySelector(".user__analytics-<%=@user.role%>")
 .insertAdjacentHTML("beforebegin", `<%=j render 'about-me' ,user: @user%>`);
-t = setTimeout(() => {
-document.querySelector(".user__bio").classList.add("slide__in");
-clearTimeout(t);
-}, 100);

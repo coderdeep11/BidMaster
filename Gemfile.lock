@@ -286,6 +286,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   inline_svg
   jbuilder (~> 2.7)
+  kaminari
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)

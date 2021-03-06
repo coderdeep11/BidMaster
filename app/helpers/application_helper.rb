@@ -9,16 +9,10 @@ module ApplicationHelper
   end
 
   def all_categories
-    [['Accounting & Consulting', 0], ['Admin Support', 1], ['Customer Service', 2],
-     ['Data Science & Analytics', 3],
-     ['Design & Creative', 4],
-
-     ['IT & Networking', 5],
-     ['Legal', 6],
-     ['Sales & Marketing', 7],
-
-     ['Web, Mobile & Software Dev', 8],
-     ['Writing', 9]]
+    categories = ['Accounting & Consulting', 'Admin Support', 'Customer Service', 'Data Science & Analytics',
+                  'Design & Creative', 'IT & Networking',
+                  'Legal', 'Sales & Marketing', 'Web, Mobile & Software Dev', 'Writing']
+    categories.each_with_index.map { |i, j| [i, i] }
   end
 
   def search_type(type)
@@ -31,6 +25,26 @@ module ApplicationHelper
 
   def current_path(url)
     request.path == url
+  end
+
+  def total_projects_posted(user)
+    user.projects.count
+  end
+
+  def count_total_proposals(user)
+    Project.where(client: user).joins(:bids).count
+  end
+
+  def total_projects_awarded(user)
+    Project.where(client: user).joins(:bids).where(bids: { aasm_state: 'awarded' }).count
+  end
+
+  def total_proposals_accepted(user)
+    Project.where(client: user).joins(:bids).where(bids: { aasm_state: 'accepted' }).count
+  end
+
+  def total_proposals_rejected(user)
+    Project.where(client: user).joins(:bids).where(bids: { aasm_state: 'rejected' }).count
   end
 
   def total_projects_done(user)

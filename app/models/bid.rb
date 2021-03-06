@@ -2,9 +2,9 @@ class Bid < ApplicationRecord
   belongs_to :project
   belongs_to :freelancer, class_name: 'User', inverse_of: :bids
   has_many :notifications, dependent: :destroy
-  validates :value, presence: { message: "*can't be nil! " }, numericality: { less_than_or_equal_to: 1000, greater_than_or_equal_to: 30, only_integer: true, message: '  must be between $30 and $1000' }
+  validates :value, presence: { message: "*can't be nil! " }, numericality: { less_than_or_equal_to: 500, greater_than_or_equal_to: 30, only_integer: true, message: '  must be between $30 and $500' }
   validates :proposal, length: { in: 50..400, message: '*should be within 50-400 words' }
-
+  validate :proposal_words_within_limit?
   validates :freelancer_id, uniqueness: { scope: :project_id, message: 'you already placed a bid' }
 
   after_create :send_notifications_to_client
@@ -25,6 +25,11 @@ class Bid < ApplicationRecord
     event :reject do
       transitions from: %i[unapproved], to: :rejected, after: :send_notifications_to_freelancer
       transitions from: :accepted, to: :rejected
+    end
+  end
+  def proposal_words_within_limit?
+    unless proposal.nil?
+      errors.add(:proposal, 'proposal should contain atleast 10 words') unless proposal.split(' ').length > 10
     end
   end
 

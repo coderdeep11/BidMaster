@@ -8,9 +8,5 @@ currentTab = document.querySelector(".user__details-tab");
 if (document.querySelector(".welcome"))
 document.querySelector(".welcome").remove();
 document
-.querySelector(".user__analytics")
+.querySelector(".user__analytics-<%=@user.role%>")
 .insertAdjacentHTML("beforebegin", `<%=j render 'details',user: @user %>`);
-t = setTimeout(() => {
-document.querySelector(".user__details").classList.add("slide__in");
-clearTimeout(t);
-}, 100);

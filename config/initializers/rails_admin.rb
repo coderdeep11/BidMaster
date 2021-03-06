@@ -13,6 +13,7 @@ RailsAdmin.config do |config|
 
   config.model 'User' do
     list do
+      field :id
       field :name
       field :email
       field :role
