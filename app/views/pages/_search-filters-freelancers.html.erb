@@ -1,18 +1,22 @@
 <div class="search__filters">
-  <div>
+  <div class="search__category">
     <%= f.label :freelancer_info_category_eq,'Category' %>
-    <br/>
-    <%= f.select(:freelancer_info_category_eq, all_categories, include_blank: 'Choose any') %>
+    <%= f.select :freelancer_info_category_eq, all_categories, include_blank: 'Choose any' %>
   </div>
-  <div class="field mb-2">
+  <div class="search__subcateogory">
     <%= f.label :freelancer_info_subcategory_eq,'Subcategory' %>
-    <br/>
     <%= f.select(:freelancer_info_subcategory_eq, [], include_blank: 'Choose any') %>
   </div>
-  <div>
+  <div class="search__experience">
     <%= f.label :freelancer_info_experience_eq, 'Experience'%>
     <div class="experience__level"><%= f.radio_button :freelancer_info_experience_eq, 'Entry Level'%>Entry Level</div>
     <div class="experience__level"> <%= f.radio_button :freelancer_info_experience_eq, 'Intermediate'%> Intermediate</div>
     <div class="experience__level"> <%= f.radio_button :freelancer_info_experience_eq, 'Expert'%> Expert</div>
+  </div>
+  <div class="toggle__filter">
+    <%= button_tag 'submit',class: ' search__btn'   %>
+  </div>
+  <div class="close__filter">
+    <i class="fal fa-times"></i>
   </div>
 </div>

@@ -8,8 +8,14 @@
     <%= button_tag class: ' search__btn'   do%>
       <i class="far fa-search"></i>
     <%end%>
+    <div class="filters">
+      <%=inline_svg_tag 'filter.svg'%>
+    </div>
     <%= link_to  request.path, class: "reset__btn" do%>
-      <i class="fal fa-trash-alt"></i>
+      <i class="fal fa-times"></i>
     <% end %>
   <% end %>
+  <div class="filter__parameters">
+    <%= link_to  'Clear Filters',request.path, class: "reset__btn" %>
+  </div>
 </div>

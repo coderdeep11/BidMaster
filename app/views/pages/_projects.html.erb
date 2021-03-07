@@ -8,5 +8,9 @@
     <% else %>
       <%= render 'search-results-projects',projects: projects %>
     <% end %>
+    <div class="pagination__buttons">
+      <%= link_to_previous_page projects, 'Previous',class: 'prv__btn' %>
+      <%= link_to_next_page projects, 'Next ' ,class: 'nxt__btn'%>
+    </div>
   <% end %>
 </div>

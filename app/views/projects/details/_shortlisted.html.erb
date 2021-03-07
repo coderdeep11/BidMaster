@@ -1,38 +1,50 @@
 <ul class="shortlisted__users">
-  <%shortlisted.each do|bid|%>
-    <li class="proposal">
-      <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
-      <ul>
-        <li>
-          <%=bid.freelancer.name%>
-          <%if bid.awarded?%>
-            <i class="fal fa-crown"></i>
-          <% end %>
-        </li>
-        <li>
-          <span>$<%=bid.value%>/hr</span>
-        </li>
-        <li>
-          <span>Proposal: </span>
-          <%=bid.proposal.from(0).to(250)%>
-        </li>
-        <li class="time">
-          <%=distance_of_time_in_words_to_now(bid.updated_at)%>
-        </li>
-      </ul>
-      <div class="bid__status">
-        <%unless bid.awarded? || project_awarded?%>
-          <%= link_to "award project", award_project_bid_path(bid.project,bid),method: :put %>
-          <% if Conversation.between(bid.project.client.id,bid.freelancer.id ).present?%>
-            <%=link_to ' Message',conversation_messages_path(Conversation.between(bid.project.client.id,bid.freelancer.id).first)%>
-          <% else %>
-            <%=link_to 'Message',conversations_path(sender_id:bid.project.client.id,
+  <% if shortlisted.count.zero? %>
+    <div class="no__data">
+      <%=inline_svg_tag 'nodata.svg'%>
+      no data
+    </div>
+  <% else %>
+    <%shortlisted.each do|bid|%>
+      <li class="proposal">
+        <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+        <ul>
+          <li>
+            <%=bid.freelancer.name%>
+          </li>
+          <li>
+            <span>Bid: $<%=bid.value%>/hr</span>
+          </li>
+          <li>
+            <span>Proposal: </span>
+            <p> <%=bid.proposal%></p>
+          </li>
+          <li class="time">
+            <%=distance_of_time_in_words_to_now(bid.updated_at)%>
+          </li>
+        </ul>
+        <div class="bid__status">
+          <%if  !project_awarded?(bid.project) && !bid.awarded? %>
+            <%= link_to "award project", award_project_bid_path(bid.project,bid),method: :put %>
+            <% if Conversation.between(bid.project.client.id,bid.freelancer.id ).present?%>
+              <%=link_to ' Message',conversation_messages_path(Conversation.between(bid.project.client.id,bid.freelancer.id).first)%>
+            <% else %>
+              <%=link_to 'Message',conversations_path(sender_id:bid.project.client.id,
           recipient_id:bid.freelancer.id ),method: :post%>
-          <% end %>
-        <%else%>
-          <span class="stamp is-<%=bid.aasm_state%>"><%=bid.aasm_state%></span>
-        <%end%>
-      </div>
-    </li >
-  <%end%>
+            <% end %>
+          <%elsif bid.awarded?%>
+            <span class="stamp is-<%=bid.aasm_state%>"><%=bid.aasm_state%></span>
+            <% if Conversation.between(bid.project.client.id,bid.freelancer.id ).present?%>
+              <%=link_to ' Message',conversation_messages_path(Conversation.between(bid.project.client.id,bid.freelancer.id).first),class:'message'%>
+            <% else %>
+              <%=link_to 'Message',conversations_path(sender_id:bid.project.client.id,
+          recipient_id:bid.freelancer.id ),class:'message',method: :post%>
+            <% end %>
+          <% else %>
+            <span class="stamp is-<%=bid.aasm_state%>"><%=bid.aasm_state%></span>
+          <%end%>
+        </div>
+      </li >
+    <%end%>
+  <% end %>
 </ul>

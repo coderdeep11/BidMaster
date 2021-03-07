@@ -239,7 +239,7 @@ $font-quicksand: "Quicksand", serif;
 .client__feed,
 .bid__history {
   max-width: 600px;
-  padding: 1rem 0 4rem;
+  padding: 1rem 0 1rem;
   transition: transform 0.6s;
 
   .projects__heading,
@@ -313,6 +313,7 @@ $font-quicksand: "Quicksand", serif;
         gap: 1rem;
         .project__title {
           display: flex;
+          position: relative;
           a {
             display: block;
             text-decoration: none;
@@ -324,15 +325,47 @@ $font-quicksand: "Quicksand", serif;
             font-weight: 600;
             line-height: 1.4rem;
           }
-          i {
+          .project__dropdown-btn {
             flex: 1 1 20%;
             text-align: right;
             align-self: flex-start;
             font-size: 1.7rem;
             color: rgb(216, 216, 216);
             transition: color 0.5s;
+
             &:hover {
               color: #37a000;
+            }
+          }
+          .project__posted-dropdown {
+            right: 0;
+            top: 2rem;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+            height: 120px;
+            border: $border;
+            border-radius: 5px;
+            width: 200px;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            align-items: flex-start;
+            background: white;
+            z-index: 1;
+            li {
+              align-self: stretch;
+
+              a {
+                text-align: initial;
+                padding: 0 1rem;
+                font-size: 0.9rem;
+                color: rgb(32, 32, 32);
+              }
+              &:hover {
+                background: rgb(240, 240, 240);
+                align-self: stretch;
+              }
             }
           }
         }
@@ -376,7 +409,8 @@ $font-quicksand: "Quicksand", serif;
 
 ///Job-post Styles
 
-.project__modal {
+.project__modal,
+.project__post {
   transition: transform 0.6s;
   overflow: scroll;
   scrollbar-width: none;

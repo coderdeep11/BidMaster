@@ -3,13 +3,19 @@
     <%= render 'search_filters-projects' ,f: f %>
     <div class="search_bar">
       <%= f.label :action_text_rich_text_body_or_title_or_experience_cont,style:'display:none' %>
-      <%= f.search_field :action_text_rich_text_body_or_title_or_experience_cont, placeholder: "Search" %>
+      <%= f.search_field :action_text_rich_text_body_or_title_or_experience_cont, placeholder: "search projects " %>
     </div>
     <%= button_tag class: ' search__btn'   do%>
       <i class="far fa-search"></i>
     <%end%>
+    <div class="filters">
+      <%=inline_svg_tag 'filter.svg'%>
+    </div>
     <%= link_to  request.path, class: "reset__btn" do%>
-      <i class="fal fa-trash-alt"></i>
+      <i class="fal fa-times"></i>
     <% end %>
   <% end %>
+  <div class="filter__parameters">
+    <%= link_to  'Clear Filters',request.path, class: "reset__btn" %>
+  </div>
 </div>

@@ -1,9 +1,11 @@
 <%projects.each do|project|%>
   <li class="every__project">
     <ul>
-      <li class="project__title">
+      <li class="project__title " id= "dropdown__btn-<%=project.id%>">
         <%=link_to project.title,project_details_path(project)%>
-        <i class="fas fa-chevron-circle-up"></i>
+        <%=link_to  more_info_project_path(project),class:"project__dropdown-btn" , remote: true do%>
+          <i class="fas fa-chevron-circle-up"></i>
+        <% end %>
       </li>
       <li class="project__created-at-with-status">
         <div >

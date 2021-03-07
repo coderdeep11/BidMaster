@@ -22,3 +22,10 @@ document
 document.querySelector("#message_documents").addEventListener("change", (e) => {
   e.target.previousElementSibling.classList.add("attached");
 });
+document
+  .querySelector("#message_content")
+  ?.addEventListener("keypress", (e) => {
+    if (e.keyCode === 13) {
+      e.target.nextElementSibling.click();
+    }
+  });
