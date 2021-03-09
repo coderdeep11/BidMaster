@@ -1,3 +1,6 @@
+if (!document.querySelector(".notifications__modal")) {
+window.location.replace("/projects/<%=@project.id%>/details");
+}
 notification = document.querySelector(
 "#notification-<%=j @bid.notifications.first.id %>"
 );

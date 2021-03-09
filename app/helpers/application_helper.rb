@@ -12,7 +12,7 @@ module ApplicationHelper
     categories = ['Accounting & Consulting', 'Admin Support', 'Customer Service', 'Data Science & Analytics',
                   'Design & Creative', 'IT & Networking',
                   'Legal', 'Sales & Marketing', 'Web, Mobile & Software Dev', 'Writing']
-    categories.each_with_index.map { |i, j| [i, i] }
+    categories.each_with_index.map { |i, _j| [i, i] }
   end
 
   def search_type(type)
@@ -25,6 +25,10 @@ module ApplicationHelper
 
   def current_path(url)
     request.path == url
+  end
+
+  def project_awarded?(project)
+    Project.where(id: project.id).joins(:bids).where(bids: { aasm_state: 'awarded' }).empty? ? false : true
   end
 
   def total_projects_posted(user)
@@ -102,6 +106,28 @@ module ApplicationHelper
   end
 
   def avg_bid(project)
-    project.bids.average('value')
+    project.bids.average('value').to_i
+  end
+
+  def total_unread_messages
+    unread_messages = Conversation.where('sender_id = ? OR recipient_id= ? ', current_user.id, current_user.id).joins(:messages).where('messages.read = ? AND user_id !=?  ', false, current_user.id).count
+    if unread_messages > 9
+      '9+'
+    else
+      unread_messages
+    end
+  end
+
+  def total_unread_notifications
+    total_unread_notifications = Notification.where(user: current_user, read: false).count
+    if total_unread_notifications > 9
+      '9+'
+    else
+      total_unread_notifications
+    end
+  end
+
+  def freelancer_already_registered?
+    !FreelancerInfo.where(freelancer: current_user).empty?
   end
 end

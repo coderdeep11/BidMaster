@@ -4,13 +4,16 @@ $font: "Quicksand", serif;
 @mixin navigationArrow {
   content: "";
   position: absolute;
-  right: 0;
-  height: 50%;
-  background-color: rgb(160, 154, 154);
-  border-left: 1px solid rgb(160, 154, 154);
-  border-bottom: 1px solid transparent;
-  border-right: 1px solid rgb(160, 154, 154);
-  border-top: 1px solid transparent;
+  right: 1px;
+  height: 0;
+  width: 0;
+  border-top: 31px solid transparent;
+  border-bottom: 31px solid transparent;
+  border-left: 31px solid #37a000;
+  border-radius: 4px;
+  top: -1px;
+  transform: translateX(100%);
+  transition: all 0.5s;
 }
 @mixin noRecord {
   display: flex;
@@ -41,7 +44,8 @@ main {
     list-style-type: none;
     align-items: center;
     position: relative;
-    background: white;
+    background: #f1f2f4;
+    gap: 2rem;
     & > li {
       flex: 1;
       text-align: center;
@@ -49,39 +53,32 @@ main {
       height: 60px;
       font-size: 1.1rem;
       text-transform: capitalize;
-
+      border: 1px solid rgb(224, 220, 220);
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
       a {
         display: block;
         position: relative;
-
         text-decoration: none;
         color: black;
-        font-family: $font;
+        font-family: "Comfortaa", cursive;
+        font-size: 1.3rem;
         font-weight: 700;
-        border: 2px solid rgb(224, 220, 220);
+        background: #37a000;
+        color: white;
       }
     }
     .view__project-tab {
       border-right: none;
       a {
-        border-top-left-radius: 5px;
-        border-right: none;
-        &:before {
-          @include navigationArrow;
-          transform: skew(20deg) translateX(300%);
-        }
-        &:after {
+        transition: all 0.5s;
+        &::before {
           @include navigationArrow();
-          transform: skew(160deg) translateX(300%);
-          bottom: 0;
         }
         &:hover {
-          border: 2px solid #47c205;
-          border-right: none;
-          color: green;
-          &:after,
+          background: #2e7c04;
           &:before {
-            border: 1px solid #47c205;
+            border-left: 31px solid #2e7c04;
           }
         }
       }
@@ -89,19 +86,24 @@ main {
     .add__background-color {
       background: green;
     }
-
     .review__proposals-tab {
+      border-left: none;
       a {
-        border-top-right-radius: 5px;
-        border-left: none;
+        transition: all 0.5s;
+        &::after {
+          @include navigationArrow();
+          border-left: 30px solid #f1f2f4;
+          left: -1px;
+          transform: translateX(0%);
+        }
         &:hover {
-          border: 2px solid #47c205;
-          border-left: none;
+          background: #2e7c04;
         }
       }
     }
   }
   .project__post {
+    margin-top: 1rem;
     width: 100%;
     height: auto;
     line-height: normal;
@@ -113,7 +115,7 @@ main {
     z-index: -1;
     box-shadow: none;
     border: 1px solid #d6d2d2;
-    border-top: none;
+
     display: flex;
     .job__post-slider {
       margin: 0;
@@ -146,8 +148,9 @@ main {
     }
   }
   .review__proposals {
+    margin-top: 1rem;
     border: 1px solid #cec8c8;
-    border-top: none;
+
     background: white;
     .proposals-tab {
       width: 100%;
@@ -160,15 +163,7 @@ main {
       border-top: none;
       align-items: flex-end;
       gap: 3rem;
-      &::after {
-        content: "";
-        position: absolute;
-        background: green;
-        width: 25%;
-        height: 3px;
-        bottom: 0;
-        transition: all 0.5s;
-      }
+
       & > li {
         padding: 0.5rem 1rem;
         font-family: $font;
@@ -180,6 +175,27 @@ main {
         letter-spacing: 1px;
         font-family: $font;
         font-weight: 600;
+      }
+      .add__border-bottom {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          background: green;
+          width: 100%;
+          height: 3px;
+          bottom: 0;
+          left: 0;
+          animation: line 0.5s;
+        }
+        @keyframes line {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 100%;
+          }
+        }
       }
     }
     .no__data {
@@ -239,10 +255,18 @@ main {
           }
         }
         li:first-child {
-          font-size: 0.95rem;
-          color: green;
-          text-transform: capitalize;
           font-weight: 600;
+          a {
+            font-family: $font;
+            font-size: 1rem;
+            color: green;
+
+            text-transform: capitalize;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
         li:nth-child(2) {
           letter-spacing: 1px;
@@ -276,12 +300,13 @@ main {
           text-decoration: none;
           font-weight: 500;
           font-size: 1rem;
-          width: 120px;
+          width: 140px;
           border-radius: 5px;
           transition: all 0.6s;
         }
         .accept,
-        .message {
+        .message,
+        .award {
           &:hover {
             cursor: default;
             background: #2a7701;

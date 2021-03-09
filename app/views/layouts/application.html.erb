@@ -44,11 +44,21 @@
               <%=link_to  conversations_path ,remote: true do%>
                 <i class="fad fa-envelope"></i>
               <%end%>
+              <%if total_unread_messages != 0%>
+                <span class="unread-button__badge ">
+                  <%=total_unread_messages %>
+                </span>
+              <% end %>
             </li>
             <li class="notifications__dropdown">
               <%=link_to  notifications_path,remote: true do%>
                 <i class="fad fa-bell"></i>
               <%end%>
+              <%if total_unread_notifications != 0 %>
+                <span class="unread-button__badge ">
+                  <%=total_unread_notifications %>
+                </span>
+              <% end %>
             </li>
             <li class="user__avatar">
               <%=link_to dropdown_profile_path,remote: true do%>
@@ -58,7 +68,11 @@
           <%end%>
         <%else%>
           <li>
-            <%=link_to 'Login',new_user_session_path,class:'btn-primary'%>
+            <% if request.path == new_user_session_path %>
+              <%=link_to 'sign up',new_user_registration_path,class:'btn-primary'%>
+            <% else %>
+              <%=link_to 'Login',new_user_session_path,class:'btn-primary'%>
+            <% end %>
           </li>
         <%end%>
       </ul>
@@ -74,7 +88,5 @@
       </div>
     </div >
     <%= yield %>
-    <%= javascript_pack_tag 'login' %>
-    <%= javascript_pack_tag 'form' %>
   </body>
 </html>

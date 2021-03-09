@@ -1,7 +1,15 @@
 conversations = document.querySelector(".conversations__dropdown");
+notifications= document.querySelector(".notifications__dropdown")
+conversations.classList.add("active__tab");
+notifications?.classList.remove("active__tab");
 conversations__modal = document.querySelector(".conversations__modal");
 if (conversations__modal) conversations__modal.remove();
 conversations.insertAdjacentHTML(
 "beforeend",
 `<%= j render partial: "conversations__modal",locals:{ conversations: @paginatable_array} %>`
 );
+window.addEventListener("click",(e)=>{
+if(e.target.closest(".conversations__modal")) return;
+conversations?.classList.remove("active__tab");
+document.querySelector(".conversations__modal")?.remove();
+});

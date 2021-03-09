@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name role profile_image])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[name role profile_image])
   end
+
+  def after_sign_in_path_for(resource)
+    if resource.try(:role) == 'freelancer' && resource.try(:freelancer_info).nil?
+      new_freelancer_info_path
+    else
+      super
+    end
+  end
 end

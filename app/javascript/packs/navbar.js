@@ -17,15 +17,16 @@ window.addEventListener("turbolinks:load", (e) => {
     navElements.forEach((element) => {
       if (element !== currentTab) {
         let childrens = [...element.children];
-        let dropdown = childrens[1];
-        if (dropdown) dropdown.remove();
+        childrens.forEach((element) => {
+          if (element.nodeName == "UL") element.remove();
+        });
       }
     });
   };
 
   navbar.addEventListener("click", (e) => {
     let nav__element = e.target.closest("li"),
-      nav = nav__element?.parentElement.parentElement.nodeName;
+      nav = nav__element?.parentElement?.parentElement?.nodeName;
 
     if (!nav__element) return;
 

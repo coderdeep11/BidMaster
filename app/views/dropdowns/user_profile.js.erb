@@ -1,11 +1,14 @@
 if (document.querySelector(".user__profile-dropdown"))
-  document.querySelector(".user__profile-dropdown").remove();
+document.querySelector(".user__profile-dropdown").remove();
 document
-  .querySelector(".user__avatar")
-  .insertAdjacentHTML("beforeend", `<%= j render  "dropdown" %>`);
+.querySelector(".user__avatar")
+.insertAdjacentHTML("beforeend", `<%= j render  "dropdown" %>`);
 dropdown = document.querySelector(".user__profile-dropdown");
 dropdown.addEventListener("click", (e) => {
-  element = e.target.closest("li");
-  if (!element) return;
-  element.children[1].click();
+element = e.target.closest("li");
+if (!element) return;
+element.children[1].click();
 });
+window.addEventListener("click",(e)=>{
+document.querySelector(".user__profile-dropdown")?.remove();
+})

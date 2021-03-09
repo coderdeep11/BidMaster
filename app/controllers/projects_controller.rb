@@ -38,7 +38,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    unless authorize_project(@project)
+      flash[:alert] = 'access denied'
+      redirect_to root_path
+    end
+  end
 
   def update
     if @project.update(project_params)

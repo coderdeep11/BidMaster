@@ -9,9 +9,18 @@ class ConversationsController < ApplicationController
   def create
     if Conversation.between(params[:sender_id], params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:recipient_id]).first
+      @messages = @conversation.messages.order('created_at asc')
+      @message = @conversation.messages.new
     else
-      @conversation = Conversation.create!(conversation_params)
-      redirect_to conversation_messages_path(@conversation)
+      @conversation = Conversation.new(conversation_params)
+      @conversation.save
+      @messages = @conversation.messages
+      @message = @conversation.messages.new
+
+      respond_to do |format|
+        format.js {}
+      end
+
     end
   end
 

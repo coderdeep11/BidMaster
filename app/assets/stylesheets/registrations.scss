@@ -48,7 +48,7 @@ $border: 1px solid #b9b9b9;
     @include inputIcons;
     gap: 2rem;
     padding: 1rem 0;
-
+    background: white;
     & > div {
       margin: 0 2rem;
 
@@ -58,7 +58,11 @@ $border: 1px solid #b9b9b9;
       width: 100%;
       padding: 10px 2rem;
     }
-
+    .errors {
+      i {
+        color: red;
+      }
+    }
     .role__field {
       text-align: center;
       & > div {
@@ -105,7 +109,16 @@ $border: 1px solid #b9b9b9;
         border: none;
       }
       & .errors {
-        position: initial;
+        width: 100%;
+        left: 50%;
+        bottom: -1rem;
+        transform: translateX(-50%);
+        border: none;
+        i {
+          position: unset;
+          line-height: 0;
+          transform: translateY(-50%);
+        }
       }
     }
     .image__field i {
@@ -130,7 +143,7 @@ $border: 1px solid #b9b9b9;
 @media (min-width: 480px) {
   .sign__up-page,
   .update-users-page {
-    padding: 0rem 3.5rem;
+    padding: 1rem 3.5rem;
     padding-top: 1rem;
     .sign__up-form,
     .update__form {
@@ -153,6 +166,7 @@ $border: 1px solid #b9b9b9;
 
       i {
         left: 0;
+        color: red;
       }
     }
   }

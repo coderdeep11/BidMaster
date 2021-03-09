@@ -3,20 +3,19 @@
     <i class="fas fa-calendar-check"></i>
     joined <%=distance_of_time_in_words_to_now(user.created_at)%> ago
   </div>
-  <% if authenticate_profile(user) %>
-    <%if user.freelancer_info.try(:bio) %>
-      <%=user.freelancer_info.try(:bio)%>
-    <% else %>
-      <div class="fill__bio">
-        <%=inline_svg_tag 'bio.svg'%>
-        <span>Complete your bio</span>
-      </div>
-    <% end %>
-  <% else %>
-    <%if user.freelancer_info.try(:bio) %>
-      <%=user.freelancer_info.try(:bio)%>
-    <% else %>
-      <%=render 'nodata'%>
-    <% end %>
-  <% end %>
+  <div class="user___details">
+    <p>
+      <span>Education:</span>
+      <%=user.freelancer_info.try(:education) ? user.freelancer_info.try(:education)   : "none"%></p>
+    <p>
+      <span>Skill level: </span>
+      <%=user.freelancer_info.try(:experience) ? user.freelancer_info.try(:experience) : "none"%></p>
+    <p>
+      <span>  Category:</span>
+      <%=user.freelancer_info.try(:category) ? user.freelancer_info.try(:category) : "none"%></p>
+    <%=user.freelancer_info.try(:subcategory)%>
+    <p>
+      <span> Bio:</span>
+      <%=user.freelancer_info.try(:bio)? user.freelancer_info.try(:bio) : "none"%></p>
+  </div>
 </li>

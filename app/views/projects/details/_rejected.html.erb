@@ -10,7 +10,7 @@
         <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
         <ul>
           <li>
-            <%=bid.freelancer.name%>
+            <%=link_to bid.freelancer.name,freelancer_path(bid.freelancer)%>
           </li>
           <li>
             <span>Bid: $<%=bid.value%>/hr</span>
@@ -29,4 +29,8 @@
       </li >
     <%end%>
   <% end %>
+  <div class="pagination__buttons">
+    <%= link_to_previous_page rejected, 'Previous ',class:'prv__btn',remote: true %>
+    <%= link_to_next_page rejected, 'Next ',class:'nxt__btn' ,remote: true%>
+  </div>
 </ul>

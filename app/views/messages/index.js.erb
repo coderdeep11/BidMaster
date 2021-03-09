@@ -1,7 +1,7 @@
 conversations = document.querySelector(".conversations__modal");
 conversations.insertAdjacentHTML(
   "beforeend",
-  `<%= j render partial: "messages",locals:{ messages: @messages,conversation: @conversation,messages: @message} %>`
+  `<%= j render partial: "messages",locals:{ messages: @messages,conversation: @conversation,message: @message} %>`
 );
 conversations.setAttribute("style", "overflow:hidden");
 t = setTimeout(function () {

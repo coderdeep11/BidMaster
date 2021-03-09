@@ -1,6 +1,9 @@
 <div class="user__picture-<%=user.role%>">
   <%=inline_svg_tag 'default_avatar.svg'%>
 </div>
+<%if user_freelancer?(current_user) && authenticate_profile(user)%>
+  <%=link_to 'Edit Profile',edit_freelancer_info_path(current_user.freelancer_info),class:'edit__profile' if freelancer_already_registered? %>
+<% end %>
 <ul class="user__profile">
   <li class="user__name">
     <%=user.name%>

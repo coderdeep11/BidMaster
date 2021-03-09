@@ -7,7 +7,10 @@
         <i class="fad fa-user"></i>
         <%= f.text_field :name,placeholder: 'Name' %>
         <%unless resource.errors[:name].empty?%>
-          <%=  "name #{resource.errors[:name][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "name #{resource.errors[:name][0]} "%>
+          </div>
         <%end%>
       </div>
       <!--Email Field -->
@@ -15,7 +18,10 @@
         <i class="fad fa-at"></i>
         <%= f.email_field :email, autocomplete: "email",placeholder: 'Email'  %>
         <%unless resource.errors[:email].empty?%>
-          <%=  "email #{resource.errors[:email][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "email #{resource.errors[:email][0]} "%>
+          </div>
         <%end%>
       </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,7 +32,10 @@
         <i class="fad fa-lock"></i>
         <%= f.password_field :password, autocomplete: "new-password",placeholder: 'leave blank if you don\'t want to change password' %>
         <%unless resource.errors[:password].empty?%>
-          <%=  "password #{resource.errors[:password][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "password #{resource.errors[:password][0]} "%>
+          </div>
         <%end%>
       </div>
       <!--confirm password -->
@@ -34,7 +43,10 @@
         <i class="fad fa-lock"></i>
         <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: 'Confirm password' %>
         <%unless resource.errors[:password_confirmation].empty?%>
-          <%=  "#{resource.errors[:password_confirmation][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "#{resource.errors[:password_confirmation][0]} "%>
+          </div>
         <%end%>
       </div>
       <!-- Role field-->
@@ -49,7 +61,10 @@
           Client
         </div>
         <%unless resource.errors[:role].empty?%>
-          <%= "role #{resource.errors[:role][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%= "role #{resource.errors[:role][0]} "%>
+          </div>
         <%end%>
       </div>
       <!---current password-->
@@ -57,7 +72,10 @@
         <i class="fad fa-lock"></i>
         <%= f.password_field :current_password, autocomplete: "current-password",placeholder: "your current password to confirm your changes" %>
         <%unless resource.errors[:current_password].empty?%>
-          <%=  "#{resource.errors[:current_password][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "#{resource.errors[:current_password][0]} "%>
+          </div>
         <%end%>
       </div>
       <%= f.submit "Update",class: 'btn' %>

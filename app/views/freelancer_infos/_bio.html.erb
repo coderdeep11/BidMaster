@@ -1,0 +1,9 @@
+<div class="freelancer__bio-form" >
+  <%=f.label :bio,'Professional Overview'%>
+  <%= f.text_area :bio,placeholder:'Highlight your top skills experience and interests,this is one of the things clients will see on your profile' %>
+  <%unless freelancer_info.errors[:bio].empty?%>
+    <div class="error">
+      <i class="fas fa-exclamation-circle"></i>
+      <%=freelancer_info.errors[:bio][0]%></div>
+  <% end %>
+</div>
