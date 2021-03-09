@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 $border-color: rgb(214, 210, 210);
 $font: "Comfortaa", cursive;
+$font-quicksand: "Quicksand", serif;
+$font-montserrat: "Montserrat", sans-serif;
 $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
   0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 
@@ -116,6 +118,7 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
   padding-top: 2rem;
   max-width: 650px;
   margin: 0 auto;
+  position: relative;
   .search__wrapper {
     padding: 1rem 2rem;
     border: 1px solid #c1c1c1;
@@ -124,6 +127,31 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
     width: 100%;
     border-top-right-radius: 0.5rem;
     border-top-left-radius: 0.5rem;
+    .filter__parameters {
+      display: flex;
+      gap: 1rem;
+      padding-top: 0.5rem;
+      align-items: center;
+      div {
+        padding: 0.5rem 1.2rem;
+        background: #ececec;
+        font-size: 0.8rem;
+        color: #494949;
+        vertical-align: center;
+        display: flex;
+        align-items: center;
+        height: 2rem;
+        border-radius: 5px;
+      }
+      a {
+        text-decoration: none;
+        color: #494949;
+        &:hover {
+          color: green;
+          text-decoration: underline;
+        }
+      }
+    }
   }
   #search {
     position: relative;
@@ -138,7 +166,8 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
       }
     }
     .search__btn,
-    .reset__btn {
+    .reset__btn,
+    .filters {
       position: absolute;
       right: 0px;
       top: 50%;
@@ -152,29 +181,105 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
       width: 45px;
       height: 100%;
     }
+    .filters {
+      display: inline-block;
+      right: 45px;
+      background: transparent;
+
+      svg {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 50%;
+        transform: translate((-50%, -50%));
+        left: 50%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
     .reset__btn {
       background: transparent;
-      right: 45px;
+      right: 90px;
+
       i {
         color: black;
         position: absolute;
         transform: translate((-50%, -50%));
-        left: 50%;
+        left: 75%;
         top: 50%;
       }
     }
     .search__filters {
+      position: absolute;
+      top: 0;
       display: none;
+      background: white;
+      border: 1px solid $border-color;
+      border-radius: 0.5rem;
+      width: 100%;
+      height: 204px;
+      align-items: center;
+      font-size: 0.8rem;
+      justify-content: space-around;
+      z-index: 11;
+      box-shadow: $box-shadow;
+
+      select {
+        font-size: 0.7rem;
+      }
+      label {
+        display: block;
+        margin-bottom: 0.1rem;
+      }
+      .search__experience {
+        label {
+          text-align: center;
+        }
+        & > div {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+      }
+      .toggle__filter {
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+        .search__btn {
+          position: initial;
+          padding: 0.5rem 0.8rem;
+          border-radius: 0.5rem;
+          width: 100px;
+          transition: all 0.5s;
+          &:hover {
+            cursor: pointer;
+            background: rgb(19, 95, 19);
+          }
+        }
+      }
+      .close__filter {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        font-size: 1.5rem;
+
+        & > i:hover {
+          cursor: pointer;
+        }
+      }
     }
+    .show-filter {
+      display: flex;
+    }
+  }
+  .pagination__buttons {
+    width: 100%;
   }
   .search__results-projects {
     width: 100%;
-    overflow: scroll;
-    max-height: 90vh;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      width: 0;
-    }
+
     transition: transform 0.7s;
 
     @import "allprojects";
@@ -217,11 +322,11 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
           padding: 0.6rem 0.5rem 0;
           gap: 0.5rem;
           .freelancer__name {
-            font-size: 0.95rem;
-            color: green;
+            font-size: 1.4rem;
+            color: #474747;
             text-transform: capitalize;
-            font-weight: 700;
-            font-family: $font;
+            font-weight: 600;
+            font-family: $font-quicksand;
             .category {
               font-weight: 400;
               font-size: 0.8rem;
@@ -230,16 +335,19 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
           }
           .freelancer__bio {
             flex-basis: 25px;
-            font-family: $font;
-            font-size: 0.8rem;
+            font-family: $font-montserrat;
+            font-size: 0.9rem;
             word-spacing: 2px;
-            font-weight: 600;
+            font-weight: 500;
             line-height: 16px;
           }
           .freelancer__joined-on {
             font-weight: 400;
             font-size: 0.7rem;
             color: #242424;
+            i {
+              margin-right: 0.3rem;
+            }
           }
         }
       }

@@ -3,14 +3,7 @@ module ProjectsHelper
     current_user == project.client
   end
 
-  def project_awarded?
-    if !Bid.where(aasm_state: 'awarded').nil?
-      true
-
-    else
-      false
-    end
+  def project_awarded?(project)
+    Project.where(project: project).joins(:bids).where(bids: { aasm_state: 'awarded' }) || false
   end
-
- 
 end

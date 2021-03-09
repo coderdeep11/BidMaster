@@ -28,7 +28,6 @@ module Projects
       @project = Project.find(params[:project_id])
       @bids = @project.bids
       @shortlisted = @bids.where('(aasm_state =?  OR aasm_state =? )', 'awarded', 'accepted')
-      
     end
 
     def rejected

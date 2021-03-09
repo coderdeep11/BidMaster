@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_project, only: %i[show edit update destroy]
+  before_action :set_project, only: %i[show edit update destroy more_info]
   def index
     if user_client?(current_user)
       @projects = Project.where(client: current_user).order('created_at desc').page(params[:page]).per(10)
@@ -41,9 +41,21 @@ class ProjectsController < ApplicationController
   def edit; end
 
   def update
-    @project.update_attributes(project_params)
-    redirect_to projects_path
+    if @project.update(project_params)
+      flash[:notice] = 'Successfully,edited  project'
+      redirect_to project_details_path(@project)
+    else
+      render 'edit'
+    end
   end
+
+  def destroy
+    @project.destroy
+    flash[:notice] = 'Successfully,deleted the project'
+    redirect_to root_path
+  end
+
+  def more_info; end
 
   private
 

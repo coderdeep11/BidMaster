@@ -137,46 +137,25 @@
       flex: 1;
       border: none;
       padding: 5px 5px 0;
-
+      flex-basis: 230px;
+      border: none;
       height: 50px;
+      resize: none;
+      overflow: scroll;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
     }
     label {
       flex: 1;
       cursor: pointer;
     }
     .attached {
-      color: blue;
+      color: rgba(238, 11, 11, 0.664);
       transition: all 0.5s;
       position: relative;
-      animation: tada 1s infinite;
-    }
-    @keyframes tada {
-      0% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-      }
-      10%,
-      20% {
-        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
-        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
-      }
-      30%,
-      50%,
-      70%,
-      90% {
-        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
-      }
-      40%,
-      60%,
-      80% {
-        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
-      }
-      100% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-      }
+      font-size: 1.4rem;
     }
 
     input {

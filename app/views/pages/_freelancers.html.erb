@@ -8,5 +8,9 @@
     <% else %>
       <%= render 'search-results-freelancers',freelancers: freelancers %>
     <% end %>
+    <div class="pagination__buttons">
+      <%= link_to_previous_page freelancers, 'Previous',class: 'prv__btn' %>
+      <%= link_to_next_page freelancers, 'Next ' ,class: 'nxt__btn'%>
+    </div>
   <% end %>
 </div>

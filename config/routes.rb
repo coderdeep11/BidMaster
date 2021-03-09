@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :freelancer_infos, except: %i[show]
 
   # routes for projects
-  resources :projects, only: %i[new index create update edit show] do
+  resources :projects do
+    get :more_info, on: :member
     scope module: 'projects' do
-      resources :bids, only: %i[create update] do
+      resources :bids, only: %i[create update destroy] do
         member do
           put :accept, to: 'bids#accept'
           put :reject, to: 'bids#reject'

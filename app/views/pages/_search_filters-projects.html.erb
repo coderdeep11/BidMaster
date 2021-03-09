@@ -13,4 +13,10 @@
     <div class="experience__level"> <%= f.radio_button :experience_eq, 'Intermediate'%> Intermediate</div>
     <div class="experience__level"> <%= f.radio_button :experience_eq, 'Expert'%> Expert</div>
   </div>
+  <div class="toggle__filter">
+    <%= button_tag 'submit',class: ' search__btn'   %>
+  </div>
+  <div class="close__filter">
+    <i class="fal fa-times"></i>
+  </div>
 </div>

@@ -8,6 +8,7 @@ window.addEventListener("turbolinks:load", (e) => {
     if (target.parentElement !== navElement) return;
     if (e.target.nodeName == "LI") e.target.children[0].click();
     let index = target.dataset.tab;
+    console.log(index);
     if ([...navElement.classList].length > 1) {
       [...navElement.classList].forEach((element, i) => {
         if (i > 0) navElement.classList.remove(element);

@@ -7,8 +7,4 @@ if (document.querySelector("#q_description_cont"))
 set_field(document.querySelector("#q_description_cont"));
 if (document.querySelector("#q_name_cont"))
 set_field(document.querySelector("#q_name_cont"));
-<% if current_page?(:controller => 'pages', :action => 'search')%>
-  window.location.replace("/search");
-<% else%>
-  window.location.replace("<%=request.referer%>");
-<%end%>
+window.location.replace("/search");

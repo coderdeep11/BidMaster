@@ -5,7 +5,13 @@ window.addEventListener("turbolinks:load", () => {
   let select__project = document.querySelector?.("#q_category_eq");
   let project_category = document.querySelector?.("#project_category");
   let freelancers = document.querySelector(".freelancers");
-
+  let select = document.querySelector("select");
+  let experience__level = document.querySelectorAll(".experience__level");
+  let search__filters = [];
+  let filter__parameters = document.querySelector(".filter__parameters");
+  let searchMode =
+    document.querySelector(".search__projects  ") ||
+    document.querySelector(".search__freelancers  ");
   /**api to fetch sub categories related to job */
   let fetchCategories = (contactSelect, e) => {
     fetch(`/job_categories/${e.target.selectedIndex - 1}.json`)
@@ -44,4 +50,31 @@ window.addEventListener("turbolinks:load", () => {
     if (!freelancer) return;
     freelancer.children[2].click();
   });
+
+  searchMode?.addEventListener("click", (e) => {
+    let filters = document.querySelector(".search__filters");
+
+    if (e.target.closest("svg")) filters?.classList.add("show-filter");
+    if (
+      e.target.closest("toggle__filter") ||
+      e.target.closest(".close__filter")
+    )
+      filters?.classList.remove("show-filter");
+  });
+  let category = select.value;
+  if (category) search__filters.push(category);
+  experience__level.forEach((element) => {
+    if (element.children[0].checked)
+      search__filters.push(element.children[0].value);
+  });
+  filter__parameters.insertAdjacentHTML(
+    "beforeend",
+    `${search__filters
+      .map((element) => {
+        return `
+        <div>${element}
+         </div>`;
+      })
+      .join("")}`
+  );
 });

@@ -1,0 +1,5 @@
+<ul class="project__posted-dropdown">
+  <li><%= link_to 'View Project',project_details_path(project) %></li>
+  <li><%= link_to 'Edit Project',edit_project_path(project) %></li>
+  <li><%= link_to 'Delete Project',project_path(project),method: :delete %></li>
+</ul>

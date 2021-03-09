@@ -6,7 +6,6 @@ if (document.querySelector(".user__bio"))
 document.querySelector(".user__bio").remove();
 if (document.querySelector(".welcome"))
 document.querySelector(".welcome").remove();
-currentTab = document.querySelector(".about__me-tab");
 document
 .querySelector(".user__analytics-<%=@user.role%>")
 .insertAdjacentHTML("beforebegin", `<%=j render 'about-me' ,user: @user%>`);
