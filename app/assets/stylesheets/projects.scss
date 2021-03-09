@@ -32,7 +32,8 @@ $font-quicksand: "Quicksand", serif;
 }
 /********************************/
 
-.project__page {
+.project__page,
+.freelancers__form-page {
   max-width: 750px;
   padding: 0;
   box-shadow: $box-shadow;
@@ -41,7 +42,8 @@ $font-quicksand: "Quicksand", serif;
   border-top-right-radius: 0.5rem;
   border: $border;
 
-  .post__project {
+  .post__project,
+  .freelancer__form-details {
     @include heading();
     border: none;
   }
@@ -89,7 +91,8 @@ $font-quicksand: "Quicksand", serif;
         right: -10px;
       }
     }
-    .project__title-form {
+    .project__title-form,
+    .freelancer__education-form {
       position: relative;
 
       text-transform: capitalize;
@@ -110,7 +113,8 @@ $font-quicksand: "Quicksand", serif;
         }
       }
     }
-    .project__category {
+    .project__category,
+    .freelancer__category {
       display: flex;
       gap: 1rem;
       div {
@@ -141,7 +145,39 @@ $font-quicksand: "Quicksand", serif;
         }
       }
     }
-    .project__experience-form {
+    .freelancer__bio-form {
+      font-family: "montserrat";
+      position: relative;
+      .field_with_errors {
+        textarea {
+          border: 1px solid red;
+        }
+      }
+      textarea {
+        width: 100%;
+        height: 180px;
+        padding: 1rem;
+        position: relative;
+        outline: none;
+        border: $border;
+        &:focus {
+          border: 1px solid green;
+        }
+      }
+
+      ::placeholder {
+        font-size: 1rem;
+        word-spacing: 3px;
+        font-weight: 300;
+      }
+      ::-webkit-input-placeholder {
+        font-size: 0.9rem;
+        word-spacing: 3px;
+      }
+    }
+
+    .project__experience-form,
+    .freelancer__experience-form {
       label {
         font-size: 1rem;
         word-spacing: 3px;
@@ -273,6 +309,7 @@ $font-quicksand: "Quicksand", serif;
     li {
       list-style-type: none;
     }
+
     .start__posting-projects,
     .no__bids {
       display: flex;
@@ -293,13 +330,13 @@ $font-quicksand: "Quicksand", serif;
     }
     .every__project,
     .each__bid {
-      background: white;
       border: 1px solid #d6d2d2;
       border-top: none;
       transition: all 0.5s;
+      background: white;
       &:hover {
         cursor: pointer;
-        background: rgb(248, 248, 248);
+        background: rgb(235, 235, 235);
         & .project__title > a,
         & .bid__proposal > a {
           color: green;
@@ -344,23 +381,22 @@ $font-quicksand: "Quicksand", serif;
             display: flex;
             flex-direction: column;
             list-style-type: none;
-            height: 120px;
+            height: auto;
             border: $border;
             border-radius: 5px;
             width: 200px;
-            gap: 0.5rem;
-            padding: 0.5rem 0;
+            gap: 0.4rem;
+            padding: 0.3rem 0;
             align-items: flex-start;
             background: white;
             z-index: 1;
             li {
               align-self: stretch;
-
               a {
                 text-align: initial;
                 padding: 0 1rem;
                 font-size: 0.9rem;
-                color: rgb(32, 32, 32);
+                color: rgb(68, 68, 68);
               }
               &:hover {
                 background: rgb(240, 240, 240);
@@ -369,6 +405,7 @@ $font-quicksand: "Quicksand", serif;
             }
           }
         }
+
         .project__created-at-with-status {
           display: flex;
           & > div,
@@ -425,7 +462,7 @@ $font-quicksand: "Quicksand", serif;
   width: 100%;
   transform: translateX(130%);
   transition: transform 0.7s;
-  z-index: 10;
+  z-index: 11;
 
   .close__modal {
     width: 100%;

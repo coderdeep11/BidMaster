@@ -1,5 +1,8 @@
 notifications = document.querySelector(".notifications__dropdown");
+conversations = document.querySelector(".conversations__dropdown");
 notifications__modal = document.querySelector(".notifications__modal");
+notifications.classList.add("active__tab");
+conversations?.classList.remove("active__tab");
 if (notifications__modal) notifications__modal.remove();
 notifications.insertAdjacentHTML(
 "beforeend",
@@ -14,3 +17,8 @@ if (element.className == "btn-primary") return;
 if (!notification) return;
 notification.children[2].click();
 });
+window.addEventListener("click",(e)=>{
+if(e.target.closest(".notifications__modal")) return;
+notifications?.classList.remove("active__tab");
+document.querySelector(".notifications__modal")?.remove();
+})

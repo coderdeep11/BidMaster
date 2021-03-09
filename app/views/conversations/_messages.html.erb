@@ -1,19 +1,20 @@
 <section class="messages__modal">
   <div class="close__messages">
-    <i class="far fa-arrow-left"></i>
+    <p> <%=@conversation.recipient.name%></p>
+    <i class="fal fa-times"></i>
   </div>
   <% messages.each do |message| %>
     <div class="message ">
       <%if message.content? && message.documents.attached?%>
-        <%=render partial: 'documents',locals: {documents: @documents,message: message} %>
-        <%=render partial: 'content',locals: {message: message} %>
-        <%=render partial: 'messageTime',locals: {message: message} %>
+        <%=render partial: 'messages/documents',locals: {documents: @documents,message: message} %>
+        <%=render partial: 'messages/content',locals: {message: message} %>
+        <%=render partial: 'messages/messageTime',locals: {message: message} %>
       <%elsif message.content?%>
-        <%=render partial: 'content',locals: {message: message} %>
-        <%=render partial: 'messageTime',locals: {message: message} %>
+        <%=render partial: 'messages/content',locals: {message: message} %>
+        <%=render partial: 'messages/messageTime',locals: {message: message} %>
       <% elsif message.documents.attached?%>
-        <%=render partial: 'documents',locals: {documents: @documents,message: message} %>
-        <%=render partial: 'messageTime',locals: {message: message} %>
+        <%=render partial: 'messages/documents',locals: {documents: @documents,message: message} %>
+        <%=render partial: 'messages/messageTime',locals: {message: message} %>
       <% end %>
     </div>
   <%end%>

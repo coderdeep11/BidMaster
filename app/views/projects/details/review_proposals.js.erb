@@ -1,33 +1,16 @@
 if (document.querySelector(".project__post"))
-  document.querySelector(".project__post").remove();
+document.querySelector(".project__post").remove();
 if (document.querySelector(".review__proposals")) {
-  document.querySelector(".review__proposals").remove();
+document.querySelector(".review__proposals").remove();
 }
 document
-  .querySelector(".project__overview")
-  .insertAdjacentHTML(
-    "afterend",
-    `<%=j render 'review_proposals', {bids: @bids,shortlisted: @shortlisted,rejected: @rejected}%>`
-  );
+.querySelector(".project__overview")
+.insertAdjacentHTML(
+"afterend",
+`<%=j render 'review_proposals', {bids: @bids,shortlisted: @shortlisted,rejected: @rejected}%>`
+);
 document
-  .querySelector(".proposals-tab")
-  .firstElementChild.firstElementChild.click();
+.querySelector(".proposals-tab")
+.firstElementChild.firstElementChild.click();
 /******
-let navElement = document.querySelector(".proposals-tab");
-navElement?.addEventListener("click", (e) => {
-  let target = e.target.closest("li");
-
-  if (target.parentElement !== navElement) return;
-  if (e.target.nodeName == "LI") e.target.children[0].click();
-  let index = target.dataset.tab;
-  console.log(index);
-  if ([...navElement.classList].length > 1) {
-    [...navElement.classList].forEach((element, i) => {
-      if (i > 0) navElement.classList.remove(element);
-    });
-  }
-
-  navElement.classList.remove(navElement.classList[1]);
-  navElement.classList.add(`tab__slider-${+index}`);
-});
 */

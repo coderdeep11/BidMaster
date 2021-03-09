@@ -53,24 +53,35 @@ body {
       border-right: 10px solid transparent;
       border-top: 10px solid #3187d3;
       position: absolute;
+      text-decoration: none;
       left: 10px;
       top: 50%;
       transform: translateY(-50%);
+
       .search__dropdown {
-        height: 100px;
+        min-height: 50px;
         width: 200px;
         background: rgb(255, 255, 255);
         transform: translateY(-200%);
         transition: transform 0.3s;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+          0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+        right: 0;
+
         a {
           display: block;
           text-decoration: none;
           font-size: 0.8rem;
-          padding: 15px;
-          border: 1px solid #e7e3e3;
+          padding: 0.5rem 0.8rem;
+          border-top: 1px solid #c1c1c1;
           cursor: pointer;
+          color: #333;
+
           &:hover {
             background-color: rgb(235, 235, 235);
+          }
+          &:first-child {
+            border-top: none;
           }
         }
       }
@@ -146,9 +157,29 @@ body {
         li {
           list-style-type: none;
         }
+
+        .unread-button__badge {
+          position: absolute;
+          top: -5px;
+          right: 0;
+          width: 25px;
+          height: 25px;
+          transform: translateX(50%);
+          background: red;
+          color: #ffffff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          font-size: 1rem;
+          font-weight: 500;
+        }
       }
       .notifications__dropdown {
         @extend .conversations__dropdown;
+        .unread-button__badge {
+          right: 5px;
+        }
       }
 
       .user__avatar {

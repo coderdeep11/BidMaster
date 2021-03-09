@@ -1,5 +1,5 @@
 <%projects.each do|project|%>
-  <li class="every__project">
+  <li class="every__project <%=project_awarded?(project) ? "awarded" : ""%>">
     <ul>
       <li class="project__title " id= "dropdown__btn-<%=project.id%>">
         <%=link_to project.title,project_details_path(project)%>
@@ -18,11 +18,11 @@
             <span>proposals</span>
           </li>
           <li>
-            <div><%=max_bid(project).nil? ? "0" : max_bid(project) %></div>
+            <div>$<%=max_bid(project).nil? ? "0" : max_bid(project) %></div>
             <span>Max. Bid</span>
           </li>
           <li>
-            <div><%=avg_bid(project).nil? ? "0" : avg_bid(project) %></div>
+            <div>$<%=avg_bid(project).nil? ? "0" : avg_bid(project) %></div>
             <span>Avg. Bid</span>
           </li>
         </ul>

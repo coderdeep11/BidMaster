@@ -205,9 +205,6 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
       @include svg();
     }
   }
-  .user__bio > .fill__bio {
-    @include svg();
-  }
 
   .user__experience > .no__experience {
     @include svg();
@@ -217,6 +214,19 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
       text-align: right;
       color: #353535;
       margin-bottom: 0.4rem;
+    }
+    .user___details {
+      p {
+        margin: 1.2rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        font-family: $font;
+        text-transform: capitalize;
+        span {
+          font-weight: 400;
+          font-size: 1rem;
+        }
+      }
     }
   }
   .user__experience {

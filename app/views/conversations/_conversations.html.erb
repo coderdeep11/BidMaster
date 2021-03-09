@@ -1,39 +1,29 @@
  <% conversations.each do |conversation| %>
-    <% recipient = conversation.sender_id == current_user.id ? conversation.recipient : conversation.sender %>
-    <li class="conversation">
-      <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
-      <ul class="message_and_name">
-        <li class="user__name">
-          <%=recipient.try(:name)%>
-          <% unless conversation.unread_message_count(current_user).zero? %>
-            <span class="unread__messages">
-              <%= conversation.unread_message_count(current_user) %>
-            </span>
-          <% end %>
-        </li>
-        <li class="message">
-          <%if conversation.messages.last.content?%>
-            <% if conversation.messages.last.content.length > 60 %>
-              <%= "#{conversation.messages.last.content.from(0).to(60)}.... "%>
-              <%if conversation.messages.last.user == current_user%>
-                <%if conversation.messages.last.read%>
-                  <i class="fal fa-check-double "></i>
-                <% else %>
-                  <i class="fal fa-check"></i>
-                <% end %>
-              <% end %>
-            <% else %>
-              <%= conversation.messages.last.content %>
-              <%if conversation.messages.last.user == current_user%>
-                <%if conversation.messages.last.read%>
-                  <i class="fal fa-check-double "></i>
-                <% else %>
-                  <i class="fal fa-check"></i>
-                <% end %>
+  <% recipient = conversation.sender_id == current_user.id ? conversation.recipient : conversation.sender %>
+  <li class="conversation <%=conversation.unread_message_count(current_user) > 0 ? "unread" : ""%>">
+    <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+    <ul class="message_and_name">
+      <li class="user__name">
+        <%=recipient.try(:name)%>
+        <% unless conversation.unread_message_count(current_user).zero? %>
+          <div class="unread__messages">
+            <span> <%= conversation.unread_message_count(current_user) %></span>
+          </div>
+        <% end %>
+      </li>
+      <li class="message">
+        <%if conversation.messages.last.content?%>
+          <% if conversation.messages.last.content.length > 60 %>
+            <%= "#{conversation.messages.last.content.from(0).to(60)}.... "%>
+            <%if conversation.messages.last.user == current_user%>
+              <%if conversation.messages.last.read%>
+                <i class="fal fa-check-double "></i>
+              <% else %>
+                <i class="fal fa-check"></i>
               <% end %>
             <% end %>
           <% else %>
-            sent a document
+            <%= conversation.messages.last.content %>
             <%if conversation.messages.last.user == current_user%>
               <%if conversation.messages.last.read%>
                 <i class="fal fa-check-double "></i>
@@ -42,13 +32,23 @@
               <% end %>
             <% end %>
           <% end %>
-        </li>
-        <li class="time">
-          <small>
-            <%= distance_of_time_in_words_to_now(conversation.messages.last.created_at)%> ago
-          </small>
-        </li>
-      </ul>
-      <%=link_to '',conversation_messages_path(conversation),remote: true%>
-    </li>
-  <%end%>
+        <% else %>
+          sent a document
+          <%if conversation.messages.last.user == current_user%>
+            <%if conversation.messages.last.read%>
+              <i class="fal fa-check-double "></i>
+            <% else %>
+              <i class="fal fa-check"></i>
+            <% end %>
+          <% end %>
+        <% end %>
+      </li>
+      <li class="time">
+        <small>
+          <%= distance_of_time_in_words_to_now(conversation.messages.last.created_at)%> ago
+        </small>
+      </li>
+    </ul>
+    <%=link_to '',conversation_messages_path(conversation),remote: true%>
+  </li>
+<%end%>

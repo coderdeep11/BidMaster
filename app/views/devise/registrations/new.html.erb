@@ -7,7 +7,10 @@
         <i class="fad fa-user"></i>
         <%= f.text_field :name,placeholder: 'Name' %>
         <%unless resource.errors[:name].empty?%>
-          <%=  "name #{resource.errors[:name][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "name #{resource.errors[:name][0]} "%>
+          </div>
         <%end%>
       </div>
       <!-- Email field -->
@@ -15,7 +18,10 @@
         <i class="fad fa-at"></i>
         <%= f.email_field :email, autocomplete: "email",placeholder: 'Email'  %>
         <%unless resource.errors[:email].empty?%>
-          <%=  "email #{resource.errors[:email][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "email #{resource.errors[:email][0]} "%>
+          </div>
         <%end%>
       </div>
       <!-- Password field -->
@@ -23,14 +29,20 @@
         <i class="fad fa-lock"></i>
         <%= f.password_field :password, autocomplete: "new-password",placeholder: 'Create a password'  %>
         <%unless resource.errors[:password].empty?%>
-          <%=  "password #{resource.errors[:password][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "password #{resource.errors[:password][0]} "%>
+          </div>
         <%end%>
       </div>
       <div class="password__confirmation-field">
         <i class="fad fa-lock"></i>
         <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: 'Confirm password' %>
         <%unless resource.errors[:password_confirmation].empty?%>
-          <%=  "#{resource.errors[:password_confirmation][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "#{resource.errors[:password_confirmation][0]} "%>
+          </div>
         <%end%>
       </div>
       <!-- Role field -->
@@ -45,7 +57,10 @@
           Client
         </div>
         <%unless resource.errors[:role].empty?%>
-          <%= "role #{resource.errors[:role][0]} "%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%= "role #{resource.errors[:role][0]} "%>
+          </div>
         <%end%>
       </div>
       <!-- Image field -->

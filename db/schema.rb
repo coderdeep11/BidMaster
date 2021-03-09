@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_095137) do
+ActiveRecord::Schema.define(version: 2021_03_08_182527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_03_05_095137) do
     t.string "subcategory"
     t.string "experience"
     t.text "education"
-    t.integer "hourly_rate"
     t.text "bio"
     t.bigint "freelancer_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -96,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_095137) do
     t.bigint "bid_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "read", default: false
     t.index ["bid_id"], name: "index_notifications_on_bid_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end

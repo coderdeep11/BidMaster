@@ -39,55 +39,5 @@ window.addEventListener("turbolinks:load", () => {
     document.querySelector(".role__field").addEventListener("click", (e) => {
       event(e);
     });
-
-    /*****/
-    if (document.querySelector(".field_with_errors")) {
-      let error = document.querySelectorAll(".field_with_errors");
-      let length = error.length;
-      error.forEach(function (element, i) {
-        let validator = element.parentElement.classList[0];
-        console.log(validator);
-
-        if (
-          i < length - 3 ||
-          (length < 5 &&
-            validator !== "f__btn" &&
-            validator !== "c__btn" &&
-            validator !== "role__field")
-        ) {
-          if (element.previousElementSibling) {
-            element.previousElementSibling.setAttribute("style", "color:red");
-          }
-
-          let errorMessage = element.nextSibling.textContent;
-          element.nextSibling.textContent = "";
-          let p = document.createElement("p");
-          p.textContent = errorMessage;
-
-          p.insertAdjacentHTML(
-            "afterbegin",
-            `<i class="fad fa-exclamation-circle"></i>`
-          );
-          p.classList.add("errors");
-          element.parentElement.appendChild(p);
-        }
-        if (i == length - 3 && validator == "role__field") {
-          let roleError = "role can't be empty";
-          let childNodes = element.parentElement.childNodes;
-          for (i = 0; i < childNodes.length; i++) {
-            if (childNodes[i].nodeType == 3) childNodes[i].remove();
-          }
-
-          let p = document.createElement("p");
-          p.textContent = roleError;
-
-          p.classList.add("errors");
-          element.parentElement.appendChild(p);
-        }
-      });
-    }
-    /******** */
-
-    /********** */
   }
 });

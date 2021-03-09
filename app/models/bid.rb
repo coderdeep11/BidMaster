@@ -5,8 +5,8 @@ class Bid < ApplicationRecord
   validates :value, presence: { message: "*can't be nil! " }, numericality: { less_than_or_equal_to: 500, greater_than_or_equal_to: 30, only_integer: true, message: '  must be between $30 and $500' }
   validates :proposal, length: { in: 50..400, message: '*should be within 50-400 words' }
   validate :proposal_words_within_limit?
-  validates :freelancer_id, uniqueness: { scope: :project_id, message: 'you already placed a bid' }
-
+  validates :freelancer_id, uniqueness: { scope: :project_id, message: 'freelancer already placed a bid' }
+  validate :is_user_freelancer?
   after_create :send_notifications_to_client
 
   include AASM
@@ -31,6 +31,10 @@ class Bid < ApplicationRecord
     unless proposal.nil?
       errors.add(:proposal, 'proposal should contain atleast 10 words') unless proposal.split(' ').length > 10
     end
+  end
+
+  def is_user_freelancer?
+    errors.add(:base, 'Only freelancers are allowed to bid') unless freelancer.try(:role) == 'freelancer'
   end
 
   def send_notifications_to_client

@@ -1,5 +1,6 @@
 <main class="freelancer__feed">
   <h2>My Feed</h2>
+  <%=link_to 'Complete your profile',new_freelancer_info_path unless freelancer_already_registered?%>
   <% unless @projects.empty? || @projects.nil?%>
     <%= render 'projects__on-feed',projects: @projects %>
   <%else%>

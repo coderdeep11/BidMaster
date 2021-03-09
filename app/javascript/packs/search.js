@@ -4,6 +4,9 @@ window.addEventListener("turbolinks:load", () => {
   );
   let select__project = document.querySelector?.("#q_category_eq");
   let project_category = document.querySelector?.("#project_category");
+  let freelancer_category = document.querySelector?.(
+    "#freelancer_info_category"
+  );
   let freelancers = document.querySelector(".freelancers");
   let select = document.querySelector("select");
   let experience__level = document.querySelectorAll(".experience__level");
@@ -20,8 +23,12 @@ window.addEventListener("turbolinks:load", () => {
         contactSelect.innerHTML = "";
 
         data.id.map((model, i) => {
-          contactSelect.options[i] = new Option(model);
-          contactSelect.options[i].value = model;
+          if (i == 0)
+            contactSelect.options[i] = new Option("Choose Any", "", true);
+          else {
+            contactSelect.options[i] = new Option(model);
+            contactSelect.options[i].value = model;
+          }
         });
       });
   };
@@ -44,6 +51,10 @@ window.addEventListener("turbolinks:load", () => {
     fetchCategories(document.querySelector("#project_subcategory"), e);
   });
 
+  freelancer_category?.addEventListener("change", function (e) {
+    fetchCategories(document.querySelector("#freelancer_info_subcategory"), e);
+  });
+
   freelancers?.addEventListener("click", (e) => {
     let freelancer = e.target.closest(".freelancer");
 
@@ -61,13 +72,13 @@ window.addEventListener("turbolinks:load", () => {
     )
       filters?.classList.remove("show-filter");
   });
-  let category = select.value;
+  let category = select?.value;
   if (category) search__filters.push(category);
   experience__level.forEach((element) => {
     if (element.children[0].checked)
       search__filters.push(element.children[0].value);
   });
-  filter__parameters.insertAdjacentHTML(
+  filter__parameters?.insertAdjacentHTML(
     "beforeend",
     `${search__filters
       .map((element) => {

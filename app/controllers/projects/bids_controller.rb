@@ -1,7 +1,7 @@
 module Projects
   class BidsController < ApplicationController
     include ApplicationHelper
-    before_action :set_bid, only: %i[update accept reject award]
+    before_action :set_bid, only: %i[update accept reject award destroy]
     before_action :authenticate_user!, only: [:history]
     def history
       if user_freelancer?(current_user)
@@ -36,6 +36,12 @@ module Projects
         flash[:notice] = 'Successfully updated the bid'
         redirect_to root_path
       end
+    end
+
+    def destroy
+      @bid.destroy
+      flash[:alert] = 'Successfully deleted the proposal'
+      redirect_to  bid_history_projects_path
     end
 
     def accept

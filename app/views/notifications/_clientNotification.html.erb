@@ -1,14 +1,16 @@
-<li class="notification">
+<li class="notification bid-<%=notification.bid.aasm_state%>">
   <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
   <ul class="notification__content" id="notification-<%=notification.id%>">
     <%if notification.bid.unapproved?%>
       <li class="notification__from">
-        <%=notification.bid.freelancer.name%> placed a bid on your project "<%= notification.bid.proposal.from(0).to(35)  %> "
+        <%=notification.bid.freelancer.name%> placed a bid on your project "<%= notification.bid.proposal.from(0).to(30)  %> "
       </li>
-      <li class="bid__status">
-        <%=link_to 'Accept', accept_project_bid_path(notification.bid.project,notification.bid),class:'btn-primary'  ,method: :put,remote: true %>
-        <%=link_to 'Reject',reject_project_bid_path(notification.bid.project,notification.bid) ,class:'btn-primary' ,method: :put ,remote: true%>
-      </li>
+      <% if !project_awarded?(notification.bid.project) %>
+        <li class="bid__status">
+          <%=link_to 'Accept', accept_project_bid_path(notification.bid.project,notification.bid),class:'btn-primary'  ,method: :put,remote: true %>
+          <%=link_to 'Reject',reject_project_bid_path(notification.bid.project,notification.bid) ,class:'btn-primary' ,method: :put ,remote: true%>
+        </li>
+      <% end %>
     <% else %>
       <li class="bid__result">
         <%="You #{notification.bid.rejected? ? "rejected the bid,check other bids on your project ": "approved the bid,now you can get in touch with #{notification.bid.freelancer.name}" }."%>
