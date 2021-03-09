@@ -1,0 +1,15 @@
+<div class="freelancer__category" >
+  <div class="search__category">
+    <%= f.label :category,'Category' %>
+    <%= f.select :category, all_categories, include_blank: 'Choose any' %>
+    <%unless freelancer_info.errors[:category].empty?%>
+      <div class="error">
+        <i class="fas fa-exclamation-circle"></i>
+        <%=freelancer_info.errors[:category][0]%></div>
+    <% end %>
+  </div>
+  <div class="search__subcateogory">
+    <%= f.label :subcategory,'Subcategory' %>
+    <%= f.select(:subcategory, [], include_blank: 'Choose any') %>
+  </div>
+</div>
