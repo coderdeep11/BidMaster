@@ -12,8 +12,7 @@
       <%=user.freelancer_info.try(:experience) ? user.freelancer_info.try(:experience) : "none"%></p>
     <p>
       <span>  Category:</span>
-      <%=user.freelancer_info.try(:category) ? user.freelancer_info.try(:category) : "none"%></p>
-    <%=user.freelancer_info.try(:subcategory)%>
+      <%=user.freelancer_info.try(:category) ? user.freelancer_info.try(:category) : "none"%> , <%=user.freelancer_info.try(:subcategory)%></p>
     <p>
       <span> Bio:</span>
       <%=user.freelancer_info.try(:bio)? user.freelancer_info.try(:bio) : "none"%></p>

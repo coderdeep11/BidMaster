@@ -7,7 +7,7 @@ module Projects
       if user_freelancer?(current_user)
         @bids = Bid.where(freelancer_id: current_user.id).page(params[:page]).per(10)
       else
-        authorized_only_to_freelancer
+        authorized_only_to_freelancers
       end
     end
 
