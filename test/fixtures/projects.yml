@@ -4,18 +4,14 @@ one:
   title: MyString
   category: MyString
   subcategory: MyString
-  description: MyText
   experience: MyString
-  min_budget: 1
-  max_budget: 1
-  client_id: 45
+  client_id: 111
 
 two:
   title: MyString
   category: MyString
   subcategory: MyString
-  description: MyText
+
   experience: MyString
-  min_budget: 1
-  max_budget: 1
+
   client_id: 40

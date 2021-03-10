@@ -4,6 +4,6 @@ module ProfilesHelper
   end
 
   def authorize_client(user)
-    user == current_user || !Project.where(client: user).joins(:bids).find_by(bids: { freelancer: current_user }).nil?
+    user == current_user || !Project.where(client: user).joins(:bids).find_by(bids: { freelancer: current_user }).nil? || current_user.admin?
   end
 end

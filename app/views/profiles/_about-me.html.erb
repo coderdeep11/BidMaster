@@ -6,16 +6,15 @@
   <div class="user___details">
     <p>
       <span>Education:</span>
-      <%=user.freelancer_info.try(:education) ? user.freelancer_info.try(:education)   : "none"%></p>
+      <%=user.bidding_profile.try(:education) ? user.bidding_profile.try(:education)   : "none"%></p>
     <p>
       <span>Skill level: </span>
-      <%=user.freelancer_info.try(:experience) ? user.freelancer_info.try(:experience) : "none"%></p>
+      <%=user.bidding_profile.try(:experience) ? user.bidding_profile.try(:experience) : "none"%></p>
     <p>
       <span>  Category:</span>
-      <%=user.freelancer_info.try(:category) ? user.freelancer_info.try(:category) : "none"%></p>
-    <%=user.freelancer_info.try(:subcategory)%>
+      <%=user.bidding_profile.try(:category) ? user.bidding_profile.try(:category) : "none"%> , <%=user.bidding_profile.try(:subcategory)%></p>
     <p>
       <span> Bio:</span>
-      <%=user.freelancer_info.try(:bio)? user.freelancer_info.try(:bio) : "none"%></p>
+      <%=user.bidding_profile.try(:bio)? user.bidding_profile.try(:bio) : "none"%></p>
   </div>
 </li>

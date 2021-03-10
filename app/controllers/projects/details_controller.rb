@@ -5,7 +5,7 @@ module Projects
       @project = Project.find(params[:project_id])
       @bids = @project.bids
       @shortlisted = @bids.where('(aasm_state =?  OR aasm_state =? )', 'awarded', 'accepted')
-      redirect_to notifications_path unless authorize_project(@project)
+      redirect_to root_path unless authorize_project(@project)
     end
 
     def job_post
@@ -27,7 +27,7 @@ module Projects
     def shortlisted
       @project = Project.find(params[:project_id])
       @bids = @project.bids
-      @shortlisted = @bids.where('(aasm_state =?  OR aasm_state =? )', 'awarded', 'accepted').page(params[:page]).per(3)
+      @shortlisted = @bids.where('(aasm_state =?  OR aasm_state =? )', 'awarded', 'accepted').page(params[:page]).per(10)
     end
 
     def rejected

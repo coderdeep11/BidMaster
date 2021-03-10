@@ -3,7 +3,8 @@
 one:
   content: MyText
   read: false
-
+  conversation_id: 40
 two:
   content: MyText
   read: false
+  conversation_id: 40

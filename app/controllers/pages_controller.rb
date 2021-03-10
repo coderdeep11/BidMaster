@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   def search
     if params[:q] && params[:q].reject { |_k, v| v.blank? }.present?
       if search_type? == 'freelancer'
-        @freelancers = @q.result(distinct: true).includes(:freelancer_info).order('created_at DESC').page(params[:page]).per(10)
+        @freelancers = @q.result(distinct: true).includes(:bidding_profile).order('created_at DESC').page(params[:page]).per(10)
 
       else
         @projects = @j.result(distinct: true).order('created_at DESC').page(params[:page]).per(10)

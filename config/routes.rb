@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   # routes for freelancers info
-  resources :freelancer_infos, except: %i[show]
+  resources :bidding_profiles, except: %i[show]
 
   # routes for projects
   resources :projects do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       root to: 'projects#index'
     end
     authenticated :user, ->(u) { u.try(:role) == 'freelancer' } do
-      root to: 'freelancer_infos#index', as: :freelancer_infos_path
+      root to: 'bidding_profiles#index', as: :bidding_profiles_path
     end
   end
 

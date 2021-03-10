@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'kaminari'
 gem 'rails_admin', '~> 2.0'
+gem 'rails_refactor', '~> 1.3'
 gem 'ransack'
 gem 'tabs_on_rails'
 group :development, :test do

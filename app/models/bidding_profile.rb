@@ -1,4 +1,4 @@
-class FreelancerInfo < ApplicationRecord
+class BiddingProfile < ApplicationRecord
   belongs_to :freelancer, class_name: 'User'
   validate :is_user_freelancer?
   validates :freelancer, uniqueness: { message: 'freelancer can\'t have more than one profile' }

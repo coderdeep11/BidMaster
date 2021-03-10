@@ -8,7 +8,7 @@ class ConversationsControllerTest < ActionDispatch::IntegrationTest
     post user_session_url
   end
   test 'should get index' do
-    get conversations_index_url
+    get conversations_url, xhr: true
     assert_response :success
   end
 end

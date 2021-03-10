@@ -127,7 +127,7 @@ module ApplicationHelper
     end
   end
 
-  def freelancer_already_registered?
-    !FreelancerInfo.where(freelancer: current_user).empty?
+  def bidding_profile_exist?
+    !BiddingProfile.where(freelancer: current_user).empty?
   end
 end

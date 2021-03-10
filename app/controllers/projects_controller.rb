@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_project, only: %i[show edit update destroy more_info]
+  include ProjectsHelper
   def index
     if user_client?(current_user)
       @projects = Project.where(client: current_user).order('created_at desc').page(params[:page]).per(10)

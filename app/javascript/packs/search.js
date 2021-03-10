@@ -1,11 +1,11 @@
 window.addEventListener("turbolinks:load", () => {
   let select__freelancer = document.querySelector?.(
-    "#q_freelancer_info_category_eq"
+    "#q_bidding_profile_category_eq"
   );
   let select__project = document.querySelector?.("#q_category_eq");
   let project_category = document.querySelector?.("#project_category");
   let freelancer_category = document.querySelector?.(
-    "#freelancer_info_category"
+    "#bidding_profile_category"
   );
   let freelancers = document.querySelector(".freelancers");
   let select = document.querySelector("select");
@@ -37,7 +37,7 @@ window.addEventListener("turbolinks:load", () => {
 
   select__freelancer?.addEventListener("change", function (e) {
     fetchCategories(
-      document.querySelector("#q_freelancer_info_subcategory_eq"),
+      document.querySelector("#q_bidding_profile_subcategory_eq"),
       e
     );
   });
@@ -52,7 +52,7 @@ window.addEventListener("turbolinks:load", () => {
   });
 
   freelancer_category?.addEventListener("change", function (e) {
-    fetchCategories(document.querySelector("#freelancer_info_subcategory"), e);
+    fetchCategories(document.querySelector("#bidding_profile_subcategory"), e);
   });
 
   freelancers?.addEventListener("click", (e) => {
