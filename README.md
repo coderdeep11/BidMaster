@@ -74,13 +74,43 @@ has_many :notifications
 ![Screenshot_2021-03-11 BidMaster(8)](https://user-images.githubusercontent.com/41575688/110688035-2a3db080-8207-11eb-9c7b-60f62ced2dc8.png)
 > `when users logged in as  freelancer,they can place  bid on project.`
 
-![Screenshot from 2021-03-11 01-08-10](https://user-images.githubusercontent.com/41575688/110687411-79cfac80-8206-11eb-8ff5-046b48e6aeac.png)
+![Screenshot_2021-03-11 BidMaster(15)](https://user-images.githubusercontent.com/41575688/110695893-6b868e00-8210-11eb-982a-74f803490673.png)
 > `freelancer bid history`
 
 
-![Screenshot from 2021-03-11 01-09-02](https://user-images.githubusercontent.com/41575688/110687419-7b997000-8206-11eb-9fd0-96c987d056e8.png)
->Freelancer getting notified on their respective bids.
+![Screenshot_2021-03-11 BidMaster(17)](https://user-images.githubusercontent.com/41575688/110695902-6de8e800-8210-11eb-8369-f6522549cda5.png)>  Freelancer getting notified on their respective bids.
 
-![Screenshot from 2021-03-11 01-09-06](https://user-images.githubusercontent.com/41575688/110687421-7c320680-8206-11eb-9ecb-bcb5ccc48cd0.png)
-> Freelancer's Bidding Profile
+![Screenshot_2021-03-11 BidMaster(16)](https://user-images.githubusercontent.com/41575688/110695899-6d505180-8210-11eb-8d78-4735330e2aab.png)
+> Freelancer's Bidding Profile.
+
+
+# Messaging-feature
+
+
+
+>   ### _When clients want to award a project they can chat with freelancers and choose the desired freelancer_
+![Screenshot_2021-03-11 BidMaster(10)](https://user-images.githubusercontent.com/41575688/110692063-f31dce00-820b-11eb-8215-74fb73b8779a.png)
+
+![Screenshot_2021-03-11 BidMaster(9)](https://user-images.githubusercontent.com/41575688/110691901-bc47b800-820b-11eb-9385-2c4c8db97418.png)
+
+
+
+
+
+# _Search Functionality_
+> ### To search a projects or  freelancers click on the arrow on left of the search bar ,it gives a dropdown if anyone want to search  freelancers or projects
+
+![Screenshot_2021-03-11 BidMaster(11)](https://user-images.githubusercontent.com/41575688/110693852-ed28ec80-820d-11eb-86ab-c8db4046367d.png)
+
+
+![Screenshot_2021-03-11 BidMaster(12)](https://user-images.githubusercontent.com/41575688/110693855-eef2b000-820d-11eb-9c5c-f62f4a54ec85.png)
+> ### _searching   projects_
+
+
+![Screenshot_2021-03-11 BidMaster(13)](https://user-images.githubusercontent.com/41575688/110693857-ef8b4680-820d-11eb-9380-9665203ffb2c.png)
+> ### _searching  freelancers_
+
+
+![Screenshot_2021-03-11 BidMaster(14)](https://user-images.githubusercontent.com/41575688/110693865-f023dd00-820d-11eb-94b2-f71c18a012b0.png)
+> # _search  filters_
 
