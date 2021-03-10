@@ -65,8 +65,6 @@ has_many :notifications
 ![Screenshot_2021-03-11 BidMaster(6)](https://user-images.githubusercontent.com/41575688/110683024-9ae1ce80-8201-11eb-8892-3ab5aa063865.png)
 
 
-![Screenshot from 2021-03-11 00-36-24](https://user-images.githubusercontent.com/41575688/110685770-a5519780-8204-11eb-99ef-7a4d680ffc16.png)
-
 >  Once a `users` is logged in as a `Client` they can post a `project` get notified when a `freelancer` `bid` on their `project` and Client has a option to Accept or reject a `bid` once accepted client can choose  the desired freelancer and `award` them the project. 
 
 # User as a Freelancer
@@ -78,7 +76,8 @@ has_many :notifications
 > `freelancer bid history`
 
 
-![Screenshot_2021-03-11 BidMaster(17)](https://user-images.githubusercontent.com/41575688/110695902-6de8e800-8210-11eb-8369-f6522549cda5.png)>  Freelancer getting notified on their respective bids.
+![Screenshot_2021-03-11 BidMaster(17)](https://user-images.githubusercontent.com/41575688/110695902-6de8e800-8210-11eb-8369-f6522549cda5.png)
+>  Freelancer getting notified on their respective bids.
 
 ![Screenshot_2021-03-11 BidMaster(16)](https://user-images.githubusercontent.com/41575688/110695899-6d505180-8210-11eb-8d78-4735330e2aab.png)
 > Freelancer's Bidding Profile.
