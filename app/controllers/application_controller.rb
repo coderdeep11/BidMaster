@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.try(:role) == 'freelancer' && resource.try(:freelancer_info).nil?
-      new_freelancer_info_path
+      new_bidding_profile_path
     else
       super
     end

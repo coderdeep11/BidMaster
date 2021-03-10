@@ -7,3 +7,4 @@ document.querySelector(".start__conversation").setAttribute("style",`top:${windo
 document.querySelector(".close__messages")?.addEventListener("click",()=>{
 document.querySelector(".start__conversation").remove();
 })
+document.querySelector(".messages__modal")?.lastElementChild.scrollIntoView({ behaviour: "smooth", block: "end" });

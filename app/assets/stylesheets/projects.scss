@@ -658,3 +658,29 @@ $font-quicksand: "Quicksand", serif;
   pointer-events: none;
   overflow: hidden;
 }
+.show {
+  transform: translateX(0);
+  overflow: unset;
+  scrollbar-width: inherit;
+  position: inherit;
+  box-shadow: none;
+  height: inherit;
+}
+.bid-awarded-disable {
+  pointer-events: none;
+  position: relative;
+  &::after {
+    content: "This project is already awarded!";
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    font-size: 2.3rem;
+    transform: translate(0%, -50%);
+    width: 100%;
+    font-weight: 600;
+    color: red;
+  }
+  input {
+    opacity: 0.5;
+  }
+}

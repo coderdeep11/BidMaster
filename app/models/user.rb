@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :role, presence: true, unless: :user_admin?
   validates :name, presence: true
   has_many :notifications, dependent: :destroy
-  has_one :freelancer_info, foreign_key: :freelancer_id, dependent: :destroy
+  has_one :bidding_profile, foreign_key: :freelancer_id, dependent: :destroy
   has_many :projects, foreign_key: :client_id, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :bids, foreign_key: :freelancer_id, dependent: :destroy
@@ -31,6 +31,4 @@ class User < ApplicationRecord
   def inactive_message
     approved? ? super : :not_approved
   end
-
-
 end

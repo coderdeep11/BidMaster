@@ -6,7 +6,7 @@ one:
   experience: MyString
   education: MyText
   bio: MyText
-  freelancer_id: 100
+  freelancer_id: 112
 
 two:
   category: MyString

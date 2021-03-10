@@ -7,15 +7,15 @@
           <li class="freelancer__name">
             <%=freelancer.name%>
             <div class="category">
-              <%=freelancer.freelancer_info.try(:category)%>
+              <%=freelancer.bidding_profile.try(:category)%>
             </div>
           </li >
           <li  class="freelancer__bio">
-            <%if freelancer.freelancer_info.try(:bio)%>
-              <% if freelancer.freelancer_info.bio.length > 300 %>
-                <%=freelancer.freelancer_info.bio.from(0).to(300)%>......
+            <%if freelancer.bidding_profile.try(:bio)%>
+              <% if freelancer.bidding_profile.bio.length > 300 %>
+                <%=freelancer.bidding_profile.bio.from(0).to(300)%>......
               <% else %>
-                <%=freelancer.freelancer_info.bio%>
+                <%=freelancer.bidding_profile.bio%>
               <% end %>
             <% end %>
           </li>
