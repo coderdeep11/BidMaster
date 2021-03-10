@@ -97,7 +97,7 @@ has_many :notifications
 
 
 # _Search Functionality_
-> ### To search a projects or  freelancers click on the arrow on left of the search bar ,it gives a dropdown if anyone want to search  freelancers or projects
+> ### To search projects or  freelancers click on the arrow on left of the search bar ,it gives a dropdown if anyone want to search  freelancers or projects
 
 ![Screenshot_2021-03-11 BidMaster(11)](https://user-images.githubusercontent.com/41575688/110693852-ed28ec80-820d-11eb-86ab-c8db4046367d.png)
 
