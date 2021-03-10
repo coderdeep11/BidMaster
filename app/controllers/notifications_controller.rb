@@ -3,5 +3,8 @@ class NotificationsController < ApplicationController
   def index
     @notifications = Notification.where(user_id: current_user.id).joins(:bid).order('bids.updated_at DESC').page(params[:page]).per(10)
     Notification.where('user_id = ? AND read = ?', current_user.id, false).update_all(read: true)
+    respond_to do |format|
+      format.js {}
+    end
   end
 end

@@ -7,9 +7,8 @@ class NotificationsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:user_001)
     post user_session_url
   end
-  test "should get index" do
-    get notifications_index_url
+  test 'should get index' do
+    get notifications_url, xhr: true
     assert_response :success
   end
-
 end

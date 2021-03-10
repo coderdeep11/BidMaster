@@ -5,15 +5,13 @@ one:
   subcategory: MyString
   experience: MyString
   education: MyText
-  hourly_rate: 1
   bio: MyText
-  freelancer_id: 47
+  freelancer_id: 100
 
 two:
   category: MyString
   subcategory: MyString
   experience: MyString
   education: MyText
-  hourly_rate: 1
   bio: MyText
-  freelancer_id: 47
+  freelancer_id: 102
