@@ -2,8 +2,8 @@
   <%= search_form_for q, url: search_results_path ,id:'search' do |f|%>
     <%= render 'search-filters-freelancers',f: f %>
     <div class="search_bar">
-      <%= f.label :name_or_email_or_bidding_profile_category_cont,style:'display:none' %>
-      <%= f.search_field :name_or_email_or_bidding_profile_category_cont, placeholder: "Search" %>
+      <%= f.label :name_or_email_or_bidding_profile_category_or_bidding_profile_experience_cont,style:'display:none' %>
+      <%= f.search_field :name_or_email_or_bidding_profile_category_or_bidding_profile_experience_cont, placeholder: "Search freelancer by category,email,name etc" %>
     </div>
     <%= button_tag class: ' search__btn'   do%>
       <i class="far fa-search"></i>
