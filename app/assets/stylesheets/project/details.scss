@@ -226,10 +226,15 @@ main {
         flex-basis: 35px;
         padding: 1rem;
         align-self: flex-start;
-        svg {
+        svg,
+        img {
           display: block;
           height: 60px;
           width: 60px;
+        }
+        img {
+          border: 1px solid rgb(143, 143, 143);
+          border-radius: 50%;
         }
       }
       & > ul {

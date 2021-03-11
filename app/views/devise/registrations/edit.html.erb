@@ -67,6 +67,15 @@
           </div>
         <%end%>
       </div>
+      <!-- Image field -->
+      <div class="image__field">
+        <%= f.label :profile_image,'Add a Photo' %>
+        <br/>
+        <div class="file__field">
+          <i class="fal fa-user-circle"></i>
+          <%= f.file_field :profile_image %>
+        </div>
+      </div>
       <!---current password-->
       <div class="password__field">
         <i class="fad fa-lock"></i>

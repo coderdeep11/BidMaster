@@ -1,6 +1,12 @@
 <ul class="user__profile-dropdown">
   <li>
-    <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+    <div class="user__image">
+      <% if current_user.profile_image.attached? %>
+        <%=image_tag current_user.profile_image%>
+      <% else %>
+        <%=inline_svg_tag 'default_avatar.svg'%>
+      <% end %>
+    </div>
     <%=link_to current_user.try(:role) =="client" ? client_path(current_user) : freelancer_path(current_user),class: 'user__name' do%>
       <%=@user.name%>   <span><%=@user.role%></span>
     <%end%>

@@ -1,31 +1,31 @@
 conversations = document.querySelector(".conversations__modal");
 conversations.insertAdjacentHTML(
-  "beforeend",
-  `<%= j render partial: "messages",locals:{ messages: @messages,conversation: @conversation,message: @message} %>`
+"beforeend",
+`<%= j render partial: "messages",locals:{ messages: @messages,conversation: @conversation,message: @message} %>`
 );
 conversations.setAttribute("style", "overflow:hidden");
 t = setTimeout(function () {
-  document.querySelector(".messages__modal").classList.add("slideIn");
-  clearTimeout(t);
+document.querySelector(".messages__modal").classList.add("slideIn");
+clearTimeout(t);
 }, 100);
 document.querySelector(".close__messages").addEventListener("click", () => {
-  conversations.setAttribute("style", "overflow:scroll");
-  document.querySelector(".messages__modal").classList.remove("slideIn");
-  t = setTimeout(function () {
-    document.querySelector(".messages__modal").remove();
-    clearTimeout(t);
-  }, 200);
+conversations.setAttribute("style", "overflow:scroll");
+document.querySelector(".messages__modal").classList.remove("slideIn");
+t = setTimeout(function () {
+document.querySelector(".messages__modal").remove();
+clearTimeout(t);
+}, 200);
 });
 document
-  .querySelector(".messages__modal")
-  .lastElementChild.scrollIntoView({ behaviour: "smooth", block: "end" });
+.querySelector(".messages__modal")
+.lastElementChild.scrollIntoView({ behaviour: "smooth", block: "end" });
 document.querySelector("#message_documents").addEventListener("change", (e) => {
-  e.target.previousElementSibling.classList.add("attached");
+e.target.nextElementSibling.nextElementSibling.click();
 });
 document
-  .querySelector("#message_content")
-  ?.addEventListener("keypress", (e) => {
-    if (e.keyCode === 13) {
-      e.target.nextElementSibling.click();
-    }
-  });
+.querySelector("#message_content")
+?.addEventListener("keypress", (e) => {
+if (e.keyCode === 13) {
+e.target.nextElementSibling.click();
+}
+});

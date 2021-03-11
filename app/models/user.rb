@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :profile_image
   validates :role, presence: true, unless: :user_admin?
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 5..20, message: 'must be within 5 to 20 characters' }
+  validate :contain_last_name
   has_many :notifications, dependent: :destroy
   has_one :bidding_profile, foreign_key: :freelancer_id, dependent: :destroy
   has_many :projects, foreign_key: :client_id, dependent: :destroy
@@ -15,6 +16,12 @@ class User < ApplicationRecord
   has_many :conversations_as_recipient, class_name: 'Conversation', foreign_key: :recipient_id, dependent: :destroy
 
   before_update :role_changed
+
+  def contain_last_name
+    unless name.nil?
+      errors.add(:name, 'need a last name') unless name.split(' ').length > 1
+    end
+  end
 
   def user_admin?
     admin?

@@ -1,5 +1,11 @@
 <li class="notification bid-<%=notification.bid.aasm_state%>">
-  <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+  <div class="user__image">
+    <% if notification.bid.project.client.profile_image.attached? %>
+      <%=image_tag notification.bid.project.client.profile_image%>
+    <% else %>
+      <%=inline_svg_tag 'default_avatar.svg'%>
+    <% end %>
+  </div>
   <ul class="notification__content">
     <li class="bid__result">
       <% if notification.bid.awarded? %>

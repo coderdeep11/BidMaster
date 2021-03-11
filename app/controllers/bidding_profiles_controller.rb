@@ -1,6 +1,6 @@
 class BiddingProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_bidding_profile, only: %i[edit update]
+  before_action :set_bidding_profile, only: %i[edit update show]
   include BiddingProfilesHelper
   def index
     if user_freelancer?(current_user)
@@ -30,7 +30,9 @@ class BiddingProfilesController < ApplicationController
       render 'new'
     end
   end
-
+  def show
+    redirect_to freelancer_path(@bidding_profile.freelancer)
+  end
   def edit
     unless authorize_bidding_profile(@bidding_profile)
       flash[:alert] = 'access denied'

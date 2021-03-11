@@ -40,4 +40,23 @@ window.addEventListener("turbolinks:load", () => {
       event(e);
     });
   }
+  /***************************** */
+  /* Image Preview for user registration*/
+  document
+    .querySelector("#user_profile_image")
+    ?.addEventListener("change", (e) => {
+      let file_field = document.querySelector(".file__field"),
+        reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = function (e) {
+        image_base64 = e.target.result;
+        file_field.firstElementChild.remove();
+        file_field?.insertAdjacentHTML(
+          "afterbegin",
+          `
+           <img src="${image_base64}",alt="profile picture" />
+          `
+        );
+      };
+    });
 });
