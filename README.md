@@ -1,6 +1,23 @@
 # BidMaster
 > `BidMaster is freelancing platform which provides freelancers to bid on projects which are posted by clients.`
 
+# Installation
+Follow these easy steps to install and start the app:
+### Set up Rails app
+```ruby 
+bundle install
+rails db:prepare
+```
+### Start the server
+> rails s 
+
+
+#####  _`TO access admin panel`_
+
+> email: `admin@example.com` <br/>
+password: `password`
+
+
 ## _Overview:_
 ### Models used:
 - User
