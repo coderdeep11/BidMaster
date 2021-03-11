@@ -134,6 +134,12 @@ $border: 1px solid #b9b9b9;
         padding: 15px 0;
         box-shadow: none;
       }
+      img {
+        height: 90px;
+        width: 90px;
+        border: 1px solid rgb(65, 65, 65);
+        border-radius: 50%;
+      }
     }
 
     @include buttons();
@@ -253,6 +259,12 @@ $border: 1px solid #b9b9b9;
       }
       & .errors {
         font-size: 0.8rem;
+      }
+    }
+    .name__field {
+      .errors {
+        line-height: 13px;
+        font-size: 0.7rem;
       }
     }
   }

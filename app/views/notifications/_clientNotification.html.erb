@@ -1,5 +1,11 @@
 <li class="notification bid-<%=notification.bid.aasm_state%>">
-  <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+  <div class="user__image">
+    <% if notification.bid.freelancer.profile_image.attached? %>
+      <%=image_tag notification.bid.freelancer.profile_image%>
+    <% else %>
+      <%=inline_svg_tag 'default_avatar.svg'%>
+    <% end %>
+  </div>
   <ul class="notification__content" id="notification-<%=notification.id%>">
     <%if notification.bid.unapproved?%>
       <li class="notification__from">
@@ -13,7 +19,11 @@
       <% end %>
     <% else %>
       <li class="bid__result">
-        <%="You #{notification.bid.rejected? ? "rejected the bid,check other bids on your project ": "approved the bid,now you can get in touch with #{notification.bid.freelancer.name}" }."%>
+        <% if notification.bid.awarded? %>
+          <%="You awarded  the project to #{notification.bid.freelancer.name}" %>
+        <% else %>
+          <%="You #{notification.bid.rejected? ? "rejected the bid,check other bids on your project ": "approved the bid,now you can get in touch with #{notification.bid.freelancer.name}" }."%>
+        <% end %>
       </li>
       <div class="time"><%=distance_of_time_in_words_to_now(notification.bid.updated_at)%> ago</div>
     <% end %>

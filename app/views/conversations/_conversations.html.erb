@@ -1,7 +1,9 @@
  <% conversations.each do |conversation| %>
   <% recipient = conversation.sender_id == current_user.id ? conversation.recipient : conversation.sender %>
   <li class="conversation <%=conversation.unread_message_count(current_user) > 0 ? "unread" : ""%>">
-    <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+    <div class="user__image">
+      <%= render 'recipient_avatar',recipient: recipient %>
+    </div>
     <ul class="message_and_name">
       <li class="user__name">
         <%=recipient.try(:name)%>

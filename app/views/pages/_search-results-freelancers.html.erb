@@ -2,7 +2,13 @@
   <ul class="freelancers">
     <%freelancers.try(:each) do|freelancer|%>
       <li class="freelancer">
-        <div class="user_image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+        <div class="user_image">
+          <% if freelancer.profile_image.attached? %>
+            <%=image_tag freelancer.profile_image%>
+          <% else %>
+            <%=inline_svg_tag 'default_avatar.svg'%>
+          <% end %>
+        </div>
         <ul>
           <li class="freelancer__name">
             <%=freelancer.name%>

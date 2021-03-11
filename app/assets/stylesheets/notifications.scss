@@ -45,10 +45,15 @@
       flex-basis: 35px;
       padding: 5px;
       align-self: center;
-      svg {
+      svg,
+      img {
         display: block;
         height: 60px;
         width: 60px;
+      }
+      img {
+        border: 1px solid rgb(143, 143, 143);
+        border-radius: 50%;
       }
     }
     .notification__content {

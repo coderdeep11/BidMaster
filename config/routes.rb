@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
-  # routes for freelancers info
-  resources :bidding_profiles, except: %i[show]
+  # routes for bidding profile
+  resources :bidding_profiles
 
   # routes for projects
   resources :projects do
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # authenticated routes for projects and freelancers info
+  # authenticated routes for projects and bidding profile
   devise_scope :user do
     authenticated :user, ->(u) { u.try(:admin?) } do
       root to: 'rails_admin/main#dashboard', as: :admin_root
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   # route for a specific job and its categories
   resources :job_categories, only: [:show]
 
-  # routes for freelancers info
+  # routes for bidding profile
   get '/freelancer/:id/experience', to: 'profiles#experience', as: 'freelancer_experience'
   get '/freelancer/:id/about-me/', to: 'profiles#about', as: 'freelancer_about-me'
   get '/freelancer/:id/details/', to: 'profiles#details', as: 'freelancer_details'
@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   get '/search', to: 'pages#search', as: 'search_results'
   get '/search/freelancer/:id/profile', to: 'pages#freelancer_profile', as: 'search_freelancer_profile'
 
+  get 'users', to: redirect('/users/sign_up')
   # root path for unauthenticated users
   root 'pages#main', as: :visitors_url
 end

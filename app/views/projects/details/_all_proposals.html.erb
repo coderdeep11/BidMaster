@@ -7,7 +7,13 @@
   <% else %>
     <%bids.each do|bid|%>
       <li class="proposal <%=bid.aasm_state%>" id="<%=bid.id%>  ">
-        <div class="user__image"><%=inline_svg_tag 'default_avatar.svg' %></div>
+        <div class="user__image">
+          <% if bid.freelancer.profile_image.attached? %>
+            <%=image_tag bid.freelancer.profile_image%>
+          <% else %>
+            <%=inline_svg_tag 'default_avatar.svg'%>
+          <% end %>
+        </div>
         <ul>
           <li>
             <%=link_to bid.freelancer.name,freelancer_path(bid.freelancer)%>

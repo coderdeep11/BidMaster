@@ -18,7 +18,13 @@
       </li>
       <li class="bid__created-at">
         <ul class="client__details">
-          <li class="client__picture"><%=image_tag 'default_avatar.png' %></li>
+          <li class="client__picture">
+            <% if bid.project.client.profile_image.attached? %>
+              <%=image_tag bid.project.client.profile_image%>
+            <% else %>
+              <%=inline_svg_tag 'default_avatar.svg'%>
+            <% end %>
+          </li>
           <li class="client__profile"><%=link_to 'View client',client_path(bid.project.client)%></li>
         </ul>
         <div >

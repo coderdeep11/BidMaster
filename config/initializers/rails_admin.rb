@@ -12,6 +12,7 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
 
   config.model 'User' do
+    weight(-6)
     list do
       field :id
       field :name
@@ -22,11 +23,62 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model 'Conversation' do
-    visible false
+  config.model 'Project' do
+    weight(-5)
+    list do
+      field :id
+      field :client do
+        label 'Project posted_by'
+      end
+      field :title
+      field :category
+      field :subcategory
+    end
   end
+  config.model 'BiddingProfile' do
+    weight(-4)
+    list do
+      field :id
+      field :freelancer
+      field :category
+      field :subcategory
+      field :experience
+    end
+  end
+
   config.model 'Bid' do
+  
     parent 'Project'
+    list do
+      field :id
+      field :freelancer
+      field :value
+      field :proposal
+    end
+  end
+
+  config.model 'Message' do
+    weight(-2)
+    parent 'Conversation'
+    list do
+      field :id
+      field :content
+      field :user do
+        label 'Message sent_by'
+      end
+    end
+  end
+
+  config.model 'Conversation' do
+    list do
+      field :id
+      field :sender
+      field :recipient
+    end
+  end
+
+  config.model 'Notification' do
+    visible false
   end
 
   ## == CancanCan ==

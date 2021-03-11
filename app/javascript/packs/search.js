@@ -25,10 +25,9 @@ window.addEventListener("turbolinks:load", () => {
         data.id.map((model, i) => {
           if (i == 0)
             contactSelect.options[i] = new Option("Choose Any", "", true);
-          else {
-            contactSelect.options[i] = new Option(model);
-            contactSelect.options[i].value = model;
-          }
+
+          contactSelect.options[i + 1] = new Option(model);
+          contactSelect.options[i + 1].value = model;
         });
       });
   };
@@ -65,7 +64,8 @@ window.addEventListener("turbolinks:load", () => {
   searchMode?.addEventListener("click", (e) => {
     let filters = document.querySelector(".search__filters");
 
-    if (e.target.closest("svg")) filters?.classList.add("show-filter");
+    if (e.target.closest(".svg__search-filters"))
+      filters?.classList.add("show-filter");
     if (
       e.target.closest("toggle__filter") ||
       e.target.closest(".close__filter")

@@ -1,10 +1,27 @@
-document.querySelector(".project__overview").insertAdjacentHTML("afterend",`
+document.querySelector(".project__overview").insertAdjacentHTML(
+"afterend",
+`
 <div class="start__conversation"><%=j render 'messages', {messages: @messages,message: @message } %>
 </div>
-`);
-windowScroll=window.scrollY;
-document.querySelector(".start__conversation").setAttribute("style",`top:${windowScroll }px `)
-document.querySelector(".close__messages")?.addEventListener("click",()=>{
+`
+);
+windowScroll = window.scrollY;
+document
+.querySelector(".start__conversation")
+.setAttribute("style", `top:${windowScroll}px `);
+document.querySelector(".close__messages")?.addEventListener("click", () => {
 document.querySelector(".start__conversation").remove();
-})
-document.querySelector(".messages__modal")?.lastElementChild.scrollIntoView({ behaviour: "smooth", block: "end" });
+});
+document
+.querySelector(".messages__modal")
+.lastElementChild.scrollIntoView({ behaviour: "smooth", block: "end" });
+document.querySelector("#message_documents").addEventListener("change", (e) => {
+e.target.nextElementSibling.nextElementSibling.click();
+});
+document
+.querySelector("#message_content")
+?.addEventListener("keypress", (e) => {
+if (e.keyCode === 13) {
+e.target.nextElementSibling.click();
+}
+});
