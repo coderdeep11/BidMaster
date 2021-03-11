@@ -12,16 +12,18 @@
 
 user_001:
   id: 111
-  name: "xyz"
+  name: "abc xyz"
   email: test@sample.com
   encrypted_password: <%= User.new.send(:password_digest,'password')%>
   role: "client"
   approved: true
+  confirmed_at: "2010-02-11 11:02:57"
 
 user_002:
   id: 112
-  name: "xyz"
+  name: "abc xyz"
   email: test2@sample.com
   encrypted_password: <%= User.new.send(:password_digest,'password')%>
   role: "freelancer"
   approved: true
+  confirmed_at: "2010-02-11 11:02:57"

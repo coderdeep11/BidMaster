@@ -14,7 +14,6 @@ class BiddingProfilesController < ApplicationController
   def new
     authorized_only_to_freelancers unless user_freelancer?(current_user)
     if bidding_profile_exist?
-      flash[:alert] = 'You have already done the registration'
       redirect_to root_path
     else
       @bidding_profile = BiddingProfile.new
@@ -30,9 +29,11 @@ class BiddingProfilesController < ApplicationController
       render 'new'
     end
   end
+
   def show
     redirect_to freelancer_path(@bidding_profile.freelancer)
   end
+
   def edit
     unless authorize_bidding_profile(@bidding_profile)
       flash[:alert] = 'access denied'

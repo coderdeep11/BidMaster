@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create_or_find_by(name: 'Admin',
+User.create_or_find_by(name: 'Admin User',
                        email: 'admin@example.com',
                        password: 'password',
                        password_confirmation: 'password',
                        admin: true,
-                       approved: true)
+                       approved: true,
+                       confirmed_at: DateTime.now)
