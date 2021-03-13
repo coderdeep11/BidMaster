@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BidMaster</title>
+    <title>
+      <% unless yield(:title).blank? %>
+        <%= yield(:title)   %>
+      <% else %>
+        Bid Master
+      <% end %>
+    </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css", 'data-turbolinks-track': 'reload, media="print"' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'logo.svg' %>
   </head>
   <body>
     <header>
