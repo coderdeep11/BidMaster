@@ -1,3 +1,4 @@
+<% content_for :title, "#{search_query(params[:q])} " %>
 <div class="search__freelancers">
   <%= render 'search_freelancers',q: q %>
   <%if freelancers.nil?%>
