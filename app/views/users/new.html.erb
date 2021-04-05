@@ -1,0 +1,80 @@
+<% content_for :title, "Complete your account setup" %>
+<section class= "sign__up-page" >
+  <%= form_for @user do |f| %>
+    <section class= "sign__up-form">
+      <h1>Complete your account setup</h1>
+      <!-- Name field -->
+      <div class="name__field">
+        <i class="fad fa-user"></i>
+        <%= f.text_field :name,placeholder: 'Name' %>
+        <%unless @user.errors[:name].empty?%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "name #{@user.errors[:name][0]} "%>
+          </div>
+        <%end%>
+      </div>
+      <!-- Email field -->
+      <div class="email__field">
+        <i class="fad fa-at"></i>
+        <%= f.email_field :email, autocomplete: "email",placeholder: 'Email'  %>
+        <%unless @user.errors[:email].empty?%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "email #{@user.errors[:email][0]} "%>
+          </div>
+        <%end%>
+      </div>
+      <!-- Password field -->
+      <div class="password__field">
+        <i class="fad fa-lock"></i>
+        <%= f.password_field :password, autocomplete: "new-password",placeholder: 'Create a password'  %>
+        <%unless @user.errors[:password].empty?%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "password #{@user.errors[:password][0]} "%>
+          </div>
+        <%end%>
+      </div>
+      <div class="password__confirmation-field">
+        <i class="fad fa-lock"></i>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: 'Confirm password' %>
+        <%unless @user.errors[:password_confirmation].empty?%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "#{@user.errors[:password_confirmation][0]} "%>
+          </div>
+        <%end%>
+      </div>
+      <!-- Role field -->
+      <div class="role__field">
+        <p> <%= f.label :role,'Choose Your role:' %></p>
+        <div class="f__btn">
+          <%= f.radio_button :role ,"freelancer"%>
+          Freelancer
+        </div>
+        <div  class="c__btn">
+          <%=f.radio_button  :role, "client" %>
+          Client
+        </div>
+        <%unless @user.errors[:role].empty?%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%= "role #{@user.errors[:role][0]} "%>
+          </div>
+        <%end%>
+      </div>
+      <!-- Image field -->
+      <div class="image__field">
+        <%= f.label :profile_image,'Add a Photo' %>
+        <br/>
+        <div class="file__field">
+          <i class="fal fa-user-circle"></i>
+          <%= f.file_field :profile_image %>
+        </div>
+      </div>
+      <!-- submit-->
+      <%= f.submit "Sign up",class:'btn' %>
+    </section>
+  <% end %>
+</section>
