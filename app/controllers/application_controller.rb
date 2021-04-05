@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_global_search_variable
+  helper_method :logged_in?, :current_user
+
   require 'action_view'
   include ActionView::Helpers::DateHelper
   include ApplicationHelper
@@ -9,16 +10,15 @@ class ApplicationController < ActionController::Base
     @j = Project.ransack(params[:q])
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name role profile_image])
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[name role profile_image])
+  def current_user
+    @user = User.find(session[:user_id]) if session[:user_id]
   end
 
-  def after_sign_in_path_for(resource)
-    if resource.try(:role) == 'freelancer' && resource.try(:freelancer_info).nil?
-      new_bidding_profile_path
-    else
-      super
-    end
+  def logged_in?
+    !!current_user
+  end
+
+  def authenticate_user!
+    redirect_to login_path unless logged_in?
   end
 end

@@ -1,10 +1,25 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+
+  resources :users, only: %i[create update]
+  get '/confirm_email/:id', to: 'sessions#confirm_email', as: 'confirm_email_user'
+  get '/signup', to: 'users#new'
+  get '/edit_user', to: 'users#edit'
+
+  resources :sessions, only: %i[create]
+  get '/login', to: 'sessions#new'
+  delete '/logout', to: 'sessions#destroy'
 
   # routes for bidding profile
   resources :bidding_profiles
 
+  constraints FreelancerRouteConstraint.new do
+    root 'bidding_profiles#index', as: 'bidding_profiles_path'
+  end
+
+  constraints ClientRouteConstraint.new do
+    root 'projects#index', as: 'projects_path'
+  end
   # routes for projects
   resources :projects do
     get :more_info, on: :member
@@ -28,17 +43,6 @@ Rails.application.routes.draw do
   end
 
   # authenticated routes for projects and bidding profile
-  devise_scope :user do
-    authenticated :user, ->(u) { u.try(:admin?) } do
-      root to: 'rails_admin/main#dashboard', as: :admin_root
-    end
-    authenticated :user, ->(u) { u.try(:role) == 'client' } do
-      root to: 'projects#index'
-    end
-    authenticated :user, ->(u) { u.try(:role) == 'freelancer' } do
-      root to: 'bidding_profiles#index', as: :bidding_profiles_path
-    end
-  end
 
   # routes for conversations and messages
   resources :conversations, only: %i[index create] do
@@ -70,5 +74,5 @@ Rails.application.routes.draw do
 
   get 'users', to: redirect('/users/sign_up')
   # root path for unauthenticated users
-  root 'pages#main', as: :visitors_url
+  root 'pages#main'
 end

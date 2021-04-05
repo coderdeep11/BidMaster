@@ -1,12 +1,16 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :validatable
+  has_secure_password
   has_one_attached :profile_image
+  attr_accessor :current_password
+
+  # Validations
   validates :role, presence: true, unless: :user_admin?
   validates :name, presence: true, length: { in: 5..20, message: 'must be within 5 to 20 characters' }
   validate :contain_last_name
+  validates :email, presence: true, uniqueness: { message: 'already taken' }
+  validates :password, presence: true, confirmation: { message: 'doesn\'t match password' }, unless: -> { password.blank? }
+
+  # Relationships
   has_many :notifications, dependent: :destroy
   has_one :bidding_profile, foreign_key: :freelancer_id, dependent: :destroy
   has_many :projects, foreign_key: :client_id, dependent: :destroy
@@ -16,7 +20,7 @@ class User < ApplicationRecord
   has_many :conversations_as_recipient, class_name: 'Conversation', foreign_key: :recipient_id, dependent: :destroy
 
   before_update :role_changed
-
+  before_create :confirm_token
   def contain_last_name
     unless name.nil?
       errors.add(:name, 'need a last name') unless name.split(' ').length > 1
@@ -31,11 +35,15 @@ class User < ApplicationRecord
     UserRoleSwitchedJob.perform_later(self, changed_attributes[:role]) unless changed_attributes[:role].nil?
   end
 
-  def active_for_authentication?
-    super && approved?
+  def email_activate
+    self.email_confirmed = true
+    self.confirmation_token = nil
+    save!(validate: false)
   end
 
-  def inactive_message
-    approved? ? super : :not_approved
+  private
+
+  def confirm_token
+    self.confirmation_token = SecureRandom.urlsafe_base64.to_s if confirmation_token.blank?
   end
 end
