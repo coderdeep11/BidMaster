@@ -7,14 +7,7 @@ class SessionsController < ApplicationController
       if @user.email_confirmed
         session[:user_id] = @user.id
         flash[:notice] = "Hi #{@user.name},you have signed in successfully. "
-
-        if user_client?(@user)
-          redirect_to projects_path
-        elsif user_freelancer?(@user)
-          redirect_to bidding_profiles_path
-        else
-          redirect_to rails_admin_path
-        end
+        redirect_to root_path
       else
         flash[:alert] = 'Please activate your account by following the
           instructions in the account confirmation email you received, to proceed'

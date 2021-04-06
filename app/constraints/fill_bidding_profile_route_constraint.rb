@@ -1,7 +1,7 @@
-class FreelancerRouteConstraint
+class FillBiddingProfileRouteConstraint
   def matches?(request)
     user = current_user(request)
-    user.present? && user.role == 'freelancer' && !BiddingProfile.where(freelancer: user).empty?
+    user.present? && user.role == 'freelancer' &&  BiddingProfile.where(freelancer: user).empty?
   end
 
   def current_user(request)

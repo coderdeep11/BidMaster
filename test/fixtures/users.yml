@@ -1,21 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString
-  email_confirmed: false
-  password_digest: MyString
-  role: MyString
-  confirmation_token: MyString
-  admin: false
-  approved: false
+user_001:
+  id: 111
+  name: "abc xyz"
+  email: test@sample.com
+  email_confirmed: true
+  password_digest: <%= BCrypt::Password.create('password') %>
+  role: "client"
+  confirmation_token: <%=SecureRandom.urlsafe_base64.to_s%>
 
-two:
-  name: MyString
-  email: MyString
-  email_confirmed: false
-  password_digest: MyString
-  role: MyString
-  confirmation_token: MyString
-  admin: false
-  approved: false
+user_002:
+  id: 112
+  name: "abc xyz"
+  email: test2@sample.com
+  email_confirmed: true
+  password_digest: <%= BCrypt::Password.create('password') %>
+  role: "freelancer"
+  confirmation_token: <%=SecureRandom.urlsafe_base64.to_s%>

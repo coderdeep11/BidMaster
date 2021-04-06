@@ -46,6 +46,11 @@ $font-quicksand: "Quicksand", serif;
   .freelancer__form-details {
     @include heading();
     border: none;
+    span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: green;
+    }
   }
   & > form {
     border-top: $border;

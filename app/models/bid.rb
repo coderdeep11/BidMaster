@@ -9,24 +9,14 @@ class Bid < ApplicationRecord
   validate :is_user_freelancer?
   after_create :send_notifications_to_client
 
-  include AASM
+  before_update :send_notifications_to_freelancer
+  enum status: {
+    unapproved: 'unapproved',
+    accepted: 'accepted',
+    rejected: 'rejected',
+    awarded: 'awarded'
+  }
 
-  aasm do
-    state :unapproved, initial: true
-    state :accepted, :rejected, :awarded
-
-    event :accept do
-      transitions from: :unapproved, to: :accepted, after: :send_notifications_to_freelancer
-    end
-
-    event :award do
-      transitions from: :accepted, to: :awarded
-    end
-    event :reject do
-      transitions from: %i[unapproved], to: :rejected, after: :send_notifications_to_freelancer
-      transitions from: :accepted, to: :rejected
-    end
-  end
   def proposal_words_within_limit?
     unless proposal.nil?
       errors.add(:proposal, 'proposal should contain atleast 10 words') unless proposal.split(' ').length > 10
@@ -42,6 +32,8 @@ class Bid < ApplicationRecord
   end
 
   def send_notifications_to_freelancer
-    Notification.create!(user_id: freelancer.id, bid_id: id)
+    unless changed_attributes[:status].nil?
+      Notification.create!(user_id: freelancer.id, bid_id: id) if accepted? || rejected?
+    end
   end
 end

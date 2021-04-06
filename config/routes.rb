@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   # routes for bidding profile
   resources :bidding_profiles
 
+  constraints FillBiddingProfileRouteConstraint.new do
+    root 'bidding_profiles#new', as: 'new_bidding_profile_path'
+  end
+
   constraints FreelancerRouteConstraint.new do
     root 'bidding_profiles#index', as: 'bidding_profiles_path'
   end

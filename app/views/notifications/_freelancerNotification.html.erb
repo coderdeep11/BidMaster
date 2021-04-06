@@ -1,4 +1,4 @@
-<li class="notification bid-<%=notification.bid.aasm_state%>">
+<li class="notification bid-<%=notification.bid.status%>">
   <div class="user__image">
     <% if notification.bid.project.client.profile_image.attached? %>
       <%=image_tag notification.bid.project.client.profile_image%>

@@ -1,11 +1,10 @@
 require 'test_helper'
 
 class BiddingProfilesControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
   setup do
-    get '/users/sign_in'
-    sign_in users(:user_002)
-    post user_session_url
+    get '/login'
+
+    post sessions_url(:user_002)
   end
   attr_reader :current_user
 
