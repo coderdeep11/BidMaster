@@ -1,8 +1,9 @@
 <main class="freelancers__form-page">
   <div class="freelancer__form-details">
     <h3>
-      <% if request.path  == new_bidding_profile_path %>
+      <% if request.path  == root_path || request.path  == new_bidding_profile_path %>
         Complete your registration
+        <span>(*freelancer extra details)</span>
       <% else %>
         Edit your bidding profile
       <% end %>

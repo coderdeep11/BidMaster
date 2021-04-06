@@ -41,19 +41,19 @@ module Projects
     def destroy
       @bid.destroy
       flash[:alert] = 'Successfully deleted the proposal'
-      redirect_to  bid_history_projects_path
+      redirect_to bid_history_projects_path
     end
 
     def accept
-      @bid.accept! unless @bid.rejected? || @bid.accepted?
+      @bid.accepted! unless @bid.rejected? || @bid.accepted?
     end
 
     def reject
-      @bid.reject! unless @bid.rejected?
+      @bid.rejected! unless @bid.rejected?
     end
 
     def award
-      @bid.award! unless @bid.awarded?
+      @bid.awarded! unless @bid.awarded?
       redirect_to(request.referrer || root_path)
     end
 
@@ -65,7 +65,7 @@ module Projects
     end
 
     def bids_params
-      params.require(:bid).permit(:value, :proposal, :freelancer_id, :project_id, :aasm_state)
+      params.require(:bid).permit(:value, :proposal, :freelancer_id, :project_id, :status)
     end
   end
 end

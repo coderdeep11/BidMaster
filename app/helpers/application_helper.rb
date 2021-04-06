@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def project_awarded?(project)
-    Project.where(id: project.id).joins(:bids).where(bids: { aasm_state: 'awarded' }).empty? ? false : true
+    Project.where(id: project.id).joins(:bids).where(bids: { status: 'awarded' }).empty? ? false : true
   end
 
   def total_projects_posted(user)
@@ -40,19 +40,19 @@ module ApplicationHelper
   end
 
   def total_projects_awarded(user)
-    Project.where(client: user).joins(:bids).where(bids: { aasm_state: 'awarded' }).count
+    Project.where(client: user).joins(:bids).where(bids: { status: 'awarded' }).count
   end
 
   def total_proposals_accepted(user)
-    Project.where(client: user).joins(:bids).where(bids: { aasm_state: 'accepted' }).count
+    Project.where(client: user).joins(:bids).where(bids: { status: 'accepted' }).count
   end
 
   def total_proposals_rejected(user)
-    Project.where(client: user).joins(:bids).where(bids: { aasm_state: 'rejected' }).count
+    Project.where(client: user).joins(:bids).where(bids: { status: 'rejected' }).count
   end
 
   def total_projects_done(user)
-    Bid.where('(aasm_state =? and freelancer_id =?)', 'awarded', user.id).count
+    Bid.where('(status =? and freelancer_id =?)', 'awarded', user.id).count
   end
 
   def any_bids?(user)

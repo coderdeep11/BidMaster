@@ -35,11 +35,11 @@
             <%=link_to 'Message',conversations_path(sender_id:bid.project.client.id,
           recipient_id:bid.freelancer.id ),class:'message',method: :post,remote: true %>
           <%elsif bid.awarded?%>
-            <span class="stamp is-<%=bid.aasm_state%>"><%=bid.aasm_state%></span>
+            <span class="stamp is-<%=bid.status%>"><%=bid.status%></span>
             <%=link_to 'Message',conversations_path(sender_id:bid.project.client.id,
           recipient_id:bid.freelancer.id ),class:'message',method: :post,remote: true%>
           <% else %>
-            <span class="stamp is-<%=bid.aasm_state%>"><%=bid.aasm_state%></span>
+            <span class="stamp is-<%=bid.status%>"><%=bid.status%></span>
           <%end%>
         </div>
       </li >

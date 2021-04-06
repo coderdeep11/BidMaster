@@ -6,7 +6,7 @@
     </div>
   <% else %>
     <%bids.each do|bid|%>
-      <li class="proposal <%=bid.aasm_state%>" id="<%=bid.id%>  ">
+      <li class="proposal <%=bid.status%>" id="<%=bid.id%>  ">
         <div class="user__image">
           <% if bid.freelancer.profile_image.attached? %>
             <%=image_tag bid.freelancer.profile_image%>
@@ -34,7 +34,7 @@
             <%=link_to 'accept', accept_project_bid_path(bid.project,bid) ,class:'accept',method: :put,remote: true%>
             <%=link_to 'reject',reject_project_bid_path(bid.project,bid) ,class:'reject',method: :put ,remote: true%>
           <% else %>
-            <span class="stamp is-<%=bid.aasm_state%>"><%=bid.aasm_state%></span>
+            <span class="stamp is-<%=bid.status%>"><%=bid.status%></span>
           <%end%>
         </div>
       </li >

@@ -52,7 +52,7 @@
       }
     }
     .message_and_name {
-      padding: 5px 0;
+      padding: 5px 1.8rem 5px 0;
       display: flex;
       flex-direction: column;
       .user__name {
@@ -87,7 +87,7 @@
       .message {
         word-break: break-word;
         line-height: 1rem;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         color: #242424;
         flex: 2;
       }

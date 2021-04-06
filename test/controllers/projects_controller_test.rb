@@ -1,11 +1,10 @@
 require 'test_helper'
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
   setup do
-    get '/users/sign_in'
+    get '/login'
     sign_in users(:user_001)
-    post user_session_url
+    post user_sessions_url
   end
   attr_reader :current_user
 
