@@ -1,0 +1,49 @@
+<div class="project__modal show">
+  <div class="job__post-slider">
+    <section class="place__bid bid-<%=@bid.awarded? ? "awarded-disable" : ""%>">
+      <h2>Place a  Bid</h2>
+      <%=form_for @bid ,url: admin_bids_path(@bid), method: :post do|f|%>
+        <div class="bid__by-freelancer" >
+          <div class="select__project">
+            <%= f.label :project_id,'Select a Project' %>
+            <%= f.select :project_id, all_projects, include_blank: 'Choose any' %>
+            <%unless @bid.errors[:project_id].empty?%>
+              <div class="errors">
+                <i class="fas fa-exclamation-circle"></i>
+                <%=@bid.errors[:project_id][0]%>
+              </div>
+            <% end %>
+          </div>
+          <div class="select__freelancer">
+            <%= f.label :freelancer_id,'Select a Freelancer' %>
+            <%= f.select :freelancer_id, all_freelancers, include_blank: 'Choose any' %>
+            <%unless @bid.errors[:freelancer_id].empty?%>
+              <div class="errors">
+                <i class="fas fa-exclamation-circle"></i>
+                <%=@bid.errors[:freelancer_id][0]%></div>
+            <% end %>
+          </div>
+        </div>
+        <div class="bid__proposal-field">
+          <%=f.text_area :proposal,placeholder:'your proposal'%>
+          <%unless @bid.errors[:proposal].empty?%>
+            <div class="errors">
+              <i class="fas fa-exclamation-circle"></i>
+              <%=@bid.errors[:proposal][0]%></div>
+          <% end %>
+        </div>
+        <div class="bid__value-field">
+          $ <%=f.number_field :value,placeholder: 'Bidding price'%>
+          <%unless @bid.errors[:value].empty?%>
+            <div class="errors">
+              <i class="fas fa-exclamation-circle"></i>
+              <%=@bid.errors[:value][0]%></div>
+          <% end %>
+        </div>
+        <div class="submit__proposal">
+          <%=f.submit data: {disable_with: 'Bidding....'  } %>
+        </div>
+      <%end%>
+    </section>
+  </div>
+</div>

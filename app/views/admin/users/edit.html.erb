@@ -1,0 +1,68 @@
+ <% content_for :title, "Edit #{@user.name}'s details" %>
+<section class="update-users-page">
+  <%= form_for @user,url: admin_user_path(@user), method: :patch do |f| %>
+    <section class="update__form">
+      <h1>Edit <%=@user.name%>'s details</h1>
+      <!-- Name Field -->
+      <div class="name__field">
+        <i class="fad fa-user"></i>
+        <%= f.text_field :name,placeholder: 'Name' %>
+        <%unless @user.errors[:name].empty?%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "name #{@user.errors[:name][0]} "%>
+          </div>
+        <%end%>
+      </div>
+      <!--Email Field -->
+      <div class="email__field">
+        <i class="fad fa-at"></i>
+        <%= f.email_field :email, autocomplete: "email",placeholder: 'Email'  %>
+        <%unless @user.errors[:email].empty?%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%=  "email #{@user.errors[:email][0]} "%>
+          </div>
+        <%end%>
+      </div>
+      <!-- Admin field-->
+      <div class="admin__field">
+        <%= f.label "Admin" %>
+        <%= f.check_box :admin %>
+      </div>
+      <!-- Approved field-->
+      <div class="approved__field">
+        <%= f.label "Approved" %>
+        <%= f.check_box :approved %>
+      </div>
+      <!-- Role field-->
+      <div class="role__field">
+        <p> <%= f.label :role,'change role:' %></p>
+        <div class="f__btn">
+          <%= f.radio_button :role ,"freelancer"%>
+          Freelancer
+        </div>
+        <div  class="c__btn">
+          <%=f.radio_button  :role, "client" %>
+          Client
+        </div>
+        <%unless @user.errors[:role].empty?%>
+          <div class="errors">
+            <i class="fas fa-exclamation-circle"></i>
+            <%= "role #{@user.errors[:role][0]} "%>
+          </div>
+        <%end%>
+      </div>
+      <!-- Image field -->
+      <div class="image__field">
+        <%= f.label :profile_image,'Add a Photo' %>
+        <br/>
+        <div class="file__field">
+          <i class="fal fa-user-circle"></i>
+          <%= f.file_field :profile_image %>
+        </div>
+      </div>
+      <%= f.submit "Update",class: 'btn' %>
+    </section>
+  <% end %>
+</section>

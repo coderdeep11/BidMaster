@@ -5,7 +5,9 @@ class Bid < ApplicationRecord
   validates :value, presence: { message: "*can't be blank! " }, numericality: { less_than_or_equal_to: 500, greater_than_or_equal_to: 30, only_integer: true, message: '  must be between $30 and $500' }
   validates :proposal, length: { in: 50..400, message: '*should be within 50-400 words' }
   validate :proposal_words_within_limit?
-  validates :freelancer_id, uniqueness: { scope: :project_id, message: 'freelancer already placed a bid' }
+  validates :freelancer_id, presence: { message: 'must select a freelancer' }, uniqueness: { scope: :project_id, message: 'freelancer already placed a bid on this project' }
+  validates :project_id, presence: { message: 'must select a project' }
+
   validate :is_user_freelancer?
   after_create :send_notifications_to_client
 
