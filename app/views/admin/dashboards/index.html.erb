@@ -33,83 +33,52 @@
     </div>
     <section class="recent">
       <div class="activity-card">
-        <h3>Recent activity</h3>
+        <h3>Dashboard</h3>
         <div class="table-responsive">
           <table>
             <thead>
               <tr>
-                <th>Project</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Team</th>
-                <th>Status</th>
+                <th>Model Name</th>
+                <th>Last used</th>
+                <th>Total records </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>App Development</td>
-                <td>15 Aug, 2020</td>
-                <td>22 Aug, 2020</td>
-                <td class="td-team">
-                  <div class="img-1"></div>
-                  <div class="img-2"></div>
-                  <div class="img-3"></div>
-                </td>
                 <td>
-                  <span class="badge success">Success</span>
+                  <%=link_to admin_users_path do%>
+                    Users
+                  <% end %>
                 </td>
+                <td><%=distance_of_time_in_words_to_now(User.last.try(:updated_at))  if User.last%> </td>
+                <td><%=User.all.count%></td>
               </tr>
               <tr>
-                <td>Logo Design</td>
-                <td>15 Aug, 2020</td>
-                <td>22 Aug, 2020</td>
-                <td class="td-team">
-                  <div class="img-1"></div>
-                  <div class="img-2"></div>
-                  <div class="img-3"></div>
-                </td>
                 <td>
-                  <span class="badge warning">Processing</span>
+                  <%=link_to admin_projects_path do%>
+                    Projects
+                  <% end %>
                 </td>
+                <td><%=distance_of_time_in_words_to_now(Project.last.try(:updated_at)) if Project.last%> </td>
+                <td><%=Project.all.count %> </td>
               </tr>
               <tr>
-                <td>Server setup</td>
-                <td>15 Aug, 2020</td>
-                <td>22 Aug, 2020</td>
-                <td class="td-team">
-                  <div class="img-1"></div>
-                  <div class="img-2"></div>
-                  <div class="img-3"></div>
-                </td>
                 <td>
-                  <span class="badge success">Success</span>
+                  <%=link_to admin_bids_path do%>
+                    Bids
+                  <% end %>
                 </td>
+                <td><%=distance_of_time_in_words_to_now(Bid.last.try(:updated_at)) if Bid.last%> </td>
+                <td><%=Bid.all.count%></td>
               </tr>
               <tr>
-                <td>Front-end Design</td>
-                <td>15 Aug, 2020</td>
-                <td>22 Aug, 2020</td>
-                <td class="td-team">
-                  <div class="img-1"></div>
-                  <div class="img-2"></div>
-                  <div class="img-3"></div>
-                </td>
                 <td>
-                  <span class="badge warning">Processing</span>
+                  <%=link_to admin_bidding_profiles_path do%>
+                    Bidding Profile
+                  <% end %>
                 </td>
-              </tr>
-              <tr>
-                <td>Web Development</td>
-                <td>15 Aug, 2020</td>
-                <td>22 Aug, 2020</td>
-                <td class="td-team">
-                  <div class="img-1"></div>
-                  <div class="img-2"></div>
-                  <div class="img-3"></div>
-                </td>
-                <td>
-                  <span class="badge success">Success</span>
-                </td>
+                <td><%=distance_of_time_in_words_to_now(BiddingProfile.last.try(:updated_at)) if BiddingProfile.last%> </td>
+                <td><%=BiddingProfile.all.count%></td>
               </tr>
             </tbody>
           </table>

@@ -1,0 +1,4 @@
+ <% content_for :title, "#{@user.name}'s profile" %>
+<main class="profile__card">
+  <%=render 'profiles/user_profile',user: @user%>
+</main>

@@ -1,0 +1,4 @@
+ <% content_for :title, "#{@bidding_profile.freelancer.name }'s bidding profile " %>
+<main class="profile__card">
+  <%=render 'profiles/user_profile',user: @bidding_profile.freelancer%>
+</main>

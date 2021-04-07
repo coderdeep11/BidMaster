@@ -1,7 +1,8 @@
+ <% content_for :title, "Bids" %>
 <%=render 'admin/dashboards/sidebar'%>
 <div class="main-content">
   <main class="users">
-    <h2 class="dash-title"><i class="fad fa-users"></i> Bids</h2>
+    <h2 class="dash-title"> <i class="fal fa-gavel"></i> Bids</h2>
     <section class="recent">
       <div class="activity-card">
         <%=link_to 'New Bid',new_admin_bid_path,class:'btn-primary'%>
@@ -20,9 +21,20 @@
               <%@bids.each do |bid|%>
                 <tr>
                   <td><%= bid.id%></td>
-                  <td><%= bid.freelancer%></td>
-                  <td><%=bid.value%></td>
-                  <td><%=bid.proposal%></td>
+                  <td><%= bid.freelancer.name%></td>
+                  <td>$<%=bid.value%></td>
+                  <td><%=bid.proposal.from(0).to(40)%></td>
+                  <td class="action__buttons">
+                    <%=link_to admin_bid_path(bid) do%>
+                      <i class="fal fa-eye"></i>
+                    <% end %>
+                    <%=link_to edit_admin_bid_path(bid) do%>
+                      <i class="fal fa-edit"></i>
+                    <% end %>
+                    <%=link_to admin_bid_path(bid),method: :delete,data: {confirm: 'Are you sure?'} do%>
+                      <i class="fal fa-trash-alt"></i>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

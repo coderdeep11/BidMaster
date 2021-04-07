@@ -6,6 +6,8 @@ class Project < ApplicationRecord
   validates :title, presence: { message: 'can\'t be empty' }, length: { in: 30..100, message: 'Title should be within 30 to 100 characters' }
   validate :title_words_within_limit?
   validates :category, presence: { message: 'Choose a Category' }
+  validates :client_id, presence: { message: 'must select a Client' }
+
   has_one :action_text_rich_text,
           class_name: 'ActionText::RichText',
           as: :record
@@ -16,6 +18,6 @@ class Project < ApplicationRecord
   end
 
   def is_user_client?
-    errors.add(:base, 'Only Clients are allowed to post project') unless client.role == 'client'
+    errors.add(:base, 'Only Clients are allowed to post project') unless client.try(:role) == 'client'
   end
 end

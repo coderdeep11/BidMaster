@@ -15,6 +15,18 @@ module ApplicationHelper
     categories.each_with_index.map { |i, _j| [i, i] }
   end
 
+  def all_clients
+    User.where(role: 'client').pluck(:name, :id)
+  end
+
+  def all_freelancers
+    User.where(role: 'freelancer').pluck(:name, :id)
+  end
+
+  def all_projects
+    Project.all.pluck(:title, :id)
+  end
+
   def search_type(type)
     session[:search_type] = type
   end

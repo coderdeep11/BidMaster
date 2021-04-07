@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :conversations_as_recipient, class_name: 'Conversation', foreign_key: :recipient_id, dependent: :destroy
 
   before_update :role_changed
-  before_create :confirm_token
+  before_create :confirm_token, unless: :user_admin?
   def contain_last_name
     unless name.nil?
       errors.add(:name, 'need a last name') unless name.split(' ').length > 1

@@ -1,0 +1,4 @@
+<% content_for :title, @project.title %>
+<div class="project__modal show">
+  <%=render "projects/job__post-modal", {project: @project,bid: @bid} %>
+</div>

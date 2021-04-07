@@ -58,6 +58,19 @@ $border: 1px solid #b9b9b9;
       width: 100%;
       padding: 10px 2rem;
     }
+    .admin__field,
+    .approved__field {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      input {
+        width: auto;
+        align-self: center;
+      }
+    }
+    .approved__field {
+      justify-content: flex-start;
+    }
     .errors {
       i {
         color: red;

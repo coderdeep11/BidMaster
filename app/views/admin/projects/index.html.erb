@@ -1,7 +1,8 @@
+ <% content_for :title, "Projects" %>
 <%=render 'admin/dashboards/sidebar'%>
 <div class="main-content">
   <main class="users">
-    <h2 class="dash-title"><i class="fad fa-users"></i> Projects</h2>
+    <h2 class="dash-title"><i class="fal fa-desktop"></i> Projects</h2>
     <section class="recent">
       <div class="activity-card">
         <%=link_to 'New Project',new_admin_project_path,class:'btn-primary'%>
@@ -22,9 +23,20 @@
                 <tr>
                   <td><%= project.id%></td>
                   <td><%= project.client.name%></td>
-                  <td><%=project.title%></td>
+                  <td><%=project.title.from(0).to(30)%></td>
                   <td><%=project.category%></td>
                   <td><%=project.subcategory%></td>
+                  <td class="action__buttons">
+                    <%=link_to admin_project_path(project) do%>
+                      <i class="fal fa-eye"></i>
+                    <% end %>
+                    <%=link_to edit_admin_project_path(project) do%>
+                      <i class="fal fa-edit"></i>
+                    <% end %>
+                    <%=link_to admin_project_path(project),method: :delete,data: {confirm: 'Are you sure?'} do%>
+                      <i class="fal fa-trash-alt"></i>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
