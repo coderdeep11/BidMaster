@@ -3,7 +3,7 @@ module Admin
     before_action :authorized_only_to_admin!
     before_action :set_bidding_profile, only: %i[edit update show destroy]
     def index
-      @bidding_profiles = BiddingProfile.all.order('created_at DESC')
+      @bidding_profiles = BiddingProfile.all.order('created_at DESC').page(params[:page]).per(10)
     end
 
     def new
