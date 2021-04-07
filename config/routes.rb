@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
+  namespace :admin do
+    resources :dashboards, only: [:index]
+    resources :users
+    resources :projects
+    resources :bids
+    resources :bidding_profiles
+  end
+  constraints AdminRouteConstraint.new do
+    root 'admin/dashboards#index', as: 'dashboards_path'
+  end
   resources :users, only: %i[create update]
   get '/confirm_email/:id', to: 'sessions#confirm_email', as: 'confirm_email_user'
   get '/signup', to: 'users#new'
@@ -11,6 +19,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   # routes for bidding profile
+
   resources :bidding_profiles
 
   constraints FillBiddingProfileRouteConstraint.new do

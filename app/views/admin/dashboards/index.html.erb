@@ -1,0 +1,120 @@
+<%= render 'sidebar' %>
+<div class="main-content">
+  <main >
+    <h2 class="dash-title">Overview</h2>
+    <div class="dash-cards">
+      <div class="card-single">
+        <div class="card-body">
+          <i class="far fa-users"></i>
+          <div>
+            <h5>Total Users</h5>
+            <h4><%=User.all.count%></h4>
+          </div>
+        </div>
+      </div>
+      <div class="card-single">
+        <div class="card-body">
+          <i class="fad fa-users"></i>
+          <div>
+            <h5>Freelancers</h5>
+            <h4><%=User.where(role: 'freelancer').count%></h4>
+          </div>
+        </div>
+      </div>
+      <div class="card-single">
+        <div class="card-body">
+          <i class="fad fa-users"></i>
+          <div>
+            <h5>Clients</h5>
+            <h4><%=User.where(role: 'client').count%></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="recent">
+      <div class="activity-card">
+        <h3>Recent activity</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Team</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App Development</td>
+                <td>15 Aug, 2020</td>
+                <td>22 Aug, 2020</td>
+                <td class="td-team">
+                  <div class="img-1"></div>
+                  <div class="img-2"></div>
+                  <div class="img-3"></div>
+                </td>
+                <td>
+                  <span class="badge success">Success</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Logo Design</td>
+                <td>15 Aug, 2020</td>
+                <td>22 Aug, 2020</td>
+                <td class="td-team">
+                  <div class="img-1"></div>
+                  <div class="img-2"></div>
+                  <div class="img-3"></div>
+                </td>
+                <td>
+                  <span class="badge warning">Processing</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Server setup</td>
+                <td>15 Aug, 2020</td>
+                <td>22 Aug, 2020</td>
+                <td class="td-team">
+                  <div class="img-1"></div>
+                  <div class="img-2"></div>
+                  <div class="img-3"></div>
+                </td>
+                <td>
+                  <span class="badge success">Success</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Front-end Design</td>
+                <td>15 Aug, 2020</td>
+                <td>22 Aug, 2020</td>
+                <td class="td-team">
+                  <div class="img-1"></div>
+                  <div class="img-2"></div>
+                  <div class="img-3"></div>
+                </td>
+                <td>
+                  <span class="badge warning">Processing</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Web Development</td>
+                <td>15 Aug, 2020</td>
+                <td>22 Aug, 2020</td>
+                <td class="td-team">
+                  <div class="img-1"></div>
+                  <div class="img-2"></div>
+                  <div class="img-3"></div>
+                </td>
+                <td>
+                  <span class="badge success">Success</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

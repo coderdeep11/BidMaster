@@ -1,0 +1,36 @@
+<%=render 'admin/dashboards/sidebar'%>
+<div class="main-content">
+  <main class="users">
+    <h2 class="dash-title"><i class="fad fa-users"></i> Bidding Profiles</h2>
+    <section class="recent">
+      <div class="activity-card">
+        <%=link_to 'New Bidding Profile',new_admin_bidding_profile_path,class:'btn-primary'%>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>freelancer</th>
+                <th>category</th>
+                <th>subcategory</th>
+                <th>experience</th>
+                <th>actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@bidding_profiles.each do |bidding_profile|%>
+                <tr>
+                  <td><%= bidding_profile.id%></td>
+                  <td><%= bidding_profile.freelancer.name%></td>
+                  <td><%=bidding_profile.category%></td>
+                  <td><%=bidding_profile.subcategory%></td>
+                  <td><%=bidding_profile.experience%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
