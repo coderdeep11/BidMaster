@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     redirect_to login_path unless logged_in?
   end
+
+  def authorized_only_to_admin!
+    redirect_to root_path unless current_user.try(:admin?)
+  end
 end

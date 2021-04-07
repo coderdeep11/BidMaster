@@ -1,0 +1,43 @@
+<%=render 'admin/dashboards/sidebar'%>
+<div class="main-content">
+  <main class="users">
+    <h2 class="dash-title"><i class="fad fa-users"></i> Users</h2>
+    <section class="recent">
+      <div class="activity-card">
+        <%=link_to 'New User',new_admin_user_path,class:'btn-primary'%>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>email</th>
+                <th>admin</th>
+                <th>role</th>
+                <th>approved</th>
+                <th>actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@users.each do |user|%>
+                <tr>
+                  <td><%=user.id  %></td>
+                  <td><%=user.name %></td>
+                  <td><%=user.email%></td>
+                  <td><%=user.admin%></td>
+                  <td><%=user.role %></td>
+                  <td><%=user.approved%></td>
+                  <td class="action__buttons">
+                    <i class="fal fa-eye"></i>
+                    <i class="fal fa-edit"></i>
+                    <i class="fal fa-trash-alt"></i>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

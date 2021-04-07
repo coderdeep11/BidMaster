@@ -1,0 +1,172 @@
+// Place all the styles related to the dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$main-color: #027581;
+
+#sidebar-toggle {
+  display: none;
+}
+
+.sidebar {
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  left: 0;
+  top: 65px;
+  z-index: 100;
+  background: $main-color;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  height: 60px;
+  padding: 0rem 1rem;
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.sidebar-menu {
+  & > ul li {
+    list-style-type: none;
+    padding: 0.7rem;
+    transition: background 0.5s;
+    margin-bottom: 0.5rem;
+    a {
+      color: #fff;
+      font-size: 1rem;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+    }
+    &:hover {
+      background: #1aa929;
+    }
+  }
+  .add__background {
+    background: #1aa929;
+  }
+}
+
+.sidebar a span:last-child {
+  padding-left: 0.6rem;
+}
+.main-content {
+  position: relative;
+  margin-left: 240px;
+  background: #f1f5f9;
+  main {
+    margin-top: 0px;
+
+    min-height: 90vh;
+    padding: 0;
+    h2 {
+      border: 0px;
+      padding: 0;
+      margin-bottom: 1rem;
+      background: transparent;
+    }
+    .recent {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    .dash-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 3rem;
+      .card-single {
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        .card-body {
+          padding: 1.3rem 1rem;
+          display: flex;
+          align-items: center;
+          i {
+            font-size: 1.5rem;
+            color: #777;
+            padding-right: 1.4rem;
+          }
+          h5 {
+            color: #8390a2;
+            font-size: 1rem;
+          }
+          h4 {
+            color: #1d2231;
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+          }
+        }
+      }
+    }
+    .activity-card {
+      border: 1px solid rgb(189, 189, 189);
+      background: #fff;
+      border-radius: 7px;
+      h3 {
+        color: #8390a2;
+        padding: 1rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        th,
+        td {
+          font-size: 0.9rem;
+          padding: 1rem 1rem;
+          color: #1d2231;
+        }
+
+        td {
+          font-size: 0.8rem;
+        }
+        .action__buttons {
+          display: flex;
+          gap: 1.5rem;
+          font-size: 1.2rem;
+          i:hover {
+            color: green;
+            cursor: pointer;
+          }
+        }
+        thead {
+          background: #efefef;
+          text-align: left;
+          text-transform: capitalize;
+        }
+        tbody tr:nth-child(2n) {
+          background: #f9fafc;
+        }
+      }
+      .btn-primary {
+        display: block;
+        background: #1986d6;
+        text-align: center;
+        padding: 6px 1.1rem;
+        color: white;
+        line-height: 1.5rem;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 14px;
+        max-width: 180px;
+        margin: 1rem;
+        text-decoration: none;
+        transition: background 0.5s;
+        &:hover {
+          background: #0f6eb3;
+        }
+      }
+    }
+  }
+  .users {
+    max-width: 1000px;
+    section {
+      margin-top: 0px;
+    }
+  }
+}

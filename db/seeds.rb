@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create_or_find_by(name: 'Admin User',
                        email: 'admin@example.com',
-                       password: 'password',
-                       password_confirmation: 'password',
+                       password_digest: BCrypt::Password.create('password'),
                        admin: true,
                        approved: true,
-                       confirmed_at: DateTime.now)
+                       email_confirmed: true,
+                       confirmation_token: nil)

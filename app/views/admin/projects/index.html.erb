@@ -1,0 +1,36 @@
+<%=render 'admin/dashboards/sidebar'%>
+<div class="main-content">
+  <main class="users">
+    <h2 class="dash-title"><i class="fad fa-users"></i> Projects</h2>
+    <section class="recent">
+      <div class="activity-card">
+        <%=link_to 'New Project',new_admin_project_path,class:'btn-primary'%>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>client</th>
+                <th>title</th>
+                <th>category</th>
+                <th>subcategory</th>
+                <th>actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%@projects.each do |project|%>
+                <tr>
+                  <td><%= project.id%></td>
+                  <td><%= project.client.name%></td>
+                  <td><%=project.title%></td>
+                  <td><%=project.category%></td>
+                  <td><%=project.subcategory%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

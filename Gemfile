@@ -30,7 +30,6 @@ gem 'after_commit_everywhere', '~> 0.1', '>= 0.1.5'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'kaminari'
-gem 'rails_admin', '~> 2.0'
 
 gem 'ransack'
 group :development, :test do

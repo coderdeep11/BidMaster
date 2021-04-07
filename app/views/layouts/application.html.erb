@@ -39,7 +39,7 @@
     </div>
     <nav>
       <ul>
-        <%if current_user%>
+        <%if current_user && !current_user.try(:admin?)%>
           <% if user_freelancer?(current_user) %>
             <li>
               <%=link_to  bid_history_projects_path  do%>
@@ -78,6 +78,10 @@
               <% end %>
             </li>
           <%end%>
+        <% elsif current_user.try(:admin?) %>
+          <li>
+            <%=link_to 'Logout',logout_path,class:'btn-primary',method: :delete%>
+          </li>
         <%else%>
           <li>
             <% if request.path == login_path %>
@@ -100,31 +104,33 @@
       </div>
     </div >
     <%= yield %>
-    <footer class="footer">
-      <ul class="footer__nav">
-        <li class="footer__item">
-          <%=link_to 'About',root_path,class:'footer__link'%>
-        </li>
-        <li class="footer__item">
-          <%=link_to 'Customer Support',root_path,class:'footer__link'%>
-        </li>
-        <li class="footer__item">
-          <%=link_to 'Terms of Use',root_path,class:'footer__link'%>
-        </li>
-        <li class="footer__item">
-          <%=link_to 'Privacy Policy',root_path,class:'footer__link'%>
-        </li>
-        <li class="footer__item">
-          <%=link_to 'Carrers',root_path,class:'footer__link'%>
-        </li>
-        <li class="footer__item">
-          <%=link_to 'Contact us',root_path,class:'footer__link'%>
-        </li>
-      </ul>
-      <%=inline_svg_tag 'logo.svg',class:"footer__logo" %>
-      <p class="footer__copyright">
-        Copyright &copy; 2021 BidMaster .All right reserved. 
-      </p>
-    </footer>
+    <% if !current_user.try(:admin?) %>
+      <footer class="footer">
+        <ul class="footer__nav">
+          <li class="footer__item">
+            <%=link_to 'About',root_path,class:'footer__link'%>
+          </li>
+          <li class="footer__item">
+            <%=link_to 'Customer Support',root_path,class:'footer__link'%>
+          </li>
+          <li class="footer__item">
+            <%=link_to 'Terms of Use',root_path,class:'footer__link'%>
+          </li>
+          <li class="footer__item">
+            <%=link_to 'Privacy Policy',root_path,class:'footer__link'%>
+          </li>
+          <li class="footer__item">
+            <%=link_to 'Carrers',root_path,class:'footer__link'%>
+          </li>
+          <li class="footer__item">
+            <%=link_to 'Contact us',root_path,class:'footer__link'%>
+          </li>
+        </ul>
+        <%=inline_svg_tag 'logo.svg',class:"footer__logo" %>
+        <p class="footer__copyright">
+          Copyright &copy; 2021 BidMaster .All right reserved. 
+        </p>
+      </footer>
+    <% end %>
   </body>
 </html>
