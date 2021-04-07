@@ -3,7 +3,7 @@ module Admin
     before_action :authorized_only_to_admin!
     before_action :set_user, only: %i[edit update show destroy]
     def index
-      @users = User.all.order('created_at DESC')
+      @users = User.all.order('created_at DESC').page(params[:page]).per(10)
     end
 
     def new

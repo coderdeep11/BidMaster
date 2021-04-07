@@ -57,6 +57,10 @@
               <% end %>
             </tbody>
           </table>
+          <div class="pagination__buttons">
+            <%= link_to_previous_page @users, 'Previous ',class:'prv__btn' %>
+            <%= link_to_next_page @users, 'Next ',class:'nxt__btn' %>
+          </div>
         </div>
       </div>
     </section>

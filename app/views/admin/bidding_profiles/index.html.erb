@@ -41,6 +41,10 @@
               <% end %>
             </tbody>
           </table>
+          <div class="pagination__buttons">
+            <%= link_to_previous_page @bidding_profiles, 'Previous ',class:'prv__btn' %>
+            <%= link_to_next_page @bidding_profiles, 'Next ',class:'nxt__btn' %>
+          </div>
         </div>
       </div>
     </section>

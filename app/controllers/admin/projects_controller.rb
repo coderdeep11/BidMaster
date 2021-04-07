@@ -3,7 +3,7 @@ module Admin
     before_action :authorized_only_to_admin!
     before_action :set_project, only: %i[edit update show destroy]
     def index
-      @projects = Project.all.order('created_at DESC')
+      @projects = Project.all.order('created_at DESC').page(params[:page]).per(10)
     end
 
     def new

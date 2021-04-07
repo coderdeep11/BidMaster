@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 5..20, message: 'must be within 5 to 20 characters' }
   validate :contain_last_name
   validates :email, presence: true, uniqueness: { message: 'already taken' }
-  validates :password, presence: true, confirmation: { message: 'doesn\'t match password' }, unless: -> { password.blank? }
+  validates :password, presence: true, confirmation: true, length: { minimum: 6 }, unless: -> { password.blank? }
 
   # Relationships
   has_many :notifications, dependent: :destroy

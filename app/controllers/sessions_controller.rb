@@ -4,13 +4,17 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_email(params[:email].downcase)
     if @user && @user.authenticate(params[:password])
-      if @user.email_confirmed
+      if @user.email_confirmed && @user.approved
         session[:user_id] = @user.id
         flash[:notice] = "Hi #{@user.name},you have signed in successfully. "
         redirect_to root_path
       else
-        flash[:alert] = 'Please activate your account by following the
+        flash[:alert] = if !@user.email_confirmed
+                          'Please activate your account by following the
           instructions in the account confirmation email you received, to proceed'
+                        else
+                          'Your account has not been approved by your administrator yet.'
+                        end
         redirect_to login_path
       end
     else
