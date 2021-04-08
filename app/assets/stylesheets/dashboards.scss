@@ -167,6 +167,20 @@ $main-color: #027581;
               text-decoration: underline;
             }
           }
+          .badge {
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.7rem;
+          }
+          .freelancer {
+            background: #def7ec;
+            color: #027581;
+          }
+          .client {
+            background: #f0f6b2;
+            color: orange;
+          }
         }
         .action__buttons {
           display: flex;

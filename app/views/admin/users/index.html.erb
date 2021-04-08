@@ -32,7 +32,9 @@
                       <i class="fas fa-times-circle"></i>
                     <% end %>
                   </td>
-                  <td><%=user.role %></td>
+                  <td>
+                    <span class="badge <%=user.role%>"><%=user.role %></span>
+                  </td>
                   <td >
                     <% if user.approved%>
                       <i class="fas fa-check-circle"></i>

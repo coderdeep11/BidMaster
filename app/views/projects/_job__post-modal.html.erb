@@ -50,7 +50,7 @@
       <% end %>
     </ul>
   </div>
-  <%if user_freelancer?(current_user)%>
+  <%if user_freelancer?(current_user) || request.path == admin_bid_path%>
     <section class="place__bid bid-<%=@bid.awarded? ? "awarded-disable" : ""%>">
       <%=form_for [project,bid],remote: true do|f|%>
         <div class="bid__proposal-field">
