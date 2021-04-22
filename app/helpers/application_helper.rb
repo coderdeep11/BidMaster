@@ -15,18 +15,7 @@ module ApplicationHelper
     categories.each_with_index.map { |i, _j| [i, i] }
   end
 
-  def all_clients
-    User.where(role: 'client').pluck(:name, :id)
-  end
-
-  def all_freelancers
-    User.where(role: 'freelancer').pluck(:name, :id)
-  end
-
-  def all_projects
-    Project.all.pluck(:title, :id)
-  end
-
+  ## for searching projects and freelancers
   def search_type(type)
     session[:search_type] = type
   end
@@ -39,52 +28,61 @@ module ApplicationHelper
     request.path == url
   end
 
+  # project awarded by client or not
   def project_awarded?(project)
-    Project.where(id: project.id).joins(:bids).where(bids: { status: 'awarded' }).empty? ? false : true
+    Project.awarded?(project).empty? ? false : true
   end
 
+  # total projects by client
   def total_projects_posted(user)
-    user.projects.count
+    Project.total_projects_posted_by_client(user)
   end
 
+  # total proposals on a project
   def count_total_proposals(user)
-    Project.where(client: user).joins(:bids).count
+    Project.total_proposals_on_project(user)
   end
 
+  # total projects awarded by client
   def total_projects_awarded(user)
-    Project.where(client: user).joins(:bids).where(bids: { status: 'awarded' }).count
+    Project.total_projects_awarded_by_client(user)
   end
 
   def total_proposals_accepted(user)
-    Project.where(client: user).joins(:bids).where(bids: { status: 'accepted' }).count
+    Project.proposals_accepted(user)
   end
 
   def total_proposals_rejected(user)
-    Project.where(client: user).joins(:bids).where(bids: { status: 'rejected' }).count
+    Project.proposals_rejected(user)
   end
 
+  # projects completed by freelancer
   def total_projects_done(user)
-    Bid.where('(status =? and freelancer_id =?)', 'awarded', user.id).count
+    Bid.awarded_bids(user)
   end
 
   def any_bids?(user)
-    Bid.where(freelancer: user).try(:count) > 0
+    Bid.exist(user) > 0
   end
 
+  # total bids by a freelancer
   def total_bids_by_user?(user)
-    user.bids.count
+    User.total_bids_count(user)
   end
 
+  # average bid value of a freelancer
   def average_bid_value(user)
-    Bid.where(freelancer_id: user.id).average(:value).to_i
+    Bid.average_bid(user)
   end
 
+  # freelancer's max bid
   def maximum_bid_by_user(user)
-    Bid.where(freelancer_id: user.id).maximum('value') || 0
+    Bid.max_bid_value(user)
   end
 
+  # freelancer's min bid
   def minimum_bid_by_user(user)
-    Bid.where(freelancer_id: user.id).minimum('value') || 0
+    Bid.min_bid_value(user)
   end
 
   def user_freelancer?(user)
@@ -113,16 +111,19 @@ module ApplicationHelper
     string.length > 70 ? "#{string.from(0).to(70)}...." : string
   end
 
+  # maximum bid on a project
   def max_bid(project)
-    project.bids.maximum('value')
+    Bid.max_bid_on_project(project)
   end
 
+  # average bid value on a project
   def avg_bid(project)
-    project.bids.average('value').to_i
+    Bid.avg_bid_on_project(project)
   end
 
+  # unread notifications count
   def total_unread_messages
-    unread_messages = Conversation.where('sender_id = ? OR recipient_id= ? ', current_user.id, current_user.id).joins(:messages).where('messages.read = ? AND user_id !=?  ', false, current_user.id).count
+    unread_messages = Conversation.total_unread_messages_count(current_user)
     if unread_messages > 9
       '9+'
     else
@@ -130,8 +131,9 @@ module ApplicationHelper
     end
   end
 
+  # Unread messages count
   def total_unread_notifications
-    total_unread_notifications = Notification.where(user: current_user, read: false).count
+    total_unread_notifications = Notification.total_unread_notifications_count(current_user)
     if total_unread_notifications > 9
       '9+'
     else
@@ -140,6 +142,6 @@ module ApplicationHelper
   end
 
   def bidding_profile_exist?
-    !BiddingProfile.where(freelancer: current_user).empty?
+    !BiddingProfile.exist?(current_user).empty?
   end
 end

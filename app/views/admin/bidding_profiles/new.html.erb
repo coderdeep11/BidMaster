@@ -10,7 +10,7 @@
     <div class="all__clients" >
       <div class="select__client">
         <%= f.label :freelancer_id,'Select a Freelancer' %>
-        <%= f.select :freelancer_id, all_freelancers, include_blank: 'Choose any' %>
+        <%= f.select :freelancer_id, User.all_freelancers, include_blank: 'Choose any' %>
         <%unless @bidding_profile.errors[:freelancer_id].empty?%>
           <div class="error">
             <i class="fas fa-exclamation-circle"></i>

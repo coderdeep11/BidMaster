@@ -1,22 +1,18 @@
 include ProjectsHelper
 module Projects
   class DetailsController < ApplicationController
+    before_action :set_project, only: %i[index job_post review_proposals shortlisted rejected]
+
     def index
-      @project = Project.find(params[:project_id])
-      @bids = @project.bids
-      @shortlisted = @bids.where('(status =?  OR status =? )', 'awarded', 'accepted')
+      @shortlisted = @bids.shortlisted_bids
       redirect_to root_path unless authorize_project(@project)
     end
 
-    def job_post
-      @project = Project.find(params[:project_id])
-    end
+    def job_post; end
 
     def review_proposals
-      @project = Project.find(params[:project_id])
-      @bids = @project.bids
-      @shortlisted = @bids.where('(status =?  OR status =? )', 'awarded', 'accepted')
-      @rejected = @bids.where(status: 'rejected')
+      @shortlisted = @bids.shortlisted_bids
+      @rejected = @bids.rejected_bids
     end
 
     def all_proposals
@@ -25,15 +21,18 @@ module Projects
     end
 
     def shortlisted
-      @project = Project.find(params[:project_id])
-      @bids = @project.bids
-      @shortlisted = @bids.where('(status =?  OR status =? )', 'awarded', 'accepted').page(params[:page]).per(10)
+      @shortlisted = @bids.shortlisted_bids.page(params[:page]).per(10)
     end
 
     def rejected
+      @rejected = @bids.rejected_bids.page(params[:page]).per(10)
+    end
+
+    private
+
+    def set_project
       @project = Project.find(params[:project_id])
       @bids = @project.bids
-      @rejected = @bids.where(status: 'rejected').page(params[:page]).per(10)
     end
   end
 end

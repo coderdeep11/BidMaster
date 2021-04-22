@@ -1,9 +1,9 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @conversations = Conversation.where('sender_id = ? OR recipient_id = ?', current_user.id, current_user.id).joins(:messages).order('messages.created_at DESC').uniq
+    @conversations = Conversation.my_conversations(current_user).order('messages.created_at DESC').uniq
     @paginatable_array = Kaminari.paginate_array(@conversations).page(params[:page]).per(5)
-    @users = User.where.not(id: current_user.id)
+    @users = User.not_current_user(current_user)
   end
 
   def create

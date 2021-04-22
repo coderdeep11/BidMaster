@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   include ProjectsHelper
   def index
     if user_client?(current_user)
-      @projects = Project.where(client: current_user).order('created_at desc').page(params[:page]).per(10)
+      @projects = Project.my_projects(current_user).order('created_at desc').page(params[:page]).per(10)
     else
       authorized_only_to_clients
     end

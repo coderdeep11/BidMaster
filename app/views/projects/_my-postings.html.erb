@@ -18,11 +18,11 @@
             <span>proposals</span>
           </li>
           <li>
-            <div>$<%=max_bid(project).nil? ? "0" : max_bid(project) %></div>
+            <div>$<%= max_bid(project) %></div>
             <span>Max. Bid</span>
           </li>
           <li>
-            <div>$<%=avg_bid(project).nil? ? "0" : avg_bid(project) %></div>
+            <div>$<%= avg_bid(project) %></div>
             <span>Avg. Bid</span>
           </li>
         </ul>
