@@ -7,7 +7,7 @@
     <div class="all__clients" >
       <div class="select__client">
         <%= f.label :client_id,'Select a Client' %>
-        <%= f.select :client_id, all_clients, include_blank: 'Choose any' %>
+        <%= f.select :client_id, User.all_clients, include_blank: 'Choose any' %>
         <%unless @project.errors[:client_id].empty?%>
           <div class="error">
             <i class="fas fa-exclamation-circle"></i>

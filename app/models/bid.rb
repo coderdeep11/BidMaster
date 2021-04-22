@@ -18,6 +18,17 @@ class Bid < ApplicationRecord
     rejected: 'rejected',
     awarded: 'awarded'
   }
+  # scopes
+  scope :shortlisted_bids, -> { where('(status =?  OR status =? )', 'awarded', 'accepted') }
+  scope :rejected_bids, -> { where(status: 'rejected') }
+  scope :my_bids, ->(current_user) { where(freelancer_id: current_user.id) }
+  scope :awarded_bids, ->(user) { where('(status =? and freelancer_id =?)', 'awarded', user.id).count }
+  scope :average_bid, ->(user) { where(freelancer_id: user.id).average(:value).to_i || 0 }
+  scope :max_bid_value, ->(user) { where(freelancer_id: user.id).maximum('value') || 0 }
+  scope :min_bid_value, ->(user) { where(freelancer_id: user.id).minimum('value') || 0 }
+  scope :max_bid_on_project, ->(project) { where(project: project).maximum('value') || 0 }
+  scope :avg_bid_on_project, ->(project) { where(project: project).average('value').to_i || 0 }
+  scope :exist, ->(user) { where(freelancer: user).count  }
 
   def proposal_words_within_limit?
     unless proposal.nil?

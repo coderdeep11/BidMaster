@@ -21,6 +21,12 @@ class User < ApplicationRecord
 
   before_update :role_changed
   before_create :confirm_token, unless: :user_admin?
+
+  scope :not_current_user, ->(current_user) { where.not(id: current_user.id) }
+  scope :all_clients, -> { where(role: 'client').pluck(:name, :id) }
+  scope :all_freelancers, -> { where(role: 'freelancer').pluck(:name, :id) }
+  scope :total_bids_count, ->(user) { user.bids.count }
+  # Ex:- scope :active, -> {where(:active => true)}
   def contain_last_name
     unless name.nil?
       errors.add(:name, 'need a last name') unless name.split(' ').length > 1

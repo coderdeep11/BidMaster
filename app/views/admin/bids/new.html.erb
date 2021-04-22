@@ -6,7 +6,7 @@
         <div class="bid__by-freelancer" >
           <div class="select__project">
             <%= f.label :project_id,'Select a Project' %>
-            <%= f.select :project_id, all_projects, include_blank: 'Choose any' %>
+            <%= f.select :project_id, Project.all_projects, include_blank: 'Choose any' %>
             <%unless @bid.errors[:project_id].empty?%>
               <div class="errors">
                 <i class="fas fa-exclamation-circle"></i>
@@ -16,7 +16,7 @@
           </div>
           <div class="select__freelancer">
             <%= f.label :freelancer_id,'Select a Freelancer' %>
-            <%= f.select :freelancer_id, all_freelancers, include_blank: 'Choose any' %>
+            <%= f.select :freelancer_id, User.all_freelancers, include_blank: 'Choose any' %>
             <%unless @bid.errors[:freelancer_id].empty?%>
               <div class="errors">
                 <i class="fas fa-exclamation-circle"></i>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_121948) do
+ActiveRecord::Schema.define(version: 2021_04_22_223224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_04_06_121948) do
   end
 
   create_table "bidding_profiles", force: :cascade do |t|
-    t.string "category"
+    t.string "category", null: false
     t.string "subcategory"
     t.string "experience"
     t.text "education"
@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 2021_04_06_121948) do
   end
 
   create_table "bids", force: :cascade do |t|
-    t.integer "value"
-    t.text "proposal"
+    t.integer "value", null: false
+    t.text "proposal", null: false
     t.bigint "freelancer_id", null: false
-    t.bigint "project_id"
+    t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status", default: "unapproved"
@@ -80,10 +80,10 @@ ActiveRecord::Schema.define(version: 2021_04_06_121948) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.text "content"
+    t.text "content", null: false
     t.boolean "read", default: false
-    t.bigint "conversation_id"
-    t.bigint "user_id"
+    t.bigint "conversation_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2021_04_06_121948) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "bid_id"
+    t.bigint "user_id", null: false
+    t.bigint "bid_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "read", default: false
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 2021_04_06_121948) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.string "category"
+    t.string "title", null: false
+    t.string "category", null: false
     t.string "subcategory"
     t.string "experience"
     t.bigint "client_id", null: false
@@ -112,11 +112,11 @@ ActiveRecord::Schema.define(version: 2021_04_06_121948) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
     t.boolean "email_confirmed", default: false
-    t.string "password_digest"
-    t.string "role"
+    t.string "password_digest", null: false
+    t.string "role", null: false
     t.string "confirmation_token"
     t.boolean "admin", default: false
     t.boolean "approved", default: false
@@ -130,4 +130,5 @@ ActiveRecord::Schema.define(version: 2021_04_06_121948) do
   add_foreign_key "bids", "projects"
   add_foreign_key "messages", "conversations"
   add_foreign_key "notifications", "bids"
+  add_foreign_key "notifications", "users"
 end

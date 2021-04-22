@@ -3,9 +3,10 @@ module Projects
     include ApplicationHelper
     before_action :set_bid, only: %i[update accept reject award destroy]
     before_action :authenticate_user!, only: [:history]
+
     def history
       if user_freelancer?(current_user)
-        @bids = Bid.where(freelancer_id: current_user.id).page(params[:page]).per(10)
+        @bids = Bid.my_bids(current_user).page(params[:page]).per(10)
       else
         authorized_only_to_freelancers
       end
