@@ -21,7 +21,7 @@ class Project < ApplicationRecord
   scope :awarded?, ->(project) { where(id: project.id).joins(:bids).where(bids: { status: 'awarded' }) }
   scope :proposals_accepted, ->(user) { where(client: user).joins(:bids).where(bids: { status: 'accepted' }).count }
   scope :proposals_rejected, ->(user) { where(client: user).joins(:bids).where(bids: { status: 'rejected' }).count }
-  scope :authorize_client_profile, ->(user, current_user) { where(client: user).joins(:bids).find_by(bids: { freelancer: current_user }) }
+  scope :authorize_client_profile, ->(user, current_user) { where(client: user).joins(:bids).where(bids: { freelancer: current_user }) }
   # Ex:- scope :active, -> {where(:active => true)}
   def title_words_within_limit?
     unless title.nil?
