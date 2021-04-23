@@ -1,26 +1,26 @@
-<% content_for :title, "Post a project" %>
+<% content_for :title, "Post a project"  %>
 <main class="project__page">
   <div class="post__project">
     <h3>Post a project</h3>
   </div>
-  <%=form_for @project,url: admin_projects_path(@user), method: :post do|f|%>
+  <%= form_for @project,url: admin_projects_path(@user), method: :post do|f| %>
     <div class="all__clients" >
       <div class="select__client">
-        <%= f.label :client_id,'Select a Client' %>
-        <%= f.select :client_id, User.all_clients, include_blank: 'Choose any' %>
-        <%unless @project.errors[:client_id].empty?%>
+        <%=  f.label :client_id,'Select a Client'  %>
+        <%=  f.select :client_id, User.all_clients, include_blank: 'Choose any'  %>
+        <%unless @project.errors[:client_id].empty? %>
           <div class="error">
             <i class="fas fa-exclamation-circle"></i>
-            <%=@project.errors[:client_id][0]%></div>
-        <% end %>
+            <%= @project.errors[:client_id][0] %> </div>
+        <% end  %>
       </div>
     </div>
-    <%=render partial: "projects/title",locals: {f: f,project: @project } %>
-    <%=render partial: "projects/category",locals: {f: f,project: @project} %>
-    <%=render partial: "projects/description",locals: {f: f,project: @project} %>
-    <%=render partial: "projects/experience",locals: {f: f} %>
+    <%= render partial: "projects/title",locals: {f: f,project: @project }  %>
+    <%= render partial: "projects/category",locals: {f: f,project: @project}  %>
+    <%= render partial: "projects/description",locals: {f: f,project: @project}  %>
+    <%= render partial: "projects/experience",locals: {f: f}  %>
     <div class="submit__btn">
-      <%=f.submit 'Post Job', data: { disable_with: "Saving..." }%>
+      <%= f.submit 'Post Job', data: { disable_with: "Saving..." } %>
     </div>
-  <%end%>
+  <%end %>
 </main>

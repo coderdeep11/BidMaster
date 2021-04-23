@@ -1,20 +1,20 @@
 <ul class="notifications__modal">
-  <% unless notifications.nil? || notifications.empty? %>
-    <%notifications.each do|notification|%>
-      <%if  notification.user.role=="client"%>
-        <%=render partial: 'clientNotification',locals:{notification: notification} %>
-      <% else %>
-        <%=render partial: 'freelancerNotification',locals:{notification: notification} %>
-      <%end%>
-    <%end%>
-  <%else%>
+  <% unless notifications.nil? || notifications.empty?  %>
+    <%notifications.each do|notification| %>
+      <%if  notification.user.role=="client" %>
+        <%= render partial: 'clientNotification',locals:{notification: notification}  %>
+      <% else  %>
+        <%= render partial: 'freelancerNotification',locals:{notification: notification}  %>
+      <%end %>
+    <%end %>
+  <%else %>
     <div class="no__notifications">
-      <%=inline_svg_tag 'notifications.svg'%>
+      <%= inline_svg_tag 'notifications.svg' %>
       You have no notifications
     </div>
-  <% end %>
+  <% end  %>
   <div class="pagination__buttons">
-    <%= link_to_previous_page notifications, 'Previous ',class:'prv__btn',remote: true %>
-    <%= link_to_next_page notifications, 'Next ',class:'nxt__btn',remote: true %>
+    <%=  link_to_previous_page notifications, 'Previous ',class:'prv__btn',remote: true  %>
+    <%=  link_to_next_page notifications, 'Next ',class:'nxt__btn',remote: true  %>
   </div>
 </ul>

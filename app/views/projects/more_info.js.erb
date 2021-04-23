@@ -1,6 +1,6 @@
 if(document.querySelector(".project__posted-dropdown"))
 document.querySelector(".project__posted-dropdown").remove();
-document.querySelector("#dropdown__btn-<%=@project.id%>").insertAdjacentHTML(
+document.querySelector("#dropdown__btn-<%= @project.id %>").insertAdjacentHTML(
 "beforeend",`
 <%= j render 'dropdown-links',project: @project %>
 `

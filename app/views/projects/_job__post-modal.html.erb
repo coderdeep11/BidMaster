@@ -1,69 +1,69 @@
 <div class="job__post-slider">
   <div class="job__post-title">
-    <h3> <%=project.title%></h3>
+    <h3>  <%= project.title %> </h3>
     <div class="posted__at-time">
-      <p>Posted-<%=distance_of_time_in_words_to_now(project.created_at)%></p>
+      <p>Posted-<%= distance_of_time_in_words_to_now(project.created_at) %> </p>
     </div>
   </div>
   <div class="job__category">
     <h3>Category</h3>
-    <p><%=project.category%></p>
-    <p><%=project.subcategory%></p>
+    <p> <%= project.category %> </p>
+    <p> <%= project.subcategory %> </p>
   </div>
-  <%unless project.description.nil?%>
+  <%unless project.description.nil? %>
     <div class=job__post-description>
       <h3>Description</h3>
-      <%=project.description %>
+      <%= project.description  %>
     </div>
-  <% end %>
+  <% end  %>
   <div class="job__post-attachments">
     <h3> Attachments</h3>
-    <% if project.description.body.attachments.empty?  %>
+    <% if project.description.body.attachments.empty?   %>
       <p>No attachments</p>
-    <% else %>
-      <% project.description.body.attachments.each do |document,i|%>
-        <%= link_to rails_blob_path(document, disposition: 'attachment') do%>
-          <%=document.filename%>
-        <% end %>
-      <% end %>
-    <% end %>
+    <% else  %>
+      <% project.description.body.attachments.each do |document,i| %>
+        <%=  link_to rails_blob_path(document, disposition: 'attachment') do %>
+          <%= document.filename %>
+        <% end  %>
+      <% end  %>
+    <% end  %>
   </div>
   <div class="all_proposals">
     <h3>Activity on this job</h3>
     <ul>
       <li>
         <span> Proposals:</span>
-        <span><%=project.bids.count %> </span>
+        <span> <%= project.bids.count  %>  </span>
       </li>
       <li>
         <span>Max Bid:</span>
-        <span>  $<%=max_bid(project).nil? ? "0" : max_bid(project) %>       </span>
+        <span>  $ <%= max_bid(project).nil? ? "0" : max_bid(project)  %>        </span>
       </li>
       <li>
         <span >Client:</span>
-        <span><%=project.client.name%></span>
+        <span> <%= project.client.name %> </span>
       </li>
-      <% unless current_user %>
+      <% unless current_user  %>
         <li class="login__btn-to-continue">
-          <%=link_to 'Login to Bid' ,login_path%>
+          <%= link_to 'Login to Bid' ,login_path %>
         </li>
-      <% end %>
+      <% end  %>
     </ul>
   </div>
-  <%if user_freelancer?(current_user) ||( current_user.try(:admin?) && request.path==admin_bid_path) %>
-    <section class="place__bid bid-<%=@bid.awarded? ? "awarded-disable" : ""%>">
-      <%=form_for [project,bid],remote: true do|f|%>
+  <%if user_freelancer?(current_user) ||( current_user&.admin? && request.path==admin_bid_path)  %>
+    <section class="place__bid bid-<%= project_awarded?(project) ? "awarded-disable" : "" %> ">
+      <%= form_for [project,bid],remote: true do|f| %>
         <div class="bid__proposal-field">
-          <%=f.text_area :proposal,placeholder:'your proposal'%>
+          <%= f.text_area :proposal,placeholder:'your proposal' %>
         </div>
         <div class="bid__value-field">
-          $ <%=f.number_field :value,placeholder: 'Bidding price'%>
+          $  <%= f.number_field :value,placeholder: 'Bidding price' %>
         </div>
         <div class="submit__proposal">
-          <%=f.submit data: {disable_with: 'Bidding....'  } %>
+          <%= f.submit data: {disable_with: 'Bidding....'  }  %>
         </div>
-      <%end%>
+      <%end %>
     </section>
-  <% else %>
-  <%end%>
+  <% else  %>
+  <%end %>
 </div>

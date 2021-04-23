@@ -1,42 +1,42 @@
 <ul class="rejected__users">
-  <% if rejected.count.zero? %>
+  <% if rejected.count.zero?  %>
     <div class="no__data">
-      <%=inline_svg_tag 'nodata.svg'%>
+      <%= inline_svg_tag 'nodata.svg' %>
       no data
     </div>
-  <% else %>
-    <%rejected.each do|bid|%>
+  <% else  %>
+    <%rejected.each do|bid| %>
       <li class="proposal">
         <div class="user__image">
-          <% if bid.freelancer.profile_image.attached? %>
-            <%=image_tag bid.freelancer.profile_image%>
-          <% else %>
-            <%=inline_svg_tag 'default_avatar.svg'%>
-          <% end %>
+          <% if bid.freelancer.profile_image.attached?  %>
+            <%= image_tag bid.freelancer.profile_image %>
+          <% else  %>
+            <%= inline_svg_tag 'default_avatar.svg' %>
+          <% end  %>
         </div>
         <ul>
           <li>
-            <%=link_to bid.freelancer.name,freelancer_path(bid.freelancer)%>
+            <%= link_to bid.freelancer.name,freelancer_path(bid.freelancer) %>
           </li>
           <li>
-            <span>Bid: $<%=bid.value%>/hr</span>
+            <span>Bid: $ <%= bid.value %> /hr</span>
           </li>
           <li>
             <span>Proposal: </span>
-            <p> <%=bid.proposal%></p>
+            <p>  <%= bid.proposal %> </p>
           </li>
           <li class="time">
-            <%=distance_of_time_in_words_to_now(bid.updated_at)%>
+            <%= distance_of_time_in_words_to_now(bid.updated_at) %>
           </li>
         </ul>
         <div class="bid__status">
-          <span class="stamp is-<%=bid.status%>"><%=bid.status%></span>
+          <span class="stamp is-<%= bid.status %>"> <%= bid.status %> </span>
         </div>
       </li >
-    <%end%>
-  <% end %>
+    <%end %>
+  <% end  %>
   <div class="pagination__buttons">
-    <%= link_to_previous_page rejected, 'Previous ',class:'prv__btn',remote: true %>
-    <%= link_to_next_page rejected, 'Next ',class:'nxt__btn' ,remote: true%>
+    <%=  link_to_previous_page rejected, 'Previous ',class:'prv__btn',remote: true  %>
+    <%=  link_to_next_page rejected, 'Next ',class:'nxt__btn' ,remote: true %>
   </div>
 </ul>

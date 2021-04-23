@@ -1,17 +1,17 @@
 <% content_for :title, "#{search_query(params[:q])} " %>
 <div class="search__projects">
-  <%= render 'search_projects', q: q%>
+  <%= render 'search_projects', q: q %>
   <%if projects.nil?%>
     <%= render 'empty-search-projects' %>
   <% else %>
     <% if projects.empty? %>
-      <%=render 'no-results'%>
+      <%= render 'no-results' %>
     <% else %>
       <%= render 'search-results-projects',projects: projects %>
     <% end %>
     <div class="pagination__buttons">
       <%= link_to_previous_page projects, 'Previous',class: 'prv__btn' %>
-      <%= link_to_next_page projects, 'Next ' ,class: 'nxt__btn'%>
+      <%= link_to_next_page projects, 'Next ' ,class: 'nxt__btn' %>
     </div>
   <% end %>
 </div>

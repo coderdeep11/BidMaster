@@ -1,9 +1,9 @@
 <div class="project__title-form">
   <%= f.label :title,'Title'  %>
   <%= f.text_field :title,placeholder:'e.g looking for a web developer' %>
-  <%unless project.errors[:title].empty?%>
+  <% unless project.errors[:title].empty? %>
     <div class="error">
       <i class="fas fa-exclamation-circle"></i>
-      <%=project.errors[:title][0]%></div>
+      <%= project.errors[:title][0] %> </div>
   <% end %>
 </div>

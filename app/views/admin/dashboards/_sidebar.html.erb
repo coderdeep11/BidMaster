@@ -1,42 +1,42 @@
 <div class="sidebar">
   <div class="sidebar-header">
-    <%=inline_svg_tag 'logo.svg'%>
-    <%=link_to root_path do%>
+    <%= inline_svg_tag 'logo.svg' %>
+    <%= link_to root_path do %>
       <h3 class="brand">
         <span>Dashboard</span>
       </h3>
-    <% end %>
+    <% end  %>
   </div>
   <div class="admin__details">
     <i class="fal fa-user-cog"></i>
-    <span><%=current_user.name%></span>
-    <span><%=current_user.email%></span>
+    <span> <%= current_user.name %> </span>
+    <span> <%= current_user.email %> </span>
   </div>
   <div class="sidebar-menu">
     <ul>
-      <li class="<%=request.path==admin_users_path ? "add__background": "" %>">
-        <%=link_to admin_users_path do%>
+      <li class=" <%= request.path==admin_users_path ? "add__background": ""  %> ">
+        <%= link_to admin_users_path do %>
           <i class="fad fa-users"></i>
           <span>Users</span>
-        <% end %>
+        <% end  %>
       </li>
-      <li class="<%=request.path==admin_projects_path ? "add__background": "" %>">
-        <%=link_to admin_projects_path do%>
+      <li class=" <%= request.path==admin_projects_path ? "add__background": ""  %> ">
+        <%= link_to admin_projects_path do %>
           <i class="fal fa-desktop"></i>
           <span>Projects</span>
-        <% end %>
+        <% end  %>
       </li>
-      <li class="<%=request.path==admin_bids_path ? "add__background": "" %>">
-        <%=link_to admin_bids_path do%>
+      <li class=" <%= request.path==admin_bids_path ? "add__background": ""  %> ">
+        <%= link_to admin_bids_path do %>
           <i class="fal fa-gavel"></i>
           <span>Bids</span>
-        <% end %>
+        <% end  %>
       </li>
-      <li class="<%=request.path==admin_bidding_profiles_path ? "add__background": "" %>">
-        <%=link_to admin_bidding_profiles_path do%>
+      <li class=" <%= request.path==admin_bidding_profiles_path ? "add__background": ""  %> ">
+        <%= link_to admin_bidding_profiles_path do %>
           <i class="fad fa-id-card"></i>
           <span>Bidding Profile</span>
-        <% end %>
+        <% end  %>
       </li>
     </ul>
   </div>

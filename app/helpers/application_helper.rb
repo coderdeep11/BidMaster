@@ -86,7 +86,7 @@ module ApplicationHelper
   end
 
   def user_freelancer?(user)
-    user.try(:role) == 'freelancer'
+    user&.role == 'freelancer'
   end
 
   def total_bids_by_freelancer?(_bid)
@@ -94,7 +94,7 @@ module ApplicationHelper
   end
 
   def user_client?(user)
-    user.try(:role) == 'client'
+    user&.role == 'client'
   end
 
   def authorized_only_to_clients

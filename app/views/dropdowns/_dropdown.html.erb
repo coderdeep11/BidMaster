@@ -1,22 +1,22 @@
 <ul class="user__profile-dropdown">
   <li>
     <div class="user__image">
-      <% if current_user.profile_image.attached? %>
-        <%=image_tag current_user.profile_image%>
-      <% else %>
-        <%=inline_svg_tag 'default_avatar.svg'%>
-      <% end %>
+      <% if current_user.profile_image.attached?  %>
+        <%= image_tag current_user.profile_image %>
+      <% else  %>
+        <%= inline_svg_tag 'default_avatar.svg' %>
+      <% end  %>
     </div>
-    <%=link_to current_user.try(:role) =="client" ? client_path(current_user) : freelancer_path(current_user),class: 'user__name' do%>
-      <%=@user.name%>   <span><%=@user.role%></span>
-    <%end%>
+    <%= link_to current_user&.role =="client" ? client_path(current_user) : freelancer_path(current_user),class: 'user__name' do %>
+      <%= @user.name %>    <span> <%= @user.role %> </span>
+    <%end %>
   </li>
   <li>
-    <%=inline_svg_tag 'settings.svg',class:'user__setting' %>
-    <%=link_to 'Settings',  edit_user_path ,class:'setting__field'%>
+    <%= inline_svg_tag 'settings.svg',class:'user__setting'  %>
+    <%= link_to 'Settings',  edit_user_path ,class:'setting__field' %>
   </li>
   <li>
     <i class="fal fa-sign-out-alt"></i>
-    <%=link_to 'Logout', logout_path, class:'logout__field' ,method: :delete %>
+    <%= link_to 'Logout', logout_path, class:'logout__field' ,method: :delete  %>
   </li>
 </ul>

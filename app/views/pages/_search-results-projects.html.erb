@@ -1,25 +1,25 @@
 <div class="search__results-projects">
   <ul class="projects">
-    <%projects.try(:each) do|project|%>
+    <% projects&.each do|project| %>
       <li class="project">
         <ul>
           <li class="project__title">
-            <%= link_to project.title, project_path(project),remote: true%>
+            <%= link_to project.title, project_path(project),remote: true %>
           </li>
           <li class="project__experience">
             Experience: <%=project.experience%>
           </li>
           <li class="project__description">
-            <%=project.description%>
+            <%= project.description %>
           </li>
           <li class="total__bids-on-project">
-            Total bids: <%=project.bids.count%>
+            Total bids: <%= project.bids.count %>
           </li>
           <li class="project__posted-at">
-            Posted-<%=distance_of_time_in_words_to_now(project.created_at)%>
+            Posted-<%= distance_of_time_in_words_to_now(project.created_at) %>
           </li>
         </ul>
-        <%=link_to '', project_path(project),remote: true%>
+        <%= link_to '', project_path(project),remote: true %>
       </li>
     <%end%>
   </ul>

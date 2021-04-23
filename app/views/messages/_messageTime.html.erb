@@ -1,12 +1,12 @@
-<div class="<%=message.user == current_user ? "created__at-current-user" : "created__at"%>">
-  <%= distance_of_time_in_words_to_now(message.created_at)%> ago
-  <%if message.user==current_user%>
+<div class=" <%= message.user == current_user ? "created__at-current-user" : "created__at" %> ">
+  <%=  distance_of_time_in_words_to_now(message.created_at) %>  ago
+  <%if message.user==current_user %>
     <span>
-      <%if message.read %>
+      <%if message.read  %>
         <i class="fal fa-check-double "></i>
-      <%else%>
+      <%else %>
         <i class="fal fa-check "></i>
-      <%end%>
+      <%end %>
     </span>
-  <%end%>
+  <%end %>
 </div>

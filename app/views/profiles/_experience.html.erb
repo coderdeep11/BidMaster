@@ -1,51 +1,51 @@
 <li class="user__experience">
-  <% if user_client?(user) %>
-    <% if user.projects.count > 0 %>
+  <% if user_client?(user)  %>
+    <% if user.projects.count > 0  %>
       <ol class="projects__record">
-        <%projects.each do |project|%>
+        <%projects.each do |project| %>
           <li>
-            <%=link_to project.title,project_path(project)%>
+            <%= link_to project.title,project_path(project) %>
             <span>
-              <%=project.bids.count%>
+              <%= project.bids.count %>
             </span>
           </li>
-        <%end%>
+        <%end %>
       </ol>
       <div class="pagination__buttons">
-        <%= link_to_previous_page projects, 'Previous',class: 'prv__btn',remote: true %>
-        <%= link_to_next_page projects, 'Next ' ,class: 'nxt__btn',remote: true%>
+        <%=  link_to_previous_page projects, 'Previous',class: 'prv__btn',remote: true  %>
+        <%=  link_to_next_page projects, 'Next ' ,class: 'nxt__btn',remote: true %>
       </div>
-    <% else %>
+    <% else  %>
       <div class="no__experience">
-        <%=inline_svg_tag 'project.svg'%>
+        <%= inline_svg_tag 'project.svg' %>
         <span> Start Posting projects </span>
       </div>
-    <% end %>
-  <% else %>
-    <%if any_bids?(user) %>
+    <% end  %>
+  <% else  %>
+    <%if any_bids?(user)  %>
       <ol class="bids__record">
-        <%bids.each do |bid|%>
+        <%bids.each do |bid| %>
           <li>
-            <%=link_to limit_characters(bid.proposal) ,project_path(bid.project)%>
+            <%= link_to limit_characters(bid.proposal) ,project_path(bid.project) %>
             <span>
-              $<%=bid.value%>
+              $ <%= bid.value %>
             </span>
           </li>
-        <%end%>
+        <%end %>
       </ol>
       <div class="pagination__buttons">
-        <%= link_to_previous_page bids, 'Previous',class: 'prv__btn',remote: true %>
-        <%= link_to_next_page bids, 'Next ' ,class: 'nxt__btn',remote: true%>
+        <%=  link_to_previous_page bids, 'Previous',class: 'prv__btn',remote: true  %>
+        <%=  link_to_next_page bids, 'Next ' ,class: 'nxt__btn',remote: true %>
       </div>
-    <% else %>
-      <% if authenticate_profile(user) %>
+    <% else  %>
+      <% if authenticate_profile(user)  %>
         <div class="no__experience">
-          <%=inline_svg_tag 'project.svg'%>
+          <%= inline_svg_tag 'project.svg' %>
           <span> Start bidding on projects </span>
         </div>
-      <% else %>
-        <%=render 'nodata'%>
-      <% end %>
-    <% end %>
-  <% end %>
+      <% else  %>
+        <%= render 'nodata' %>
+      <% end  %>
+    <% end  %>
+  <% end  %>
 </li>

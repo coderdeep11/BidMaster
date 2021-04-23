@@ -1,37 +1,37 @@
 <div class="search__results-freelancers">
   <ul class="freelancers">
-    <%freelancers.try(:each) do|freelancer|%>
+    <%freelancers&.each do|freelancer| %>
       <li class="freelancer">
         <div class="user_image">
           <% if freelancer.profile_image.attached? %>
-            <%=image_tag freelancer.profile_image%>
+            <%= image_tag freelancer.profile_image %>
           <% else %>
-            <%=inline_svg_tag 'default_avatar.svg'%>
+            <%= inline_svg_tag 'default_avatar.svg' %>
           <% end %>
         </div>
         <ul>
           <li class="freelancer__name">
-            <%=freelancer.name%>
+            <%= freelancer.name %>
             <div class="category">
-              <%=freelancer.bidding_profile.try(:category)%>
+              <%= freelancer.bidding_profile&.category %>
             </div>
           </li >
           <li  class="freelancer__bio">
-            <%if freelancer.bidding_profile.try(:bio)%>
+            <%if freelancer.bidding_profile&.bio %>
               <% if freelancer.bidding_profile.bio.length > 300 %>
-                <%=freelancer.bidding_profile.bio.from(0).to(300)%>......
+                <%= freelancer.bidding_profile.bio.from(0).to(300) %>......
               <% else %>
-                <%=freelancer.bidding_profile.bio%>
+                <%= freelancer.bidding_profile.bio %>
               <% end %>
             <% end %>
           </li>
           <li class="freelancer__joined-on">
             <i class="fas fa-calendar-check"></i>
-            joined <%=distance_of_time_in_words_to_now(freelancer.created_at)%> ago
+            joined <%= distance_of_time_in_words_to_now(freelancer.created_at) %> ago
           </li>
           <li></li>
         </ul>
-        <%=link_to '', search_freelancer_profile_path(freelancer),remote: true%>
+        <%= link_to '', search_freelancer_profile_path(freelancer),remote: true%>
       </li>
     <% end %>
   </ul>

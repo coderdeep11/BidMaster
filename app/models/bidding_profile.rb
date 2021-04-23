@@ -10,6 +10,6 @@ class BiddingProfile < ApplicationRecord
   scope :exist?, ->(current_user) { where(freelancer: current_user) }
   # Ex:- scope :active, -> {where(:active => true)}
   def is_user_freelancer?
-    errors.add(:base, 'Only freelancers are allowed fill this form') unless freelancer.try(:role) == 'freelancer'
+    errors.add(:base, 'Only freelancers are allowed fill this form') unless freelancer&.role == 'freelancer'
   end
 end

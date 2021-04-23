@@ -1,21 +1,21 @@
 <main class="freelancers__form-page">
   <div class="freelancer__form-details">
     <h3>
-      <% if request.path  == root_path || request.path  == new_bidding_profile_path %>
+      <% if request.path  == root_path || request.path  == new_bidding_profile_path  %>
         Complete your registration
         <span>(*freelancer extra details)</span>
-      <% else %>
+      <% else  %>
         Edit your bidding profile
-      <% end %>
+      <% end  %>
     </h3>
   </div>
-  <%=form_for freelancer_info do|f|%>
-    <%=render partial: "education",locals: {f: f,freelancer_info: freelancer_info } %>
-    <%=render partial: "category",locals: {f: f,freelancer_info: freelancer_info} %>
-    <%=render partial: "bio",locals: {f: f,freelancer_info: freelancer_info} %>
-    <%=render partial: "experience",locals: {f: f} %>
+  <%= form_for freelancer_info do|f| %>
+    <%= render partial: "education",locals: {f: f,freelancer_info: freelancer_info }  %>
+    <%= render partial: "category",locals: {f: f,freelancer_info: freelancer_info}  %>
+    <%= render partial: "bio",locals: {f: f,freelancer_info: freelancer_info}  %>
+    <%= render partial: "experience",locals: {f: f}  %>
     <div class="submit__btn">
-      <%=f.submit 'submit', data: { disable_with: "Saving..." }%>
+      <%= f.submit 'submit', data: { disable_with: "Saving..." } %>
     </div>
-  <%end%>
+  <%end %>
 </main>

@@ -7,5 +7,5 @@ document.querySelector(".user__details").remove();
 if (document.querySelector(".welcome"))
 document.querySelector(".welcome").remove();
 document
-.querySelector(".user__analytics-<%=@user.role%>")
-.insertAdjacentHTML("beforebegin", `<%=j render 'details',user: @user %>`);
+.querySelector(".user__analytics-<%= @user.role%>")
+.insertAdjacentHTML("beforebegin", ` <%= j render 'details',user: @user  %> `);

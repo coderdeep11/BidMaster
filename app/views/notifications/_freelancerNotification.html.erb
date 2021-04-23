@@ -1,24 +1,24 @@
-<li class="notification bid-<%=notification.bid.status%>">
+<li class="notification bid-<%= notification.bid.status %>">
   <div class="user__image">
-    <% if notification.bid.project.client.profile_image.attached? %>
-      <%=image_tag notification.bid.project.client.profile_image%>
-    <% else %>
-      <%=inline_svg_tag 'default_avatar.svg'%>
-    <% end %>
+    <% if notification.bid.project.client.profile_image.attached?  %>
+      <%= image_tag notification.bid.project.client.profile_image %>
+    <% else  %>
+      <%= inline_svg_tag 'default_avatar.svg' %>
+    <% end  %>
   </div>
   <ul class="notification__content">
     <li class="bid__result">
-      <% if notification.bid.awarded? %>
-        Congrats,<%=notification.bid.project.client.name %> awarded you the project.
-      <%elsif%>
-        <%=" #{notification.bid.project.client.name} #{notification.bid.rejected? ? "rejected your bid,you can check other projects.": "accepted your bid." } " %>
-      <%end%>
+      <% if notification.bid.awarded?  %>
+        Congrats, <%= notification.bid.project.client.name  %>  awarded you the project.
+      <%elsif %>
+        <%= " #{notification.bid.project.client.name} #{notification.bid.rejected? ? "rejected your bid,you can check other projects.": "accepted your bid." } "  %>
+      <%end %>
     </li>
-    <div class="time"><%=distance_of_time_in_words_to_now(notification.bid.updated_at)%> ago</div>
+    <div class="time"> <%= distance_of_time_in_words_to_now(notification.bid.updated_at) %>  ago</div>
   </ul>
-  <% if notification.bid.rejected? %>
-    <%=link_to '',root_path%>
-  <% else %>
-    <%=link_to '',project_path(notification.bid.project)%>
-  <% end %>
+  <% if notification.bid.rejected?  %>
+    <%= link_to '',root_path %>
+  <% else  %>
+    <%= link_to '',project_path(notification.bid.project) %>
+  <% end  %>
 </li>

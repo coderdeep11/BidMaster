@@ -37,7 +37,7 @@ class Bid < ApplicationRecord
   end
 
   def is_user_freelancer?
-    errors.add(:base, 'Only freelancers are allowed to bid') unless freelancer.try(:role) == 'freelancer'
+    errors.add(:base, 'Only freelancers are allowed to bid') unless freelancer&.role == 'freelancer'
   end
 
   def send_notifications_to_client

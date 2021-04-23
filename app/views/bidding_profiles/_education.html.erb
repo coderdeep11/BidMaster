@@ -1,9 +1,9 @@
 <div class="freelancer__education-form">
-  <%= f.label :education,'Education/Qualification'  %>
-  <%= f.text_field :education%>
+  <%=  f.label :education,'Education/Qualification'  %>
+  <%=  f.text_field :education%>
   <%unless freelancer_info.errors[:education].empty?%>
     <div class="error">
       <i class="fas fa-exclamation-circle"></i>
-      <%=freelancer_info.errors[:education][0]%></div>
+      <%= freelancer_info.errors[:education][0] %> </div>
   <% end %>
 </div>

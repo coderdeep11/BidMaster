@@ -1,33 +1,33 @@
 <section class="messages__modal">
   <div class="close__messages">
-    <p> <%=@conversation.recipient.name%></p>
+    <p>  <%= @conversation.recipient.name %> </p>
     <i class="fal fa-times"></i>
   </div>
-  <% messages.each do |message| %>
+  <% messages.each do |message|  %>
     <div class="message ">
-      <%if message.content? && message.documents.attached?%>
-        <%=render partial: 'messages/documents',locals: {documents: @documents,message: message} %>
-        <%=render partial: 'messages/content',locals: {message: message} %>
-        <%=render partial: 'messages/messageTime',locals: {message: message} %>
-      <%elsif message.content?%>
-        <%=render partial: 'messages/content',locals: {message: message} %>
-        <%=render partial: 'messages/messageTime',locals: {message: message} %>
-      <% elsif message.documents.attached?%>
-        <%=render partial: 'messages/documents',locals: {documents: @documents,message: message} %>
-        <%=render partial: 'messages/messageTime',locals: {message: message} %>
-      <% end %>
+      <%if message.content? && message.documents.attached? %>
+        <%= render partial: 'messages/documents',locals: {documents: @documents,message: message}  %>
+        <%= render partial: 'messages/content',locals: {message: message}  %>
+        <%= render partial: 'messages/messageTime',locals: {message: message}  %>
+      <%elsif message.content? %>
+        <%= render partial: 'messages/content',locals: {message: message}  %>
+        <%= render partial: 'messages/messageTime',locals: {message: message}  %>
+      <% elsif message.documents.attached? %>
+        <%= render partial: 'messages/documents',locals: {documents: @documents,message: message}  %>
+        <%= render partial: 'messages/messageTime',locals: {message: message}  %>
+      <% end  %>
     </div>
-  <%end%>
+  <%end %>
   <div class="send__message">
-    <%= form_for [@conversation, message] ,remote: true do |f| %>
-      <%= f.label :documents do%>
+    <%=  form_for [@conversation, message] ,remote: true do |f|  %>
+      <%=  f.label :documents do %>
         <i class="far fa-paperclip"></i>
-      <%end%>
-      <%= f.file_field :documents,multiple: true %>
-      <%= f.text_area :content, placeholder: "Your message" %>
-      <%= button_tag type ="submit"  do%>
+      <%end %>
+      <%=  f.file_field :documents,multiple: true  %>
+      <%=  f.text_area :content, placeholder: "Your message"  %>
+      <%=  button_tag type ="submit"  do %>
         <i class="fal fa-arrow-circle-right"></i>
-      <%end%>
-    <% end %>
+      <%end %>
+    <% end  %>
   </div>
 </section>

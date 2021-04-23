@@ -1,11 +1,11 @@
- <% content_for :title, "Projects" %>
-<%=render 'admin/dashboards/sidebar'%>
+ <% content_for :title, "Projects"  %>
+<%= render 'admin/dashboards/sidebar' %>
 <div class="main-content">
   <main class="users">
     <h2 class="dash-title"><i class="fal fa-desktop"></i> Projects</h2>
     <section class="recent">
       <div class="activity-card">
-        <%=link_to 'New Project',new_admin_project_path,class:'btn-primary'%>
+        <%= link_to 'New Project',new_admin_project_path,class:'btn-primary' %>
         <div class="table-responsive">
           <table>
             <thead>
@@ -19,31 +19,31 @@
               </tr>
             </thead>
             <tbody>
-              <%@projects.each do |project|%>
+              <%@projects.each do |project| %>
                 <tr>
-                  <td><%= project.id%></td>
-                  <td><%= project.client.name%></td>
-                  <td><%=project.title.from(0).to(30)%></td>
-                  <td><%=project.category%></td>
-                  <td><%=project.subcategory%></td>
+                  <td> <%=  project.id %> </td>
+                  <td> <%=  project.client.name %> </td>
+                  <td> <%= project.title.from(0).to(30) %> </td>
+                  <td> <%= project.category %> </td>
+                  <td> <%= project.subcategory %> </td>
                   <td class="action__buttons">
-                    <%=link_to admin_project_path(project) do%>
+                    <%= link_to admin_project_path(project) do %>
                       <i class="fal fa-eye"></i>
-                    <% end %>
-                    <%=link_to edit_admin_project_path(project) do%>
+                    <% end  %>
+                    <%= link_to edit_admin_project_path(project) do %>
                       <i class="fal fa-edit"></i>
-                    <% end %>
-                    <%=link_to admin_project_path(project),method: :delete,data: {confirm: 'Are you sure?'} do%>
+                    <% end  %>
+                    <%= link_to admin_project_path(project),method: :delete,data: {confirm: 'Are you sure?'} do %>
                       <i class="fal fa-trash-alt"></i>
-                    <% end %>
+                    <% end  %>
                   </td>
                 </tr>
-              <% end %>
+              <% end  %>
             </tbody>
           </table>
           <div class="pagination__buttons">
-            <%= link_to_previous_page @projects, 'Previous ',class:'prv__btn' %>
-            <%= link_to_next_page @projects, 'Next ',class:'nxt__btn' %>
+            <%=  link_to_previous_page @projects, 'Previous ',class:'prv__btn'  %>
+            <%=  link_to_next_page @projects, 'Next ',class:'nxt__btn'  %>
           </div>
         </div>
       </div>

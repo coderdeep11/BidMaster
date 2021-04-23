@@ -1,23 +1,23 @@
-<% if @message.content? || @message.documents.attached?%>
+<% if @message.content? || @message.documents.attached? %>
   document.querySelector(".messages__modal").insertAdjacentHTML(
   "beforeend",
   `
   <div class="message">
-    <%if @message.content? && @message.documents.attached?%>
-      <%=render partial: 'documents',locals: {documents: @documents,message: @message} %>
-      <%=render partial: 'content',locals: {message: @message} %>
-      <%=render partial: 'messageTime',locals: {message: @message} %>
-    <%elsif @message.content?%>
-      <%=render partial: 'content',locals: {message: @message} %>
-      <%=render partial: 'messageTime',locals: {message: @message} %>
-    <% elsif @message.documents.attached?%>
-      <%=render partial: 'documents',locals: {documents: @documents,message: @message} %>
-      <%=render partial: 'messageTime',locals: {message: @message} %>
-    <% end %>
+    <%if @message.content? && @message.documents.attached? %>
+      <%= render partial: 'documents',locals: {documents: @documents,message: @message}  %>
+      <%= render partial: 'content',locals: {message: @message}  %>
+      <%= render partial: 'messageTime',locals: {message: @message}  %>
+    <%elsif @message.content? %>
+      <%= render partial: 'content',locals: {message: @message}  %>
+      <%= render partial: 'messageTime',locals: {message: @message}  %>
+    <% elsif @message.documents.attached? %>
+      <%= render partial: 'documents',locals: {documents: @documents,message: @message}  %>
+      <%= render partial: 'messageTime',locals: {message: @message}  %>
+    <% end  %>
   </div>
   `
   );
-<% end %>
+<% end  %>
 document.querySelector("#message_content").value = "";
 document.querySelector(".attached")?.classList.remove("attached");
 document

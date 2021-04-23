@@ -1,14 +1,14 @@
-<% content_for :title, "My feed" %>
+<% content_for :title, "My feed"  %>
 <main class="freelancer__feed">
   <h2>My Feed</h2>
-  <%=link_to 'Complete your profile',  new_bidding_profile_path unless bidding_profile_exist?%>
-  <% unless @projects.empty? || @projects.nil?%>
-    <%= render 'projects__on-feed',projects: @projects %>
-  <%else%>
-    <%= render 'no__projects-to-show' %>
-  <% end %>
+  <%= link_to 'Complete your profile',  new_bidding_profile_path unless bidding_profile_exist? %>
+  <% unless @projects.empty? || @projects.nil? %>
+    <%=  render 'projects__on-feed',projects: @projects  %>
+  <%else %>
+    <%=  render 'no__projects-to-show'  %>
+  <% end  %>
   <div class="pagination__buttons">
-    <%= link_to_previous_page @projects, 'Previous ',class:'prv__btn' %>
-    <%= link_to_next_page @projects, 'Next ',class:'nxt__btn' %>
+    <%=  link_to_previous_page @projects, 'Previous ',class:'prv__btn'  %>
+    <%=  link_to_next_page @projects, 'Next ',class:'nxt__btn'  %>
   </div>
 </main>

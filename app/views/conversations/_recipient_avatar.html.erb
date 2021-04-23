@@ -1,5 +1,5 @@
 <% if recipient.profile_image.attached? %>
-  <%=image_tag recipient.profile_image%>
+  <%= image_tag recipient.profile_image %>
 <% else %>
-  <%=inline_svg_tag 'default_avatar.svg'%>
+  <%= inline_svg_tag 'default_avatar.svg' %>
 <% end %>

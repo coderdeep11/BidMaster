@@ -1,11 +1,11 @@
-<% content_for :title, "Bidding Profiles" %>
-<%=render 'admin/dashboards/sidebar'%>
+<% content_for :title, "Bidding Profiles"  %>
+<%= render 'admin/dashboards/sidebar' %>
 <div class="main-content">
   <main class="users">
     <h2 class="dash-title"> <i class="fad fa-id-card"></i> Bidding Profiles</h2>
     <section class="recent">
       <div class="activity-card">
-        <%=link_to 'New Bidding Profile',new_admin_bidding_profile_path,class:'btn-primary'%>
+        <%= link_to 'New Bidding Profile',new_admin_bidding_profile_path,class:'btn-primary' %>
         <div class="table-responsive">
           <table>
             <thead>
@@ -19,31 +19,31 @@
               </tr>
             </thead>
             <tbody>
-              <%@bidding_profiles.each do |bidding_profile|%>
+              <%@bidding_profiles.each do |bidding_profile| %>
                 <tr>
-                  <td><%= bidding_profile.id%></td>
-                  <td><%= bidding_profile.freelancer.name%></td>
-                  <td><%=bidding_profile.category%></td>
-                  <td><%=bidding_profile.subcategory%></td>
-                  <td><%=bidding_profile.experience%></td>
+                  <td> <%=  bidding_profile.id %> </td>
+                  <td> <%=  bidding_profile.freelancer.name %> </td>
+                  <td> <%= bidding_profile.category %> </td>
+                  <td> <%= bidding_profile.subcategory %> </td>
+                  <td> <%= bidding_profile.experience %> </td>
                   <td class="action__buttons">
-                    <%=link_to admin_bidding_profile_path(bidding_profile) do%>
+                    <%= link_to admin_bidding_profile_path(bidding_profile) do %>
                       <i class="fal fa-eye"></i>
-                    <% end %>
-                    <%=link_to edit_admin_bidding_profile_path(bidding_profile) do%>
+                    <% end  %>
+                    <%= link_to edit_admin_bidding_profile_path(bidding_profile) do %>
                       <i class="fal fa-edit"></i>
-                    <% end %>
-                    <%=link_to admin_bidding_profile_path(bidding_profile),method: :delete,data: {confirm: 'Are you sure?'} do%>
+                    <% end  %>
+                    <%= link_to admin_bidding_profile_path(bidding_profile),method: :delete,data: {confirm: 'Are you sure?'} do %>
                       <i class="fal fa-trash-alt"></i>
-                    <% end %>
+                    <% end  %>
                   </td>
                 </tr>
-              <% end %>
+              <% end  %>
             </tbody>
           </table>
           <div class="pagination__buttons">
-            <%= link_to_previous_page @bidding_profiles, 'Previous ',class:'prv__btn' %>
-            <%= link_to_next_page @bidding_profiles, 'Next ',class:'nxt__btn' %>
+            <%=  link_to_previous_page @bidding_profiles, 'Previous ',class:'prv__btn'  %>
+            <%=  link_to_next_page @bidding_profiles, 'Next ',class:'nxt__btn'  %>
           </div>
         </div>
       </div>

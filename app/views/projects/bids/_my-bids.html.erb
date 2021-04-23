@@ -1,39 +1,39 @@
-<%bids.each do|bid|%>
+<%bids.each do|bid| %>
   <li class="each__bid">
     <ul>
       <li class="bid__proposal">
-        <%=link_to bid.proposal.from(0).to(100),project_path(bid.project)%>
+        <%= link_to bid.proposal.from(0).to(100),project_path(bid.project) %>
         <div>
-          <% if bid.unapproved? %>
+          <% if bid.unapproved?  %>
             <i class="fal fa-question"></i>
-          <% elsif bid.rejected? %>
+          <% elsif bid.rejected?  %>
             <i class="fal fa-times"></i>
-          <% elsif bid.accepted? %>
+          <% elsif bid.accepted?  %>
             <i class="far fa-check"></i>
-          <% else %>
+          <% else  %>
             <i class="fal fa-crown"></i>
-          <% end %>
-          <span>Bid <%=bid.status%></span>
+          <% end  %>
+          <span>Bid  <%= bid.status %> </span>
         </div>
       </li>
       <li class="bid__created-at">
         <ul class="client__details">
           <li class="client__picture">
-            <% if bid.project.client.profile_image.attached? %>
-              <%=image_tag bid.project.client.profile_image%>
-            <% else %>
-              <%=inline_svg_tag 'default_avatar.svg'%>
-            <% end %>
+            <% if bid.project.client.profile_image.attached?  %>
+              <%= image_tag bid.project.client.profile_image %>
+            <% else  %>
+              <%= inline_svg_tag 'default_avatar.svg' %>
+            <% end  %>
           </li>
-          <li class="client__profile"><%=link_to 'View client',client_path(bid.project.client)%></li>
+          <li class="client__profile"> <%= link_to 'View client',client_path(bid.project.client) %> </li>
         </ul>
         <div >
-          <%=distance_of_time_in_words_to_now(bid.updated_at)%>
+          <%= distance_of_time_in_words_to_now(bid.updated_at) %>
           <i class="far fa-stopwatch"></i>
         </div>
-        <%=link_to 'delete proposal',project_bid_path(bid.project,bid),method: :delete %>
+        <%= link_to 'delete proposal',project_bid_path(bid.project,bid),method: :delete  %>
       </li>
     </ul>
-    <%=link_to '',project_path(bid.project)%>
+    <%= link_to '',project_path(bid.project) %>
   </li>
-<% end %>
+<% end  %>

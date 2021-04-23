@@ -23,6 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized_only_to_admin!
-    redirect_to root_path unless current_user.try(:admin?)
+    redirect_to root_path unless current_user&.admin?
   end
 end

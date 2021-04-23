@@ -1,4 +1,4 @@
-<% content_for :title, "new bidding profile" %>
+<% content_for :title, "new bidding profile"  %>
 <main class="freelancers__form-page">
   <div class="freelancer__form-details">
     <h3>
@@ -6,24 +6,24 @@
       <span>(only for freelancers)</span>
     </h3>
   </div>
-  <%=form_for @bidding_profile,url: admin_bidding_profiles_path(@bidding_profile), method: :post do|f|%>
+  <%= form_for @bidding_profile,url: admin_bidding_profiles_path(@bidding_profile), method: :post do|f| %>
     <div class="all__clients" >
       <div class="select__client">
-        <%= f.label :freelancer_id,'Select a Freelancer' %>
-        <%= f.select :freelancer_id, User.all_freelancers, include_blank: 'Choose any' %>
-        <%unless @bidding_profile.errors[:freelancer_id].empty?%>
+        <%=  f.label :freelancer_id,'Select a Freelancer'  %>
+        <%=  f.select :freelancer_id, User.all_freelancers, include_blank: 'Choose any'  %>
+        <%unless @bidding_profile.errors[:freelancer_id].empty? %>
           <div class="error">
             <i class="fas fa-exclamation-circle"></i>
-            <%=@bidding_profile.errors[:freelancer_id][0]%></div>
-        <% end %>
+            <%= @bidding_profile.errors[:freelancer_id][0] %> </div>
+        <% end  %>
       </div>
     </div>
-    <%=render partial: "bidding_profiles/education",locals: {f: f,freelancer_info: @bidding_profile } %>
-    <%=render partial: "bidding_profiles/category",locals: {f: f,freelancer_info: @bidding_profile} %>
-    <%=render partial: "bidding_profiles/bio",locals: {f: f,freelancer_info: @bidding_profile} %>
-    <%=render partial: "bidding_profiles/experience",locals: {f: f} %>
+    <%= render partial: "bidding_profiles/education",locals: {f: f,freelancer_info: @bidding_profile }  %>
+    <%= render partial: "bidding_profiles/category",locals: {f: f,freelancer_info: @bidding_profile}  %>
+    <%= render partial: "bidding_profiles/bio",locals: {f: f,freelancer_info: @bidding_profile}  %>
+    <%= render partial: "bidding_profiles/experience",locals: {f: f}  %>
     <div class="submit__btn">
-      <%=f.submit 'submit', data: { disable_with: "Saving..." }%>
+      <%= f.submit 'submit', data: { disable_with: "Saving..." } %>
     </div>
-  <%end%>
+  <%end %>
 </main>

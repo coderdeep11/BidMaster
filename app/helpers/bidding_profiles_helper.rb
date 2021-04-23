@@ -1,5 +1,5 @@
 module BiddingProfilesHelper
   def  authorize_bidding_profile(resource)
-    current_user == resource.try(:freelancer)
+    current_user == resource&.freelancer
   end
 end

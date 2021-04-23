@@ -1,17 +1,17 @@
-<% content_for :title, "Edit #{@bidding_profile.freelancer.name } 's bidding profile" %>
+<% content_for :title, "Edit #{@bidding_profile.freelancer.name } 's bidding profile"  %>
 <main class="freelancers__form-page">
   <div class="freelancer__form-details">
     <h3>
-      Edit <%=@bidding_profile.freelancer.name%>'s bidding profile
+      Edit <%= @bidding_profile.freelancer.name %> 's bidding profile
     </h3>
   </div>
-  <%=form_for @bidding_profile,url: admin_bidding_profile_path(@bidding_profile), method: :patch do|f|%>
-    <%=render partial: "bidding_profiles/education",locals: {f: f,freelancer_info: @bidding_profile } %>
-    <%=render partial: "bidding_profiles/category",locals: {f: f,freelancer_info: @bidding_profile} %>
-    <%=render partial: "bidding_profiles/bio",locals: {f: f,freelancer_info: @bidding_profile} %>
-    <%=render partial: "bidding_profiles/experience",locals: {f: f} %>
+  <%= form_for @bidding_profile,url: admin_bidding_profile_path(@bidding_profile), method: :patch do|f| %>
+    <%= render partial: "bidding_profiles/education",locals: {f: f,freelancer_info: @bidding_profile }  %>
+    <%= render partial: "bidding_profiles/category",locals: {f: f,freelancer_info: @bidding_profile}  %>
+    <%= render partial: "bidding_profiles/bio",locals: {f: f,freelancer_info: @bidding_profile}  %>
+    <%= render partial: "bidding_profiles/experience",locals: {f: f}  %>
     <div class="submit__btn">
-      <%=f.submit 'submit', data: { disable_with: "Saving..." }%>
+      <%= f.submit 'submit', data: { disable_with: "Saving..." } %>
     </div>
-  <%end%>
+  <%end %>
 </main>

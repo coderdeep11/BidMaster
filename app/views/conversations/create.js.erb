@@ -1,7 +1,7 @@
 document.querySelector(".project__overview").insertAdjacentHTML(
 "afterend",
 `
-<div class="start__conversation"><%=j render 'messages', {messages: @messages,message: @message } %>
+<div class="start__conversation"> <%= j render 'messages', {messages: @messages,message: @message } %>
 </div>
 `
 );

@@ -1,14 +1,14 @@
 if (!document.querySelector(".notifications__modal")) {
-  window.location.replace("/projects/<%=@project.id%>/details");
+window.location.replace("/projects/ <%= @project.id %> /details");
 }
 notification = document.querySelector(
-  "#notification-<%=j @bid.notifications.first.id %>"
+"#notification-<%=j @bid.notifications.first.id %>"
 );
 parent = notification.closest(".notification__content");
 [...parent.children].forEach((element) => {
-  element.remove();
+element.remove();
 });
 notification.insertAdjacentHTML(
-  "afterbegin",
-  `<%=j render partial: 'bid-result',locals:{bid: @bid} %>`
+"afterbegin",
+` <%= j render partial: 'bid-result',locals:{bid: @bid} %> `
 );
