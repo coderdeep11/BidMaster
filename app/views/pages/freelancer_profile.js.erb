@@ -1,43 +1,39 @@
 document
-  .querySelector("nav")
-  .insertAdjacentHTML(
-    "afterend",
-    `<%= j render 'freelancer_profile',freelancer: @freelancer %>`
-  );
-
+.querySelector("nav")
+.insertAdjacentHTML(
+"afterend",
+` <%= j render 'freelancer_profile',freelancer: @freelancer %> `
+);
 document
-  .querySelector(".freelancer__profile-modal")
-  .setAttribute("style", `top:${window.scrollY}px`);
-
+.querySelector(".freelancer__profile-modal")
+.setAttribute("style", `top:${window.scrollY}px`);
 document
-  .querySelector("body")
-  .setAttribute(
-    "style",
-    "overflow:hidden;background:#9d9d9d; transition: background 1s;"
-  );
-
+.querySelector("body")
+.setAttribute(
+"style",
+"overflow:hidden;background:#9d9d9d; transition: background 1s;"
+);
 /*for Closing Model (freelancers in search resutls)*/
 document
-  .querySelector(".freelancer__profile-modal")
-  ?.addEventListener("click", function (e) {
-    if (e.target.closest(".freelancer__profile")) return;
-    document.querySelector("body").setAttribute("style", "overflow-x:hidden");
-
-    document.querySelector?.(".freelancer__profile-modal").remove();
-  });
+.querySelector(".freelancer__profile-modal")
+?.addEventListener("click", function (e) {
+if (e.target.closest(".freelancer__profile")) return;
+document.querySelector("body").setAttribute("style", "overflow-x:hidden");
+document.querySelector?.(".freelancer__profile-modal").remove();
+});
 /********** */
 /*For nav Slider in Profile Modal */
 navElement = document.querySelector(".details__tab-freelancer");
 navElement?.addEventListener("click", (e) => {
-  let target = e.target.closest("li");
-  if (target.parentElement !== navElement) return;
-  if (e.target.nodeName == "LI") e.target.children[0].click();
-  let index = target.dataset.tab;
-  if ([...navElement.classList].length > 1) {
-    [...navElement.classList].forEach((element, i) => {
-      if (i > 0) navElement.classList.remove(element);
-    });
-  }
-  navElement.classList.remove(navElement.classList[1]);
-  navElement.classList.add(`tab__slider-${+index}`);
+let target = e.target.closest("li");
+if (target.parentElement !== navElement) return;
+if (e.target.nodeName == "LI") e.target.children[0].click();
+let index = target.dataset.tab;
+if ([...navElement.classList].length > 1) {
+[...navElement.classList].forEach((element, i) => {
+if (i > 0) navElement.classList.remove(element);
+});
+}
+navElement.classList.remove(navElement.classList[1]);
+navElement.classList.add(`tab__slider-${+index}`);
 });

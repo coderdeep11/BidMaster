@@ -1,22 +1,22 @@
-<%documents=message.try(:documents)%>
-<%documents.each do |document|%>
-  <div class="<%=document.record.user == current_user ? "document-current_user" : "document"%>">
-    <% if document.try(:previewable?) %>
-      <%= link_to rails_blob_path(document, disposition: 'preview') do %>
-        <%=image_tag document.preview(resize_to_limit: [250, 250])%>
-      <%end%>
-    <%end%>
-    <% if document.try(:representable?) %>
-      <%= link_to rails_blob_path(document, disposition: 'preview') do %>
-        <%=image_tag document.representation(resize_to_limit: [250, 250])%>
-      <%end%>
-    <%end%>
-    <% if !document.previewable? && !document.representable? %>
-      <div class="other-files"><%=shorten_filename(document.filename)%>
-        <%= link_to rails_blob_path(document, disposition: 'preview') do%>
+<%documents=message.try(:documents) %>
+<%documents.each do |document| %>
+  <div class=" <%= document.record.user == current_user ? "document-current_user" : "document" %> ">
+    <% if document.try(:previewable?)  %>
+      <%=  link_to rails_blob_path(document, disposition: 'preview') do  %>
+        <%= image_tag document.preview(resize_to_limit: [250, 250]) %>
+      <%end %>
+    <%end %>
+    <% if document.try(:representable?)  %>
+      <%=  link_to rails_blob_path(document, disposition: 'preview') do  %>
+        <%= image_tag document.representation(resize_to_limit: [250, 250]) %>
+      <%end %>
+    <%end %>
+    <% if !document.previewable? && !document.representable?  %>
+      <div class="other-files"> <%= shorten_filename(document.filename) %>
+        <%=  link_to rails_blob_path(document, disposition: 'preview') do %>
           <i class="fal fa-download"></i>
-        <% end %>
+        <% end  %>
       </div>
-    <% end %>
+    <% end  %>
   </div>
-<% end %>
+<% end  %>

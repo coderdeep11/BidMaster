@@ -1,20 +1,20 @@
 <li class="user__bio">
   <div class="joined_on">
     <i class="fas fa-calendar-check"></i>
-    joined <%=distance_of_time_in_words_to_now(user.created_at)%> ago
+    joined <%= distance_of_time_in_words_to_now(user.created_at) %>  ago
   </div>
   <div class="user___details">
     <p>
       <span>Education:</span>
-      <%=user.bidding_profile.try(:education) ? user.bidding_profile.try(:education)   : "none"%></p>
+      <%= user.bidding_profile.try(:education) ? user.bidding_profile.try(:education)   : "none" %> </p>
     <p>
       <span>Skill level: </span>
-      <%=user.bidding_profile.try(:experience) ? user.bidding_profile.try(:experience) : "none"%></p>
+      <%= user.bidding_profile.try(:experience) ? user.bidding_profile.try(:experience) : "none" %> </p>
     <p>
       <span>  Category:</span>
-      <%=user.bidding_profile.try(:category) ? user.bidding_profile.try(:category) : "none"%> , <%=user.bidding_profile.try(:subcategory)%></p>
+      <%= user.bidding_profile.try(:category) ? user.bidding_profile.try(:category) : "none" %>  , <%= user.bidding_profile.try(:subcategory) %> </p>
     <p>
       <span> Bio:</span>
-      <%=user.bidding_profile.try(:bio)? user.bidding_profile.try(:bio) : "none"%></p>
+      <%= user.bidding_profile.try(:bio)? user.bidding_profile.try(:bio) : "none" %> </p>
   </div>
 </li>

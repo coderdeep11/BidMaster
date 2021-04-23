@@ -1,21 +1,21 @@
-<% content_for :title, "Bid History" %>
+<% content_for :title, "Bid History"  %>
 <main class="bid__history">
   <div class="bid-history__heading">
     <h3>bid history</h3>
-    <p>Total bids<span>(<%=total_bids_by_freelancer?(@bid)%>)</span></p>
+    <p>Total bids<span>( <%= total_bids_by_freelancer?(@bid) %> )</span></p>
   </div>
   <ul class="freelancer-placed-bids-on">
-    <% if @bids.empty? %>
+    <% if @bids.empty?  %>
       <div class="no__bids">
-        <%=inline_svg_tag 'bid.svg'%>
+        <%= inline_svg_tag 'bid.svg' %>
         <p>no record,start bidding on projects</p>
       </div>
-    <% else %>
-      <%= render 'my-bids' ,bids: @bids%>
-    <% end %>
+    <% else  %>
+      <%=  render 'my-bids' ,bids: @bids %>
+    <% end  %>
   </ul>
   <div class="pagination__buttons">
-    <%= link_to_previous_page @bids, 'Previous ',class:'prv__btn' %>
-    <%= link_to_next_page @bids, 'Next ',class:'nxt__btn' %>
+    <%=  link_to_previous_page @bids, 'Previous ',class:'prv__btn'  %>
+    <%=  link_to_next_page @bids, 'Next ',class:'nxt__btn'  %>
   </div>
 </main>

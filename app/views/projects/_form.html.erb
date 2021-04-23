@@ -2,13 +2,13 @@
   <div class="post__project">
     <h3>Post a project</h3>
   </div>
-  <%=form_for project do|f|%>
-    <%=render partial: "title",locals: {f: f,project: project } %>
-    <%=render partial: "category",locals: {f: f,project: project} %>
-    <%=render partial: "description",locals: {f: f,project: project} %>
-    <%=render partial: "experience",locals: {f: f} %>
+  <%= form_for project do|f| %>
+    <%= render partial: "title",locals: {f: f,project: project }  %>
+    <%= render partial: "category",locals: {f: f,project: project}  %>
+    <%= render partial: "description",locals: {f: f,project: project}  %>
+    <%= render partial: "experience",locals: {f: f}  %>
     <div class="submit__btn">
-      <%=f.submit 'Post Job', data: { disable_with: "Saving..." }%>
+      <%= f.submit 'Post Job', data: { disable_with: "Saving..." } %>
     </div>
-  <%end%>
+  <%end %>
 </main>

@@ -1,17 +1,17 @@
-<% content_for :title, "Log in" %>
+<% content_for :title, "Log in"  %>
 <main class="user__login">
-  <%= form_tag sessions_path do %>
+  <%= form_tag sessions_path do  %>
     <section class="login__page">
       <h1>Log in</h1>
       <div class="login__email-field">
         <i class="fad fa-user"></i>
-        <%= email_field_tag :email,nil, autocomplete: "email",placeholder: 'email address' %>
+        <%= email_field_tag :email,nil, autocomplete: "email",placeholder: 'email address'  %>
       </div>
       <div class="login__password-field">
         <i class="fad fa-lock"></i>
-        <%= password_field_tag :password,nil, autocomplete: "current-password",placeholder: 'password' %>
+        <%= password_field_tag :password,nil, autocomplete: "current-password",placeholder: 'password'  %>
       </div>
-      <%= submit_tag "Log in",class:"login__btn" %>
+      <%= submit_tag "Log in",class:"login__btn"  %>
     </section>
-  <% end %>
+  <% end  %>
 </main>

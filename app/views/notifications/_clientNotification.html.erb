@@ -1,32 +1,32 @@
-<li class="notification bid-<%=notification.bid.status%>">
+<li class="notification bid-<%= notification.bid.status %>">
   <div class="user__image">
-    <% if notification.bid.freelancer.profile_image.attached? %>
-      <%=image_tag notification.bid.freelancer.profile_image%>
-    <% else %>
-      <%=inline_svg_tag 'default_avatar.svg'%>
-    <% end %>
+    <% if notification.bid.freelancer.profile_image.attached?  %>
+      <%= image_tag notification.bid.freelancer.profile_image %>
+    <% else  %>
+      <%= inline_svg_tag 'default_avatar.svg' %>
+    <% end  %>
   </div>
-  <ul class="notification__content" id="notification-<%=notification.id%>">
-    <%if notification.bid.unapproved?%>
+  <ul class="notification__content" id="notification-<%= notification.id %>">
+    <%if notification.bid.unapproved? %>
       <li class="notification__from">
-        <%=notification.bid.freelancer.name%> placed a bid on your project "<%= notification.bid.proposal.from(0).to(30)  %> "
+        <%= notification.bid.freelancer.name %>  placed a bid on your project " <%=  notification.bid.proposal.from(0).to(30)   %>  "
       </li>
-      <% if !project_awarded?(notification.bid.project) %>
+      <% if !project_awarded?(notification.bid.project)  %>
         <li class="bid__status">
-          <%=link_to 'Accept', accept_project_bid_path(notification.bid.project,notification.bid),class:'btn-primary'  ,method: :put,remote: true %>
-          <%=link_to 'Reject',reject_project_bid_path(notification.bid.project,notification.bid) ,class:'btn-primary' ,method: :put ,remote: true%>
+          <%= link_to 'Accept', accept_project_bid_path(notification.bid.project,notification.bid),class:'btn-primary'  ,method: :put,remote: true  %>
+          <%= link_to 'Reject',reject_project_bid_path(notification.bid.project,notification.bid) ,class:'btn-primary' ,method: :put ,remote: true %>
         </li>
-      <% end %>
-    <% else %>
+      <% end  %>
+    <% else  %>
       <li class="bid__result">
-        <% if notification.bid.awarded? %>
-          <%="You awarded  the project to #{notification.bid.freelancer.name}" %>
-        <% else %>
-          <%="You #{notification.bid.rejected? ? "rejected the bid,check other bids on your project ": "approved the bid,now you can get in touch with #{notification.bid.freelancer.name}" }."%>
-        <% end %>
+        <% if notification.bid.awarded?  %>
+          <%= "You awarded  the project to #{notification.bid.freelancer.name}"  %>
+        <% else  %>
+          <%= "You #{notification.bid.rejected? ? "rejected the bid,check other bids on your project ": "approved the bid,now you can get in touch with #{notification.bid.freelancer.name}" }." %>
+        <% end  %>
       </li>
-      <div class="time"><%=distance_of_time_in_words_to_now(notification.bid.updated_at)%> ago</div>
-    <% end %>
+      <div class="time"> <%= distance_of_time_in_words_to_now(notification.bid.updated_at) %>  ago</div>
+    <% end  %>
   </ul>
-  <%= link_to '', project_details_path(notification.bid.project) %>
+  <%=  link_to '', project_details_path(notification.bid.project)  %>
 </li>

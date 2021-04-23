@@ -1,11 +1,11 @@
- <% content_for :title, "Users" %>
-<%=render 'admin/dashboards/sidebar'%>
+ <% content_for :title, "Users"  %>
+<%= render 'admin/dashboards/sidebar' %>
 <div class="main-content">
   <main class="users">
     <h2 class="dash-title"><i class="fad fa-users"></i> Users</h2>
     <section class="recent">
       <div class="activity-card">
-        <%=link_to 'New User',new_admin_user_path,class:'btn-primary'%>
+        <%= link_to 'New User',new_admin_user_path,class:'btn-primary' %>
         <div class="table-responsive">
           <table>
             <thead>
@@ -20,48 +20,48 @@
               </tr>
             </thead>
             <tbody>
-              <%@users.each do |user|%>
+              <%@users.each do |user| %>
                 <tr>
-                  <td><%=user.id  %></td>
-                  <td><%=user.name %></td>
-                  <td><%=user.email%></td>
+                  <td> <%= user.id   %> </td>
+                  <td> <%= user.name  %> </td>
+                  <td> <%= user.email %> </td>
                   <td >
-                    <% if user.admin%>
+                    <% if user.admin %>
                       <i class="fas fa-check-circle"></i>
-                    <% else %>
+                    <% else  %>
                       <i class="fas fa-times-circle"></i>
-                    <% end %>
+                    <% end  %>
                   </td>
                   <td>
-                    <span class="badge <%=user.role%>"><%=user.role %></span>
+                    <span class="badge  <%= user.role %> "> <%= user.role  %> </span>
                   </td>
                   <td >
-                    <% if user.approved%>
+                    <% if user.approved %>
                       <i class="fas fa-check-circle"></i>
-                    <% else %>
+                    <% else  %>
                       <i class="fas fa-times-circle"></i>
-                    <% end %>
+                    <% end  %>
                   </td>
-                  <% unless user.admin? && user == current_user  %>
+                  <% unless user.admin? && user == current_user   %>
                     <td class="action__buttons">
-                      <%=link_to admin_user_path(user) do%>
+                      <%= link_to admin_user_path(user) do %>
                         <i class="fal fa-eye"></i>
-                      <% end %>
-                      <%=link_to edit_admin_user_path(user) do%>
+                      <% end  %>
+                      <%= link_to edit_admin_user_path(user) do %>
                         <i class="fal fa-edit"></i>
-                      <% end %>
-                      <%=link_to admin_user_path(user),method: :delete,data: {confirm: 'Are you sure?'} do%>
+                      <% end  %>
+                      <%= link_to admin_user_path(user),method: :delete,data: {confirm: 'Are you sure?'} do %>
                         <i class="fal fa-trash-alt"></i>
-                      <% end %>
+                      <% end  %>
                     </td>
-                  <% end %>
+                  <% end  %>
                 </tr>
-              <% end %>
+              <% end  %>
             </tbody>
           </table>
           <div class="pagination__buttons">
-            <%= link_to_previous_page @users, 'Previous ',class:'prv__btn' %>
-            <%= link_to_next_page @users, 'Next ',class:'nxt__btn' %>
+            <%=  link_to_previous_page @users, 'Previous ',class:'prv__btn'  %>
+            <%=  link_to_next_page @users, 'Next ',class:'nxt__btn'  %>
           </div>
         </div>
       </div>

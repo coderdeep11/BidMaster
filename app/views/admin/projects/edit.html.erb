@@ -1,15 +1,15 @@
-<% content_for :title, "#{@project.title}>" %>
+<% content_for :title, "#{@project.title}>"  %>
 <main class="project__page">
   <div class="post__project">
     <h3>Edit project</h3>
   </div>
-  <%=form_for @project,url: admin_project_path(@project), method: :patch do|f|%>
-    <%=render partial: "projects/title",locals: {f: f,project: @project } %>
-    <%=render partial: "projects/category",locals: {f: f,project: @project} %>
-    <%=render partial: "projects/description",locals: {f: f,project: @project} %>
-    <%=render partial: "projects/experience",locals: {f: f} %>
+  <%= form_for @project,url: admin_project_path(@project), method: :patch do|f| %>
+    <%= render partial: "projects/title",locals: {f: f,project: @project }  %>
+    <%= render partial: "projects/category",locals: {f: f,project: @project}  %>
+    <%= render partial: "projects/description",locals: {f: f,project: @project}  %>
+    <%= render partial: "projects/experience",locals: {f: f}  %>
     <div class="submit__btn">
-      <%=f.submit 'Post Job', data: { disable_with: "Saving..." }%>
+      <%= f.submit 'Post Job', data: { disable_with: "Saving..." } %>
     </div>
-  <%end%>
+  <%end %>
 </main>

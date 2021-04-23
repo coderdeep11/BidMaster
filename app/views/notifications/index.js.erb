@@ -6,7 +6,7 @@ conversations?.classList.remove("active__tab");
 if (notifications__modal) notifications__modal.remove();
 notifications.insertAdjacentHTML(
 "beforeend",
-`<%= j render partial: "notifications",locals:{ notifications: @notifications} %>`
+` <%= j render partial: "notifications",locals:{ notifications: @notifications} %> `
 );
 document
 .querySelector(".notifications__modal")

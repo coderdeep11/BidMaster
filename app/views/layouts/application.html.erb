@@ -3,7 +3,7 @@
   <head>
     <title>
       <% unless yield(:title).blank? %>
-        <%= yield(:title)   %>
+        <%= yield(:title) %>
       <% else %>
         Bid Master
       <% end %>
@@ -18,79 +18,79 @@
   </head>
   <body>
     <header>
-      <%=link_to root_path do%>
-        <%=inline_svg_tag "logo.svg",class:'logo' %>
-      <%end%>
+      <%= link_to root_path do%>
+        <%= inline_svg_tag "logo.svg",class:'logo'  %>
+      <%end %>
     </header>
     <div class="search__bar">
-      <%= search_form_for search_type? == 'freelancer' ? @q : @j, url: search_results_path do |f|%>
-        <%= link_to '',search_choice_path , remote: true,class:'arrow'  %>
-        <%if search_type? == 'freelancer'%>
-          <%=render partial: 'pages/searchFieldFreelancer', locals: {f: f } %>
-        <% else %>
-          <%=render partial: 'pages/searchFieldProject', locals: {f: f  } %>
-        <% end %>
+      <%=  search_form_for search_type? == 'freelancer' ? @q : @j, url: search_results_path do |f| %>
+        <%=  link_to '',search_choice_path , remote: true,class:'arrow'   %>
+        <%if search_type? == 'freelancer' %>
+          <%= render partial: 'pages/searchFieldFreelancer', locals: {f: f }  %>
+        <% else  %>
+          <%= render partial: 'pages/searchFieldProject', locals: {f: f  }  %>
+        <% end  %>
         <div class="search-btn">
-          <%= button_tag class: ' btn-primary'   do%>
+          <%=  button_tag class: ' btn-primary'   do %>
             <i class="far fa-search"></i>
-          <%end%>
+          <%end %>
         </div>
-      <% end %>
+      <% end  %>
     </div>
     <nav>
       <ul>
-        <%if current_user && !current_user.try(:admin?)%>
-          <% if user_freelancer?(current_user) %>
+        <%if current_user && !current_user.try(:admin?) %>
+          <% if user_freelancer?(current_user)  %>
             <li>
-              <%=link_to  bid_history_projects_path  do%>
+              <%= link_to  bid_history_projects_path  do %>
                 <i class="fad fa-history"></i>
-              <%end%>
+              <%end %>
             </li>
-          <% end %>
-          <%if user_freelancer?(current_user) || user_client?(current_user)%>
+          <% end  %>
+          <%if user_freelancer?(current_user) || user_client?(current_user) %>
             <li class="conversations__dropdown">
-              <%=link_to  conversations_path ,remote: true do%>
+              <%= link_to  conversations_path ,remote: true do %>
                 <i class="fad fa-envelope"></i>
-              <%end%>
-              <%if total_unread_messages != 0%>
+              <%end %>
+              <%if total_unread_messages != 0 %>
                 <span class="unread-button__badge ">
-                  <%=total_unread_messages %>
+                  <%= total_unread_messages  %>
                 </span>
-              <% end %>
+              <% end  %>
             </li>
             <li class="notifications__dropdown">
-              <%=link_to  notifications_path,remote: true do%>
+              <%= link_to  notifications_path,remote: true do %>
                 <i class="fad fa-bell"></i>
-              <%end%>
-              <%if total_unread_notifications != 0 %>
+              <%end %>
+              <%if total_unread_notifications != 0  %>
                 <span class="unread-button__badge ">
-                  <%=total_unread_notifications %>
+                  <%= total_unread_notifications  %>
                 </span>
-              <% end %>
+              <% end  %>
             </li>
             <li class="user__avatar">
-              <%=link_to dropdown_profile_path,remote: true do%>
-                <% if current_user.profile_image.attached? %>
-                  <%=image_tag current_user.profile_image%>
-                <% else %>
-                  <%=inline_svg_tag 'default_avatar.svg'%>
-                <% end %>
-              <% end %>
+              <%= link_to dropdown_profile_path,remote: true do %>
+                <% if current_user.profile_image.attached?  %>
+                  <%= image_tag current_user.profile_image %>
+                <% else  %>
+                  <%= inline_svg_tag 'default_avatar.svg' %>
+                <% end  %>
+              <% end  %>
             </li>
-          <%end%>
-        <% elsif current_user.try(:admin?) %>
+          <%end %>
+        <% elsif current_user.try(:admin?)  %>
           <li>
-            <%=link_to 'Logout',logout_path,class:'btn-primary',method: :delete%>
+            <%= link_to 'Logout',logout_path,class:'btn-primary',method: :delete %>
           </li>
-        <%else%>
+        <%else %>
           <li>
-            <% if request.path == login_path %>
-              <%=link_to 'sign up',signup_path,class:'btn-primary'%>
-            <% else %>
-              <%=link_to 'Login',login_path,class:'btn-primary'%>
-            <% end %>
+            <% if request.path == login_path  %>
+              <%= link_to 'sign up',signup_path,class:'btn-primary' %>
+            <% else  %>
+              <%= link_to 'Login',login_path,class:'btn-primary' %>
+            <% end  %>
           </li>
-        <%end%>
+        <%end %>
       </ul>
     </nav>
     <div >
@@ -103,30 +103,30 @@
         <p><%= alert %></p>
       </div>
     </div >
-    <%= yield %>
-    <% if !current_user.try(:admin?) %>
+    <%=  yield  %>
+    <% if !current_user.try(:admin?)  %>
       <footer class="footer">
         <ul class="footer__nav">
           <li class="footer__item">
-            <%=link_to 'About',root_path,class:'footer__link'%>
+            <%= link_to 'About',root_path,class:'footer__link' %>
           </li>
           <li class="footer__item">
-            <%=link_to 'Customer Support',root_path,class:'footer__link'%>
+            <%= link_to 'Customer Support',root_path,class:'footer__link' %>
           </li>
           <li class="footer__item">
-            <%=link_to 'Terms of Use',root_path,class:'footer__link'%>
+            <%= link_to 'Terms of Use',root_path,class:'footer__link' %>
           </li>
           <li class="footer__item">
-            <%=link_to 'Privacy Policy',root_path,class:'footer__link'%>
+            <%= link_to 'Privacy Policy',root_path,class:'footer__link' %>
           </li>
           <li class="footer__item">
-            <%=link_to 'Carrers',root_path,class:'footer__link'%>
+            <%= link_to 'Carrers',root_path,class:'footer__link' %>
           </li>
           <li class="footer__item">
-            <%=link_to 'Contact us',root_path,class:'footer__link'%>
+            <%= link_to 'Contact us',root_path,class:'footer__link' %>
           </li>
         </ul>
-        <%=inline_svg_tag 'logo.svg',class:"footer__logo" %>
+        <%= inline_svg_tag 'logo.svg',class:"footer__logo"  %>
         <p class="footer__copyright">
           Copyright &copy; 2021 BidMaster .All right reserved. 
         </p>

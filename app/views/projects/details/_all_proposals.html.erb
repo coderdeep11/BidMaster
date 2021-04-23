@@ -1,47 +1,47 @@
 <ul class="proposals">
-  <% if bids.count.zero?  %>
+  <% if bids.count.zero?   %>
     <div class="no__data">
-      <%=inline_svg_tag 'nodata.svg'%>
+      <%= inline_svg_tag 'nodata.svg' %>
       no data
     </div>
-  <% else %>
-    <%bids.each do|bid|%>
-      <li class="proposal <%=bid.status%>" id="<%=bid.id%>  ">
+  <% else  %>
+    <%bids.each do|bid| %>
+      <li class="proposal  <%= bid.status %> " id=" <%= bid.id %> ">
         <div class="user__image">
-          <% if bid.freelancer.profile_image.attached? %>
-            <%=image_tag bid.freelancer.profile_image%>
-          <% else %>
-            <%=inline_svg_tag 'default_avatar.svg'%>
-          <% end %>
+          <% if bid.freelancer.profile_image.attached?  %>
+            <%= image_tag bid.freelancer.profile_image %>
+          <% else  %>
+            <%= inline_svg_tag 'default_avatar.svg' %>
+          <% end  %>
         </div>
         <ul>
           <li>
-            <%=link_to bid.freelancer.name,freelancer_path(bid.freelancer)%>
+            <%= link_to bid.freelancer.name,freelancer_path(bid.freelancer) %>
           </li>
           <li>
-            <span>Bid: $<%=bid.value%>/hr</span>
+            <span>Bid: $ <%= bid.value %> /hr</span>
           </li>
           <li>
             <span>Proposal: </span>
-            <p> <%=bid.proposal%></p>
+            <p>  <%= bid.proposal %> </p>
           </li>
           <li class="time">
-            <%=distance_of_time_in_words_to_now(bid.updated_at)%>
+            <%= distance_of_time_in_words_to_now(bid.updated_at) %>
           </li>
         </ul>
         <div class="bid__status">
-          <%if !project_awarded?(bid.project) && !bid.accepted? && !bid.rejected? %>
-            <%=link_to 'accept', accept_project_bid_path(bid.project,bid) ,class:'accept',method: :put,remote: true%>
-            <%=link_to 'reject',reject_project_bid_path(bid.project,bid) ,class:'reject',method: :put ,remote: true%>
-          <% else %>
-            <span class="stamp is-<%=bid.status%>"><%=bid.status%></span>
-          <%end%>
+          <%if !project_awarded?(bid.project) && !bid.accepted? && !bid.rejected?  %>
+            <%= link_to 'accept', accept_project_bid_path(bid.project,bid) ,class:'accept',method: :put,remote: true %>
+            <%= link_to 'reject',reject_project_bid_path(bid.project,bid) ,class:'reject',method: :put ,remote: true %>
+          <% else  %>
+            <span class="stamp is-<%= bid.status %>"> <%= bid.status %> </span>
+          <%end %>
         </div>
       </li >
-    <%end%>
-  <% end %>
+    <%end %>
+  <% end  %>
   <div class="pagination__buttons">
-    <%= link_to_previous_page bids, 'Previous ',class:'prv__btn',remote: true %>
-    <%= link_to_next_page bids, 'Next ',class:'nxt__btn' ,remote: true%>
+    <%=  link_to_previous_page bids, 'Previous ',class:'prv__btn',remote: true  %>
+    <%=  link_to_next_page bids, 'Next ',class:'nxt__btn' ,remote: true %>
   </div>
 </ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_223224) do
+ActiveRecord::Schema.define(version: 2021_04_22_231541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_223224) do
     t.string "email", null: false
     t.boolean "email_confirmed", default: false
     t.string "password_digest", null: false
-    t.string "role", null: false
+    t.string "role"
     t.string "confirmation_token"
     t.boolean "admin", default: false
     t.boolean "approved", default: false

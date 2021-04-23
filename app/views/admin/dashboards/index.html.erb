@@ -1,4 +1,4 @@
-<%= render 'sidebar' %>
+ <%=  render 'sidebar'  %>
 <div class="main-content">
   <main >
     <h2 class="dash-title">Overview</h2>
@@ -8,7 +8,7 @@
           <i class="far fa-users"></i>
           <div>
             <h5>Total Users</h5>
-            <h4><%=User.all.count%></h4>
+            <h4> <%= User.all.count %> </h4>
           </div>
         </div>
       </div>
@@ -17,7 +17,7 @@
           <i class="fad fa-users"></i>
           <div>
             <h5>Freelancers</h5>
-            <h4><%=User.where(role: 'freelancer').count%></h4>
+            <h4> <%= User.where(role: 'freelancer').count %> </h4>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <i class="fad fa-users"></i>
           <div>
             <h5>Clients</h5>
-            <h4><%=User.where(role: 'client').count%></h4>
+            <h4> <%= User.where(role: 'client').count %> </h4>
           </div>
         </div>
       </div>
@@ -46,39 +46,39 @@
             <tbody>
               <tr>
                 <td>
-                  <%=link_to admin_users_path do%>
+                  <%= link_to admin_users_path do %>
                     Users
-                  <% end %>
+                  <% end  %>
                 </td>
-                <td><%=distance_of_time_in_words_to_now(User.last.try(:updated_at))  if User.last%> </td>
-                <td><%=User.all.count%></td>
+                <td> <%= distance_of_time_in_words_to_now(User.last.try(:updated_at))  if User.last %>  </td>
+                <td> <%= User.all.count %> </td>
               </tr>
               <tr>
                 <td>
-                  <%=link_to admin_projects_path do%>
+                  <%= link_to admin_projects_path do %>
                     Projects
-                  <% end %>
+                  <% end  %>
                 </td>
-                <td><%=distance_of_time_in_words_to_now(Project.last.try(:updated_at)) if Project.last%> </td>
-                <td><%=Project.all.count %> </td>
+                <td> <%= distance_of_time_in_words_to_now(Project.last.try(:updated_at)) if Project.last %>  </td>
+                <td> <%= Project.all.count  %>  </td>
               </tr>
               <tr>
                 <td>
-                  <%=link_to admin_bids_path do%>
+                  <%= link_to admin_bids_path do %>
                     Bids
-                  <% end %>
+                  <% end  %>
                 </td>
-                <td><%=distance_of_time_in_words_to_now(Bid.last.try(:updated_at)) if Bid.last%> </td>
-                <td><%=Bid.all.count%></td>
+                <td> <%= distance_of_time_in_words_to_now(Bid.last.try(:updated_at)) if Bid.last %>  </td>
+                <td> <%= Bid.all.count %> </td>
               </tr>
               <tr>
                 <td>
-                  <%=link_to admin_bidding_profiles_path do%>
+                  <%= link_to admin_bidding_profiles_path do %>
                     Bidding Profile
-                  <% end %>
+                  <% end  %>
                 </td>
-                <td><%=distance_of_time_in_words_to_now(BiddingProfile.last.try(:updated_at)) if BiddingProfile.last%> </td>
-                <td><%=BiddingProfile.all.count%></td>
+                <td> <%= distance_of_time_in_words_to_now(BiddingProfile.last.try(:updated_at)) if BiddingProfile.last %>  </td>
+                <td> <%= BiddingProfile.all.count %> </td>
               </tr>
             </tbody>
           </table>

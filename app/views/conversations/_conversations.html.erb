@@ -1,56 +1,56 @@
- <% conversations.each do |conversation| %>
-  <% recipient = conversation.sender_id == current_user.id ? conversation.recipient : conversation.sender %>
-  <li class="conversation <%=conversation.unread_message_count(current_user) > 0 ? "unread" : ""%>">
+ <% conversations.each do |conversation|  %>
+  <% recipient = conversation.sender_id == current_user.id ? conversation.recipient : conversation.sender  %>
+  <li class="conversation  <%= conversation.unread_message_count(current_user) > 0 ? "unread" : "" %> ">
     <div class="user__image">
-      <%= render 'recipient_avatar',recipient: recipient %>
+      <%=  render 'recipient_avatar',recipient: recipient  %>
     </div>
     <ul class="message_and_name">
       <li class="user__name">
-        <%=recipient.try(:name)%>
-        <% unless conversation.unread_message_count(current_user).zero? %>
+        <%= recipient.try(:name) %>
+        <% unless conversation.unread_message_count(current_user).zero?  %>
           <div class="unread__messages">
-            <span> <%= conversation.unread_message_count(current_user) %></span>
+            <span>  <%=  conversation.unread_message_count(current_user)  %> </span>
           </div>
-        <% end %>
+        <% end  %>
       </li>
       <li class="message">
-        <%if conversation.messages.last.content?%>
-          <% if conversation.messages.last.content.length > 60 %>
-            <%= "#{conversation.messages.last.content.from(0).to(60)}.... "%>
-            <%if conversation.messages.last.user == current_user%>
-              <%if conversation.messages.last.read%>
+        <%if conversation.messages.last.content? %>
+          <% if conversation.messages.last.content.length > 60  %>
+            <%=  "#{conversation.messages.last.content.from(0).to(60)}.... " %>
+            <%if conversation.messages.last.user == current_user %>
+              <%if conversation.messages.last.read %>
                 <i class="fal fa-check-double "></i>
-              <% else %>
+              <% else  %>
                 <i class="fal fa-check"></i>
-              <% end %>
-            <% end %>
-          <% else %>
-            <%= conversation.messages.last.content %>
-            <%if conversation.messages.last.user == current_user%>
-              <%if conversation.messages.last.read%>
+              <% end  %>
+            <% end  %>
+          <% else  %>
+            <%=  conversation.messages.last.content  %>
+            <%if conversation.messages.last.user == current_user %>
+              <%if conversation.messages.last.read %>
                 <i class="fal fa-check-double "></i>
-              <% else %>
+              <% else  %>
                 <i class="fal fa-check"></i>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% else %>
+              <% end  %>
+            <% end  %>
+          <% end  %>
+        <% else  %>
           sent a document
-          <%if conversation.messages.last.user == current_user%>
-            <%if conversation.messages.last.read%>
+          <%if conversation.messages.last.user == current_user %>
+            <%if conversation.messages.last.read %>
               <i class="fal fa-check-double "></i>
-            <% else %>
+            <% else  %>
               <i class="fal fa-check"></i>
-            <% end %>
-          <% end %>
-        <% end %>
+            <% end  %>
+          <% end  %>
+        <% end  %>
       </li>
       <li class="time">
         <small>
-          <%= distance_of_time_in_words_to_now(conversation.messages.last.created_at)%> ago
+          <%=  distance_of_time_in_words_to_now(conversation.messages.last.created_at) %>  ago
         </small>
       </li>
     </ul>
-    <%=link_to '',conversation_messages_path(conversation),remote: true%>
+    <%= link_to '',conversation_messages_path(conversation),remote: true %>
   </li>
-<%end%>
+<%end %>

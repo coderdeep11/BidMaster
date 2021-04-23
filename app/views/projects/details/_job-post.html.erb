@@ -1,14 +1,14 @@
 <section class="project__post">
-  <%=render "projects/job__post-modal", {project: project} %>
+  <%= render "projects/job__post-modal", {project: project} %>
   <ul class="actions__on-project">
     <li>
-      <%=link_to 'Edit Project',edit_project_path(project)%>
+      <%= link_to 'Edit Project',edit_project_path(project) %>
     </li>
     <li>
-      <%=link_to 'Delete Project',project_path(project),method: :delete %>
+      <%= link_to 'Delete Project',project_path(project),method: :delete %>
     </li>
     <li>
-      <%=link_to 'Delete All Bids'%>
+      <%= link_to 'Delete All Bids' %>
     </li>
   </ul>
 </section>
