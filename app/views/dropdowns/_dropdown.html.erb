@@ -7,7 +7,7 @@
         <%= inline_svg_tag 'default_avatar.svg' %>
       <% end  %>
     </div>
-    <%= link_to current_user.try(:role) =="client" ? client_path(current_user) : freelancer_path(current_user),class: 'user__name' do %>
+    <%= link_to current_user&.role =="client" ? client_path(current_user) : freelancer_path(current_user),class: 'user__name' do %>
       <%= @user.name %>    <span> <%= @user.role %> </span>
     <%end %>
   </li>

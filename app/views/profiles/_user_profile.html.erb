@@ -12,7 +12,7 @@
   <li class="user__name">
     <%= user.name %>
     <div class="category">
-      <%= user.bidding_profile.try(:category) %>
+      <%= user.bidding_profile&.category %>
       <%= user.role unless user_freelancer?(user) %>
     </div>
   </li>

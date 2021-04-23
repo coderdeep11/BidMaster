@@ -39,7 +39,7 @@
     </div>
     <nav>
       <ul>
-        <%if current_user && !current_user.try(:admin?) %>
+        <%if current_user && !current_user&.admin? %>
           <% if user_freelancer?(current_user)  %>
             <li>
               <%= link_to  bid_history_projects_path  do %>
@@ -78,7 +78,7 @@
               <% end  %>
             </li>
           <%end %>
-        <% elsif current_user.try(:admin?)  %>
+        <% elsif current_user&.admin?  %>
           <li>
             <%= link_to 'Logout',logout_path,class:'btn-primary',method: :delete %>
           </li>
@@ -104,7 +104,7 @@
       </div>
     </div >
     <%=  yield  %>
-    <% if !current_user.try(:admin?)  %>
+    <% if !current_user&.admin?  %>
       <footer class="footer">
         <ul class="footer__nav">
           <li class="footer__item">

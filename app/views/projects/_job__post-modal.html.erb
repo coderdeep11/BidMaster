@@ -50,8 +50,8 @@
       <% end  %>
     </ul>
   </div>
-  <%if user_freelancer?(current_user) ||( current_user.try(:admin?) && request.path==admin_bid_path)  %>
-    <section class="place__bid bid-<%= @bid.awarded? ? "awarded-disable" : "" %> ">
+  <%if user_freelancer?(current_user) ||( current_user&.admin? && request.path==admin_bid_path)  %>
+    <section class="place__bid bid-<%= project_awarded?(project) ? "awarded-disable" : "" %> ">
       <%= form_for [project,bid],remote: true do|f| %>
         <div class="bid__proposal-field">
           <%= f.text_area :proposal,placeholder:'your proposal' %>

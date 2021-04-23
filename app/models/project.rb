@@ -30,6 +30,6 @@ class Project < ApplicationRecord
   end
 
   def is_user_client?
-    errors.add(:base, 'Only Clients are allowed to post project') unless client.try(:role) == 'client'
+    errors.add(:base, 'Only Clients are allowed to post project') unless client&.role == 'client'
   end
 end

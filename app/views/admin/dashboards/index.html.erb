@@ -50,7 +50,7 @@
                     Users
                   <% end  %>
                 </td>
-                <td> <%= distance_of_time_in_words_to_now(User.last.try(:updated_at))  if User.last %>  </td>
+                <td> <%= distance_of_time_in_words_to_now(User.last.updated_at)  if User.last %>  </td>
                 <td> <%= User.all.count %> </td>
               </tr>
               <tr>
@@ -59,7 +59,7 @@
                     Projects
                   <% end  %>
                 </td>
-                <td> <%= distance_of_time_in_words_to_now(Project.last.try(:updated_at)) if Project.last %>  </td>
+                <td> <%= distance_of_time_in_words_to_now(Project.last&.updated_at) if Project.last %>  </td>
                 <td> <%= Project.all.count  %>  </td>
               </tr>
               <tr>
@@ -68,7 +68,7 @@
                     Bids
                   <% end  %>
                 </td>
-                <td> <%= distance_of_time_in_words_to_now(Bid.last.try(:updated_at)) if Bid.last %>  </td>
+                <td> <%= distance_of_time_in_words_to_now(Bid.last&.updated_at) if Bid.last %>  </td>
                 <td> <%= Bid.all.count %> </td>
               </tr>
               <tr>
@@ -77,7 +77,7 @@
                     Bidding Profile
                   <% end  %>
                 </td>
-                <td> <%= distance_of_time_in_words_to_now(BiddingProfile.last.try(:updated_at)) if BiddingProfile.last %>  </td>
+                <td> <%= distance_of_time_in_words_to_now(BiddingProfile.last&.updated_at) if BiddingProfile.last %>  </td>
                 <td> <%= BiddingProfile.all.count %> </td>
               </tr>
             </tbody>

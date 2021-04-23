@@ -1,6 +1,6 @@
 <div class="search__results-projects">
   <ul class="projects">
-    <% projects.try(:each) do|project| %>
+    <% projects&.each do|project| %>
       <li class="project">
         <ul>
           <li class="project__title">

@@ -1,12 +1,12 @@
-<%documents=message.try(:documents) %>
+<%documents=message&.documents %>
 <%documents.each do |document| %>
   <div class=" <%= document.record.user == current_user ? "document-current_user" : "document" %> ">
-    <% if document.try(:previewable?)  %>
+    <% if document&.previewable?  %>
       <%=  link_to rails_blob_path(document, disposition: 'preview') do  %>
         <%= image_tag document.preview(resize_to_limit: [250, 250]) %>
       <%end %>
     <%end %>
-    <% if document.try(:representable?)  %>
+    <% if document&.representable?  %>
       <%=  link_to rails_blob_path(document, disposition: 'preview') do  %>
         <%= image_tag document.representation(resize_to_limit: [250, 250]) %>
       <%end %>

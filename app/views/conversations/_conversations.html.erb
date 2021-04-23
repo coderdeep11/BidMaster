@@ -6,7 +6,7 @@
     </div>
     <ul class="message_and_name">
       <li class="user__name">
-        <%= recipient.try(:name) %>
+        <%= recipient&.name %>
         <% unless conversation.unread_message_count(current_user).zero?  %>
           <div class="unread__messages">
             <span>  <%=  conversation.unread_message_count(current_user)  %> </span>
