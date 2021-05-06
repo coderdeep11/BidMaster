@@ -1,6 +1,6 @@
 window.addEventListener("turbolinks:load", (e) => {
   let allProjects = document.querySelector(".projects");
-  let project_post = document.querySelector(".view__project-tab");
+  let project_post = document.querySelector(".review__proposals-tab");
   let projectModal = document.querySelector(".project__modal");
   let viewYourBid = document.querySelector(".freelancer-placed-bids-on");
   let dropdown = document.querySelector(".project__posted-dropdown");
@@ -69,6 +69,7 @@ window.addEventListener("turbolinks:load", (e) => {
   });
 
   project_post?.children[0].click();
+
   projectModal?.setAttribute("style", "transform:translateX(0)");
   /**************/
 });

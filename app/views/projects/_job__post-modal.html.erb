@@ -59,8 +59,22 @@
         <div class="bid__value-field">
           $  <%= f.number_field :value,placeholder: 'Bidding price' %>
         </div>
+        <div class="upload__documents">
+          <%=  f.label :documents  do %>
+            <i class="far fa-paperclip"></i>
+          <%end %>
+          <%=  f.file_field :documents,multiple: true  %>
+          <% documents= bid&.documents %>
+          <ol class="documents-attached upload__doc">
+            <%documents&.each do |document| %>
+              <%=  link_to rails_blob_path(document, disposition: 'attachment') do %>
+                <li><%= document.filename %></li>
+              <% end  %>
+            <% end %>
+          </ol>
+        </div>
         <div class="submit__proposal">
-          <%= f.submit data: {disable_with: 'Bidding....'  }  %>
+          <%= f.submit 'Submit Proposal', data: {disable_with: 'Submitting...'  }  %>
         </div>
       <%end %>
     </section>

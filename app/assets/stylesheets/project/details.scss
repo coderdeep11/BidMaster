@@ -69,24 +69,6 @@ main {
       }
     }
     .view__project-tab {
-      border-right: none;
-      a {
-        transition: all 0.5s;
-        &::before {
-          @include navigationArrow();
-        }
-        &:hover {
-          background: #2e7c04;
-          &:before {
-            border-left: 31px solid #2e7c04;
-          }
-        }
-      }
-    }
-    .add__background-color {
-      background: green;
-    }
-    .review__proposals-tab {
       border-left: none;
       a {
         transition: all 0.5s;
@@ -98,6 +80,24 @@ main {
         }
         &:hover {
           background: #2e7c04;
+        }
+      }
+    }
+    .add__background-color {
+      background: green;
+    }
+    .review__proposals-tab {
+      border-right: none;
+      a {
+        transition: all 0.5s;
+        &::before {
+          @include navigationArrow();
+        }
+        &:hover {
+          background: #2e7c04;
+          &:before {
+            border-left: 31px solid #2e7c04;
+          }
         }
       }
     }
@@ -150,7 +150,6 @@ main {
   .review__proposals {
     margin-top: 1rem;
     border: 1px solid #cec8c8;
-
     background: white;
     .proposals-tab {
       width: 100%;
@@ -226,6 +225,7 @@ main {
         flex-basis: 35px;
         padding: 1rem;
         align-self: flex-start;
+        position: relative;
         svg,
         img {
           display: block;
@@ -236,6 +236,16 @@ main {
           border: 1px solid rgb(143, 143, 143);
           border-radius: 50%;
         }
+        i {
+          right: 50%;
+          position: absolute;
+          font-size: 1.4rem;
+          transform: translateX(50%);
+          transition: color 0.4s;
+          &:hover {
+            color: black;
+          }
+        }
       }
       & > ul {
         display: flex;
@@ -245,7 +255,7 @@ main {
         flex-direction: column;
         flex: 1;
 
-        li {
+        & > li {
           font-size: 0.9rem;
           font-family: $font;
           color: #242424;
@@ -259,7 +269,7 @@ main {
             font-size: 0.8rem;
           }
         }
-        li:first-child {
+        & > li:first-child {
           font-weight: 600;
           a {
             font-family: $font;
@@ -273,17 +283,28 @@ main {
             }
           }
         }
-        li:nth-child(2) {
+        & > li:nth-child(2) {
           letter-spacing: 1px;
           font-size: 0.75rem;
         }
-        li:nth-child(3) {
+        & > li:nth-child(3) {
           word-spacing: 1px;
         }
         .time {
           font-weight: 500;
           font-size: 0.7rem;
           color: #242424;
+        }
+        .documents-attached {
+          padding-left: 1rem;
+          a {
+            color: blue;
+            text-decoration: none;
+            font-size: 0.8rem;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
       & > div {

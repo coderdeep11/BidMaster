@@ -21,6 +21,14 @@ window.addEventListener("turbolinks:load", () => {
     )
       return;
 
+    if (e.target == fBtn) {
+      document
+        .querySelector(".hidden__fields")
+        ?.setAttribute("style", `display:revert;top:${scrollY + 250}px`);
+      document
+        .querySelector("body")
+        ?.setAttribute("style", "overflow-y:hidden;");
+    }
     btn.children[0].click();
 
     if (btn.classList[0] == "f__btn") {
@@ -40,7 +48,15 @@ window.addEventListener("turbolinks:load", () => {
       event(e);
     });
   }
+
   /***************************** */
+  document.querySelector(".close___modal")?.addEventListener("click", () => {
+    document
+      .querySelector(".hidden__fields")
+      .setAttribute("style", "display:none");
+    document.querySelector("body")?.setAttribute("style", "overflow-y:revert;");
+  });
+
   /* Image Preview for user registration*/
   document
     .querySelector("#user_profile_image")

@@ -6,6 +6,7 @@
     </div>
   <% else  %>
     <%shortlisted.each do|bid| %>
+      <% documents= bid&.documents %>
       <li class="proposal">
         <div class="user__image">
           <% if bid.freelancer.profile_image.attached?  %>
@@ -13,6 +14,10 @@
           <% else  %>
             <%= inline_svg_tag 'default_avatar.svg' %>
           <% end  %>
+          <%= link_to conversations_path(sender_id:bid.project.client.id,
+          recipient_id:bid.freelancer.id ),class:'message',method: :post,remote: true do %>
+            <i class="fad fa-envelope"></i>
+          <% end %>
         </div>
         <ul>
           <li>
@@ -25,6 +30,20 @@
             <span>Proposal: </span>
             <p>  <%= bid.proposal %> </p>
           </li>
+          <li>
+            <span>Attachments</span>
+            <% if documents.empty? %>
+              <small>  no documents</small>
+            <% else %>
+              <ol class="documents-attached">
+                <%documents.each do |document| %>
+                  <%=  link_to rails_blob_path(document, disposition: 'attachment') do %>
+                    <li><%= document.filename %></li>
+                  <% end  %>
+                <% end %>
+              </ol>
+            <% end %>
+          </li>
           <li class="time">
             <%= distance_of_time_in_words_to_now(bid.updated_at) %>
           </li>
@@ -32,12 +51,8 @@
         <div class="bid__status">
           <%if  !project_awarded?(bid.project) && !bid.awarded?  %>
             <%=  link_to "award project", award_project_bid_path(bid.project,bid),class: 'award',method: :put  %>
-            <%= link_to 'Message',conversations_path(sender_id:bid.project.client.id,
-          recipient_id:bid.freelancer.id ),class:'message',method: :post,remote: true  %>
           <%elsif bid.awarded? %>
             <span class="stamp is-<%= bid.status %>"> <%= bid.status %> </span>
-            <%= link_to 'Message',conversations_path(sender_id:bid.project.client.id,
-          recipient_id:bid.freelancer.id ),class:'message',method: :post,remote: true %>
           <% else  %>
             <span class="stamp is-<%= bid.status %>"> <%= bid.status %> </span>
           <%end %>

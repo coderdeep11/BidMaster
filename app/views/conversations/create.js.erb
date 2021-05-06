@@ -1,27 +1,42 @@
-document.querySelector(".project__overview").insertAdjacentHTML(
-"afterend",
-`
-<div class="start__conversation"> <%= j render 'messages', {messages: @messages,message: @message } %>
-</div>
-`
-);
 windowScroll = window.scrollY;
+element =
+  document.querySelector(".project__overview") ||
+  document.querySelector(".freelancer__profile") ||
+  document.querySelector(".profile__card");
+element.insertAdjacentHTML(
+  "afterend",
+  `
+            <div class="start__conversation"> <%= j render 'messages', {messages: @messages,message: @message } %>
+            </div>
+            `
+);
+
 document
-.querySelector(".start__conversation")
-.setAttribute("style", `top:${windowScroll}px `);
-document.querySelector(".close__messages")?.addEventListener("click", () => {
-document.querySelector(".start__conversation").remove();
-});
-document
-.querySelector(".messages__modal")
-.lastElementChild.scrollIntoView({ behaviour: "smooth", block: "end" });
-document.querySelector("#message_documents").addEventListener("change", (e) => {
-e.target.nextElementSibling.nextElementSibling.click();
-});
-document
-.querySelector("#message_content")
-?.addEventListener("keypress", (e) => {
-if (e.keyCode === 13) {
-e.target.nextElementSibling.click();
+  .querySelector(".start__conversation")
+  .setAttribute("style", `top:${windowScroll}px `);
+if (
+  element.className == "freelancer__profile" ||
+  element.className == "profile__card"
+) {
+  document
+    .querySelector(".start__conversation")
+    .setAttribute("style", "right: 20%;top:3.5rem;");
 }
+
+document
+  .querySelector(".messages__modal")
+  .lastElementChild.scrollIntoView({ behaviour: "smooth", block: "nearest" });
+document.querySelector(".close__messages")?.addEventListener("click", () => {
+  document.querySelector(".start__conversation").remove();
 });
+
+document.querySelector("#message_documents").addEventListener("change", (e) => {
+  e.target.nextElementSibling.nextElementSibling.click();
+});
+document
+  .querySelector("#message_content")
+  ?.addEventListener("keypress", (e) => {
+    if (e.keyCode === 13) {
+      e.target.nextElementSibling.click();
+    }
+  });

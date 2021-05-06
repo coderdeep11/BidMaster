@@ -17,7 +17,7 @@ document
 document
 .querySelector(".freelancer__profile-modal")
 ?.addEventListener("click", function (e) {
-if (e.target.closest(".freelancer__profile")) return;
+if (e.target.closest(".freelancer__profile") || e.target.closest(".start__conversation")) return;
 document.querySelector("body").setAttribute("style", "overflow-x:hidden");
 document.querySelector?.(".freelancer__profile-modal").remove();
 });

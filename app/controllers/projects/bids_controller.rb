@@ -66,7 +66,7 @@ module Projects
     end
 
     def bids_params
-      params.require(:bid).permit(:value, :proposal, :freelancer_id, :project_id, :status)
+      params.require(:bid).permit(:value, :proposal, :freelancer_id, :project_id, :status, documents: [])
     end
   end
 end
