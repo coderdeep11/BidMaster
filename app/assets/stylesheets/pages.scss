@@ -53,6 +53,10 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
       font-size: 1.2rem;
       font-family: "Poppins", sans-serif;
     }
+    .links {
+      display: flex;
+      gap: 2rem;
+    }
     .btn-primary {
       display: block;
 
@@ -62,9 +66,9 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
       padding: 0.5rem;
       color: white;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 1rem;
-      width: 140px;
+      width: 200px;
       border: none;
       cursor: pointer;
       transition: 1s background-color;
@@ -170,6 +174,27 @@ $box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px
           color: green;
           text-decoration: underline;
         }
+      }
+    }
+    .search {
+      display: flex;
+      justify-content: center;
+      a {
+        padding: 0.5rem;
+        border: 1px solid black;
+        width: 180px;
+        border: 1px solid #b9b9b9;
+        text-align: center;
+        font-size: 0.9rem;
+        border-radius: 5px;
+        margin: 0.5rem 0.2rem;
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+      }
+      .add__background {
+        background: #4795cc;
+        color: white;
       }
     }
   }

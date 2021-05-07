@@ -48,6 +48,51 @@ $border: 1px solid #b9b9b9;
     display: flex;
     margin: 0;
     flex-direction: column;
+    position: relative;
+    .hidden__fields {
+      position: absolute;
+
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px;
+      z-index: 1;
+      display: none;
+      .freelancers__form-page {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem 4rem;
+        background: #ffffff;
+
+        & > div {
+          align-self: stretch;
+          padding: 1rem 0;
+        }
+        & label {
+          display: inline-block;
+          margin-bottom: 0.5rem;
+          position: relative;
+          font-family: "Quicksand", serif;
+          font-weight: 500;
+          font-size: 1.2rem;
+        }
+        .close___modal {
+          align-self: center;
+          p {
+            padding: 0.3rem 1.3rem;
+            background: #26b326;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1rem;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
     @include inputIcons;
     gap: 2rem;
     padding: 1rem 0;
@@ -60,6 +105,19 @@ $border: 1px solid #b9b9b9;
     & input {
       width: 100%;
       padding: 10px 2rem;
+    }
+    .user__industry {
+      display: flex;
+
+      gap: 1rem;
+
+      label {
+        font-size: 0.9rem;
+        display: block;
+      }
+      select {
+        font-size: 0.75rem;
+      }
     }
     .admin__field,
     .approved__field {

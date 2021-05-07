@@ -18,4 +18,8 @@
   <div class="filter__parameters">
     <%= link_to  'Clear Filters',request.path, class: "reset__btn" %>
   </div>
+  <div class="search ">
+    <%= link_to 'Freelancers',search_freelancers_path,remote: true ,class: "#{search_type? == "freelancer" ?  "add__background" : ""  } " %>
+    <%= link_to ' Projects',search_projects_path,remote: true,class: "#{search_type? == "project" ?  "add__background" : ""  } " %>
+  </div>
 </div>

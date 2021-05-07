@@ -8,6 +8,7 @@
 User.create_or_find_by(name: 'Admin User',
                        email: 'admin@example.com',
                        password_digest: BCrypt::Password.create('password'),
+                       category: Time.now,
                        admin: true,
                        approved: true,
                        email_confirmed: true,

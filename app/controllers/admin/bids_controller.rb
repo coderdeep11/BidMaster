@@ -48,7 +48,7 @@ module Admin
     end
 
     def bid_params
-      params.require(:bid).permit(:value, :proposal, :freelancer_id, :project_id, :status, :project_id, :freelancer_id)
+      params.require(:bid).permit(:value, :proposal, :freelancer_id, :project_id, :status, documents: [])
     end
   end
 end

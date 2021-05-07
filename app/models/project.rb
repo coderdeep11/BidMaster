@@ -3,8 +3,8 @@ class Project < ApplicationRecord
   has_many :bids, dependent: :destroy
   has_rich_text :description
   validate :is_user_client?
-  validates :title, presence: { message: 'can\'t be empty' }, length: { in: 30..100, message: 'Title should be within 30 to 100 characters' }
-  validate :title_words_within_limit?
+  validates :title, presence: { message: 'can\'t be empty' }, length: { minimum: 10}
+  # validate :title_words_within_limit?
   validates :category, presence: { message: 'Choose a Category' }
   validates :client_id, presence: { message: 'must select a Client' }
 
@@ -23,11 +23,12 @@ class Project < ApplicationRecord
   scope :proposals_rejected, ->(user) { where(client: user).joins(:bids).where(bids: { status: 'rejected' }).count }
   scope :authorize_client_profile, ->(user, current_user) { where(client: user).joins(:bids).where(bids: { freelancer: current_user }) }
   # Ex:- scope :active, -> {where(:active => true)}
-  def title_words_within_limit?
-    unless title.nil?
-      errors.add(:title, 'title should contain atleast 10 words') unless title.split(' ').length > 10
-    end
-  end
+
+  # def title_words_within_limit?
+  #  unless title.nil?
+  #    errors.add(:title, 'title should contain atleast 10 words') unless title.split(' ').length > 10
+  #  end
+  # end
 
   def is_user_client?
     errors.add(:base, 'Only Clients are allowed to post project') unless client&.role == 'client'

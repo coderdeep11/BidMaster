@@ -46,6 +46,22 @@
           </div>
         <%end %>
       </div>
+      <!-- Industry-->
+      <div class="user__industry" >
+        <div class="user__category">
+          <%=  f.label :category,'Choose Industry'  %>
+          <%=  f.select :category, all_categories, include_blank: 'Choose any'  %>
+          <%unless @user.errors[:category].empty? %>
+            <div class="errors">
+              <i class="fas fa-exclamation-circle"></i>
+              <%= @user.errors[:category][0] %> </div>
+          <% end  %>
+        </div>
+        <div class="user__subcateogory">
+          <%=  f.label :subcategory,'Subindustry'  %>
+          <%=  f.select(:subcategory, [], include_blank: 'Choose any')  %>
+        </div>
+      </div>
       <!-- Role field -->
       <div class="role__field">
         <p> <%= f.label :role,'Choose Your role:'  %> </p>
@@ -63,6 +79,10 @@
             <%= "role #{@user.errors[:role][0]} " %>
           </div>
         <%end %>
+      </div>
+      <!-- freelancer field-->
+      <div class="hidden__fields">
+        <%= render 'freelancerDetails', {f: f,user: @user} %>
       </div>
       <!-- Image field -->
       <div class="image__field">

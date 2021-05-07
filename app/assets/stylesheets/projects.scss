@@ -96,28 +96,7 @@ $font-quicksand: "Quicksand", serif;
         right: -10px;
       }
     }
-    .project__title-form,
-    .freelancer__education-form {
-      position: relative;
 
-      text-transform: capitalize;
-      font-family: "Montserrat";
-      .field_with_errors {
-        input {
-          border: 1px solid red;
-        }
-      }
-
-      input {
-        width: 100%;
-        padding: 0.5rem;
-        border: $border;
-        outline: none;
-        &:focus {
-          border: 1px solid green;
-        }
-      }
-    }
     .project__category,
     .freelancer__category,
     .all__clients {
@@ -182,47 +161,6 @@ $font-quicksand: "Quicksand", serif;
       }
     }
 
-    .project__experience-form,
-    .freelancer__experience-form {
-      label {
-        font-size: 1rem;
-        word-spacing: 3px;
-        margin-left: 10px;
-        margin-bottom: 1rem;
-      }
-      .experience-level {
-        display: flex;
-        justify-content: space-around;
-        perspective: 1000px;
-        perspective-origin: center;
-
-        & div {
-          flex-basis: 30%;
-          display: flex;
-          flex-direction: column;
-          height: 150px;
-          border: $border;
-          border-radius: 10px;
-          padding: 1.5rem 0.5rem;
-          text-align: center;
-          font-family: "monoserrat";
-          position: relative;
-          transition: transform 0.5s;
-          gap: 0.5rem;
-
-          p {
-            font-size: 0.8rem;
-          }
-          cursor: pointer;
-          input {
-            position: absolute;
-            right: 5px;
-            z-index: 0;
-            top: 5px;
-          }
-        }
-      }
-    }
     .submit__btn {
       align-self: center;
       width: 150px;
@@ -241,6 +179,69 @@ $font-quicksand: "Quicksand", serif;
         &:hover {
           background: #2a7900;
           cursor: pointer;
+        }
+      }
+    }
+  }
+  .project__title-form,
+  .freelancer__education-form {
+    position: relative;
+
+    text-transform: capitalize;
+    font-family: "Montserrat";
+    .field_with_errors {
+      input {
+        border: 1px solid red;
+      }
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border: $border;
+      outline: none;
+      &:focus {
+        border: 1px solid green;
+      }
+    }
+  }
+  .project__experience-form,
+  .freelancer__experience-form {
+    label {
+      font-size: 1rem;
+      word-spacing: 3px;
+      margin-left: 10px;
+      margin-bottom: 1rem;
+    }
+    .experience-level {
+      display: flex;
+      justify-content: space-around;
+      perspective: 1000px;
+      perspective-origin: center;
+
+      & div {
+        flex-basis: 30%;
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        border: $border;
+        border-radius: 10px;
+        padding: 1.5rem 0.5rem;
+        text-align: center;
+        font-family: "monoserrat";
+        position: relative;
+        transition: transform 0.5s;
+        gap: 0.5rem;
+
+        p {
+          font-size: 0.8rem;
+        }
+        cursor: pointer;
+        input {
+          position: absolute;
+          right: 5px;
+          z-index: 0;
+          top: 5px;
         }
       }
     }
@@ -619,8 +620,17 @@ $font-quicksand: "Quicksand", serif;
             font-size: 0.8rem;
           }
         }
+        .upload__documents {
+          position: relative;
+          ol {
+            position: absolute;
+            left: 2rem;
+            top: 100%;
+            font-size: 0.7rem;
+          }
+        }
         .bid__value-field {
-          margin-left: auto;
+          margin-right: auto;
           flex-basis: 200px;
 
           .errors {
@@ -631,7 +641,6 @@ $font-quicksand: "Quicksand", serif;
         }
         .bid__value-field,
         .submit__proposal {
-          text-align: center;
           input {
             width: 150px;
           }
