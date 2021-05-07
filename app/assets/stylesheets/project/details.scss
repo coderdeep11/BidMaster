@@ -122,9 +122,10 @@ main {
       padding: 0;
       max-width: 100%;
       border: none;
+      flex: 1;
     }
     .actions__on-project {
-      flex-basis: 250px;
+      flex-basis: 100px;
       border-left: 1px solid #d6d2d2;
       padding: 2rem 1rem;
       li {

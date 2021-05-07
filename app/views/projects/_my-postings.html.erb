@@ -2,11 +2,16 @@
   <li class="every__project  <%= project_awarded?(project) ? "awarded" : "" %> ">
     <ul>
       <li class="project__title " id="dropdown__btn-<%= project.id %>">
-        <%= link_to project.title,project_details_path(project) %>
+        <%= link_to limit_characters(project.title),project_details_path(project) %>
         <%= link_to  more_info_project_path(project),class:"project__dropdown-btn" , remote: true do %>
           <i class="fas fa-chevron-circle-up"></i>
         <% end  %>
       </li>
+      <!-- -->
+      <%if project_awarded?(project)%>
+        <li class="client__profile"> <%= link_to "Project awarded to #{project_awarded_to(project).name} ",freelancer_path(project_awarded_to(project)) %> </li>
+      <% end %>
+      <!-- -->
       <li class="project__created-at-with-status">
         <div >
           Posted  <%= distance_of_time_in_words_to_now(project.created_at) %>

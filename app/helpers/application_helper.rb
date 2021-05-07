@@ -33,6 +33,10 @@ module ApplicationHelper
     Project.awarded?(project).empty? ? false : true
   end
 
+  def project_awarded_to(project)
+    Project.awarded?(project).first.bids.first.freelancer
+  end
+
   # total projects by client
   def total_projects_posted(user)
     Project.total_projects_posted_by_client(user)

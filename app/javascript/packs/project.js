@@ -4,6 +4,7 @@ window.addEventListener("turbolinks:load", (e) => {
   let projectModal = document.querySelector(".project__modal");
   let viewYourBid = document.querySelector(".freelancer-placed-bids-on");
   let dropdown = document.querySelector(".project__posted-dropdown");
+  let posts = document.querySelector(".projects-posted-by-client");
   let elementPresent = () => {
     return (
       document.querySelector(".freelancer__feed") ||
@@ -62,6 +63,17 @@ window.addEventListener("turbolinks:load", (e) => {
       clearTimeout(t);
     }, 300);
   });
+
+  /* */
+  posts?.addEventListener("click", function (e) {
+    let target = e.target.closest(".project__dropdown-btn"),
+      project = e.target.closest("ul");
+
+    if (!project || target) return;
+
+    project.children[0].children[0].click();
+  });
+
   viewYourBid?.addEventListener("click", (e) => {
     let bid = e.target.closest(".each__bid");
     if (!bid) return;

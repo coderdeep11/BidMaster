@@ -412,6 +412,33 @@ $font-quicksand: "Quicksand", serif;
             }
           }
         }
+        .client__profile {
+          flex: 1;
+          a {
+            text-decoration: none;
+            display: block;
+            font-size: 0.75rem;
+            font-family: "Comfortaa", cursive;
+            font-weight: 700;
+            color: black;
+            &:hover {
+              color: green;
+              text-decoration: underline;
+            }
+          }
+        }
+        .client__picture {
+          flex: 1;
+          img,
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+          img {
+            border: 1px solid rgb(143, 143, 143);
+            border-radius: 50%;
+          }
+        }
 
         .project__created-at-with-status {
           display: flex;
