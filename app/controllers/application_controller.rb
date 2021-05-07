@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   def set_global_search_variable
     @q = User.where(role: 'freelancer').ransack(params[:q])
     @j = Project.ransack(params[:q])
+    @k = User.where(role: 'freelancer').or(User.where(role: 'client')).ransack(params[:q])
   end
 
   def current_user

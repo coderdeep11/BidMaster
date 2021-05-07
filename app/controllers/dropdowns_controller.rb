@@ -13,4 +13,8 @@ class DropdownsController < ApplicationController
   def project
     search_type('project')
   end
+
+  def client_and_freelancer
+    search_type('all')
+  end
 end

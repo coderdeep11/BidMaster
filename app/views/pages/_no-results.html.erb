@@ -1,4 +1,8 @@
 <div class="no__results">
   <i class="fas fa-telescope"></i>
-  <h4>no <%=search_type?%> found  </h4>
+  <%if search_type? == "all"%>
+    <h4>no record   </h4>
+  <% else %>
+    <h4>no <%=search_type?%> found  </h4>
+  <% end %>
 </div>

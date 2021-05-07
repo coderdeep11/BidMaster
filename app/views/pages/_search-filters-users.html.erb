@@ -1,0 +1,21 @@
+<div class="search__filters">
+  <div class="search__category">
+    <%= f.label :category_eq,'Category' %>
+    <%= f.select :category_eq, all_categories, include_blank: 'Choose any' %>
+  </div>
+  <div class="search__subcateogory">
+    <%= f.label :subcategory_eq,'Subcategory' %>
+    <%= f.select(:subcategory_eq, [], include_blank: 'Choose any') %>
+  </div>
+  <div class="search__role">
+    <%= f.label :role_eq, 'Role'%>
+    <div class="user__role"> <%= f.radio_button :role_eq, 'freelancer' %> Freelancers</div>
+    <div class="user__role"> <%= f.radio_button :role_eq, 'client' %> Clients</div>
+  </div>
+  <div class="toggle__filter">
+    <%= button_tag 'submit',class: ' search__btn'   %>
+  </div>
+  <div class="close__filter">
+    <i class="fal fa-times"></i>
+  </div>
+</div>

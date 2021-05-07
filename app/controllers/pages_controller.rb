@@ -8,9 +8,10 @@ class PagesController < ApplicationController
     if search_type? == 'freelancer'
       @freelancers = @q.result(distinct: true).includes(:bidding_profile).order('created_at DESC').page(params[:page]).per(10)
 
-    else
+    elsif search_type? == 'project'
       @projects = @j.result(distinct: true).order('created_at DESC').page(params[:page]).per(10)
-
+    else
+      @users = @k.result(distinct: true).order('created_at DESC').page(params[:page]).per(10)
     end
   end
 

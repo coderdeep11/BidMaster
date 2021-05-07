@@ -73,7 +73,7 @@ Rails.application.routes.draw do
   get '/choice', to: 'dropdowns#search_choice', as: 'search_choice'
   get '/search/freelancers', to: 'dropdowns#freelancer', as: 'search_freelancers'
   get '/search/projects', to: 'dropdowns#project', as: 'search_projects'
-
+  get '/search/freelancers_and_clients', to: 'dropdowns#client_and_freelancer', as: 'freelancers_and_clients'
   # routes for notifications
   get '/notifications', to: 'notifications#index', as: 'notifications'
 

@@ -1,0 +1,34 @@
+<div class="search__results-users">
+  <ul class="users">
+    <%users&.each do|user| %>
+      <li class="user">
+        <div class="user_image">
+          <% if user.profile_image.attached? %>
+            <%= image_tag user.profile_image %>
+          <% else %>
+            <%= inline_svg_tag 'default_avatar.svg' %>
+          <% end %>
+        </div>
+        <ul>
+          <li class="user__name">
+            <%= user.name %>
+            <div class="category">
+              <%= user.category %>
+            </div>
+          </li >
+          <li class="user___role-<%= user.role %>"> <%= user.role %> </li>
+          <li class="user__joined-on">
+            <i class="fas fa-calendar-check"></i>
+            joined <%= distance_of_time_in_words_to_now(user.created_at) %> ago
+          </li>
+          <li></li>
+        </ul>
+        <% if user_freelancer?(user) %>
+          <%= link_to '', freelancer_path(user)%>
+        <% else %>
+          <%= link_to '', client_path(user)%>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
