@@ -26,12 +26,6 @@ class ProfilesController < ApplicationController
 
       flash[:alert] = 'no-client-exists'
 
-    else
-      unless authorize_client(@client)
-        flash[:alert] = 'not accessible'
-        redirect_to user_freelancer?(current_user) ? freelancer_path(current_user) : client_path(current_user)
-      end
-
     end
   end
 

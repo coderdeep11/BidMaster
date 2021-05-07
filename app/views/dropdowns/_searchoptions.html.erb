@@ -1,4 +1,7 @@
 <div class="search__dropdown ">
-  <%= link_to 'Search Freelancers',search_freelancers_path,remote: true %>
-  <%= link_to 'Search Projects',search_projects_path,remote: true %>
+  <%= link_to 'Freelancers',search_freelancers_path,remote: true %>
+  <%= link_to 'Projects',search_projects_path,remote: true %>
+  <% if current_user %>
+    <%= link_to 'freelancers and clients',freelancers_and_clients_path,remote: true %>
+  <% end %>
 </div>

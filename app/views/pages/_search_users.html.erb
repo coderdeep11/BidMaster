@@ -1,16 +1,23 @@
 <div class="search__wrapper">
   <%= search_form_for q, url: search_results_path ,id:'search' do |f|%>
+    <%= render 'search-filters-users',f: f %>
     <div class="search_bar">
-      <%= f.label :name_or_email_or_bidding_profile_category_or_bidding_profile_experience_cont,style:'display:none' %>
-      <%= f.search_field :name_or_email_or_bidding_profile_category_or_bidding_profile_experience_cont, placeholder: "Search freelancer by category,email,name etc" %>
+      <%= f.label :name_or_email_or_category_or_bidding_profile_experience_cont,style:'display:none' %>
+      <%= f.search_field :name_or_email_or_category_or_bidding_profile_experience_cont, placeholder: "Search user by category,email,name etc" %>
     </div>
     <%= button_tag class: ' search__btn'   do%>
       <i class="far fa-search"></i>
     <%end%>
+    <div class="filters">
+      <%= inline_svg_tag 'filter.svg' ,class: 'svg__search-filters' %>
+    </div>
     <%= link_to  request.path, class: "reset__btn" do%>
       <i class="fal fa-times"></i>
     <% end %>
   <% end %>
+  <div class="filter__parameters">
+    <%= link_to  'Clear Filters',request.path, class: "reset__btn" %>
+  </div>
   <div class="search ">
     <%= link_to 'Freelancers',search_freelancers_path,remote: true ,class: "#{search_type? == "freelancer" ?  "add__background" : ""  } " %>
     <%= link_to ' Projects',search_projects_path,remote: true,class: "#{search_type? == "project" ?  "add__background" : ""  } " %>

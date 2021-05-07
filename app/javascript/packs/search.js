@@ -6,13 +6,12 @@ window.addEventListener("turbolinks:load", () => {
   let project_category = document.querySelector?.("#project_category");
   let freelancer_category = document.querySelector?.("#user_category");
   let freelancers = document.querySelector(".freelancers");
+  let users = document.querySelector(".users");
   let select = document.querySelector("select");
-  let experience__level = document.querySelectorAll(".experience__level");
+  let user_role = document.querySelectorAll(".user__role");
   let search__filters = [];
   let filter__parameters = document.querySelector(".filter__parameters");
-  let searchMode =
-    document.querySelector(".search__projects  ") ||
-    document.querySelector(".search__freelancers  ");
+  let searchMode = document.querySelector(".search__users");
   /**api to fetch sub categories related to job */
   let fetchCategories = (contactSelect, e) => {
     fetch(`/job_categories/${e.target.selectedIndex - 1}.json`)
@@ -58,7 +57,14 @@ window.addEventListener("turbolinks:load", () => {
     if (!freelancer) return;
     freelancer.children[2].click();
   });
+  users?.addEventListener("click", (e) => {
+    let user = e.target.closest(".user");
 
+    if (!user) return;
+    user.children[2].click();
+  });
+
+  /***************** */
   searchMode?.addEventListener("click", (e) => {
     let filters = document.querySelector(".search__filters");
 
@@ -72,7 +78,7 @@ window.addEventListener("turbolinks:load", () => {
   });
   let category = select?.value;
   if (category) search__filters.push(category);
-  experience__level.forEach((element) => {
+  user_role.forEach((element) => {
     if (element.children[0].checked)
       search__filters.push(element.children[0].value);
   });

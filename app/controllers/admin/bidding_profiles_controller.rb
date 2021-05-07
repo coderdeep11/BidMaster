@@ -6,21 +6,6 @@ module Admin
       @bidding_profiles = BiddingProfile.all.order('created_at DESC').page(params[:page]).per(10)
     end
 
-    def new
-      @bidding_profile = BiddingProfile.new
-    end
-
-    def create
-      @bidding_profile = BiddingProfile.new(bidding_profile_params)
-      if @bidding_profile.save
-
-        redirect_to admin_bidding_profiles_path
-      else
-
-        render 'admin/bidding_profiles/new'
-      end
-    end
-
     def edit; end
 
     def update
@@ -31,8 +16,6 @@ module Admin
         render 'admin/bidding_profiles/edit'
       end
     end
-
-    def show; end
 
     def destroy
       @bidding_profile.destroy
@@ -47,7 +30,7 @@ module Admin
     end
 
     def bidding_profile_params
-      params.require(:bidding_profile).permit(:category,:bio, :subcategory, :experience, :education, :freelancer_id)
+      params.require(:bidding_profile).permit(:category, :bio, :subcategory, :experience, :education, :freelancer_id)
     end
   end
 end

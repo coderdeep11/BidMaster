@@ -1,6 +1,5 @@
 <div class="search__wrapper">
   <%= search_form_for q, url: search_results_path ,id:'search' do |f| %>
-    <%= render 'search_filters-projects' ,f: f %>
     <div class="search_bar">
       <%= f.label :action_text_rich_text_body_or_title_or_experience_or_category_cont,style:'display:none' %>
       <%= f.search_field :action_text_rich_text_body_or_title_or_experience_or_category_cont, placeholder: "search projects by title ,category etc " %>
@@ -8,18 +7,15 @@
     <%= button_tag class: ' search__btn'   do%>
       <i class="far fa-search"></i>
     <%end%>
-    <div class="filters">
-      <%= inline_svg_tag 'filter.svg',class: 'svg__search-filters' %>
-    </div>
     <%= link_to  request.path, class: "reset__btn" do%>
       <i class="fal fa-times"></i>
     <% end %>
   <% end %>
-  <div class="filter__parameters">
-    <%= link_to  'Clear Filters',request.path, class: "reset__btn" %>
-  </div>
   <div class="search ">
     <%= link_to 'Freelancers',search_freelancers_path,remote: true %>
     <%= link_to 'Projects',search_projects_path,remote: true,class: "#{search_type? == "project" ?  "add__background" : ""  } " %>
+    <% if current_user %>
+      <%= link_to 'Client & freelancers',freelancers_and_clients_path,remote: true,class: "#{search_type? == "all" ?  "add__background" : ""  } " %>
+    <% end %>
   </div>
 </div>

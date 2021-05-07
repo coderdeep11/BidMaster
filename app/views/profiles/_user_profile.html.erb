@@ -5,7 +5,7 @@
     <%= inline_svg_tag 'default_avatar.svg' %>
   <% end  %>
 </div>
-<%if user_freelancer?(current_user) && authenticate_profile(user) && request.path == freelancer_path(current_user) %>
+<%if user_freelancer?(current_user) && authenticate_profile(user)  %>
   <%= link_to 'Edit Profile',edit_bidding_profile_path(current_user.bidding_profile),class:'edit__profile' if bidding_profile_exist?  %>
 <% end  %>
 <ul class="user__profile">
