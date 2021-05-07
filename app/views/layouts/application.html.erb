@@ -79,6 +79,16 @@
             </li>
           <%end %>
         <% elsif current_user&.admin?  %>
+          <li class="conversations__dropdown">
+            <%= link_to  conversations_path ,remote: true do %>
+              <i class="fad fa-envelope"></i>
+            <%end %>
+            <%if total_unread_messages != 0 %>
+              <span class="unread-button__badge ">
+                <%= total_unread_messages  %>
+              </span>
+            <% end  %>
+          </li>
           <li>
             <%= link_to 'Logout',logout_path,class:'btn-primary',method: :delete %>
           </li>

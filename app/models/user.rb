@@ -24,6 +24,7 @@ class User < ApplicationRecord
   before_create :confirm_token, unless: :user_admin?
   before_create :remove_fields, if: :user_client?
   after_create :new_bidding_profile, if: :user_freelancer?
+  before_update :update_bidding_profile, if: :user_freelancer?
   scope :not_current_user, ->(current_user) { where.not(id: current_user.id) }
   scope :all_clients, -> { where(role: 'client').pluck(:name, :id) }
   scope :all_freelancers, -> { where(role: 'freelancer').pluck(:name, :id) }
@@ -53,6 +54,7 @@ class User < ApplicationRecord
   end
 
   def role_changed
+    new_bidding_profile if user_freelancer? && !changed_attributes[:role].nil?
     UserRoleSwitchedJob.perform_later(self, changed_attributes[:role]) unless changed_attributes[:role].nil?
   end
 
@@ -69,6 +71,12 @@ class User < ApplicationRecord
   end
 
   def new_bidding_profile
-    BiddingProfile.create!(freelancer: self, education: education, experience: experience,category: category,subcategory: subcategory)
+    BiddingProfile.create!(freelancer: self, education: education, experience: experience, category: category, subcategory: subcategory)
+  end
+
+  def update_bidding_profile
+    unless changed_attributes[:category].nil?
+      BiddingProfile.update(freelancer: self, category: category, subcategory: subcategory)
+    end
   end
 end

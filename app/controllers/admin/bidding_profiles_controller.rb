@@ -47,7 +47,7 @@ module Admin
     end
 
     def bidding_profile_params
-      params.require(:bidding_profile).permit(:category, :subcategory, :experience, :education, :bio, :freelancer_id)
+      params.require(:bidding_profile).permit(:category,:bio, :subcategory, :experience, :education, :freelancer_id)
     end
   end
 end

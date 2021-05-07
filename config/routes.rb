@@ -22,10 +22,6 @@ Rails.application.routes.draw do
 
   resources :bidding_profiles
 
-  constraints FillBiddingProfileRouteConstraint.new do
-    root 'bidding_profiles#new', as: 'new_bidding_profile_path'
-  end
-
   constraints FreelancerRouteConstraint.new do
     root 'bidding_profiles#index', as: 'bidding_profiles_path'
   end
@@ -85,7 +81,7 @@ Rails.application.routes.draw do
   get '/search', to: 'pages#search', as: 'search_results'
   get '/search/freelancer/:id/profile', to: 'pages#freelancer_profile', as: 'search_freelancer_profile'
 
-  get 'users', to: redirect('/users/sign_up')
+  get 'users', to: redirect('/signup')
   # root path for unauthenticated users
   root 'pages#main'
 end

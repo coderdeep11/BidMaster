@@ -64,6 +64,7 @@ $border: 1px solid #b9b9b9;
         flex-direction: column;
         padding: 2rem 4rem;
         background: #ffffff;
+
         & > div {
           align-self: stretch;
           padding: 1rem 0;
@@ -107,7 +108,7 @@ $border: 1px solid #b9b9b9;
     }
     .user__industry {
       display: flex;
-      justify-content: center;
+
       gap: 1rem;
 
       label {

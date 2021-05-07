@@ -21,7 +21,10 @@ window.addEventListener("turbolinks:load", () => {
     )
       return;
 
-    if (e.target == fBtn) {
+    if (
+      e.target == fBtn &&
+      (e.target.classList[1] == "_client" || e.target.classList.length == 1)
+    ) {
       document
         .querySelector(".hidden__fields")
         ?.setAttribute("style", `display:revert;top:${scrollY + 250}px`);
@@ -36,7 +39,10 @@ window.addEventListener("turbolinks:load", () => {
         cBtn.classList.remove("btn__add-background");
     }
     if (btn.classList[0] == "c__btn") {
-      if (fBtn.classList[1] == "btn__add-background")
+      if (
+        fBtn.classList[2] == "btn__add-background" ||
+        fBtn.classList[1] == "btn__add-background"
+      )
         fBtn.classList.remove("btn__add-background");
     }
     btn.classList.add("btn__add-background");
