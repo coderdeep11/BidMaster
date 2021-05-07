@@ -23,12 +23,14 @@
       <%end %>
     </header>
     <div class="search__bar">
-      <%=  search_form_for search_type? == 'freelancer' ? @q : @j, url: search_results_path do |f| %>
+      <%=  search_form_for search_type? == 'freelancer' ? @q : search_type? == 'project' ? @j : @k, url: search_results_path do |f| %>
         <%=  link_to '',search_choice_path , remote: true,class:'arrow'   %>
         <%if search_type? == 'freelancer' %>
           <%= render partial: 'pages/searchFieldFreelancer', locals: {f: f }  %>
-        <% else  %>
+        <% elsif search_type? == "project" %>
           <%= render partial: 'pages/searchFieldProject', locals: {f: f  }  %>
+        <%else%>
+          <%= render partial: 'pages/searchFieldUser', locals: {f: f  }  %>
         <% end  %>
         <div class="search-btn">
           <%=  button_tag class: ' btn-primary'   do %>

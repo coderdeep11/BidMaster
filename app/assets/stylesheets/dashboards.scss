@@ -17,6 +17,7 @@ $main-color: #027581;
   background: $main-color;
   color: #fff;
   overflow-y: auto;
+  z-index: 1;
 }
 
 .sidebar-header {
