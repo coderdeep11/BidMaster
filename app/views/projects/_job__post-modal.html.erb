@@ -18,10 +18,10 @@
   <% end  %>
   <div class="job__post-attachments">
     <h3> Attachments</h3>
-    <% if project.description.body.attachments.empty?   %>
+    <% if project.description.nil? || project.description.body.attachments.empty?    %>
       <p>No attachments</p>
     <% else  %>
-      <% project.description.body.attachments.each do |document,i| %>
+      <%  project.description.body.attachments.each do |document,i| %>
         <%=  link_to rails_blob_path(document, disposition: 'attachment') do %>
           <%= document.filename %>
         <% end  %>
