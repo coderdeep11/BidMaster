@@ -131,5 +131,4 @@ ActiveRecord::Schema.define(version: 2021_05_07_131422) do
   add_foreign_key "bids", "projects"
   add_foreign_key "messages", "conversations"
   add_foreign_key "notifications", "bids"
-  add_foreign_key "notifications", "users"
 end
