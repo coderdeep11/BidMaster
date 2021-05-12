@@ -2,10 +2,13 @@ class Project < ApplicationRecord
   belongs_to :client, class_name: 'User', inverse_of: :projects
   has_many :bids, dependent: :destroy
   has_rich_text :description
+  validates :description, presence: { message: 'description can\'t be blank' }
   validate :is_user_client?
-  validates :title, presence: { message: 'can\'t be empty' }, length: { minimum: 10 }
+  validates :title, presence: true, length: { minimum: 10 }
+  validates :experience, presence: { message: 'Please select experience required for the project' }
   # validate :title_words_within_limit?
   validates :category, presence: { message: 'Choose a Category' }
+  validates :subcategory, presence: { message: 'Choose a subcategory' }
   validates :client_id, presence: { message: 'must select a Client' }
 
   has_one :action_text_rich_text,

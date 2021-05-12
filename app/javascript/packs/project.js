@@ -28,10 +28,21 @@ window.addEventListener("turbolinks:load", (e) => {
       btn.classList[0] !== "experience__level"
     )
       return;
+    removeStyle();
+    nearestDiv = btn.closest(".experience__level");
+    nearestDiv.classList.add("add__border");
+    if (nearestDiv.children[0].className == "field_with_errors") {
+      nearestDiv.children[0].firstChild.click();
+    } else nearestDiv.children[0].click();
+    /***   old code ***** *
+   
+    console.log(btn.tagName);
     if (btn.tagName == "DIV") {
       removeStyle();
       btn.classList.add("add__border");
-      btn.children[0].click();
+      if (btn.children[0].className == "field_with_errors") {
+        btn.children[0].firstChild.click();
+      } else btn.children[0].click();
     }
     if (btn.tagName == "SPAN") {
       removeStyle();
@@ -43,6 +54,7 @@ window.addEventListener("turbolinks:load", (e) => {
       btn.parentElement.classList.add("add__border");
       btn.previousElementSibling.previousElementSibling.click();
     }
+    *******/
   };
   document
     .querySelector(".experience-level")

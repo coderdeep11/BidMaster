@@ -5,6 +5,9 @@
         <li class="project__title">
           <%=  link_to limit_characters(project.title), project_path(project),remote: true %>
         </li>
+        <li class="project__category">
+          Category: <%=project.category%>
+        </li>
         <li class="project__experience">
           Experience:  <%= project.experience %>
         </li>

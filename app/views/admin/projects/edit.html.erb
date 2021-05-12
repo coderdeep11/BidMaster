@@ -7,7 +7,7 @@
     <%= render partial: "projects/title",locals: {f: f,project: @project }  %>
     <%= render partial: "projects/category",locals: {f: f,project: @project}  %>
     <%= render partial: "projects/description",locals: {f: f,project: @project}  %>
-    <%= render partial: "projects/experience",locals: {f: f}  %>
+    <%= render partial: "projects/experience",locals: {f: f,project: @project}  %>
     <div class="submit__btn">
       <%= f.submit 'Post Job', data: { disable_with: "Saving..." } %>
     </div>

@@ -13,18 +13,31 @@ window.addEventListener("turbolinks:load", () => {
   let filter__parameters = document.querySelector(".filter__parameters");
   let searchMode = document.querySelector(".search__users");
   /**api to fetch sub categories related to job */
-  let fetchCategories = (contactSelect, e) => {
-    fetch(`/job_categories/${e.target.selectedIndex - 1}.json`)
+  let fetchCategories = (contactSelect, target) => {
+    fetch(`/job_categories/${target.selectedIndex - 1}.json`)
       .then((response) => response.json())
       .then((data) => {
         contactSelect.innerHTML = "";
 
         data.id.map((model, i) => {
+          let subcategory = contactSelect.parentElement.dataset.subcategory;
           if (i == 0)
-            contactSelect.options[i] = new Option("Choose Any", "", true);
-
-          contactSelect.options[i + 1] = new Option(model);
-          contactSelect.options[i + 1].value = model;
+            contactSelect.options[i] = new Option(
+              "Choose Any",
+              "",
+              false,
+              true
+            );
+          if (subcategory) {
+            if (model == subcategory) {
+              contactSelect.options[i + 1] = new Option(
+                model,
+                model,
+                false,
+                true
+              );
+            } else contactSelect.options[i + 1] = new Option(model, model);
+          } else contactSelect.options[i + 1] = new Option(model, model);
         });
       });
   };
@@ -34,23 +47,39 @@ window.addEventListener("turbolinks:load", () => {
   select__freelancer?.addEventListener("change", function (e) {
     fetchCategories(
       document.querySelector("#q_bidding_profile_subcategory_eq"),
-      e
+      e.target
     );
   });
 
   /*dynamic dropdown for job categories(project)*/
   select__project?.addEventListener("change", function (e) {
-    fetchCategories(document.querySelector("#q_subcategory_eq"), e);
+    fetchCategories(document.querySelector("#q_subcategory_eq"), e.target);
   });
 
   project_category?.addEventListener("change", function (e) {
-    fetchCategories(document.querySelector("#project_subcategory"), e);
+    fetchCategories(document.querySelector("#project_subcategory"), e.target);
   });
+  /******/
+  if (project_category?.selectedOptions[0].value) {
+    fetchCategories(
+      document.querySelector("#project_subcategory"),
+      project_category
+    );
+  }
+  /********** */
 
   freelancer_category?.addEventListener("change", function (e) {
-    fetchCategories(document.querySelector("#user_subcategory"), e);
+    fetchCategories(document.querySelector("#user_subcategory"), e.target);
   });
 
+  if (freelancer_category?.selectedOptions[0].value) {
+    fetchCategories(
+      document.querySelector("#user_subcategory"),
+      freelancer_category
+    );
+  }
+
+  /************************* */
   freelancers?.addEventListener("click", (e) => {
     let freelancer = e.target.closest(".freelancer");
 

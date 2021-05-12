@@ -58,7 +58,7 @@
               <%= @user.errors[:category][0] %> </div>
           <% end  %>
         </div>
-        <div class="user__subcateogory">
+        <div class="user__subcateogory" data-subcategory="<%=@user.subcategory%>">
           <%=  f.label :subcategory,'Subindustry'  %>
           <%=  f.select :subcategory, [], include_blank: 'Choose any'  %>
         </div>

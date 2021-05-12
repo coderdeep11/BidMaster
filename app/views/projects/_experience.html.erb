@@ -14,4 +14,9 @@
       <p> Looking for someone relatively new to field</p>
     </div>
   </div>
+  <%unless project.errors[:experience].empty? %>
+    <div class="error">
+      <i class="fas fa-exclamation-circle"></i>
+      <%= project.errors[:experience][0] %> </div>
+  <% end  %>
 </div>

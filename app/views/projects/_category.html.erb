@@ -8,8 +8,13 @@
         <%= project.errors[:category][0] %> </div>
     <% end  %>
   </div>
-  <div class="search__subcateogory">
+  <div class="search__subcateogory" data-subcategory="<%=project.subcategory%>">
     <%=  f.label :subcategory,'Subcategory'  %>
     <%=  f.select(:subcategory, [], include_blank: 'Choose any')  %>
+    <%unless project.errors[:subcategory].empty? %>
+      <div class="error">
+        <i class="fas fa-exclamation-circle"></i>
+        <%= project.errors[:subcategory][0] %> </div>
+    <% end  %>
   </div>
 </div>
