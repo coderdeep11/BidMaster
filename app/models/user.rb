@@ -75,7 +75,7 @@ class User < ApplicationRecord
   end
 
   def update_bidding_profile
-    unless changed_attributes[:category].nil?
+    if !changed_attributes[:category].nil? || !changed_attributes[:subcategory].nil?
       BiddingProfile.update(freelancer: self, category: category, subcategory: subcategory)
     end
   end
