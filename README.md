@@ -12,13 +12,6 @@ rails db:prepare
 > rails s 
 
 
-#####  _`TO access admin panel`_
-
-> email: `admin@example.com` <br/>
-password: `password`
-
-
-
 # _`Features`_ 
 #  SignUp & SignIn
 ![Screenshot_2021-03-10 BidMaster(2)](https://user-images.githubusercontent.com/41575688/110678922-daf28280-81fc-11eb-9b2e-29b1d2cee816.png) ![Screenshot_2021-03-11 BidMaster(1)](https://user-images.githubusercontent.com/41575688/110680443-9ff14e80-81fe-11eb-878b-18d91002095d.png)
